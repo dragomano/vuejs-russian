@@ -1,6 +1,6 @@
 ---
 page: true
-title: Tutorial
+title: Учебник
 sidebar: false
 aside: false
 footer: false
