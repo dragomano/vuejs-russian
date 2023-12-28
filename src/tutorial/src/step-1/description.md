@@ -1,26 +1,26 @@
-# Getting Started {#getting-started}
+# Первые шаги {#getting-started}
 
-Welcome to the Vue tutorial!
+Добро пожаловать в учебник по Vue!
 
-The goal of this tutorial is to quickly give you an experience of what it feels like to work with Vue, right in the browser. It does not aim to be comprehensive, and you don't need to understand everything before moving on. However, after you complete it, make sure to also read the <a target="_blank" href="/guide/introduction.html">Guide</a> which covers each topic in more detail.
+Цель этого урока — быстро дать вам понять, каково это — работать с Vue прямо в браузере. Он не претендует на всеохватность, и вам не нужно понимать всё, прежде чем двигаться дальше. Однако после того, как вы его прочтёте, не забудьте также ознакомиться с <a target="_blank" href="/guide/introduction.html">Руководством</a>, в котором каждая тема рассматривается более подробно.
 
-## Prerequisites {#prerequisites}
+## Предварительные условия {#prerequisites}
 
-The tutorial assumes basic familiarity with HTML, CSS and JavaScript. If you are totally new to front-end development, it might not be the best idea to jump right into a framework as your first step - grasp the basics then come back! Prior experience with other frameworks helps, but is not required.
+Учебник предполагает базовое знакомство с HTML, CSS и JavaScript. Если вы совсем новичок во фронтенд-разработке, возможно, не стоит сразу же переходить на фреймворк в качестве первого шага — постигайте азы, а потом возвращайтесь! Опыт работы с другими фреймворками полезен, но не обязателен.
 
-## How to Use This Tutorial {#how-to-use-this-tutorial}
+## Как использовать этот учебник {#how-to-use-this-tutorial}
 
-You can edit the code <span class="wide">on the right</span><span class="narrow">below</span> and see the result update instantly. Each step will introduce a core feature of Vue, and you will be expected to complete the code to get the demo working. If you get stuck, you will have a "Show me!" button that reveals the working code for you. Try not to rely on it too much - you'll learn faster by figuring things out on your own.
+Вы можете редактировать код <span class="wide">справа</span><span class="narrow">ниже</span> и видеть, как результат мгновенно обновляется. На каждом этапе будет представлена одна из основных функций Vue, а от вас потребуется дописать код, чтобы демонстрация заработала. Если вы застрянете, есть кнопка «Показать решение!», которая покажет вам рабочий код. Старайтесь не слишком полагаться на неё — вы быстрее научитесь, если будете разбираться во всём самостоятельно.
 
-If you are an experienced developer coming from Vue 2 or other frameworks, there are a few settings you can tweak to make the best use of this tutorial. If you are a beginner, it's recommended to go with the defaults.
+Если вы опытный разработчик, пришедший из Vue 2 или других фреймворков, вы можете изменить несколько настроек, чтобы максимально эффективно использовать этот учебник. Если вы новичок, рекомендуется использовать настройки по умолчанию.
 
 <details>
-<summary>Tutorial Setting Details</summary>
+<summary>Настройка обучения</summary>
 
-- Vue offers two API styles: Options API and Composition API. This tutorial is designed to work for both - you can choose your preferred style using the **API Preference** switches at the top. <a target="_blank" href="/guide/introduction.html#api-styles">Learn more about API styles</a>.
+- Vue предлагает два стиля API: Options API и Composition API. Этот учебник рассчитан на оба варианта — вы можете выбрать предпочтительный стиль с помощью переключателей **Предпочтения API** в верхней части страницы. <a target="_blank" href="/guide/introduction.html#api-styles">Узнайте больше о стилях API</a>.
 
-- You can also switch between SFC-mode or HTML-mode. The former will show code examples in <a target="_blank" href="/guide/introduction.html#single-file-components">Single-File Component</a> (SFC) format, which is what most developers use when they use Vue with a build step. HTML-mode shows usage without a build step.
+- Вы также можете переключаться между SFC-режимом и HTML-режимом. В первом случае будут отображаться примеры кода в <a target="_blank" href="/guide/introduction.html#single-file-components">формате однофайлового компонента</a> (SFC — Single-File Component), который применяется большинством разработчиков при работе с Vue с использованием системы сборки. HTML-режим отображает примеры кода с использованием Vue без системы сборки.
 
 </details>
 
-Ready? Click "Next" to get started.
+Готовы? Нажмите «Далее», чтобы начать.
