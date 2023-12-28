@@ -69,7 +69,7 @@ function useToggleFn(
       @mousedown="removeOutline"
       @blur="restoreOutline"
     >
-      <span>API Preference</span>
+      <span>Предпочтения API</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
@@ -90,7 +90,7 @@ function useToggleFn(
         >
         <a
           class="switch-link"
-          title="About API preference"
+          title="О предпочтениях API"
           href="/guide/introduction.html#api-styles"
           @click="closeSideBar"
           >?</a
@@ -108,7 +108,7 @@ function useToggleFn(
         <label class="sfc-label" @click="toggleSFC(true)">SFC</label>
         <a
           class="switch-link"
-          title="About SFC"
+          title="Об однофайловых компонентах"
           href="/guide/scaling-up/sfc.html"
           @click="closeSideBar"
           >?</a
@@ -173,7 +173,7 @@ function useToggleFn(
   align-items: center;
 }
 
-@media(max-width: 959px){
+@media (max-width: 959px) {
   .switch-container {
     padding: 0 1em;
   }
