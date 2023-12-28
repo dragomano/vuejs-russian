@@ -2,9 +2,9 @@
 aside: false
 ---
 
-# Translations {#translations}
+# Переводы {#translations}
 
-## Available Languages {#available-languages}
+## Готовые переводы {#available-languages}
 
 - [English](https://vuejs.org/) [[source](https://github.com/vuejs/docs)]
 - [简体中文 / Simplified Chinese](https://cn.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-zh-cn)]
@@ -16,12 +16,12 @@ aside: false
 - [বাংলা / Bengali](https://bn.vuejs.org) [[source](https://github.com/vuejs-translations/docs-bn)]
 - [Italiano / Italian](https://it.vuejs.org) [[source](https://github.com/vuejs-translations/docs-it)]
 
-## Work in Progress Languages {#work-in-progress-languages}
+## Переводы в процессе доработки {#work-in-progress-languages}
 
 - [فارسی / Persian](https://fa.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-fa)]
 
-## Starting a new Translation {#starting-a-new-translation}
+## Начало нового перевода {#starting-a-new-translation}
 
-The Vue documentation has recently undergone a major revision, so translations in other languages are still missing or work-in-progress.
+Документация по Vue недавно подверглась серьёзной переработке, поэтому переводы на другие языки пока отсутствуют или находятся в процессе доработки.
 
-We welcome community efforts to provide more translations. Translation efforts are managed in the [vuejs-translations](https://github.com/vuejs-translations/) GitHub organization. If you are interested in contributing, please check out the [Translation Guidelines](https://github.com/vuejs-translations/guidelines/blob/main/README.md) to get started.
+Мы приветствуем усилия сообщества по созданию дополнительных переводов. Работа над переводами ведётся в организации [vuejs-translations](https://github.com/vuejs-translations/) GitHub. Если вы хотите внести свой вклад, ознакомьтесь с [Руководством по переводу](https://github.com/vuejs-translations/guidelines/blob/main/README.md), чтобы начать работу.
