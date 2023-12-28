@@ -8,21 +8,21 @@ import { headerPlugin } from './headerMdPlugin'
 
 const nav: ThemeConfig['nav'] = [
   {
-    text: 'Docs',
+    text: 'Документация',
     activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
     items: [
-      { text: 'Guide', link: '/guide/introduction' },
-      { text: 'Tutorial', link: '/tutorial/' },
-      { text: 'Examples', link: '/examples/' },
-      { text: 'Quick Start', link: '/guide/quick-start' },
+      { text: 'Руководство', link: '/guide/introduction' },
+      { text: 'Учебник', link: '/tutorial/' },
+      { text: 'Примеры', link: '/examples/' },
+      { text: 'Быстрый старт', link: '/guide/quick-start' },
       // { text: 'Style Guide', link: '/style-guide/' },
-      { text: 'Glossary', link: '/glossary/' },
+      { text: 'Глоссарий', link: '/glossary/' },
       {
-        text: 'Vue 2 Docs',
+        text: 'Документация Vue 2',
         link: 'https://v2.vuejs.org'
       },
       {
-        text: 'Migration from Vue 2',
+        text: 'Переход с Vue 2',
         link: 'https://v3-migration.vuejs.org/'
       }
     ]
@@ -33,11 +33,11 @@ const nav: ThemeConfig['nav'] = [
     link: '/api/'
   },
   {
-    text: 'Playground',
+    text: 'Песочница',
     link: 'https://play.vuejs.org'
   },
   {
-    text: 'Ecosystem',
+    text: 'Экосистема',
     activeMatch: `^/ecosystem/`,
     items: [
       {
@@ -554,15 +554,45 @@ export const sidebar: ThemeConfig['sidebar'] = {
 }
 
 // Placeholder of the i18n config for @vuejs-translations.
-// const i18n: ThemeConfig['i18n'] = {
-// }
+const i18n: ThemeConfig['i18n'] = {
+  search: 'Поиск',
+  menu: 'Меню',
+  toc: 'Оглавление',
+  returnToTop: 'Вернуться к началу',
+  appearance: 'Оформление',
+  previous: 'Предыдущая',
+  next: 'Следующая',
+  pageNotFound: 'Страница не найдена',
+  deadLink: {
+    before: 'Вы нашли мёртвую ссылку: ',
+    after: ''
+  },
+  deadLinkReport: {
+    before: 'Пожалуйста, ',
+    link: 'сообщите нам',
+    after: ', чтобы решить эту проблему.'
+  },
+  footerLicense: {
+    before: '',
+    after: ''
+  },
+  ariaAnnouncer: {
+    before: '',
+    after: ''
+  },
+  ariaDarkMode: 'Тёмный режим',
+  ariaSkipToContent: 'Перейти к содержанию',
+  ariaMainNav: 'Основная навигация',
+  ariaMobileNav: 'Мобильная навигация',
+  ariaSidebarNav: 'Боковая панель навигации'
+}
 
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
-  lang: 'en-US',
+  lang: 'ru-RU',
   title: 'Vue.js',
-  description: 'Vue.js - The Progressive JavaScript Framework',
+  description: 'Vue.js - Прогрессивный JavaScript-фреймворк',
   srcDir: 'src',
   srcExclude: ['tutorial/**/description.md'],
 
@@ -613,8 +643,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   themeConfig: {
     nav,
     sidebar,
-    // Placeholder of the i18n config for @vuejs-translations.
-    // i18n,
+    i18n,
 
     localeLinks: [
       {
@@ -659,7 +688,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       },
       {
         link: '/translations/',
-        text: 'Help Us Translate!',
+        text: 'Помочь с переводом!',
         isTranslationsDesc: true
       }
     ],
@@ -686,7 +715,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     editLink: {
       repo: 'vuejs/docs',
-      text: 'Edit this page on GitHub'
+      text: 'Редактировать эту страницу на GitHub'
     },
 
     footer: {
