@@ -2,11 +2,11 @@ import { ref } from 'vue'
 
 export default {
   setup() {
-    // component logic
-    // declare some reactive state here.
+    // логика компонента
+    // объявите здесь реактивное состояние.
 
     return {
-      // exposed to template
+      // отправляется в шаблон
     }
   }
 }
