@@ -14,18 +14,17 @@ onMounted(async () => {
 <template>
   <section id="hero">
     <h1 class="tagline">
-      The
-      <span class="accent">Progressive</span>
-      <br />JavaScript Framework
+      <span class="accent">Прогрессивный</span>
+      <br />JavaScript-фреймворк
     </h1>
     <p class="description">
-      An approachable, performant and versatile framework for building web
-      user interfaces.
+      Удобный, производительный и универсальный фреймворк для создания
+      пользовательских веб-интерфейсов.
     </p>
     <p class="actions">
       <VueMasteryModal />
       <a class="get-started" href="/guide/introduction.html">
-        Get Started
+        Начать
         <svg
           class="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -38,12 +37,12 @@ onMounted(async () => {
           />
         </svg>
       </a>
-      <a class="setup" href="/guide/quick-start.html">Install</a>
+      <a class="setup" href="/guide/quick-start.html">Установить</a>
     </p>
   </section>
 
   <section v-if="data && data.special" id="special-sponsor">
-    <span class="lead">Special Sponsor</span>
+    <span class="lead">Специальный спонсор</span>
     <template v-for="{ url, img, name, description } of data.special">
       <a :href="url" target="_blank" rel="sponsored noopener">
         <picture v-if="img.endsWith('png')">
@@ -67,32 +66,32 @@ onMounted(async () => {
 
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
-      <h2>Approachable</h2>
+      <h2>Доступный</h2>
       <p>
-        Builds on top of standard HTML, CSS and JavaScript with intuitive
-        API and world-class documentation.
+        Строится поверх стандартных HTML, CSS и JavaScript с интуитивно
+        понятным API и документацией мирового класса.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Performant</h2>
+      <h2>Эффективный</h2>
       <p>
-        Truly reactive, compiler-optimized rendering system that rarely
-        requires manual optimization.
+        По-настоящему реактивная, оптимизированная компилятором система
+        рендеринга, которая редко требует ручной оптимизации.
       </p>
     </div>
     <div class="vt-box">
-      <h2>Versatile</h2>
+      <h2>Универсальный</h2>
       <p>
-        A rich, incrementally adoptable ecosystem that scales between a
-        library and a full-featured framework.
+        Богатая, постепенно внедряемая экосистема, масштабируемая между
+        библиотекой и полнофункциональным фреймворком.
       </p>
     </div>
   </section>
 
   <section id="sponsors">
-    <h2>Platinum Sponsors</h2>
+    <h2>Платиновые спонсоры</h2>
     <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Gold Sponsors</h2>
+    <h2>Золотые спонсоры</h2>
     <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
