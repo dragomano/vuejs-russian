@@ -1,4 +1,4 @@
 export default {
-  // component options
-  // declare some reactive state here.
+  // параметры компонента
+  // объявите здесь реактивное состояние.
 }
