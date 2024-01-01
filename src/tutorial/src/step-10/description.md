@@ -1,6 +1,6 @@
-# Watchers {#watchers}
+# Наблюдатели {#watchers}
 
-Sometimes we may need to perform "side effects" reactively - for example, logging a number to the console when it changes. We can achieve this with watchers:
+Иногда нам может понадобиться выполнять «побочные эффекты» реактивно — например, записывать число в консоль при его изменении. Мы можем добиться этого с помощью наблюдателей:
 
 <div class="composition-api">
 
@@ -10,12 +10,12 @@ import { ref, watch } from 'vue'
 const count = ref(0)
 
 watch(count, (newCount) => {
-  // yes, console.log() is a side effect
-  console.log(`new count is: ${newCount}`)
+  // да, console.log() — это побочный эффект
+  console.log(`новое значение count: ${newCount}`)
 })
 ```
 
-`watch()` can directly watch a ref, and the callback gets fired whenever `count`'s value changes. `watch()` can also watch other types of data sources - more details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+`watch()` может напрямую следить за ссылкой, и обратный вызов будет выполняться при каждом изменении значения `count`. `watch()` может также следить за другими типами источников данных — более подробно об этом рассказывается в главе <a target="_blank" href="/guide/essentials/watchers.html">Наблюдатели</a>.
 
 </div>
 <div class="options-api">
@@ -29,15 +29,15 @@ export default {
   },
   watch: {
     count(newCount) {
-      // yes, console.log() is a side effect
-      console.log(`new count is: ${newCount}`)
+      // да, console.log() — это побочный эффект
+      console.log(`новое значение count: ${newCount}`)
     }
   }
 }
 ```
 
-Here, we are using the `watch` option to watch changes to the `count` property. The watch callback is called when `count` changes, and receives the new value as the argument. More details are covered in <a target="_blank" href="/guide/essentials/watchers.html">Guide - Watchers</a>.
+Здесь мы используем свойство `watch`, чтобы следить за изменениями свойства `count`. Обратный вызов watch вызывается при изменении `count` и получает новое значение в качестве аргумента. Более подробная информация представлена в главе <a target="_blank" href="/guide/essentials/watchers.html">Наблюдатели</a>.
 
 </div>
 
-A more practical example than logging to the console would be fetching new data when an ID changes. The code we have is fetching todos data from a mock API on component mount. There is also a button that increments the todo ID that should be fetched. Try to implement a watcher that fetches a new todo when the button is clicked.
+Более практичным примером, чем ведение журнала в консоли, может быть получение новых данных при изменении идентификатора. Код, который мы имеем, получает данные задач из mock API на монтируемом компоненте. Также есть кнопка, которая увеличивает идентификатор задачи, который должен быть получен. Попробуйте реализовать наблюдатель, который получает новую задачу при нажатии на кнопку.
