@@ -1,8 +1,8 @@
-# Components {#components}
+# Компоненты {#components}
 
-So far, we've only been working with a single component. Real Vue applications are typically created with nested components.
+До сих пор мы работали только с одним компонентом. Реальные приложения Vue обычно создаются с использованием вложенных компонентов.
 
-A parent component can render another component in its template as a child component. To use a child component, we need to first import it:
+Родительский компонент может отображать другой компонент в своем шаблоне как дочерний компонент. Чтобы использовать дочерний компонент, нам нужно сначала его импортировать:
 
 <div class="composition-api">
 <div class="sfc">
@@ -27,14 +27,14 @@ export default {
 }
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+Нам также необходимо зарегистрировать компонент, используя свойство `components`. Здесь мы используем сокращение свойства объекта для регистрации компонента `ChildComp` под ключом `ChildComp`.
 
 </div>
 </div>
 
 <div class="sfc">
 
-Then, we can use the component in the template as:
+Затем мы можем использовать компонент в шаблоне:
 
 ```vue-html
 <ChildComp />
@@ -54,9 +54,9 @@ createApp({
 })
 ```
 
-We also need to register the component using the `components` option. Here we are using the object property shorthand to register the `ChildComp` component under the `ChildComp` key.
+Нам также необходимо зарегистрировать компонент, используя свойство `components`. Здесь мы используем сокращение свойства объекта для регистрации компонента `ChildComp` под ключом `ChildComp`.
 
-Because we are writing the template in the DOM, it will be subject to browser's parsing rules, which is case-insensitive for tag names. Therefore, we need to use the kebab-cased name to reference the child component:
+Поскольку мы пишем шаблон в DOM, он будет подчиняться правилам синтаксического анализа браузера, которые не учитывают регистр для имён тегов. Следовательно, нам нужно использовать имя в кебаб-регистре для ссылки на дочерний компонент:
 
 ```vue-html
 <child-comp></child-comp>
@@ -64,5 +64,4 @@ Because we are writing the template in the DOM, it will be subject to browser's 
 
 </div>
 
-
-Now try it yourself - import the child component and render it in the template.
+Теперь попробуйте сами — импортируйте дочерний компонент и визуализируйте его в шаблоне.
