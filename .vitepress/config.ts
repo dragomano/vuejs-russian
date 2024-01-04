@@ -19,11 +19,11 @@ const nav: ThemeConfig['nav'] = [
       { text: 'Глоссарий', link: '/glossary/' },
       {
         text: 'Документация Vue 2',
-        link: 'https://v2.vuejs.org'
+        link: 'https://ru.vuejs.org/'
       },
       {
         text: 'Переход с Vue 2',
-        link: 'https://v3-migration.vuejs.org/'
+        link: 'https://v3.ru.vuejs.org/ru/guide/migration/introduction.html'
       }
     ]
   },
@@ -41,21 +41,21 @@ const nav: ThemeConfig['nav'] = [
     activeMatch: `^/ecosystem/`,
     items: [
       {
-        text: 'Resources',
+        text: 'Ресурсы',
         items: [
-          { text: 'Partners', link: '/partners/' },
-          { text: 'Themes', link: '/ecosystem/themes' },
-          { text: 'UI Components', link: 'https://ui-libs.vercel.app/' },
+          { text: 'Партнёры', link: '/partners/' },
+          { text: 'Темы', link: '/ecosystem/themes' },
+          { text: 'Компоненты UI', link: 'https://ui-libs.vercel.app/' },
           {
-            text: 'Certification',
+            text: 'Сертификация',
             link: 'https://certification.vuejs.org/?ref=vuejs-nav'
           },
-          { text: 'Jobs', link: 'https://vuejobs.com/?ref=vuejs' },
-          { text: 'T-Shirt Shop', link: 'https://vue.threadless.com/' }
+          { text: 'Работа', link: 'https://vuejobs.com/?ref=vuejs' },
+          { text: 'Магазин футболок', link: 'https://vue.threadless.com/' }
         ]
       },
       {
-        text: 'Official Libraries',
+        text: 'Официальные библиотеки',
         items: [
           { text: 'Vue Router', link: 'https://router.vuejs.org/' },
           { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
@@ -63,7 +63,7 @@ const nav: ThemeConfig['nav'] = [
         ]
       },
       {
-        text: 'Video Courses',
+        text: 'Видеокурсы',
         items: [
           {
             text: 'Vue Mastery',
@@ -76,54 +76,54 @@ const nav: ThemeConfig['nav'] = [
         ]
       },
       {
-        text: 'Help',
+        text: 'Помощь',
         items: [
           {
-            text: 'Discord Chat',
+            text: 'Чат Discord',
             link: 'https://discord.com/invite/HBherRA'
           },
           {
-            text: 'GitHub Discussions',
+            text: 'Дискуссии GitHub',
             link: 'https://github.com/vuejs/core/discussions'
           },
-          { text: 'DEV Community', link: 'https://dev.to/t/vue' }
+          { text: 'Сообщество разработчиков', link: 'https://dev.to/t/vue' }
         ]
       },
       {
-        text: 'News',
+        text: 'Новости',
         items: [
-          { text: 'Blog', link: 'https://blog.vuejs.org/' },
+          { text: 'Блог', link: 'https://blog.vuejs.org/' },
           { text: 'Twitter', link: 'https://twitter.com/vuejs' },
-          { text: 'Events', link: 'https://events.vuejs.org/' },
-          { text: 'Newsletters', link: '/ecosystem/newsletters' }
+          { text: 'События', link: 'https://events.vuejs.org/' },
+          { text: 'Рассылки', link: '/ecosystem/newsletters' }
         ]
       }
     ]
   },
   {
-    text: 'About',
+    text: 'О Vue',
     activeMatch: `^/about/`,
     items: [
       { text: 'FAQ', link: '/about/faq' },
-      { text: 'Team', link: '/about/team' },
-      { text: 'Releases', link: '/about/releases' },
+      { text: 'Команда', link: '/about/team' },
+      { text: 'Релизы', link: '/about/releases' },
       {
-        text: 'Community Guide',
+        text: 'Путеводитель по сообществу',
         link: '/about/community-guide'
       },
-      { text: 'Code of Conduct', link: '/about/coc' },
+      { text: 'Кодекс поведения', link: '/about/coc' },
       {
-        text: 'The Documentary',
+        text: 'Документальный фильм',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
       }
     ]
   },
   {
-    text: 'Sponsor',
+    text: 'Спонсорство',
     link: '/sponsor/'
   },
   {
-    text: 'Partners',
+    text: 'Партнёры',
     link: '/partners/',
     activeMatch: `^/partners/`
   }
@@ -132,11 +132,11 @@ const nav: ThemeConfig['nav'] = [
 export const sidebar: ThemeConfig['sidebar'] = {
   '/guide/': [
     {
-      text: 'Getting Started',
+      text: 'Первые шаги',
       items: [
-        { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'Введение', link: '/guide/introduction' },
         {
-          text: 'Quick Start',
+          text: 'Быстрый старт',
           link: '/guide/quick-start'
         }
       ]
@@ -526,26 +526,26 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ],
   '/style-guide/': [
     {
-      text: 'Style Guide',
+      text: 'Руководство по стилю',
       items: [
         {
-          text: 'Overview',
+          text: 'Обзор',
           link: '/style-guide/'
         },
         {
-          text: 'A - Essential',
+          text: 'A - Основы',
           link: '/style-guide/rules-essential'
         },
         {
-          text: 'B - Strongly Recommended',
+          text: 'B - Настоятельно рекомендуется',
           link: '/style-guide/rules-strongly-recommended'
         },
         {
-          text: 'C - Recommended',
+          text: 'C - Рекомендуется',
           link: '/style-guide/rules-recommended'
         },
         {
-          text: 'D - Use with Caution',
+          text: 'D - Использовать с осторожностью',
           link: '/style-guide/rules-use-with-caution'
         }
       ]
