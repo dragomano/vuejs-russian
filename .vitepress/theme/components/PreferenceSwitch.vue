@@ -69,7 +69,7 @@ function useToggleFn(
       @mousedown="removeOutline"
       @blur="restoreOutline"
     >
-      <span>Предпочтения API</span>
+      <span>Стиль API</span>
       <VTIconChevronDown class="vt-link-icon" :class="{ open: isOpen }" />
     </button>
     <div id="preference-switches" :hidden="!isOpen" :aria-hidden="!isOpen">
@@ -90,7 +90,7 @@ function useToggleFn(
         >
         <a
           class="switch-link"
-          title="О предпочтениях API"
+          title="О стилях API"
           href="/guide/introduction.html#api-styles"
           @click="closeSideBar"
           >?</a
