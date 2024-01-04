@@ -1,12 +1,12 @@
-# Slots {#slots}
+# Слоты {#slots}
 
-In addition to passing data via props, the parent component can also pass down template fragments to the child via **slots**:
+Помимо передачи данных через реквизиты, родительский компонент может передавать дочернему фрагменты шаблонов через **слоты**:
 
 <div class="sfc">
 
 ```vue-html
 <ChildComp>
-  This is some slot content!
+  Это содержимое слота!
 </ChildComp>
 ```
 
@@ -15,18 +15,18 @@ In addition to passing data via props, the parent component can also pass down t
 
 ```vue-html
 <child-comp>
-  This is some slot content!
+  Это содержимое слота!
 </child-comp>
 ```
 
 </div>
 
-In the child component, it can render the slot content from the parent using the `<slot>` element as outlet:
+В дочернем компоненте содержимое слота можно отобразить, используя элемент `<slot>`:
 
 <div class="sfc">
 
 ```vue-html
-<!-- in child template -->
+<!-- в шаблоне дочернего компонента -->
 <slot/>
 ```
 
@@ -34,16 +34,16 @@ In the child component, it can render the slot content from the parent using the
 <div class="html">
 
 ```vue-html
-<!-- in child template -->
+<!-- в шаблоне дочернего компонента -->
 <slot></slot>
 ```
 
 </div>
 
-Content inside the `<slot>` outlet will be treated as "fallback" content: it will be displayed if the parent did not pass down any slot content:
+Содержимое внутри `<slot>` будет рассматриваться как «резервное»: оно отображается, если снаружи в дочерний компонент ничего не передаётся:
 
 ```vue-html
-<slot>Fallback content</slot>
+<slot>Резервное содержимое</slot>
 ```
 
-Currently we are not passing any slot content to `<ChildComp>`, so you should see the fallback content. Let's provide some slot content to the child while making use of the parent's `msg` state.
+В настоящее время мы не передаем содержимое слота в `<ChildComp>`, поэтому вы должны видеть резервное содержимое. Давайте предоставим дочернему слоту некоторый текст, используя переменную `msg`.
