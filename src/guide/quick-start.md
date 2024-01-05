@@ -6,60 +6,60 @@ footer: false
 import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
 
-# Quick Start {#quick-start}
+# Быстрый старт {#quick-start}
 
-## Try Vue Online {#try-vue-online}
+## Попробуйте Vue онлайн {#try-vue-online}
 
-- To quickly get a taste of Vue, you can try it directly in our [Playground](https://play.vuejs.org/#eNo9jcEKwjAMhl/lt5fpQYfXUQfefAMvvRQbddC1pUuHUPrudg4HIcmXjyRZXEM4zYlEJ+T0iEPgXjn6BB8Zhp46WUZWDjCa9f6w9kAkTtH9CRinV4fmRtZ63H20Ztesqiylphqy3R5UYBqD1UyVAPk+9zkvV1CKbCv9poMLiTEfR2/IXpSoXomqZLtti/IFwVtA9A==).
+- Чтобы быстро познакомиться с Vue, вы можете испытать его прямо в нашей [Песочнице](https://play.vuejs.org/#eNo9jcEKwjAMhl/lt5fpQYfXUQfefAMvvRQbddC1pUuHUPrudg4HIcmXjyRZXEM4zYlEJ+T0iEPgXjn6BB8Zhp46WUZWDjCa9f6w9kAkTtH9CRinV4fmRtZ63H20Ztesqiylphqy3R5UYBqD1UyVAPk+9zkvV1CKbCv9poMLiTEfR2/IXpSoXomqZLtti/IFwVtA9A==).
 
-- If you prefer a plain HTML setup without any build steps, you can use this [JSFiddle](https://jsfiddle.net/yyx990803/2ke1ab0z/) as your starting point.
+- Если вы предпочитаете простую HTML-установку без каких-либо шагов по сборке, вы можете использовать этот [JSFiddle](https://jsfiddle.net/yyx990803/2ke1ab0z/) в качестве отправной точки.
 
-- If you are already familiar with Node.js and the concept of build tools, you can also try a complete build setup right within your browser on [StackBlitz](https://vite.new/vue).
+- Если вы уже знакомы с Node.js и концепцией инструментов сборки, вы также можете попробовать полную настройку сборки прямо в браузере на [StackBlitz](https://vite.new/vue).
 
-## Creating a Vue Application {#creating-a-vue-application}
+## Создание приложения {#creating-a-vue-application}
 
-:::tip Prerequisites
+:::tip Предварительные условия
 
-- Familiarity with the command line
-- Install [Node.js](https://nodejs.org/) version 18.0 or higher
+- Знакомство с командной строкой
+- Установка [Node.js](https://nodejs.org/) версии 18.0 или выше
   :::
 
-In this section we will introduce how to scaffold a Vue [Single Page Application](/guide/extras/ways-of-using-vue#single-page-application-spa) on your local machine. The created project will be using a build setup based on [Vite](https://vitejs.dev) and allow us to use Vue [Single-File Components](/guide/scaling-up/sfc) (SFCs).
+В этом разделе мы расскажем, как создать [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue на вашей локальной машине. Созданный проект будет использовать настройку сборки на основе [Vite](https://vitejs.dev) и позволит нам использовать [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
 
-Make sure you have an up-to-date version of [Node.js](https://nodejs.org/) installed and your current working directory is the one where you intend to create a project. Run the following command in your command line (without the `$` sign):
+Убедитесь, что у вас установлена актуальная версия [Node.js](https://nodejs.org/), а ваш текущий рабочий каталог — тот, в котором вы собираетесь создать проект. Выполните следующую команду в командной строке (без знака `$`):
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-  ```sh
-  $ npm create vue@latest
-  ```
+```sh
+$ npm create vue@latest
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
-  ```sh
-  $ pnpm create vue@latest
-  ```
+
+```sh
+$ pnpm create vue@latest
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
-  ```sh
-  $ yarn create vue@latest
-  ```
+
+```sh
+$ yarn create vue@latest
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ bun create vue@latest
-  ```
+
+```sh
+$ bun create vue@latest
+```
 
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-This command will install and execute [create-vue](https://github.com/vuejs/create-vue), the official Vue project scaffolding tool. You will be presented with prompts for several optional features such as TypeScript and testing support:
+Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue), официальный инструмент для создания заготовок проектов Vue. Вам будет предложено выбрать несколько дополнительных функций, таких как TypeScript и поддержка тестирования:
 
 <div class="language-sh"><pre><code><span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Project name: <span style="color:#888;">… <span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span></span></span>
 <span style="color:var(--vt-c-green);">✔</span> <span style="color:#A6ACCD;">Add TypeScript? <span style="color:#888;">… <span style="color:#89DDFF;text-decoration:underline">No</span> / Yes</span></span>
@@ -74,106 +74,106 @@ This command will install and execute [create-vue](https://github.com/vuejs/crea
 <span style="color:#A6ACCD;">Scaffolding project in ./<span style="color:#89DDFF;">&lt;</span><span style="color:#888;">your-project-name</span><span style="color:#89DDFF;">&gt;</span>...</span>
 <span style="color:#A6ACCD;">Done.</span></code></pre></div>
 
-If you are unsure about an option, simply choose `No` by hitting enter for now. Once the project is created, follow the instructions to install dependencies and start the dev server:
+Если вы не уверены в выборе, просто выберите `No`, нажав Enter. После создания проекта следуйте инструкциям по установке зависимостей и запуску dev-сервера:
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-  ```sh
-  $ cd <your-project-name>
-  $ npm install
-  $ npm run dev
-  ```
+```sh
+$ cd <your-project-name>
+$ npm install
+$ npm run dev
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
-  ```sh
-  $ cd <your-project-name>
-  $ pnpm install
-  $ pnpm run dev
-  ```
+
+```sh
+$ cd <your-project-name>
+$ pnpm install
+$ pnpm run dev
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
-  ```sh
-  $ cd <your-project-name>
-  $ yarn
-  $ yarn dev
-  ```
+
+```sh
+$ cd <your-project-name>
+$ yarn
+$ yarn dev
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ cd <your-project-name>
-  $ bun install
-  $ bun run dev
-  ```
+
+```sh
+$ cd <your-project-name>
+$ bun install
+$ bun run dev
+```
 
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-You should now have your first Vue project running! Note that the example components in the generated project are written using the [Composition API](/guide/introduction#composition-api) and `<script setup>`, rather than the [Options API](/guide/introduction#options-api). Here are some additional tips:
+Теперь у вас должен работать ваш первый проект Vue! Обратите внимание, что примеры компонентов в сгенерированном проекте написаны с использованием [Composition API](/guide/introduction#composition-api) и `<script setup>`, а не [Options API](/guide/introduction#options-api). Вот несколько дополнительных советов:
 
-- The recommended IDE setup is [Visual Studio Code](https://code.visualstudio.com/) + [Volar extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar). If you use other editors, check out the [IDE support section](/guide/scaling-up/tooling#ide-support).
-- More tooling details, including integration with backend frameworks, are discussed in the [Tooling Guide](/guide/scaling-up/tooling).
-- To learn more about the underlying build tool Vite, check out the [Vite docs](https://vitejs.dev).
-- If you choose to use TypeScript, check out the [TypeScript Usage Guide](typescript/overview).
+- Рекомендуемая настройка IDE — [Visual Studio Code](https://code.visualstudio.com/) + [расширение Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Если вы используете другие редакторы, обратитесь к разделу [Поддержка IDE](/guide/scaling-up/tooling#ide-support).
+- Более подробные сведения об инструментах, включая интеграцию с внутренними фреймворками, обсуждаются в [Руководстве по инструментам](/guide/scaling-up/tooling).
+- Чтобы узнать больше о базовом инструменте сборки Vite, ознакомьтесь с [Документацией Vite](https://vitejs.dev).
+- Если вы решили использовать TypeScript, ознакомьтесь с [Руководством по использованию TypeScript](typescript/overview).
 
-When you are ready to ship your app to production, run the following:
+Когда вы будете готовы отправить свое приложение в производство, выполните следующие действия:
 
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-  ```sh
-  $ npm run build
-  ```
+```sh
+$ npm run build
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
-  
-  ```sh
-  $ pnpm run build
-  ```
+
+```sh
+$ pnpm run build
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
-  
-  ```sh
-  $ yarn build
-  ```
+
+```sh
+$ yarn build
+```
 
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
-  
-  ```sh
-  $ bun run build
-  ```
+
+```sh
+$ bun run build
+```
 
   </VTCodeGroupTab>
 </VTCodeGroup>
 
-This will create a production-ready build of your app in the project's `./dist` directory. Check out the [Production Deployment Guide](/guide/best-practices/production-deployment) to learn more about shipping your app to production.
+Это создаст готовую к производству сборку вашего приложения в директории проекта `./dist`. Ознакомьтесь с [Руководством по производственному развёртыванию](/guide/best-practices/production-deployment), чтобы узнать больше о доставке приложения в производство.
 
-[Next Steps >](#next-steps)
+[Следующие шаги >](#next-steps)
 
-## Using Vue from CDN {#using-vue-from-cdn}
+## Использование Vue из CDN {#using-vue-from-cdn}
 
-You can use Vue directly from a CDN via a script tag:
+Вы можете использовать Vue непосредственно из CDN через тег сценария:
 
 ```html
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 ```
 
-Here we are using [unpkg](https://unpkg.com/), but you can also use any CDN that serves npm packages, for example [jsdelivr](https://www.jsdelivr.com/package/npm/vue) or [cdnjs](https://cdnjs.com/libraries/vue). Of course, you can also download this file and serve it yourself.
+Здесь мы используем [unpkg](https://unpkg.com/), но вы также можете использовать любую CDN, которая обслуживает пакеты npm, например [jsdelivr](https://www.jsdelivr.com/package/npm/vue) или [cdnjs](https://cdnjs.com/libraries/vue). Конечно, вы также можете скачать этот файл и подключить его самостоятельно.
 
-When using Vue from a CDN, there is no "build step" involved. This makes the setup a lot simpler, and is suitable for enhancing static HTML or integrating with a backend framework. However, you won't be able to use the Single-File Component (SFC) syntax.
+При использовании Vue из CDN «этап сборки» отсутствует. Это значительно упрощает настройку и подходит для улучшения статического HTML или интеграции с внутренним фреймворком. Однако вы не сможете использовать синтаксис однофайловых компонентов (SFC).
 
-### Using the Global Build {#using-the-global-build}
+### Использование глобальной сборки {#using-the-global-build}
 
-The above link loads the _global build_ of Vue, where all top-level APIs are exposed as properties on the global `Vue` object. Here is a full example using the global build:
+По приведённой выше ссылке загружается _глобальная сборка_ Vue, в которой все API верхнего уровня раскрываются как свойства глобального объекта `Vue`. Вот полный пример с использованием глобальной сборки:
 
 <div class="options-api">
 
@@ -188,14 +188,14 @@ The above link loads the _global build_ of Vue, where all top-level APIs are exp
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        message: 'Привет, Vue!'
       }
     }
   }).mount('#app')
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/QWJwJLp)
+[Демонстрация в Codepen](https://codepen.io/vuejs-examples/pen/QWJwJLp)
 
 </div>
 
@@ -211,7 +211,7 @@ The above link loads the _global build_ of Vue, where all top-level APIs are exp
 
   createApp({
     setup() {
-      const message = ref('Hello vue!')
+      const message = ref('Привет, Vue!')
       return {
         message
       }
@@ -220,17 +220,17 @@ The above link loads the _global build_ of Vue, where all top-level APIs are exp
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/eYQpQEG)
+[Демонстрация в Codepen](https://codepen.io/vuejs-examples/pen/eYQpQEG)
 
-:::tip
-Many of the examples for Composition API throughout the guide will be using the `<script setup>` syntax, which requires build tools. If you intend to use Composition API without a build step, consult the usage of the [`setup()` option](/api/composition-api-setup).
+:::tip Совет
+Многие примеры для Composition API в руководстве будут использовать синтаксис `<script setup>`, который требует инструментов сборки. Если вы собираетесь использовать Composition API без этапа сборки, обратитесь к использованию опции [`setup()`](/api/composition-api-setup).
 :::
 
 </div>
 
-### Using the ES Module Build {#using-the-es-module-build}
+### Использование сборки модуля ES {#using-the-es-module-build}
 
-Throughout the rest of the documentation, we will be primarily using [ES modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) syntax. Most modern browsers now support ES modules natively, so we can use Vue from a CDN via native ES modules like this:
+В остальной части документации мы будем использовать преимущественно синтаксис [модулей ES](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Modules). Большинство современных браузеров теперь поддерживают ES-модули нативно, поэтому мы можем использовать Vue из CDN через нативные ES-модули, как здесь:
 
 <div class="options-api">
 
@@ -243,7 +243,7 @@ Throughout the rest of the documentation, we will be primarily using [ES modules
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        message: 'Привет, Vue!'
       }
     }
   }).mount('#app')
@@ -262,7 +262,7 @@ Throughout the rest of the documentation, we will be primarily using [ES modules
 
   createApp({
     setup() {
-      const message = ref('Hello Vue!')
+      const message = ref('Привет, Vue!')
       return {
         message
       }
@@ -273,28 +273,28 @@ Throughout the rest of the documentation, we will be primarily using [ES modules
 
 </div>
 
-Notice that we are using `<script type="module">`, and the imported CDN URL is pointing to the **ES modules build** of Vue instead.
+Обратите внимание, что мы используем `<script type="module">`, а импортированный CDN URL указывает на **сборку модулей ES** Vue.
 
 <div class="options-api">
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/VwVYVZO)
+[Демонстрация в Codepen](https://codepen.io/vuejs-examples/pen/VwVYVZO)
 
 </div>
 <div class="composition-api">
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/MWzazEv)
+[Демонстрация в Codepen](https://codepen.io/vuejs-examples/pen/MWzazEv)
 
 </div>
 
-### Enabling Import maps {#enabling-import-maps}
+### Карты импорта {#enabling-import-maps}
 
-In the above example, we are importing from the full CDN URL, but in the rest of the documentation you will see code like this:
+В приведённом выше примере мы импортируем из полного URL CDN, но в остальной части документации вы увидите код, подобный этому:
 
 ```js
 import { createApp } from 'vue'
 ```
 
-We can teach the browser where to locate the `vue` import by using [Import Maps](https://caniuse.com/import-maps):
+Мы можем указать браузеру, откуда импортировать `vue`, используя [карты импорта](https://caniuse.com/import-maps):
 
 <div class="options-api">
 
@@ -315,14 +315,14 @@ We can teach the browser where to locate the `vue` import by using [Import Maps]
   createApp({
     data() {
       return {
-        message: 'Hello Vue!'
+        message: 'Привет, Vue!'
       }
     }
   }).mount('#app')
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/wvQKQyM)
+[Демонстрация в Codepen](https://codepen.io/vuejs-examples/pen/wvQKQyM)
 
 </div>
 
@@ -344,7 +344,7 @@ We can teach the browser where to locate the `vue` import by using [Import Maps]
 
   createApp({
     setup() {
-      const message = ref('Hello Vue!')
+      const message = ref('Привет, Vue!')
       return {
         message
       }
@@ -353,23 +353,23 @@ We can teach the browser where to locate the `vue` import by using [Import Maps]
 </script>
 ```
 
-[Codepen demo](https://codepen.io/vuejs-examples/pen/YzRyRYM)
+[Демонстрация в Codepen](https://codepen.io/vuejs-examples/pen/YzRyRYM)
 
 </div>
 
-You can also add entries for other dependencies to the import map - but make sure they point to the ES modules version of the library you intend to use.
+Вы также можете добавить записи для других зависимостей в карту импорта — но убедитесь, что они указывают на версию ES-модулей библиотеки, которую вы собираетесь использовать.
 
-:::tip Import Maps Browser Support
-Import Maps is a relatively new browser feature. Make sure to use a browser within its [support range](https://caniuse.com/import-maps). In particular, it is only supported in Safari 16.4+.
+:::tip Поддержка браузера для импорта карт
+Импорт карт — относительно новая функция браузера. Убедитесь, что используете браузер в пределах его [диапазона поддержки](https://caniuse.com/import-maps). В частности, он поддерживается только в Safari 16.4+.
 :::
 
-:::warning Notes on Production Use
-The examples so far are using the development build of Vue - if you intend to use Vue from a CDN in production, make sure to check out the [Production Deployment Guide](/guide/best-practices/production-deployment#without-build-tools).
+:::warning Примечание по использованию в производстве
+В примерах использована сборка Vue для разработки - если вы собираетесь использовать Vue из CDN в производстве, обязательно ознакомьтесь с [Руководством по производственному развёртыванию](/guide/best-practices/production-deployment#without-build-tools).
 :::
 
-### Splitting Up the Modules {#splitting-up-the-modules}
+### Разделение модулей {#splitting-up-the-modules}
 
-As we dive deeper into the guide, we may need to split our code into separate JavaScript files so that they are easier to manage. For example:
+По мере углубления в руководство нам может понадобиться разделить наш код на отдельные файлы JavaScript, чтобы ими было легче управлять. Например:
 
 ```html
 <!-- index.html -->
@@ -391,7 +391,7 @@ export default {
   data() {
     return { count: 0 }
   },
-  template: `<div>count is {{ count }}</div>`
+  template: `<div>Счётчик {{ count }}</div>`
 }
 ```
 
@@ -406,35 +406,35 @@ export default {
     const count = ref(0)
     return { count }
   },
-  template: `<div>count is {{ count }}</div>`
+  template: `<div>Счётчик {{ count }}</div>`
 }
 ```
 
 </div>
 
-If you directly open the above `index.html` in your browser, you will find that it throws an error because ES modules cannot work over the `file://` protocol, which is the protocol the browser uses when you open a local file.
+Если вы напрямую откроете приведенный выше `index.html` в браузере, то обнаружите, что он выдает ошибку, поскольку модули ES не могут работать по протоколу `file://`, который браузер использует, когда вы открываете локальный файл.
 
-Due to security reasons, ES modules can only work over the `http://` protocol, which is what the browsers use when opening pages on the web. In order for ES modules to work on our local machine, we need to serve the `index.html` over the `http://` protocol, with a local HTTP server.
+По соображениям безопасности модули ES могут работать только по протоколу `http://`, который используется браузерами при открытии страниц в Интернете. Для того чтобы модули ES работали на нашей локальной машине, нам нужно обслуживать `index.html` по протоколу `http://` с помощью локального HTTP-сервера.
 
-To start a local HTTP server, first make sure you have [Node.js](https://nodejs.org/en/) installed, then run `npx serve` from the command line in the same directory where your HTML file is. You can also use any other HTTP server that can serve static files with the correct MIME types.
+Чтобы запустить локальный HTTP-сервер, сначала убедитесь, что у вас установлен [Node.js](https://nodejs.org/en/), затем запустите `npx serve` из командной строки в той же директории, где находится ваш HTML-файл. Вы также можете использовать любой другой HTTP-сервер, который может обслуживать статические файлы с правильными типами MIME.
 
-You may have noticed that the imported component's template is inlined as a JavaScript string. If you are using VSCode, you can install the [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) extension and prefix the strings with a `/*html*/` comment to get syntax highlighting for them.
+Вы могли заметить, что шаблон импортируемого компонента вставляется в виде строки JavaScript. Если вы используете VSCode, вы можете установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и префиксировать строки комментарием `/*html*/`, чтобы получить подсветку синтаксиса для них.
 
-## Next Steps {#next-steps}
+## Следующие шаги {#next-steps}
 
-If you skipped the [Introduction](/guide/introduction), we strongly recommend reading it before moving on to the rest of the documentation.
+Если вы пропустили [Введение](/guide/introduction), мы настоятельно рекомендуем прочитать его, прежде чем переходить к остальной части документации.
 
 <div class="vt-box-container next-steps">
   <a class="vt-box" href="/guide/essentials/application.html">
-    <p class="next-steps-link">Continue with the Guide</p>
-    <p class="next-steps-caption">The guide walks you through every aspect of the framework in full detail.</p>
+    <p class="next-steps-link">Продолжайте изучать руководство</p>
+    <p class="next-steps-caption">В руководстве подробно рассматривается каждый аспект системы.</p>
   </a>
   <a class="vt-box" href="/tutorial/">
-    <p class="next-steps-link">Try the Tutorial</p>
-    <p class="next-steps-caption">For those who prefer learning things hands-on.</p>
+    <p class="next-steps-link">Попробуйте учебник</p>
+    <p class="next-steps-caption">Для тех, кто предпочитает учиться на практике.</p>
   </a>
   <a class="vt-box" href="/examples/">
-    <p class="next-steps-link">Check out the Examples</p>
-    <p class="next-steps-caption">Explore examples of core features and common UI tasks.</p>
+    <p class="next-steps-link">Посмотрите примеры</p>
+    <p class="next-steps-caption">Изучите примеры основных функций и общих задач пользовательского интерфейса.</p>
   </a>
 </div>
