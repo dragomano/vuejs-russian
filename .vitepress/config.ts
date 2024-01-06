@@ -142,46 +142,46 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Essentials',
+      text: 'Основы',
       items: [
         {
-          text: 'Creating an Application',
+          text: 'Создание приложения',
           link: '/guide/essentials/application'
         },
         {
-          text: 'Template Syntax',
+          text: 'Синтаксис шаблонов',
           link: '/guide/essentials/template-syntax'
         },
         {
-          text: 'Reactivity Fundamentals',
+          text: 'Основы реактивности',
           link: '/guide/essentials/reactivity-fundamentals'
         },
         {
-          text: 'Computed Properties',
+          text: 'Вычисляемые свойства',
           link: '/guide/essentials/computed'
         },
         {
-          text: 'Class and Style Bindings',
+          text: 'Привязка классов и стилей',
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'Conditional Rendering',
+          text: 'Условный рендеринг',
           link: '/guide/essentials/conditional'
         },
-        { text: 'List Rendering', link: '/guide/essentials/list' },
+        { text: 'Рендеринг списков', link: '/guide/essentials/list' },
         {
-          text: 'Event Handling',
+          text: 'Обработка событий',
           link: '/guide/essentials/event-handling'
         },
-        { text: 'Form Input Bindings', link: '/guide/essentials/forms' },
+        { text: 'Привязка элементов форм', link: '/guide/essentials/forms' },
         {
-          text: 'Lifecycle Hooks',
+          text: 'Хуки жизненного цикла',
           link: '/guide/essentials/lifecycle'
         },
-        { text: 'Watchers', link: '/guide/essentials/watchers' },
-        { text: 'Template Refs', link: '/guide/essentials/template-refs' },
+        { text: 'Наблюдатели', link: '/guide/essentials/watchers' },
+        { text: 'Реактивные ссылки', link: '/guide/essentials/template-refs' },
         {
-          text: 'Components Basics',
+          text: 'Основы компонентов',
           link: '/guide/essentials/component-basics'
         }
       ]
