@@ -1,84 +1,84 @@
-# Template Syntax {#template-syntax}
+# Синтаксис шаблонов {#template-syntax}
 
-Vue uses an HTML-based template syntax that allows you to declaratively bind the rendered DOM to the underlying component instance's data. All Vue templates are syntactically valid HTML that can be parsed by spec-compliant browsers and HTML parsers.
+Vue использует синтаксис шаблонов на основе HTML, который позволяет вам декларативно привязывать отрисованную DOM к данным базового экземпляра компонента. Все шаблоны Vue представляют собой синтаксически валидный HTML, который может быть разобран браузерами и HTML-парсерами, соответствующими спецификации.
 
-Under the hood, Vue compiles the templates into highly-optimized JavaScript code. Combined with the reactivity system, Vue can intelligently figure out the minimal number of components to re-render and apply the minimal amount of DOM manipulations when the app state changes.
+Под капотом Vue компилирует шаблоны в высокооптимизированный код JavaScript. В сочетании с системой реактивности Vue может интеллектуально определять минимальное количество компонентов для повторного отображения и применять минимальное количество манипуляций с DOM при изменении состояния приложения.
 
-If you are familiar with Virtual DOM concepts and prefer the raw power of JavaScript, you can also [directly write render functions](/guide/extras/render-function) instead of templates, with optional JSX support. However, do note that they do not enjoy the same level of compile-time optimizations as templates.
+Если вы знакомы с концепциями Virtual DOM и предпочитаете сырую мощь JavaScript, вы также можете [напрямую писать функции рендеринга](/guide/extras/render-function) вместо шаблонов, с дополнительной поддержкой JSX. Однако следует учитывать, что они не обладают тем же уровнем оптимизации при компиляции, как шаблоны.
 
-## Text Interpolation {#text-interpolation}
+## Интерполяция текста {#text-interpolation}
 
-The most basic form of data binding is text interpolation using the "Mustache" syntax (double curly braces):
+Самой простой формой привязки данных является интерполяция текста с помощью синтаксиса «усов» (двойные фигурные скобки):
 
 ```vue-html
-<span>Message: {{ msg }}</span>
+<span>Сообщение: {{ msg }}</span>
 ```
 
-The mustache tag will be replaced with the value of the `msg` property [from the corresponding component instance](/guide/essentials/reactivity-fundamentals#declaring-reactive-state). It will also be updated whenever the `msg` property changes.
+Выражение `{{ msg }}` будет заменено на значение свойства `msg` [из соответствующего экземпляра компонента](/guide/essentials/reactivity-fundamentals#declaring-reactive-state). Он также будет обновляться при изменении свойства `msg`.
 
-## Raw HTML {#raw-html}
+## Сырой HTML {#raw-html}
 
-The double mustaches interpret the data as plain text, not HTML. In order to output real HTML, you will need to use the [`v-html` directive](/api/built-in-directives#v-html):
+Двойные усы интерпретируют данные как обычный текст, а не HTML. Чтобы вывести настоящий HTML, необходимо использовать директиву [`v-html`](/api/built-in-directives#v-html):
 
 ```vue-html
-<p>Using text interpolation: {{ rawHtml }}</p>
-<p>Using v-html directive: <span v-html="rawHtml"></span></p>
+<p>Использование интерполяции текста: {{ rawHtml }}</p>
+<p>Использование директивы v-html: <span v-html="rawHtml"></span></p>
 ```
 
 <script setup>
-  const rawHtml = '<span style="color: red">This should be red.</span>'
+  const rawHtml = '<span style="color: red">Это должно быть красным.</span>'
 </script>
 
 <div class="demo">
-  <p>Using text interpolation: {{ rawHtml }}</p>
-  <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+  <p>Использование интерполяции текста: {{ rawHtml }}</p>
+  <p>Использование директивы v-html: <span v-html="rawHtml"></span></p>
 </div>
 
-Here we're encountering something new. The `v-html` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "keep this element's inner HTML up-to-date with the `rawHtml` property on the current active instance."
+Здесь мы сталкиваемся с чем-то новым. Атрибут `v-html`, который вы видите, называется **директивой**. Директивы имеют префикс `v-`, чтобы указать, что они являются специальными атрибутами, предоставляемыми Vue, и, как вы уже догадались, они применяют специальное реактивное поведение к рендерингу DOM. Здесь мы, по сути, говорим «обновляйте внутренний HTML этого элемента с помощью свойства `rawHtml` текущего активного экземпляра».
 
-The contents of the `span` will be replaced with the value of the `rawHtml` property, interpreted as plain HTML - data bindings are ignored. Note that you cannot use `v-html` to compose template partials, because Vue is not a string-based templating engine. Instead, components are preferred as the fundamental unit for UI reuse and composition.
+Содержимое `span` будет заменено значением свойства `rawHtml`, интерпретируемым как обычный HTML — привязки данных игнорируются. Обратите внимание, что вы не можете использовать `v-html` для составления частей шаблонов, поскольку Vue не является шаблонизатором на основе строк. Вместо этого предпочтение отдается компонентам как основополагающей единице для повторного использования и создания пользовательского интерфейса.
 
-:::warning Security Warning
-Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS vulnerabilities](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.
+:::warning Предупреждение безопасности
+Динамический рендеринг произвольного HTML на вашем сайте может быть очень опасен, поскольку легко может привести к [XSS-уязвимости](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D1%81%D0%B0%D0%B9%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B8%D0%BD%D0%B3). Используйте `v-html` только для доверенного содержимого и **никогда** для содержимого, предоставленного пользователем.
 :::
 
-## Attribute Bindings {#attribute-bindings}
+## Привязка атрибутов {#attribute-bindings}
 
-Mustaches cannot be used inside HTML attributes. Instead, use a [`v-bind` directive](/api/built-in-directives#v-bind):
+Усы нельзя использовать внутри атрибутов HTML. Вместо этого используйте директиву [`v-bind`](/api/built-in-directives#v-bind):
 
 ```vue-html
 <div v-bind:id="dynamicId"></div>
 ```
 
-The `v-bind` directive instructs Vue to keep the element's `id` attribute in sync with the component's `dynamicId` property. If the bound value is `null` or `undefined`, then the attribute will be removed from the rendered element.
+Директива `v-bind` указывает Vue поддерживать атрибут `id` элемента в синхронизации со свойством `dynamicId` компонента. Если связанное значение равно `null` или `undefined`, то атрибут будет удалён из отображаемого элемента.
 
-### Shorthand {#shorthand}
+### Сокращённый синтаксис {#shorthand}
 
-Because `v-bind` is so commonly used, it has a dedicated shorthand syntax:
+Поскольку `v-bind` используется так часто, для него разработан специальный сокращённый синтаксис:
 
 ```vue-html
 <div :id="dynamicId"></div>
 ```
 
-Attributes that start with `:` may look a bit different from normal HTML, but it is in fact a valid character for attribute names and all Vue-supported browsers can parse it correctly. In addition, they do not appear in the final rendered markup. The shorthand syntax is optional, but you will likely appreciate it when you learn more about its usage later.
+Атрибуты, начинающиеся с `:`, могут выглядеть несколько иначе, чем в обычном HTML, но на самом деле это допустимый символ для имён атрибутов, и все браузеры, поддерживающие Vue, могут правильно его разобрать. Кроме того, они не отображаются в конечной разметке. Сокращённый синтаксис необязателен, но вы, вероятно, оцените его, когда узнаете больше о его использовании позже.
 
-> For the rest of the guide, we will be using the shorthand syntax in code examples, as that's the most common usage for Vue developers.
+> В оставшейся части руководства мы будем использовать сокращённый синтаксис в примерах кода, так как это наиболее распространённое использование для разработчиков Vue.
 
-### Boolean Attributes {#boolean-attributes}
+### Атрибуты с булевым значением {#boolean-attributes}
 
-[Boolean attributes](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) are attributes that can indicate true / false values by their presence on an element. For example, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) is one of the most commonly used boolean attributes.
+[Булевы атрибуты](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#boolean-attributes) — это атрибуты, которые своим присутствием в элементе могут указывать на истинное или ложное значение. Например, [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled) — один из наиболее часто используемых булевых атрибутов.
 
-`v-bind` works a bit differently in this case:
+В этом случае `v-bind` работает немного по-другому:
 
 ```vue-html
-<button :disabled="isButtonDisabled">Button</button>
+<button :disabled="isButtonDisabled">Кнопка</button>
 ```
 
-The `disabled` attribute will be included if `isButtonDisabled` has a [truthy value](https://developer.mozilla.org/en-US/docs/Glossary/Truthy). It will also be included if the value is an empty string, maintaining consistency with `<button disabled="">`. For other [falsy values](https://developer.mozilla.org/en-US/docs/Glossary/Falsy) the attribute will be omitted.
+Атрибут `disabled` будет включен, если `isButtonDisabled` имеет [истинноподобное значение](https://developer.mozilla.org/ru/docs/Glossary/Truthy). Он также будет включен, если значение является пустой строкой, что обеспечивает согласованность с `<button disabled="">`. Для других [ложноподобных значений](https://developer.mozilla.org/ru/docs/Glossary/Falsy) атрибут будет опущен.
 
-### Dynamically Binding Multiple Attributes {#dynamically-binding-multiple-attributes}
+### Динамическое связывание нескольких атрибутов {#dynamically-binding-multiple-attributes}
 
-If you have a JavaScript object representing multiple attributes that looks like this:
+Если у вас есть объект JavaScript, представляющий несколько атрибутов, он выглядит следующим образом:
 
 <div class="composition-api">
 
@@ -105,50 +105,50 @@ data() {
 
 </div>
 
-You can bind them to a single element by using `v-bind` without an argument:
+Вы можете привязать их к одному элементу, используя `v-bind` без аргумента:
 
 ```vue-html
 <div v-bind="objectOfAttrs"></div>
 ```
 
-## Using JavaScript Expressions {#using-javascript-expressions}
+## Использование выражений JavaScript {#using-javascript-expressions}
 
-So far we've only been binding to simple property keys in our templates. But Vue actually supports the full power of JavaScript expressions inside all data bindings:
+До сих пор мы привязывали только простые ключи свойств в наших шаблонах. Но Vue на самом деле поддерживает всю мощь выражений JavaScript внутри всех привязок данных:
 
 ```vue-html
 {{ number + 1 }}
 
-{{ ok ? 'YES' : 'NO' }}
+{{ ok ? 'ДА' : 'НЕТ' }}
 
 {{ message.split('').reverse().join('') }}
 
 <div :id="`list-${id}`"></div>
 ```
 
-These expressions will be evaluated as JavaScript in the data scope of the current component instance.
+Эти выражения будут оцениваться как JavaScript в области данных текущего экземпляра компонента.
 
-In Vue templates, JavaScript expressions can be used in the following positions:
+В шаблонах Vue выражения JavaScript можно использовать в следующих позициях:
 
-- Inside text interpolations (mustaches)
-- In the attribute value of any Vue directives (special attributes that start with `v-`)
+- Внутритекстовые интерполяции (усы)
+- В значении атрибутов любых директив Vue (специальные атрибуты, начинающиеся с `v-`)
 
-### Expressions Only {#expressions-only}
+### Только выражения {#expressions-only}
 
-Each binding can only contain **one single expression**. An expression is a piece of code that can be evaluated to a value. A simple check is whether it can be used after `return`.
+Каждая привязка может содержать только **одно единственное выражение**. Выражение — это часть кода, которая может быть оценена в значение. Простая проверка заключается в том, можно ли его использовать после `return`.
 
-Therefore, the following will **NOT** work:
+Поэтому следующие варианты **НЕ** будут работать:
 
 ```vue-html
-<!-- this is a statement, not an expression: -->
+<!-- это утверждение, а не выражение: -->
 {{ var a = 1 }}
 
-<!-- flow control won't work either, use ternary expressions -->
+<!-- управление потоком тоже не работает, используйте тернарные выражения -->
 {{ if (ok) { return message } }}
 ```
 
-### Calling Functions {#calling-functions}
+### Вызов функций {#calling-functions}
 
-It is possible to call a component-exposed method inside a binding expression:
+Можно вызвать метод, раскрытый компонентом, внутри выражения привязки:
 
 ```vue-html
 <time :title="toTitleDate(date)" :datetime="date">
@@ -157,114 +157,114 @@ It is possible to call a component-exposed method inside a binding expression:
 ```
 
 :::tip
-Functions called inside binding expressions will be called every time the component updates, so they should **not** have any side effects, such as changing data or triggering asynchronous operations.
+Функции, вызываемые внутри выражений привязки, будут вызываться каждый раз при обновлении компонента, поэтому они **не** должны иметь никаких побочных эффектов, таких как изменение данных или запуск асинхронных операций.
 :::
 
-### Restricted Globals Access {#restricted-globals-access}
+### Ограниченный доступ к глобальным переменным {#restricted-globals-access}
 
-Template expressions are sandboxed and only have access to a [restricted list of globals](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3). The list exposes commonly used built-in globals such as `Math` and `Date`.
+Шаблонные выражения находятся в «песочнице» и имеют доступ только к [ограниченному списку глобальных значений](https://github.com/vuejs/core/blob/main/packages/shared/src/globalsAllowList.ts#L3). В списке представлены часто используемые встроенные глобальные таблицы, такие как `Math` и `Date`.
 
-Globals not explicitly included in the list, for example user-attached properties on `window`, will not be accessible in template expressions. You can, however, explicitly define additional globals for all Vue expressions by adding them to [`app.config.globalProperties`](/api/application#app-config-globalproperties).
+Глобалы, не включенные в список явно, например, пользовательские свойства `window`, не будут доступны в выражениях шаблона. Однако вы можете явно определить дополнительные глобалы для всех выражений Vue, добавив их в [`app.config.globalProperties`](/api/application#app-config-globalproperties).
 
-## Directives {#directives}
+## Директивы {#directives}
 
-Directives are special attributes with the `v-` prefix. Vue provides a number of [built-in directives](/api/built-in-directives), including `v-html` and `v-bind` which we have introduced above.
+Директивы — это специальные атрибуты с префиксом `v-`. Vue предоставляет ряд [встроенных директив](/api/built-in-directives), включая `v-html` и `v-bind`, которые мы представили выше.
 
-Directive attribute values are expected to be single JavaScript expressions (with the exception of `v-for`, `v-on` and `v-slot`, which will be discussed in their respective sections later). A directive's job is to reactively apply updates to the DOM when the value of its expression changes. Take [`v-if`](/api/built-in-directives#v-if) as an example:
+Значения атрибутов директив должны быть одиночными выражениями JavaScript (за исключением `v-for`, `v-on` и `v-slot`, которые будут рассмотрены в соответствующих разделах позже). Задача директивы — реактивно применять обновления к DOM при изменении значения её выражения. В качестве примера можно взять [`v-if`](/api/built-in-directives#v-if):
 
 ```vue-html
-<p v-if="seen">Now you see me</p>
+<p v-if="seen">Теперь вы меня видите</p>
 ```
 
-Here, the `v-if` directive would remove / insert the `<p>` element based on the truthiness of the value of the expression `seen`.
+Здесь директива `v-if` удаляет/вставляет элемент `<p>`, основываясь на истинности значения выражения `seen`.
 
-### Arguments {#arguments}
+### Аргументы {#arguments}
 
-Some directives can take an "argument", denoted by a colon after the directive name. For example, the `v-bind` directive is used to reactively update an HTML attribute:
+Некоторые директивы могут принимать «аргумент», обозначаемый двоеточием после имени директивы. Например, директива `v-bind` используется для реактивного обновления HTML-атрибута:
 
 ```vue-html
 <a v-bind:href="url"> ... </a>
 
-<!-- shorthand -->
+<!-- короткий синтаксис -->
 <a :href="url"> ... </a>
 ```
 
-Here, `href` is the argument, which tells the `v-bind` directive to bind the element's `href` attribute to the value of the expression `url`. In the shorthand, everything before the argument (i.e., `v-bind:`) is condensed into a single character, `:`.
+Здесь `href` — аргумент, который указывает директиве `v-bind` связать атрибут `href` элемента со значением выражения `url`. В сокращении всё, что находится перед аргументом (т. е. `v-bind:`), сжимается до одного символа, `:`.
 
-Another example is the `v-on` directive, which listens to DOM events:
+Другой пример — директива `v-on`, которая прослушивает события DOM:
 
 ```vue-html
 <a v-on:click="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- короткий синтаксис -->
 <a @click="doSomething"> ... </a>
 ```
 
-Here, the argument is the event name to listen to: `click`. `v-on` has a corresponding shorthand, namely the `@` character. We will talk about event handling in more detail too.
+Здесь аргументом является имя события, которое нужно прослушать: `click`. У `v-on` есть соответствующее сокращение, а именно символ `@`. Мы также поговорим об обработке событий более подробно.
 
-### Dynamic Arguments {#dynamic-arguments}
+### Динамические аргументы {#dynamic-arguments}
 
-It is also possible to use a JavaScript expression in a directive argument by wrapping it with square brackets:
+Также можно использовать выражение JavaScript в аргументе директивы, обернув его квадратными скобками:
 
 ```vue-html
 <!--
-Note that there are some constraints to the argument expression,
-as explained in the "Dynamic Argument Value Constraints" and "Dynamic Argument Syntax Constraints" sections below.
+Обратите внимание, что на выражение аргумента накладываются некоторые ограничения, как объясняется в разделах
+«Динамические ограничения значений аргументов» и «Динамические ограничения синтаксиса аргументов».
 -->
 <a v-bind:[attributeName]="url"> ... </a>
 
-<!-- shorthand -->
+<!-- короткий синтаксис -->
 <a :[attributeName]="url"> ... </a>
 ```
 
-Here, `attributeName` will be dynamically evaluated as a JavaScript expression, and its evaluated value will be used as the final value for the argument. For example, if your component instance has a data property, `attributeName`, whose value is `"href"`, then this binding will be equivalent to `v-bind:href`.
+Здесь `attributeName` будет динамически оценен как выражение JavaScript, и его оцененное значение будет использовано в качестве окончательного значения аргумента. Например, если у экземпляра вашего компонента есть свойство данных `attributeName`, значение которого равно `"href"`, то эта привязка будет эквивалентна `v-bind:href`.
 
-Similarly, you can use dynamic arguments to bind a handler to a dynamic event name:
+Аналогично, вы можете использовать динамические аргументы для привязки обработчика к динамическому имени события:
 
 ```vue-html
 <a v-on:[eventName]="doSomething"> ... </a>
 
-<!-- shorthand -->
+<!-- короткий синтаксис -->
 <a @[eventName]="doSomething">
 ```
 
-In this example, when `eventName`'s value is `"focus"`, `v-on:[eventName]` will be equivalent to `v-on:focus`.
+В этом примере, когда значение `eventName` равно `"focus"`, `v-on:[eventName]` будет эквивалентно `v-on:focus`.
 
-#### Dynamic Argument Value Constraints {#dynamic-argument-value-constraints}
+#### Динамические ограничения значений аргументов {#dynamic-argument-value-constraints}
 
-Dynamic arguments are expected to evaluate to a string, with the exception of `null`. The special value `null` can be used to explicitly remove the binding. Any other non-string value will trigger a warning.
+Динамические аргументы, за исключением `null`, должны быть оценены в строку. Специальное значение `null` может быть использовано для явного удаления привязки. Любое другое нестроковое значение вызовет предупреждение.
 
-#### Dynamic Argument Syntax Constraints {#dynamic-argument-syntax-constraints}
+#### Динамические ограничения синтаксиса аргументов {#dynamic-argument-syntax-constraints}
 
-Dynamic argument expressions have some syntax constraints because certain characters, such as spaces and quotes, are invalid inside HTML attribute names. For example, the following is invalid:
+Выражения динамических аргументов имеют некоторые синтаксические ограничения, поскольку некоторые символы, такие как пробелы и кавычки, недопустимы в именах атрибутов HTML. Например, следующее недействительно:
 
 ```vue-html
-<!-- This will trigger a compiler warning. -->
+<!-- Это вызовет предупреждение компилятора. -->
 <a :['foo' + bar]="value"> ... </a>
 ```
 
-If you need to pass a complex dynamic argument, it's probably better to use a [computed property](./computed), which we will cover shortly.
+Если вам нужно передать сложный динамический аргумент, лучше использовать [вычисляемое свойство](./computed), о котором мы расскажем в ближайшее время.
 
-When using in-DOM templates (templates directly written in an HTML file), you should also avoid naming keys with uppercase characters, as browsers will coerce attribute names into lowercase:
+При использовании шаблонов in-DOM (шаблонов, непосредственно записанных в HTML-файл) также следует избегать именования ключей заглавными символами, поскольку браузеры принудительно переводят имена атрибутов в нижний регистр:
 
 ```vue-html
 <a :[someAttr]="value"> ... </a>
 ```
 
-The above will be converted to `:[someattr]` in in-DOM templates. If your component has a `someAttr` property instead of `someattr`, your code won't work. Templates inside Single-File Components are **not** subject to this constraint.
+Вышеуказанное будет преобразовано в `:[someattr]` в шаблонах in-DOM. Если ваш компонент имеет свойство `someAttr` вместо `someattr`, ваш код не будет работать. Шаблоны внутри однофайловых компонентов **не** подвержены этому ограничению.
 
-### Modifiers {#modifiers}
+### Модификаторы {#modifiers}
 
-Modifiers are special postfixes denoted by a dot, which indicate that a directive should be bound in some special way. For example, the `.prevent` modifier tells the `v-on` directive to call `event.preventDefault()` on the triggered event:
+Модификаторы — это специальные постфиксы, обозначаемые точкой, которые указывают на то, что директива должна быть связана каким-то особым образом. Например, модификатор `.prevent` указывает директиве `v-on` вызвать `event.preventDefault()` на сработавшем событии:
 
 ```vue-html
 <form @submit.prevent="onSubmit">...</form>
 ```
 
-You'll see other examples of modifiers later, [for `v-on`](./event-handling#event-modifiers) and [for `v-model`](./forms#modifiers), when we explore those features.
+Другие примеры модификаторов вы увидите позже, [для `v-on`](./event-handling#event-modifiers) и [для `v-model`](./forms#modifiers), когда мы будем изучать эти возможности.
 
-And finally, here's the full directive syntax visualized:
+И, наконец, вот визуализированный полный синтаксис директивы:
 
-![directive syntax graph](./images/directive.png)
+![диаграмма синтаксиса директивы](./images/directive.png)
 
 <!-- https://www.figma.com/file/BGWUknIrtY9HOmbmad0vFr/Directive -->
