@@ -165,10 +165,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'Условный рендеринг',
+          text: 'Условная отрисовка',
           link: '/guide/essentials/conditional'
         },
-        { text: 'Рендеринг списков', link: '/guide/essentials/list' },
+        { text: 'Отрисовка списков', link: '/guide/essentials/list' },
         {
           text: 'Обработка событий',
           link: '/guide/essentials/event-handling'
