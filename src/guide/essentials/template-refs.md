@@ -83,7 +83,7 @@ watchEffect(() => {
 })
 ```
 
-Смотрите также: [Ввод реактивных ссылок в шаблонах](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+Смотрите также: [Типизация реактивных ссылок](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
 
 </div>
 
@@ -237,7 +237,7 @@ defineExpose({
 
 Когда родитель получает экземпляр этого компонента через ссылки шаблона, полученный экземпляр будет иметь форму `{ a: число, b: число }` (ссылки автоматически разворачиваются, как и в обычных экземплярах).
 
-Смотрите также: [Ввод реактивных ссылок на компоненты](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+Смотрите также: [Типизация реактивных ссылок на компоненты](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
