@@ -1,16 +1,16 @@
-# Computed Properties {#computed-properties}
+# Вычисляемые свойства {#computed-properties}
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/computed-properties-in-vue-3" title="Free Vue.js Computed Properties Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/computed-properties-in-vue-3" title="Бесплатный урок по вычисляемым свойствам Vue.js"/>
 </div>
 
 <div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Free Vue.js Computed Properties Lesson"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-computed-properties-in-vue-with-the-composition-api" title="Бесплатный урок по вычисляемым свойствам Vue.js"/>
 </div>
 
-## Basic Example {#basic-example}
+## Базовый пример {#basic-example}
 
-In-template expressions are very convenient, but they are meant for simple operations. Putting too much logic in your templates can make them bloated and hard to maintain. For example, if we have an object with a nested array:
+Выражения в шаблонах очень удобны, но они предназначены для простых операций. Добавление слишком большого количества логики в ваши шаблоны может сделать их раздутыми и трудными в обслуживании. Например, если у нас есть объект с вложенным массивом:
 
 <div class="options-api">
 
@@ -19,11 +19,11 @@ export default {
   data() {
     return {
       author: {
-        name: 'John Doe',
+        name: 'Джон Доу',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Расширенное руководство',
+          'Vue 3 - Базовое руководство',
+          'Vue 4 - Мистика'
         ]
       }
     }
@@ -36,27 +36,27 @@ export default {
 
 ```js
 const author = reactive({
-  name: 'John Doe',
+  name: 'Джон Доу',
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
+    'Vue 2 - Расширенное руководство',
+    'Vue 3 - Базовое руководство',
+    'Vue 4 - Мистика'
   ]
 })
 ```
 
 </div>
 
-And we want to display different messages depending on if `author` already has some books or not:
+И мы хотим отображать разные сообщения в зависимости от того, есть ли у `author` уже несколько книг или нет:
 
 ```vue-html
-<p>Has published books:</p>
-<span>{{ author.books.length > 0 ? 'Yes' : 'No' }}</span>
+<p>Опубликованные книги:</p>
+<span>{{ author.books.length > 0 ? 'Да' : 'Нет' }}</span>
 ```
 
-At this point, the template is getting a bit cluttered. We have to look at it for a second before realizing that it performs a calculation depending on `author.books`. More importantly, we probably don't want to repeat ourselves if we need to include this calculation in the template more than once.
+На этом этапе шаблон становится немного загроможденным. Нам нужно посмотреть на него секунду, прежде чем понять, что он выполняет вычисления в зависимости от `author.books`. Что ещё более важно, мы, вероятно, не захотим повторяться, если нам понадобится включить это вычисление в шаблон более одного раза.
 
-That's why for complex logic that includes reactive data, it is recommended to use a **computed property**. Here's the same example, refactored:
+Вот почему для сложной логики, включающей реактивные данные, рекомендуется использовать **вычисляемое свойство**. Вот тот же пример, подвергнутый рефакторингу:
 
 <div class="options-api">
 
@@ -65,39 +65,39 @@ export default {
   data() {
     return {
       author: {
-        name: 'John Doe',
+        name: 'Джон Доу',
         books: [
-          'Vue 2 - Advanced Guide',
-          'Vue 3 - Basic Guide',
-          'Vue 4 - The Mystery'
+          'Vue 2 - Расширенное руководство',
+          'Vue 3 - Базовое руководство',
+          'Vue 4 - Мистика'
         ]
       }
     }
   },
   computed: {
-    // a computed getter
+    // вычисляемый геттер
     publishedBooksMessage() {
-      // `this` points to the component instance
-      return this.author.books.length > 0 ? 'Yes' : 'No'
+      // `this` указывает на экземпляр компонента
+      return this.author.books.length > 0 ? 'Да' : 'Нет'
     }
   }
 }
 ```
 
 ```vue-html
-<p>Has published books:</p>
+<p>Опубликованные книги:</p>
 <span>{{ publishedBooksMessage }}</span>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNqFkN1KxDAQhV/l0JsqaFfUq1IquwiKsF6JINaLbDNui20S8rO4lL676c82eCFCIDOZMzkzXxetlUoOjqI0ykypa2XzQtC3ktqC0ydzjUVXCIAzy87OpxjQZJ0WpwxgzlZSp+EBEKylFPGTrATuJcUXobST8sukeA8vQPzqCNe4xJofmCiJ48HV/FfbLLrxog0zdfmn4tYrXirC9mgs6WMcBB+nsJ+C8erHH0rZKmeJL0sot2tqUxHfDONuyRi2p4BggWCr2iQTgGTcLGlI7G2FHFe4Q/xGJoYn8SznQSbTQviTrRboPrHUqoZZ8hmQqfyRmTDFTC1bqalsFBN5183o/3NG33uvoWUwXYyi/gdTEpwK)
+[Попробовать в Песочнице](https://play.vuejs.org/#eNqFkN1KxDAQhV/l0JsqaFfUq1IquwiKsF6JINaLbDNui20S8rO4lL676c82eCFCIDOZMzkzXxetlUoOjqI0ykypa2XzQtC3ktqC0ydzjUVXCIAzy87OpxjQZJ0WpwxgzlZSp+EBEKylFPGTrATuJcUXobST8sukeA8vQPzqCNe4xJofmCiJ48HV/FfbLLrxog0zdfmn4tYrXirC9mgs6WMcBB+nsJ+C8erHH0rZKmeJL0sot2tqUxHfDONuyRi2p4BggWCr2iQTgGTcLGlI7G2FHFe4Q/xGJoYn8SznQSbTQviTrRboPrHUqoZZ8hmQqfyRmTDFTC1bqalsFBN5183o/3NG33uvoWUwXYyi/gdTEpwK)
 
-Here we have declared a computed property `publishedBooksMessage`.
+Здесь мы объявили вычисляемое свойство `publishedBooksMessage`.
 
-Try to change the value of the `books` array in the application `data` and you will see how `publishedBooksMessage` is changing accordingly.
+Попробуйте изменить значение массива `books` в приложении `data` и вы увидите, как соответственно меняется `publishedBooksMessage`.
 
-You can data-bind to computed properties in templates just like a normal property. Vue is aware that `this.publishedBooksMessage` depends on `this.author.books`, so it will update any bindings that depend on `this.publishedBooksMessage` when `this.author.books` changes.
+Вы можете привязать данные к вычисляемым свойствам в шаблонах, как и к обычному свойству. Vue знает, что `this.publishedBooksMessage` зависит от `this.author.books`, поэтому он обновит все привязки, которые зависят от `this.publishedBooksMessage`, при изменении `this.author.books`.
 
-See also: [Typing Computed Properties](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
+Смотрите также: [Типизация вычисляемых свойств](/guide/typescript/options-api#typing-computed-properties) <sup class="vt-badge ts" />
 
 </div>
 
@@ -108,39 +108,39 @@ See also: [Typing Computed Properties](/guide/typescript/options-api#typing-comp
 import { reactive, computed } from 'vue'
 
 const author = reactive({
-  name: 'John Doe',
+  name: 'Джон Доу',
   books: [
-    'Vue 2 - Advanced Guide',
-    'Vue 3 - Basic Guide',
-    'Vue 4 - The Mystery'
+    'Vue 2 - Расширенное руководство',
+    'Vue 3 - Базовое руководство',
+    'Vue 4 - Мистика'
   ]
 })
 
-// a computed ref
+// вычисляемая ссылка
 const publishedBooksMessage = computed(() => {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Да' : 'Нет'
 })
 </script>
 
 <template>
-  <p>Has published books:</p>
+  <p>Опубликованные книги:</p>
   <span>{{ publishedBooksMessage }}</span>
 </template>
 ```
 
-[Try it in the Playground](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
+[Попробовать в Песочнице](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
 
-Here we have declared a computed property `publishedBooksMessage`. The `computed()` function expects to be passed a getter function, and the returned value is a **computed ref**. Similar to normal refs, you can access the computed result as `publishedBooksMessage.value`. Computed refs are also auto-unwrapped in templates so you can reference them without `.value` in template expressions.
+Здесь мы объявили вычисляемое свойство `publishedBooksMessage`. Функция `computed()` ожидает передачи геттера, а возвращаемое значение представляет собой **вычисляемую ссылку**. Как и в случае с обычными ссылками, вы можете получить доступ к вычисляемому результату через `publishedBooksMessage.value`. Вычисляемые ссылки также автоматически разворачиваются в шаблонах, поэтому вы можете ссылаться на них без `.value` в выражениях шаблона.
 
-A computed property automatically tracks its reactive dependencies. Vue is aware that the computation of `publishedBooksMessage` depends on `author.books`, so it will update any bindings that depend on `publishedBooksMessage` when `author.books` changes.
+Вычисляемое свойство автоматически отслеживает свои реактивные зависимости. Vue знает, что вычисление `publishedBooksMessage` зависит от `author.books`, поэтому он будет обновлять любые привязки, которые зависят от `publishedBooksMessage`, при изменении `author.books`.
 
-See also: [Typing Computed](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+Смотрите также: [Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
 
 </div>
 
-## Computed Caching vs. Methods {#computed-caching-vs-methods}
+## Вычисляемое кэширование против методов {#computed-caching-vs-methods}
 
-You may have noticed we can achieve the same result by invoking a method in the expression:
+Возможно, вы заметили, что мы можем добиться того же результата, вызвав метод в выражении:
 
 ```vue-html
 <p>{{ calculateBooksMessage() }}</p>
@@ -149,10 +149,10 @@ You may have noticed we can achieve the same result by invoking a method in the 
 <div class="options-api">
 
 ```js
-// in component
+// в компоненте
 methods: {
   calculateBooksMessage() {
-    return this.author.books.length > 0 ? 'Yes' : 'No'
+    return this.author.books.length > 0 ? 'Да' : 'Нет'
   }
 }
 ```
@@ -162,17 +162,17 @@ methods: {
 <div class="composition-api">
 
 ```js
-// in component
+// в компоненте
 function calculateBooksMessage() {
-  return author.books.length > 0 ? 'Yes' : 'No'
+  return author.books.length > 0 ? 'Да' : 'Нет'
 }
 ```
 
 </div>
 
-Instead of a computed property, we can define the same function as a method. For the end result, the two approaches are indeed exactly the same. However, the difference is that **computed properties are cached based on their reactive dependencies.** A computed property will only re-evaluate when some of its reactive dependencies have changed. This means as long as `author.books` has not changed, multiple access to `publishedBooksMessage` will immediately return the previously computed result without having to run the getter function again.
+Вместо вычисляемого свойства мы можем определить ту же функцию, что и метод. Что касается конечного результата, то эти два подхода действительно совершенно одинаковы. Однако разница в том, что **вычисляемые свойства кэшируются на основе их реактивных зависимостей.** Вычисляемое свойство будет повторно оцениваться только тогда, когда некоторые из его реактивных зависимостей изменятся. Это означает, что пока `author.books` не изменился, множественный доступ к `publishedBooksMessage` немедленно вернет ранее вычисленный результат без необходимости повторного запуска геттера.
 
-This also means the following computed property will never update, because `Date.now()` is not a reactive dependency:
+Это также означает, что следующее вычисляемое свойство никогда не будет обновляться, поскольку `Date.now()` не является реактивной зависимостью:
 
 <div class="options-api">
 
@@ -194,13 +194,13 @@ const now = computed(() => Date.now())
 
 </div>
 
-In comparison, a method invocation will **always** run the function whenever a re-render happens.
+Для сравнения, вызов метода **всегда** запускает функцию всякий раз, когда происходит повторная отрисовка.
 
-Why do we need caching? Imagine we have an expensive computed property `list`, which requires looping through a huge array and doing a lot of computations. Then we may have other computed properties that in turn depend on `list`. Without caching, we would be executing `list`’s getter many more times than necessary! In cases where you do not want caching, use a method call instead.
+Зачем нам кэширование? Представьте, что у нас есть дорогостоящий `список` вычисляемых свойств, который требует циклического перебора огромного массива и выполнения большого количества вычислений. Тогда у нас могут быть другие вычисляемые свойства, которые, в свою очередь, зависят от `списка`. Без кэширования мы бы выполняли метод получения `списка` намного больше раз, чем необходимо! В случаях, когда вам не требуется кэширование, вместо этого используйте вызов метода.
 
-## Writable Computed {#writable-computed}
+## Записываемые вычисляемые свойства {#writable-computed}
 
-Computed properties are by default getter-only. If you attempt to assign a new value to a computed property, you will receive a runtime warning. In the rare cases where you need a "writable" computed property, you can create one by providing both a getter and a setter:
+Вычисляемые свойства по умолчанию доступны только для получения. Если вы попытаетесь присвоить новое значение вычисляемому свойству, вы получите предупреждение во время выполнения. В редких случаях, когда вам нужно «записываемое» вычисляемое свойство, вы можете создать его, предоставив как метод получения (геттер), так и метод установки (сеттер):
 
 <div class="options-api">
 
@@ -214,21 +214,21 @@ export default {
   },
   computed: {
     fullName: {
-      // getter
+      // геттер
       get() {
         return this.firstName + ' ' + this.lastName
       },
-      // setter
+      // сеттер
       set(newValue) {
-        // Note: we are using destructuring assignment syntax here.
-        [this.firstName, this.lastName] = newValue.split(' ')
+        // Примечание: используем синтаксис деструктурирующего присваивания
+        ;[this.firstName, this.lastName] = newValue.split(' ')
       }
     }
   }
 }
 ```
 
-Now when you run `this.fullName = 'John Doe'`, the setter will be invoked and `this.firstName` and `this.lastName` will be updated accordingly.
+Теперь, когда вы запускаете `this.fullName = 'Джон Доу'`, будет вызван сеттер, а `this.firstName` и `this.lastName` будут обновлены соответственно.
 
 </div>
 
@@ -242,29 +242,29 @@ const firstName = ref('John')
 const lastName = ref('Doe')
 
 const fullName = computed({
-  // getter
+  // геттер
   get() {
     return firstName.value + ' ' + lastName.value
   },
-  // setter
+  // сеттер
   set(newValue) {
-    // Note: we are using destructuring assignment syntax here.
-    [firstName.value, lastName.value] = newValue.split(' ')
+    // Примечание: используем синтаксис деструктурирующего присваивания
+    ;[firstName.value, lastName.value] = newValue.split(' ')
   }
 })
 </script>
 ```
 
-Now when you run `fullName.value = 'John Doe'`, the setter will be invoked and `firstName` and `lastName` will be updated accordingly.
+Теперь, когда вы запускаете `fullName.value = 'Джон Доу'`, будет вызван сеттер, а `firstName` и `lastName` будут обновлены соответственно.
 
 </div>
 
-## Best Practices {#best-practices}
+## Лучшие практики {#best-practices}
 
-### Getters should be side-effect free {#getters-should-be-side-effect-free}
+### Геттеры не должны иметь побочных эффектов {#getters-should-be-side-effect-free}
 
-It is important to remember that computed getter functions should only perform pure computation and be free of side effects. For example, **don't make async requests or mutate the DOM inside a computed getter!** Think of a computed property as declaratively describing how to derive a value based on other values - its only responsibility should be computing and returning that value. Later in the guide we will discuss how we can perform side effects in reaction to state changes with [watchers](./watchers).
+Важно помнить, что вычисляемые функции-геттеры должны выполнять только чистые вычисления и не иметь побочных эффектов. Например, **не делайте асинхронные запросы и не изменяйте DOM внутри вычисляемого метода получения!** Думайте о вычисляемом свойстве как о декларативно описывающем способ получения значения на основе других значений — его единственной обязанностью должно быть вычисление и возврат этого значения. Позже в руководстве мы обсудим, как мы можем выполнять побочные эффекты в ответ на изменения состояния с помощью [наблюдателей](./watchers).
 
-### Avoid mutating computed value {#avoid-mutating-computed-value}
+### Избегайте изменения вычисляемого значения {#avoid-mutating-computed-value}
 
-The returned value from a computed property is derived state. Think of it as a temporary snapshot - every time the source state changes, a new snapshot is created. It does not make sense to mutate a snapshot, so a computed return value should be treated as read-only and never be mutated - instead, update the source state it depends on to trigger new computations.
+Возвращаемое значение вычисляемого свойства является производным состоянием. Думайте об этом как о временном снимке: каждый раз, когда изменяется исходное состояние, создается новый снимок. Изменять снимок не имеет смысла, поэтому вычисляемое возвращаемое значение следует рассматривать как доступное только для чтения и никогда не изменять — вместо этого обновите исходное состояние, от которого оно зависит, чтобы инициировать новые вычисления.
