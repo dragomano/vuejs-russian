@@ -8,12 +8,12 @@ export default {
   }),
 
   created() {
-    // fetch on init
+    // выборка при инициализации
     this.fetchData()
   },
 
   watch: {
-    // re-fetch whenever currentBranch changes
+    // повторная выборка при изменении currentBranch
     currentBranch: 'fetchData'
   },
 

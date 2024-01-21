@@ -1,1 +1,1 @@
-Say Hello World with Vue!
+Скажи «Привет, мир» с Vue!

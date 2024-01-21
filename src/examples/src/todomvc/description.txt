@@ -1,2 +1,2 @@
-A fully spec-compliant TodoMVC implementation
+Полностью соответствующая спецификациям реализация TodoMVC.
 https://todomvc.com/

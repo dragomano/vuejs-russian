@@ -424,89 +424,89 @@ export const sidebar: ThemeConfig['sidebar'] = {
   ],
   '/examples/': [
     {
-      text: 'Basic',
+      text: 'Основы',
       items: [
         {
-          text: 'Hello World',
+          text: 'Привет, мир',
           link: '/examples/#hello-world'
         },
         {
-          text: 'Handling User Input',
+          text: 'Обработка ввода',
           link: '/examples/#handling-input'
         },
         {
-          text: 'Attribute Bindings',
+          text: 'Привязка атрибутов',
           link: '/examples/#attribute-bindings'
         },
         {
-          text: 'Conditionals and Loops',
+          text: 'Условия и циклы',
           link: '/examples/#conditionals-and-loops'
         },
         {
-          text: 'Form Bindings',
+          text: 'Привязка форм',
           link: '/examples/#form-bindings'
         },
         {
-          text: 'Simple Component',
+          text: 'Простой компонент',
           link: '/examples/#simple-component'
         }
       ]
     },
     {
-      text: 'Practical',
+      text: 'Практика',
       items: [
         {
-          text: 'Markdown Editor',
+          text: 'Редактор Markdown',
           link: '/examples/#markdown'
         },
         {
-          text: 'Fetching Data',
+          text: 'Получение данных',
           link: '/examples/#fetching-data'
         },
         {
-          text: 'Grid with Sort and Filter',
+          text: 'Сетка с сортировкой и фильтром',
           link: '/examples/#grid'
         },
         {
-          text: 'Tree View',
+          text: 'Компонент дерева',
           link: '/examples/#tree'
         },
         {
-          text: 'SVG Graph',
+          text: 'График SVG',
           link: '/examples/#svg'
         },
         {
-          text: 'Modal with Transitions',
+          text: 'Модальное окно с переходами',
           link: '/examples/#modal'
         },
         {
-          text: 'List with Transitions',
+          text: 'Список с переходами',
           link: '/examples/#list-transition'
         },
         {
-          text: 'TodoMVC',
+          text: 'Список дел',
           link: '/examples/#todomvc'
         }
       ]
     },
     {
       // https://eugenkiss.github.io/7guis/
-      text: '7 GUIs',
+      text: 'Интерфейс (7 задач)',
       items: [
         {
-          text: 'Counter',
+          text: 'Счётчик',
           link: '/examples/#counter'
         },
         {
-          text: 'Temperature Converter',
+          text: 'Конвертер температуры',
           link: '/examples/#temperature-converter'
         },
         {
-          text: 'Flight Booker',
+          text: 'Покупка авиабилетов',
           link: '/examples/#flight-booker'
         },
         {
-          text: 'Timer',
+          text: 'Таймер',
           link: '/examples/#timer'
         },
         {
@@ -514,11 +514,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/examples/#crud'
         },
         {
-          text: 'Circle Drawer',
+          text: 'Рисуем круги',
           link: '/examples/#circle-drawer'
         },
         {
-          text: 'Cells',
+          text: 'Ячейки',
           link: '/examples/#cells'
         }
       ]
