@@ -59,7 +59,7 @@ const nav: ThemeConfig['nav'] = [
         items: [
           { text: 'Vue Router', link: 'https://router.vuejs.org/' },
           { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
-          { text: 'Tooling Guide', link: '/guide/scaling-up/tooling.html' }
+          { text: 'Руководство по инструментам', link: '/guide/scaling-up/tooling.html' }
         ]
       },
       {
@@ -187,7 +187,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Components In-Depth',
+      text: 'Компоненты в деталях',
       items: [
         {
           text: 'Registration',
@@ -197,10 +197,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: 'Events', link: '/guide/components/events' },
         { text: 'Component v-model', link: '/guide/components/v-model' },
         {
-          text: 'Fallthrough Attributes',
+          text: 'Обычные атрибуты',
           link: '/guide/components/attrs'
         },
-        { text: 'Slots', link: '/guide/components/slots' },
+        { text: 'Слоты', link: '/guide/components/slots' },
         {
           text: 'Provide / inject',
           link: '/guide/components/provide-inject'
@@ -212,7 +212,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Reusability',
+      text: 'Многоразовое использование',
       items: [
         {
           text: 'Composables',
@@ -226,7 +226,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Built-in Components',
+      text: 'Встроенные компоненты',
       items: [
         { text: 'Transition', link: '/guide/built-ins/transition' },
         {
@@ -239,10 +239,10 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Scaling Up',
+      text: 'Масштабирование',
       items: [
         { text: 'Single-File Components', link: '/guide/scaling-up/sfc' },
-        { text: 'Tooling', link: '/guide/scaling-up/tooling' },
+        { text: 'Инструменты', link: '/guide/scaling-up/tooling' },
         { text: 'Routing', link: '/guide/scaling-up/routing' },
         {
           text: 'State Management',
@@ -256,14 +256,14 @@ export const sidebar: ThemeConfig['sidebar'] = {
       ]
     },
     {
-      text: 'Best Practices',
+      text: 'Лучшие практики',
       items: [
         {
           text: 'Production Deployment',
           link: '/guide/best-practices/production-deployment'
         },
         {
-          text: 'Performance',
+          text: 'Производительность',
           link: '/guide/best-practices/performance'
         },
         {
@@ -279,19 +279,19 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'TypeScript',
       items: [
-        { text: 'Overview', link: '/guide/typescript/overview' },
+        { text: 'Обзор', link: '/guide/typescript/overview' },
         {
-          text: 'TS with Composition API',
+          text: 'TS с Composition API',
           link: '/guide/typescript/composition-api'
         },
         {
-          text: 'TS with Options API',
+          text: 'TS с Options API',
           link: '/guide/typescript/options-api'
         }
       ]
     },
     {
-      text: 'Extra Topics',
+      text: 'Дополнительные темы',
       items: [
         {
           text: 'Ways of Using Vue',
@@ -302,19 +302,19 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/composition-api-faq'
         },
         {
-          text: 'Reactivity in Depth',
+          text: 'Реактивность в деталях',
           link: '/guide/extras/reactivity-in-depth'
         },
         {
-          text: 'Rendering Mechanism',
+          text: 'Механизм отрисовки',
           link: '/guide/extras/rendering-mechanism'
         },
         {
-          text: 'Render Functions & JSX',
+          text: 'Функции рендеринга и JSX',
           link: '/guide/extras/render-function'
         },
         {
-          text: 'Vue and Web Components',
+          text: 'Vue и веб-компоненты',
           link: '/guide/extras/web-components'
         },
         {

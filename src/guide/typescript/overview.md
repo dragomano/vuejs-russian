@@ -210,7 +210,7 @@ let x: string | number = 1
 
 ### Использование с TSX
 
-Vue также поддерживает авторские компоненты с JSX/TSX. Подробности описаны в руководстве [Функции рендеринга & JSX](/guide/extras/render-function.html#jsx-tsx).
+Vue также поддерживает авторские компоненты с JSX/TSX. Подробности описаны в руководстве [Функции рендеринга и JSX](/guide/extras/render-function.html#jsx-tsx).
 
 ## Общие компоненты {#generic-components}
 
