@@ -1,4 +1,4 @@
-# Composables {#composables}
+# Композитные функции {#composables}
 
 <script setup>
 import { useMouse } from './mouse'
@@ -6,20 +6,20 @@ const { x, y } = useMouse()
 </script>
 
 :::tip
-This section assumes basic knowledge of Composition API. If you have been learning Vue with Options API only, you can set the API Preference to Composition API (using the toggle at the top of the left sidebar) and re-read the [Reactivity Fundamentals](/guide/essentials/reactivity-fundamentals) and [Lifecycle Hooks](/guide/essentials/lifecycle) chapters.
+Этот раздел предполагает базовые знания об API Composition. Если вы изучали Vue только с API Options, вы можете переключить стиль API на Composition API (с помощью переключателя в верхней части левой боковой панели) и перечитать главы [Основы реактивности](/guide/essentials/reactivity-fundamentals) и [Хуки жизненного цикла](/guide/essentials/lifecycle).
 :::
 
-## What is a "Composable"? {#what-is-a-composable}
+## Что такое «Composable»? {#what-is-a-composable}
 
-In the context of Vue applications, a "composable" is a function that leverages Vue's Composition API to encapsulate and reuse **stateful logic**.
+В контексте приложений Vue «composable» («композит») это функция, использующая Composition API для инкапсуляции и повторного использования **логики с отслеживанием состояния**.
 
-When building frontend applications, we often need to reuse logic for common tasks. For example, we may need to format dates in many places, so we extract a reusable function for that. This formatter function encapsulates **stateless logic**: it takes some input and immediately returns expected output. There are many libraries out there for reusing stateless logic - for example [lodash](https://lodash.com/) and [date-fns](https://date-fns.org/), which you may have heard of.
+При создании фронтенд-приложений нам часто приходится повторно использовать логику для решения общих задач. Например, нам может понадобиться форматировать даты во многих местах, поэтому мы извлекаем для этого многократно используемую функцию. Эта функция форматирования включает в себя **беспорядочную логику**: она принимает некоторые входные данные и сразу же возвращает ожидаемый результат. Существует множество библиотек для повторного использования логики без статических данных — например, [lodash](https://lodash.com/) и [date-fns](https://date-fns.org/), о которых вы, возможно, слышали.
 
-By contrast, stateful logic involves managing state that changes over time. A simple example would be tracking the current position of the mouse on a page. In real-world scenarios, it could also be more complex logic such as touch gestures or connection status to a database.
+В отличие от этого, логика с состоянием подразумевает управление состоянием, которое меняется с течением времени. Простой пример — отслеживание текущего положения мыши на странице. В реальных сценариях это может быть и более сложная логика, например, сенсорные жесты или статус подключения к базе данных.
 
-## Mouse Tracker Example {#mouse-tracker-example}
+## Пример трекера мыши {#mouse-tracker-example}
 
-If we were to implement the mouse tracking functionality using the Composition API directly inside a component, it would look like this:
+Если бы мы реализовали функцию отслеживания мыши с помощью Composition API непосредственно внутри компонента, это выглядело бы следующим образом:
 
 ```vue
 <script setup>
@@ -37,38 +37,38 @@ onMounted(() => window.addEventListener('mousemove', update))
 onUnmounted(() => window.removeEventListener('mousemove', update))
 </script>
 
-<template>Mouse position is at: {{ x }}, {{ y }}</template>
+<template>Позиция курсора мыши: {{ x }}, {{ y }}</template>
 ```
 
-But what if we want to reuse the same logic in multiple components? We can extract the logic into an external file, as a composable function:
+Но что, если мы хотим повторно использовать одну и ту же логику в нескольких компонентах? Мы можем извлечь логику во внешний файл в виде композитной функции:
 
 ```js
 // mouse.js
 import { ref, onMounted, onUnmounted } from 'vue'
 
-// by convention, composable function names start with "use"
+// По соглашению, имена композитных функций начинаются с "use"
 export function useMouse() {
-  // state encapsulated and managed by the composable
+  // состояние, инкапсулированное и управляемое composable
   const x = ref(0)
   const y = ref(0)
 
-  // a composable can update its managed state over time.
+  // composable может обновлять свое управляемое состояние с течением времени.
   function update(event) {
     x.value = event.pageX
     y.value = event.pageY
   }
 
-  // a composable can also hook into its owner component's
-  // lifecycle to setup and teardown side effects.
+  // компонент может также подключиться к жизненному хуку
+  // компонента-владельца для установки и снятия побочных эффектов.
   onMounted(() => window.addEventListener('mousemove', update))
   onUnmounted(() => window.removeEventListener('mousemove', update))
 
-  // expose managed state as return value
+  // отображаем управляемое состояние в качестве возвращаемого значения
   return { x, y }
 }
 ```
 
-And this is how it can be used in components:
+Вот как его можно использовать в компонентах:
 
 ```vue
 <script setup>
@@ -77,34 +77,34 @@ import { useMouse } from './mouse.js'
 const { x, y } = useMouse()
 </script>
 
-<template>Mouse position is at: {{ x }}, {{ y }}</template>
+<template>Позиция курсора мыши: {{ x }}, {{ y }}</template>
 ```
 
 <div class="demo">
-  Mouse position is at: {{ x }}, {{ y }}
+  Позиция курсора мыши: {{ x }}, {{ y }}
 </div>
 
-[Try it in the Playground](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
+[Попробовать в Песочнице](https://play.vuejs.org/#eNqNkj1rwzAQhv/KocUOGKVzSAIdurVjoQUvJj4XlfgkJNmxMfrvPcmJkkKHLrbu69H7SlrEszFyHFDsxN6drDIeHPrBHGtSvdHWwwKDwzfNHwjQWd1DIbd9jOW3K2qq6aTJxb6pgpl7Dnmg3NS0365YBnLgsTfnxiNHACvUaKe80gTKQeN3sDAIQqjignEhIvKYqMRta1acFVrsKtDEQPLYxuU7cV8Msmg2mdTilIa6gU5p27tYWKKq1c3ENphaPrGFW25+yMXsHWFaFlfiiOSvFIBJjs15QJ5JeWmaL/xYS/Mfpc9YYrPxl52ULOpwhIuiVl9k07Yvsf9VOY+EtizSWfR6xKK6itgkvQ/+fyNs6v4XJXIsPwVL+WprCiL8AEUxw5s=)
 
-As we can see, the core logic remains identical - all we had to do was move it into an external function and return the state that should be exposed. Just like inside a component, you can use the full range of [Composition API functions](/api/#composition-api) in composables. The same `useMouse()` functionality can now be used in any component.
+Как мы видим, основная логика остается идентичной — всё, что нам нужно было сделать, это перенести её во внешнюю функцию и вернуть состояние, которое должно быть открыто. Как и в компоненте, в композитных функциях можно использовать весь набор функций [Composition API](/api/#composition-api). Та же функциональность `useMouse()` теперь может быть использована в любом компоненте.
 
-The cooler part about composables though, is that you can also nest them: one composable function can call one or more other composable functions. This enables us to compose complex logic using small, isolated units, similar to how we compose an entire application using components. In fact, this is why we decided to call the collection of APIs that make this pattern possible Composition API.
+Самое приятное в композитных функциях то, что их можно вложить друг в друга: Одна композитная функция может вызывать одну или несколько других композитных функций. Это позволяет нам компоновать сложную логику с помощью небольших изолированных блоков, подобно тому, как мы компонуем целое приложение с помощью компонентов. Собственно, именно поэтому мы решили назвать коллекцию API, которые делают этот паттерн возможным, Composition API.
 
-For example, we can extract the logic of adding and removing a DOM event listener into its own composable:
+Например, мы можем выделить логику добавления и удаления слушателя событий DOM в отдельный компонент:
 
 ```js
 // event.js
 import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
-  // if you want, you can also make this
-  // support selector strings as target
+  // Если вы хотите, вы также можете сделать так,
+  // чтобы он поддерживал строки селектора в качестве цели
   onMounted(() => target.addEventListener(event, callback))
   onUnmounted(() => target.removeEventListener(event, callback))
 }
 ```
 
-And now our `useMouse()` composable can be simplified to:
+И теперь наша функция `useMouse()` может быть упрощена до:
 
 ```js{3,9-12}
 // mouse.js
@@ -124,13 +124,13 @@ export function useMouse() {
 }
 ```
 
-:::tip
-Each component instance calling `useMouse()` will create its own copies of `x` and `y` state so they won't interfere with one another. If you want to manage shared state between components, read the [State Management](/guide/scaling-up/state-management) chapter.
+:::tip Примечание
+Каждый экземпляр компонента, вызывающий `useMouse()`, будет создавать свои собственные копии состояния `x` и `y`, чтобы они не мешали друг другу. Если вы хотите управлять общим состоянием компонентов, прочитайте главу [Управление состоянием](/guide/scaling-up/state-management).
 :::
 
-## Async State Example {#async-state-example}
+## Пример асинхронного состояния {#async-state-example}
 
-The `useMouse()` composable doesn't take any arguments, so let's take a look at another example that makes use of one. When doing async data fetching, we often need to handle different states: loading, success, and error:
+Функция `useMouse()` не принимает никаких аргументов, поэтому давайте рассмотрим другой пример, в котором они используются. При выполнении асинхронной выборки данных нам часто приходится обрабатывать различные состояния: загрузку, успех и ошибку:
 
 ```vue
 <script setup>
@@ -146,16 +146,16 @@ fetch('...')
 </script>
 
 <template>
-  <div v-if="error">Oops! Error encountered: {{ error.message }}</div>
+  <div v-if="error">Упс! Произошла ошибка: {{ error.message }}</div>
   <div v-else-if="data">
-    Data loaded:
+    Данные загружены:
     <pre>{{ data }}</pre>
   </div>
-  <div v-else>Loading...</div>
+  <div v-else>Загрузка...</div>
 </template>
 ```
 
-It would be tedious to have to repeat this pattern in every component that needs to fetch data. Let's extract it into a composable:
+Было бы утомительно повторять этот шаблон в каждом компоненте, которому нужно получить данные. Давайте извлечем его в виде композитной функции:
 
 ```js
 // fetch.js
@@ -174,7 +174,7 @@ export function useFetch(url) {
 }
 ```
 
-Now in our component we can just do:
+Теперь в нашем компоненте мы можем просто сделать это:
 
 ```vue
 <script setup>
@@ -184,29 +184,29 @@ const { data, error } = useFetch('...')
 </script>
 ```
 
-### Accepting Reactive State {#accepting-reactive-state}
+### Принятие реактивного состояния {#accepting-reactive-state}
 
-`useFetch()` takes a static URL string as input - so it performs the fetch only once and is then done. What if we want it to re-fetch whenever the URL changes? In order to achieve this, we need to pass reactive state into the composable function, and let the composable create watchers that perform actions using the passed state.
+Функция `useFetch()` принимает на вход статическую строку URL — таким образом, она выполняет выборку только один раз и на этом завершается. Что, если мы хотим, чтобы она выполняла повторную выборку при каждом изменении URL? Чтобы добиться этого, нам нужно передать реактивное состояние в композитную функцию, а композитная создать наблюдатели, которые будут выполнять действия, используя переданное состояние.
 
-For example, `useFetch()` should be able to accept a ref:
+Например, `useFetch()` должна иметь возможность принимать ссылку:
 
 ```js
 const url = ref('/initial-url')
 
 const { data, error } = useFetch(url)
 
-// this should trigger a re-fetch
+// это должно вызвать повторную выборку
 url.value = '/new-url'
 ```
 
-Or, accept a getter function:
+Или функцию-геттер:
 
 ```js
-// re-fetch when props.id changes
+// повторная выборка при изменении props.id
 const { data, error } = useFetch(() => `/posts/${props.id}`)
 ```
 
-We can refactor our existing implementation with the [`watchEffect()`](/api/reactivity-core.html#watcheffect) and [`toValue()`](/api/reactivity-utilities.html#tovalue) APIs:
+Мы можем отрефакторить нашу существующую реализацию с помощью API [`watchEffect()`](/api/reactivity-core.html#watcheffect) и [`toValue()`](/api/reactivity-utilities.html#tovalue):
 
 ```js{8,13}
 // fetch.js
@@ -217,7 +217,7 @@ export function useFetch(url) {
   const error = ref(null)
 
   const fetchData = () => {
-    // reset state before fetching..
+    // сбрасываем состояние перед получением
     data.value = null
     error.value = null
 
@@ -235,87 +235,87 @@ export function useFetch(url) {
 }
 ```
 
-`toValue()` is an API added in 3.3. It is designed to normalize refs or getters into values. If the argument is a ref, it returns the ref's value; if the argument is a function, it will call the function and return its return value. Otherwise, it returns the argument as-is. It works similarly to [`unref()`](/api/reactivity-utilities.html#unref), but with special treatment for functions.
+`toValue()` — это API, добавленный в версии 3.3. Он предназначен для нормализации ссылок или геттеров в значения. Если аргумент является ссылкой, то возвращается значение ссылки; если аргумент является функцией, он вызовет функцию и вернет её возвращаемое значение. В противном случае он возвращает аргумент как есть. Он работает аналогично [`unref()`](/api/reactivity-utilities.html#unref), но с особым подходом к функциям.
 
-Notice that `toValue(url)` is called **inside** the `watchEffect` callback. This ensures that any reactive dependencies accessed during the `toValue()` normalization are tracked by the watcher.
+Обратите внимание, что `toValue(url)` вызывается **внутри** обратного вызова `watchEffect`. Это гарантирует, что все реактивные зависимости, к которым обращаются во время нормализации `toValue()`, будут отслежены наблюдателем.
 
-This version of `useFetch()` now accepts static URL strings, refs, and getters, making it much more flexible. The watch effect will run immediately, and will track any dependencies accessed during `toValue(url)`. If no dependencies are tracked (e.g. url is already a string), the effect runs only once; otherwise, it will re-run whenever a tracked dependency changes.
+Эта версия `useFetch()` теперь принимает статические строки URL, ссылки и геттеры, что делает её гораздо более гибкой. Эффект watch будет запущен немедленно и будет отслеживать все зависимости, к которым обращались во время `toValue(url)`. Если зависимости не отслеживаются (например, url уже является строкой), эффект выполняется только один раз; в противном случае он будет запускаться заново при каждом изменении отслеживаемой зависимости.
 
-Here's [the updated version of `useFetch()`](https://play.vuejs.org/#eNp9Vdtu40YM/RVWL1ZQr5RF0JfAMXpLgRZtd5Fu90kvY4mKJ5FnhLnYMQz/+5IcSZF3g30IbPNyyHPIYU7ZL31f7CNmt9nK1073ATyG2K8ro3e9dQFO4LBdQm13fQzYwBlaZ3ewoKTFLCh6/ANDvZ38RTmaiidPkZWprfEBNsrj/66DO1hsQ+j9bVk+eWv6TtW4tV2DrgjHXte2wYKKlsE21pcEkNJ1Q5nUUb54v7gajVHwxhbz/Aru1lOhHymn2KsuIsWPGSdoVFBLQOeso57vJgI5gc0CHQZ3JHfCPFUGJjimQH1dGt6T5VyZVZnUJB3pR8Ad8QtIvwD+tqqB3gqXWzasNjEEa2D/rrXurso0aAM/VRn8XHe6fmYLk9ZVtj6dQMP5vCpTiqBXYdXoPWXrlkKFEEUyMEH36w+29z/AvfBEIhVNQIfNLRCWBBc79F49ouDy4CVx6GlqQXQg3Af+nNWn0JLKp2+pD+w8pmZYY8r5nT6gI9pcdtU7ZB7sSyXp95sYa1ZKm8eiKEb/qpykzJbZbMFofy/39aDIcd+2WIclBPtZ5nO5u5XBF0lpo6mDJrYXO5CGnbZAmk17Z2LH+zF60gJ95eK/WQO58kdTz1cIoCwphZ4a+EBsYIM0e4SWqwvlFMV1p91i+GROc/vWPoe23R4hbFEeRwrlLrbOGht9dwRvQYeFh+BU/UwPW3lQE0CDPZqG9uUIm+MFFyE4sifspOzdqPHwfF674eczcBZk5YJuda1VR0U6dQTqVpmGxpJWl+ULAOqgdICgd2jjUJTNBBANa30FB911/DyjM8KTrANP3SZmim38QIbSlsLcQfukS4oVlA1nM5DI8E77gUAYb4AngqkjmRCTFLZ8KAT9YlApkrJoMa0ZFTtDzTJCjsNqfTtJHCL54yxHCEaGXx0sOTKVeUPPykzrPKmX6g1IBg/wkZ4B6ZDnw6IsyflE051vKC3npwHgYnPp3rWQ/6PCtkiDI+8aroubGS0uJsAjeabPb/oyhEvm3I+cp3zxkBZBfi2uXlMHWZZwc30tVhbnTBcgeJpQqx9FaLoBgl5l/J9Ad+g+9KyDrzK6dsNIM9V19vCX2IKLuBzt9Rbr5zfsT/6FbVX2kd+r22OVTb6g3COG5L7/7198oe+Tc2eb2FH0d5wPLFLkHlPYr9E01PYsTrr9Uy4bnYVP/v4loPEjKW5U5JD4KqO79tt3qL+2e1PcSB6reP4CbzCltA==), with an artificial delay and randomized error for demo purposes.
+Вот [обновленная версия `useFetch()`](https://play.vuejs.org/#eNp9Vdtu40YM/RVWL1ZQr5RF0JfAMXpLgRZtd5Fu90kvY4mKJ5FnhLnYMQz/+5IcSZF3g30IbPNyyHPIYU7ZL31f7CNmt9nK1073ATyG2K8ro3e9dQFO4LBdQm13fQzYwBlaZ3ewoKTFLCh6/ANDvZ38RTmaiidPkZWprfEBNsrj/66DO1hsQ+j9bVk+eWv6TtW4tV2DrgjHXte2wYKKlsE21pcEkNJ1Q5nUUb54v7gajVHwxhbz/Aru1lOhHymn2KsuIsWPGSdoVFBLQOeso57vJgI5gc0CHQZ3JHfCPFUGJjimQH1dGt6T5VyZVZnUJB3pR8Ad8QtIvwD+tqqB3gqXWzasNjEEa2D/rrXurso0aAM/VRn8XHe6fmYLk9ZVtj6dQMP5vCpTiqBXYdXoPWXrlkKFEEUyMEH36w+29z/AvfBEIhVNQIfNLRCWBBc79F49ouDy4CVx6GlqQXQg3Af+nNWn0JLKp2+pD+w8pmZYY8r5nT6gI9pcdtU7ZB7sSyXp95sYa1ZKm8eiKEb/qpykzJbZbMFofy/39aDIcd+2WIclBPtZ5nO5u5XBF0lpo6mDJrYXO5CGnbZAmk17Z2LH+zF60gJ95eK/WQO58kdTz1cIoCwphZ4a+EBsYIM0e4SWqwvlFMV1p91i+GROc/vWPoe23R4hbFEeRwrlLrbOGht9dwRvQYeFh+BU/UwPW3lQE0CDPZqG9uUIm+MFFyE4sifspOzdqPHwfF674eczcBZk5YJuda1VR0U6dQTqVpmGxpJWl+ULAOqgdICgd2jjUJTNBBANa30FB911/DyjM8KTrANP3SZmim38QIbSlsLcQfukS4oVlA1nM5DI8E77gUAYb4AngqkjmRCTFLZ8KAT9YlApkrJoMa0ZFTtDzTJCjsNqfTtJHCL54yxHCEaGXx0sOTKVeUPPykzrPKmX6g1IBg/wkZ4B6ZDnw6IsyflE051vKC3npwHgYnPp3rWQ/6PCtkiDI+8aroubGS0uJsAjeabPb/oyhEvm3I+cp3zxkBZBfi2uXlMHWZZwc30tVhbnTBcgeJpQqx9FaLoBgl5l/J9Ad+g+9KyDrzK6dsNIM9V19vCX2IKLuBzt9Rbr5zfsT/6FbVX2kd+r22OVTb6g3COG5L7/7198oe+Tc2eb2FH0d5wPLFLkHlPYr9E01PYsTrr9Uy4bnYVP/v4loPEjKW5U5JD4KqO79tt3qL+2e1PcSB6reP4CbzCltA==), с искусственной задержкой и рандомизированной ошибкой для демонстрационных целей.
 
-## Conventions and Best Practices {#conventions-and-best-practices}
+## Соглашения и лучшие практики {#conventions-and-best-practices}
 
-### Naming {#naming}
+### Именование {#naming}
 
-It is a convention to name composable functions with camelCase names that start with "use".
+Принято называть композитные функции именами в camelCase, которые начинаются с "use".
 
-### Input Arguments {#input-arguments}
+### Входные аргументы {#input-arguments}
 
-A composable can accept ref or getter arguments even if it doesn't rely on them for reactivity. If you are writing a composable that may be used by other developers, it's a good idea to handle the case of input arguments being refs or getters instead of raw values. The [`toValue()`](/api/reactivity-utilities#tovalue) utility function will come in handy for this purpose:
+Композитная функция может принимать ссылки или геттеры в качестве аргументов, даже если она не полагается на них для реактивности. Если вы пишете композитную функцию, которая может быть использована другими разработчиками, неплохо бы обработать случай, когда входными аргументами являются ссылки или геттеры, а не необработанные значения. Для этого пригодится функция [`toValue()`](/api/reactivity-utilities#tovalue):
 
 ```js
 import { toValue } from 'vue'
 
 function useFeature(maybeRefOrGetter) {
-  // If maybeRefOrGetter is a ref or a getter,
-  // its normalized value will be returned.
-  // Otherwise, it is returned as-is.
+  // Если maybeRefOrGetter является ссылкой или геттером,
+  // будет возвращено его нормализованное значение.
+  // В противном случае она возвращается как есть.
   const value = toValue(maybeRefOrGetter)
 }
 ```
 
-If your composable creates reactive effects when the input is a ref or a getter, make sure to either explicitly watch the ref / getter with `watch()`, or call `toValue()` inside a `watchEffect()` so that it is properly tracked.
+Если ваша функция создает реактивные эффекты, когда на вход подается ссылка или геттер, убедитесь, что вы либо явно следите за ссылкой/геттером с помощью `watch()`, либо вызываете `toValue()` внутри `watchEffect()`, чтобы она была правильно отслежена.
 
-The [useFetch() implementation discussed earlier](#accepting-reactive-state) provides a concrete example of a composable that accepts refs, getters and plain values as input argument.
+Рассмотренная ранее реализация [useFetch()](#accepting-reactive-state) представляет собой конкретный пример композитной функции, принимающей в качестве входного аргумента реактивные ссылки, геттеры и простые значения.
 
-### Return Values {#return-values}
+### Возвращаемые значения {#return-values}
 
-You have probably noticed that we have been exclusively using `ref()` instead of `reactive()` in composables. The recommended convention is for composables to always return a plain, non-reactive object containing multiple refs. This allows it to be destructured in components while retaining reactivity:
+Вы, наверное, заметили, что в композитных функциях мы используем исключительно `ref()`, а не `reactive()`. Рекомендуется, чтобы композитные функции всегда возвращали простой, нереактивный объект, содержащий несколько ссылок. Это позволяет разрушать его на составляющие, сохраняя реакционную способность:
 
 ```js
-// x and y are refs
+// x и y - ссылки
 const { x, y } = useMouse()
 ```
 
-Returning a reactive object from a composable will cause such destructures to lose the reactivity connection to the state inside the composable, while the refs will retain that connection.
+Возврат реактивного объекта из композитной функции приведёт к тому, что такие деструктуры потеряют связь реактивности с состоянием внутри композита, в то время как рефлексы сохранят эту связь.
 
-If you prefer to use returned state from composables as object properties, you can wrap the returned object with `reactive()` so that the refs are unwrapped. For example:
+Если вы предпочитаете использовать возвращаемое состояние из коимпозитных функций в качестве свойств объекта, вы можете обернуть возвращаемый объект с помощью `reactive()`, чтобы рефлексы были развернуты. Например:
 
 ```js
 const mouse = reactive(useMouse())
-// mouse.x is linked to original ref
+// mouse.x связан с оригинальной ссылкой
 console.log(mouse.x)
 ```
 
 ```vue-html
-Mouse position is at: {{ mouse.x }}, {{ mouse.y }}
+Позиция курсора мыши: {{ mouse.x }}, {{ mouse.y }}
 ```
 
-### Side Effects {#side-effects}
+### Побочные эффекты {#side-effects}
 
-It is OK to perform side effects (e.g. adding DOM event listeners or fetching data) in composables, but pay attention to the following rules:
+Можно выполнять побочные действия (например, добавление слушателей событий DOM или получение данных) в составных элементах, но обратите внимание на следующие правила:
 
-- If you are working on an application that uses [Server-Side Rendering](/guide/scaling-up/ssr) (SSR), make sure to perform DOM-specific side effects in post-mount lifecycle hooks, e.g. `onMounted()`. These hooks are only called in the browser, so you can be sure that code inside them has access to the DOM.
+- Если вы работаете над приложением, использующим [рендеринг на стороне сервера](/guide/scaling-up/ssr) (SSR), убедитесь, что побочные эффекты, специфичные для DOM, выполняются в хуках жизненного цикла после монтирования, например `onMounted()`. Эти хуки вызываются только в браузере, поэтому вы можете быть уверены, что код в них имеет доступ к DOM.
 
-- Remember to clean up side effects in `onUnmounted()`. For example, if a composable sets up a DOM event listener, it should remove that listener in `onUnmounted()` as we have seen in the `useMouse()` example. It can be a good idea to use a composable that automatically does this for you, like the `useEventListener()` example.
+- Не забудьте убрать побочные эффекты в `onUnmounted()`. Например, если компонент устанавливает слушатель событий DOM, он должен удалить этот слушатель в `onUnmounted()`, как мы видели в примере `useMouse()`. Хорошей идеей может быть использование композитной функции, которая автоматически делает это за вас, как пример `useEventListener()`.
 
-### Usage Restrictions {#usage-restrictions}
+### Ограничения на использование {#usage-restrictions}
 
-Composables should only be called in `<script setup>` or the `setup()` hook. They should also be called **synchronously** in these contexts. In some cases, you can also call them in lifecycle hooks like `onMounted()`.
+Составляющие должны вызываться только в `<script setup>` или в хуке `setup()`. В этих контекстах их также следует вызывать **синхронно**. В некоторых случаях вы также можете вызывать их в хуках жизненного цикла, например `onMounted()`.
 
-These restrictions are important because these are the contexts where Vue is able to determine the current active component instance. Access to an active component instance is necessary so that:
+Эти ограничения важны, поскольку именно в этих контекстах Vue может определить текущий активный экземпляр компонента. Доступ к активному экземпляру компонента необходим для того, чтобы:
 
-1. Lifecycle hooks can be registered to it.
+1. В нем можно зарегистрировать хуки жизненного цикла.
 
-2. Computed properties and watchers can be linked to it, so that they can be disposed when the instance is unmounted to prevent memory leaks.
+2. Вычисляемые свойства и наблюдатели могут быть связаны с ним, чтобы их можно было утилизировать при размонтировании экземпляра для предотвращения утечек памяти.
 
-:::tip
-`<script setup>` is the only place where you can call composables **after** using `await`. The compiler automatically restores the active instance context for you after the async operation.
+:::tip Совет
+`<script setup>` — единственное место, где вы можете вызывать составные части **после** использования `await`. Компилятор автоматически восстанавливает активный контекст экземпляра после выполнения операции async.
 :::
 
-## Extracting Composables for Code Organization {#extracting-composables-for-code-organization}
+## Извлечение составных частей для организации кода {#extracting-composables-for-code-organization}
 
-Composables can be extracted not only for reuse, but also for code organization. As the complexity of your components grow, you may end up with components that are too large to navigate and reason about. Composition API gives you the full flexibility to organize your component code into smaller functions based on logical concerns:
+Составные части могут быть извлечены не только для повторного использования, но и для организации кода. По мере роста сложности компонентов вы можете столкнуться с тем, что они станут слишком большими для навигации и рассуждений. Composition API предоставляет вам полную гибкость в организации кода компонента в более мелкие функции, основанные на логических соображениях:
 
 ```vue
 <script setup>
@@ -329,11 +329,11 @@ const { qux } = useFeatureC(baz)
 </script>
 ```
 
-To some extent, you can think of these extracted composables as component-scoped services that can talk to one another.
+В некоторой степени эти извлечённые составные части можно рассматривать как сервисы с компонентным копированием, которые могут взаимодействовать друг с другом.
 
-## Using Composables in Options API {#using-composables-in-options-api}
+## Использование составных элементов в Options API {#using-composables-in-options-api}
 
-If you are using Options API, composables must be called inside `setup()`, and the returned bindings must be returned from `setup()` so that they are exposed to `this` and the template:
+Если вы используете Options API, композитные функции должны быть вызваны внутри `setup()`, а возвращаемые привязки должны быть возвращены из `setup()`, чтобы они были доступны `this` и шаблону:
 
 ```js
 import { useMouse } from './mouse.js'
@@ -346,42 +346,42 @@ export default {
     return { x, y, data, error }
   },
   mounted() {
-    // setup() exposed properties can be accessed on `this`
+    // Открытые свойства setup() могут быть доступны через `this`.
     console.log(this.x)
   }
-  // ...other options
+  // ...другие параметры
 }
 ```
 
-## Comparisons with Other Techniques {#comparisons-with-other-techniques}
+## Сравнение с другими методами {#comparisons-with-other-techniques}
 
-### vs. Mixins {#vs-mixins}
+### Примеси {#vs-mixins}
 
-Users coming from Vue 2 may be familiar with the [mixins](/api/options-composition#mixins) option, which also allows us to extract component logic into reusable units. There are three primary drawbacks to mixins:
+Пользователи, пришедшие из Vue 2, могут быть знакомы с опцией [mixins](/api/options-composition#mixins), которая также позволяет нам извлекать логику компонентов в многократно используемые блоки. У примесей есть три основных недостатка:
 
-1. **Unclear source of properties**: when using many mixins, it becomes unclear which instance property is injected by which mixin, making it difficult to trace the implementation and understand the component's behavior. This is also why we recommend using the refs + destructure pattern for composables: it makes the property source clear in consuming components.
+1. **Нечистый источник свойств**: При использовании большого количества примесей становится неясно, какое свойство экземпляра инжектируется какой примесью, что затрудняет отслеживание реализации и понимание поведения компонента. Именно поэтому мы рекомендуем использовать шаблон «refs + деструктуризация» для композитных функций: это делает источник свойств понятным для потребляющих компонентов.
 
-2. **Namespace collisions**: multiple mixins from different authors can potentially register the same property keys, causing namespace collisions. With composables, you can rename the destructured variables if there are conflicting keys from different composables.
+2. **Коллизии пространств имён**: несколько примесей от разных авторов могут регистрировать одни и те же ключи свойств, что приводит к коллизии пространств имён. С помощью составных переменных можно переименовывать деструктурированные переменные, если в них есть конфликтующие ключи из разных составных переменных.
 
-3. **Implicit cross-mixin communication**: multiple mixins that need to interact with one another have to rely on shared property keys, making them implicitly coupled. With composables, values returned from one composable can be passed into another as arguments, just like normal functions.
+3. **Неявная кросс-примесевая коммуникация**: Несколько примесей, которые должны взаимодействовать друг с другом, должны полагаться на общие ключи свойств, что делает их неявно связанными. В композитных функциях значения, возвращаемые одной функцией, могут передаваться в другую в качестве аргументов, как и в обычных функциях.
 
-For the above reasons, we no longer recommend using mixins in Vue 3. The feature is kept only for migration and familiarity reasons.
+По вышеуказанным причинам мы больше не рекомендуем использовать примеси в Vue 3. Эта функция сохраняется только для миграции и удобства.
 
-### vs. Renderless Components {#vs-renderless-components}
+### Компоненты без отрисовки {#vs-renderless-components}
 
-In the component slots chapter, we discussed the [Renderless Component](/guide/components/slots#renderless-components) pattern based on scoped slots. We even implemented the same mouse tracking demo using renderless components.
+В главе о слотах компонентов мы обсудили паттерн [Компонент без отрисовки](/guide/components/slots#renderless-components), основанный на скопированных слотах. Мы даже реализовали демонстрацию отслеживания мыши с помощью компонентов без отрисовки.
 
-The main advantage of composables over renderless components is that composables do not incur the extra component instance overhead. When used across an entire application, the amount of extra component instances created by the renderless component pattern can become a noticeable performance overhead.
+Основное преимущество композитных компонентов перед компонентами без отрисовки заключается в том, что композитные компоненты не несут дополнительных накладных расходов на экземпляр компонента. При использовании во всём приложении количество дополнительных экземпляров компонентов, создаваемых шаблоном компонентов без отрисовки, может стать заметным повышением производительности.
 
-The recommendation is to use composables when reusing pure logic, and use components when reusing both logic and visual layout.
+Рекомендуется использовать составные компоненты при повторном использовании чистой логики и компоненты при повторном использовании как логики, так и визуальной компоновки.
 
-### vs. React Hooks {#vs-react-hooks}
+### Хуки React {#vs-react-hooks}
 
-If you have experience with React, you may notice that this looks very similar to custom React hooks. Composition API was in part inspired by React hooks, and Vue composables are indeed similar to React hooks in terms of logic composition capabilities. However, Vue composables are based on Vue's fine-grained reactivity system, which is fundamentally different from React hooks' execution model. This is discussed in more detail in the [Composition API FAQ](/guide/extras/composition-api-faq#comparison-with-react-hooks).
+Если у вас есть опыт работы с React, вы можете заметить, что это очень похоже на пользовательские хуки React. Composition API был частично вдохновлен хуками React, и композиты Vue действительно похожи на хуки React в плане возможностей логической композиции. Однако композитные элементы Vue основаны на мелкозернистой системе реактивности Vue, которая в корне отличается от модели выполнения хуков React. Более подробно это обсуждается в [ЧаВо по Composition API](/guide/extras/composition-api-faq#comparison-with-react-hooks).
 
-## Further Reading {#further-reading}
+## Дальнейшее чтение {#further-reading}
 
-- [Reactivity In Depth](/guide/extras/reactivity-in-depth): for a low-level understanding of how Vue's reactivity system works.
-- [State Management](/guide/scaling-up/state-management): for patterns of managing state shared by multiple components.
-- [Testing Composables](/guide/scaling-up/testing#testing-composables): tips on unit testing composables.
-- [VueUse](https://vueuse.org/): an ever-growing collection of Vue composables. The source code is also a great learning resource.
+- [Реактивность в деталях](/guide/extras/reactivity-in-depth): чтобы получить представление о том, как работает система реактивности Vue.
+- [Управление состоянием](/guide/scaling-up/state-management): для моделей управления состоянием, разделяемым несколькими компонентами.
+- [Тестирование композитных функций](/guide/scaling-up/testing#testing-composables): советы по модульному тестированию композитов.
+- [VueUse](https://vueuse.org/): постоянно растущая коллекция композитных функций Vue. Исходный код также является отличным учебным ресурсом.
