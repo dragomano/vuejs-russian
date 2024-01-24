@@ -2,64 +2,64 @@
 outline: deep
 ---
 
-# Server-Side Rendering (SSR) {#server-side-rendering-ssr}
+# Рендеринг на стороне сервера (SSR) {#server-side-rendering-ssr}
 
-## Overview {#overview}
+## Обзор {#overview}
 
-### What is SSR? {#what-is-ssr}
+### Что такое SSR? {#what-is-ssr}
 
-Vue.js is a framework for building client-side applications. By default, Vue components produce and manipulate DOM in the browser as output. However, it is also possible to render the same components into HTML strings on the server, send them directly to the browser, and finally "hydrate" the static markup into a fully interactive app on the client.
+Vue.js — это фреймворк для создания приложений на стороне клиента. По умолчанию компоненты Vue создают и манипулируют DOM в браузере в качестве вывода. Однако можно также преобразовать те же компоненты в HTML-строки на сервере, отправить их непосредственно в браузер и, наконец, «гидратировать». Статическая разметка превращается в полностью интерактивное приложение на клиенте.
 
-A server-rendered Vue.js app can also be considered "isomorphic" or "universal", in the sense that the majority of your app's code runs on both the server **and** the client.
+Приложение Vue.js с серверным рендерингом также можно считать «изоморфным» или «универсальный», в том смысле, что большая часть кода вашего приложения выполняется на сервере **и** клиенте.
 
-### Why SSR? {#why-ssr}
+### Почему SSR? {#why-ssr}
 
-Compared to a client-side Single-Page Application (SPA), the advantage of SSR primarily lies in:
+По сравнению с клиентскими одностраничными приложениями (SPA), преимущество SSR заключается, прежде всего, в следующем:
 
-- **Faster time-to-content**: this is more prominent on slow internet or slow devices. Server-rendered markup doesn't need to wait until all JavaScript has been downloaded and executed to be displayed, so your user will see a fully-rendered page sooner. In addition, data fetching is done on the server-side for the initial visit, which likely has a faster connection to your database than the client. This generally results in improved [Core Web Vitals](https://web.dev/vitals/) metrics, better user experience, and can be critical for applications where time-to-content is directly associated with conversion rate.
+- **Ускоренное освоение контента**: Это особенно заметно на медленном интернете или медленных устройствах. Серверной рендеризованной разметке не нужно ждать, пока весь JavaScript будет загружен и выполнен, чтобы отобразиться, поэтому пользователь увидит полностью рендеризованную страницу раньше. Кроме того, при первом посещении поиск данных осуществляется на стороне сервера, который, скорее всего, имеет более быстрое соединение с вашей базой данных, чем клиент. Это, как правило, приводит к улучшению [основных показателей Web](https://web.dev/vitals/), повышению удобства работы пользователей и может иметь решающее значение для приложений, в которых время просмотра контента напрямую связано с коэффициентом конверсии.
 
-- **Unified mental model**: you get to use the same language and the same declarative, component-oriented mental model for developing your entire app, instead of jumping back and forth between a backend templating system and a frontend framework.
+- **Унифицированная ментальная модель**: Вы можете использовать один и тот же язык и одну и ту же декларативную, компонентно-ориентированную модель мышления для разработки всего приложения, а не прыгать туда-сюда между внутренней системой шаблонов и внешним фреймворком.
 
-- **Better SEO**: the search engine crawlers will directly see the fully rendered page.
+- **Улучшение SEO**: поисковики увидят непосредственно полностью отрисованную страницу.
 
-  :::tip
-  As of now, Google and Bing can index synchronous JavaScript applications just fine. Synchronous being the key word there. If your app starts with a loading spinner, then fetches content via Ajax, the crawler will not wait for you to finish. This means if you have content fetched asynchronously on pages where SEO is important, SSR might be necessary.
+  :::tip Примечание
+  На данный момент Google и Bing прекрасно индексируют синхронные JavaScript-приложения. Ключевое слово здесь — синхронный. Если ваше приложение запускается с помощью загрузочного спиннера, а затем получает контент через Ajax, краулер не будет ждать, пока вы закончите. Это означает, что если на страницах, для которых важно SEO, контент подхватывается асинхронно, SSR может быть необходим.
   :::
 
-There are also some trade-offs to consider when using SSR:
+При использовании SSR также необходимо учитывать некоторые компромиссы:
 
-- Development constraints. Browser-specific code can only be used inside certain lifecycle hooks; some external libraries may need special treatment to be able to run in a server-rendered app.
+- Ограничения развития. Код, специфичный для браузера, может быть использован только внутри определённых хуков жизненного цикла. Некоторые внешние библиотеки могут нуждаться в особом обращении, чтобы их можно было запустить в приложении с серверным рендерингом.
 
-- More involved build setup and deployment requirements. Unlike a fully static SPA that can be deployed on any static file server, a server-rendered app requires an environment where a Node.js server can run.
+- Более сложные требования к настройке и развёртыванию сборки. В отличие от полностью статичного SPA, которое можно развернуть на любом статичном файловом сервере, серверно-рендерное приложение требует наличия среды, в которой может работать сервер Node.js.
 
-- More server-side load. Rendering a full app in Node.js is going to be more CPU-intensive than just serving static files, so if you expect high traffic, be prepared for corresponding server load and wisely employ caching strategies.
+- Больше нагрузки на сервер. Рендеринг полноценного приложения в Node.js будет более требовательным к процессору, чем простое обслуживание статических файлов, поэтому если вы ожидаете большой трафик, будьте готовы к соответствующей нагрузке на сервер и грамотно используйте стратегии кэширования.
 
-Before using SSR for your app, the first question you should ask is whether you actually need it. It mostly depends on how important time-to-content is for your app. For example, if you are building an internal dashboard where an extra few hundred milliseconds on initial load doesn't matter that much, SSR would be an overkill. However, in cases where time-to-content is absolutely critical, SSR can help you achieve the best possible initial load performance.
+Прежде чем использовать SSR в своем приложении, первым делом задайте себе вопрос, действительно ли он вам нужен. В основном это зависит от того, насколько важно для вашего приложения «время до контента». Например, если вы создаете внутреннюю приборную панель, где лишние несколько сотен миллисекунд при начальной загрузке не имеют большого значения, SSR будет излишеством. Тем не менее, в случаях, когда время просмотра контента является абсолютно критичным, SSR может помочь вам достичь наилучших показателей начальной загрузки.
 
-### SSR vs. SSG {#ssr-vs-ssg}
+### SSR в сравнении с SSG {#ssr-vs-ssg}
 
-**Static Site Generation (SSG)**, also referred to as pre-rendering, is another popular technique for building fast websites. If the data needed to server-render a page is the same for every user, then instead of rendering the page every time a request comes in, we can render it only once, ahead of time, during the build process. Pre-rendered pages are generated and served as static HTML files.
+**Статическая генерация сайта (SSG)**, также называемая предварительным рендерингом, — ещё одна популярная техника создания быстрых сайтов. Если данные, необходимые для серверного рендеринга страницы, одинаковы для каждого пользователя, то вместо того, чтобы рендерить страницу каждый раз, когда приходит запрос, мы можем сделать это только один раз, заранее, в процессе сборки. Предварительно отрендеренные страницы создаются и обслуживаются как статические HTML-файлы.
 
-SSG retains the same performance characteristics of SSR apps: it provides great time-to-content performance. At the same time, it is cheaper and easier to deploy than SSR apps because the output is static HTML and assets. The keyword here is **static**: SSG can only be applied to pages consuming static data, i.e. data that is known at build time and does not change between deploys. Every time the data changes, a new deployment is needed.
+SSG сохраняет те же характеристики, что и приложения SSR: он обеспечивает отличную производительность по времени до контента. В то же время, это дешевле и проще в развертывании, чем приложения SSR, потому что на выходе получается статичный HTML и активы. Ключевое слово здесь — **статический**: SSG можно применять только к страницам, потребляющим статические данные, т. е. данные, которые известны на момент сборки и не меняются между развёртываниями. Каждый раз, когда данные меняются, требуется новое развёртывание.
 
-If you're only investigating SSR to improve the SEO of a handful of marketing pages (e.g. `/`, `/about`, `/contact`, etc.), then you probably want SSG instead of SSR. SSG is also great for content-based websites such as documentation sites or blogs. In fact, this website you are reading right now is statically generated using [VitePress](https://vitepress.dev/), a Vue-powered static site generator.
+Если вы используете SSR только для улучшения SEO горстки маркетинговых страниц (например, `/`, `/about`, `/contact` и т. д.), то вам, вероятно, нужен SSG, а не SSR. SSG также отлично подходит для сайтов, основанных на контенте, таких как сайты документации или блоги. На самом деле, этот сайт, который вы сейчас читаете, статически сгенерирован с помощью [VitePress](https://vitepress.dev/), генератора статических сайтов на основе Vue.
 
-## Basic Tutorial {#basic-tutorial}
+## Базовый учебник {#basic-tutorial}
 
-### Rendering an App {#rendering-an-app}
+### Рендеринг приложения {#rendering-an-app}
 
-Let's take a look at the most bare-bones example of Vue SSR in action.
+Давайте посмотрим на самый простой пример Vue SSR в действии.
 
-1. Create a new directory and `cd` into it
-2. Run `npm init -y`
-3. Add `"type": "module"` in `package.json` so that Node.js runs in [ES modules mode](https://nodejs.org/api/esm.html#modules-ecmascript-modules).
-4. Run `npm install vue`
-5. Create an `example.js` file:
+1. Создайте новый каталог и перейдите в него с помощью команды `cd`.
+2. Запустите `npm init -y`
+3. Добавьте `"тип": "module"` в `package.json`, чтобы Node.js работал в [режиме модулей ES](https://nodejs.org/api/esm.html#modules-ecmascript-modules).
+4. Запустите `npm install vue`
+5. Создайте файл `example.js`:
 
 ```js
-// this runs in Node.js on the server.
+// Это выполняется в Node.js на сервере.
 import { createSSRApp } from 'vue'
-// Vue's server-rendering API is exposed under `vue/server-renderer`.
+// API рендеринга сервера Vue находится в разделе `vue/server-renderer`.
 import { renderToString } from 'vue/server-renderer'
 
 const app = createSSRApp({
@@ -72,24 +72,24 @@ renderToString(app).then((html) => {
 })
 ```
 
-Then run:
+Затем запустите:
 
 ```sh
 > node example.js
 ```
 
-It should print the following to the command line:
+В командной строке должно появиться следующее сообщение:
 
 ```
 <button>1</button>
 ```
 
-[`renderToString()`](/api/ssr#rendertostring) takes a Vue app instance and returns a Promise that resolves to the rendered HTML of the app. It is also possible to stream rendering using the [Node.js Stream API](https://nodejs.org/api/stream.html) or [Web Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). Check out the [SSR API Reference](/api/ssr) for full details.
+[`renderToString()`](/api/ssr#rendertostring) принимает экземпляр приложения Vue и возвращает Promise, который разрешается в отрендеренный HTML приложения. Также можно осуществлять потоковый рендеринг с помощью [Node.js Stream API](https://nodejs.org/api/stream.html) или [Web Streams API](https://developer.mozilla.org/ru/docs/Web/API/Streams_API). Ознакомьтесь с [Справочником по API SSR](/api/ssr) для получения подробной информации.
 
-We can then move the Vue SSR code into a server request handler, which wraps the application markup with the full page HTML. We will be using [`express`](https://expressjs.com/) for the next steps:
+Затем мы можем перенести код Vue SSR в обработчик запросов к серверу, который обернёт разметку приложения полным HTML страницы. На следующих этапах мы будем использовать [`express`](https://expressjs.com/):
 
-- Run `npm install express`
-- Create the following `server.js` file:
+- Запустите `npm install express`
+- Создайте файл `server.js`:
 
 ```js
 import express from 'express'
@@ -124,40 +124,40 @@ server.listen(3000, () => {
 })
 ```
 
-Finally, run `node server.js` and visit `http://localhost:3000`. You should see the page working with the button.
+Наконец, запустите `node server.js` и посетите сайт `http://localhost:3000`. Вы должны увидеть, что страница с кнопкой работает.
 
-[Try it on StackBlitz](https://stackblitz.com/fork/vue-ssr-example-basic?file=index.js)
+[Попробовать на StackBlitz](https://stackblitz.com/fork/vue-ssr-example-basic?file=index.js)
 
-### Client Hydration {#client-hydration}
+### Гидратация клиентской части {#client-hydration}
 
-If you click the button, you'll notice the number doesn't change. The HTML is completely static on the client since we are not loading Vue in the browser.
+Если вы нажмете на кнопку, то заметите, что число не изменится. HTML полностью статичен на клиенте, поскольку мы не загружаем Vue в браузере.
 
-To make the client-side app interactive, Vue needs to perform the **hydration** step. During hydration, it creates the same Vue application that was run on the server, matches each component to the DOM nodes it should control, and attaches DOM event listeners.
+Чтобы сделать приложение на стороне клиента интерактивным, Vue необходимо выполнить этап **гидратации**. Во время гидратации создается то же приложение Vue, которое было запущено на сервере, каждый компонент сопоставляется с узлами DOM, которыми он должен управлять, и подключаются слушатели событий DOM.
 
-To mount an app in hydration mode, we need to use [`createSSRApp()`](/api/application#createssrapp) instead of `createApp()`:
+Чтобы смонтировать приложение в режиме гидратации, нужно использовать [`createSSRApp()`](/api/application#createssrapp) вместо `createApp()`:
 
 ```js{2}
-// this runs in the browser.
+// это запускается в браузере.
 import { createSSRApp } from 'vue'
 
 const app = createSSRApp({
-  // ...same app as on server
+  // ...то же приложение, что и на сервере
 })
 
-// mounting an SSR app on the client assumes
-// the HTML was pre-rendered and will perform
-// hydration instead of mounting new DOM nodes.
+// Установка приложения SSR на клиенте предполагает,
+// что HTML был предварительно отрендерен, и вместо монтирования
+// новых узлов DOM будет произведена гидратация.
 app.mount('#app')
 ```
 
-### Code Structure {#code-structure}
+### Структура кода {#code-structure}
 
-Notice how we need to reuse the same app implementation as on the server. This is where we need to start thinking about code structure in an SSR app - how do we share the same application code between the server and the client?
+Обратите внимание, что нам нужно использовать ту же реализацию приложения, что и на сервере. Именно здесь нам нужно начать думать о структуре кода в приложении SSR — как разделить один и тот же код приложения между сервером и клиентом?
 
-Here we will demonstrate the most bare-bones setup. First, let's split the app creation logic into a dedicated file, `app.js`:
+Здесь мы продемонстрируем самый простой вариант. Для начала давайте выделим логику создания приложения в отдельный файл `app.js`:
 
 ```js
-// app.js (shared between server and client)
+// app.js (совместно используемый сервером и клиентом)
 import { createSSRApp } from 'vue'
 
 export function createApp() {
@@ -168,9 +168,9 @@ export function createApp() {
 }
 ```
 
-This file and its dependencies are shared between the server and the client - we call them **universal code**. There are a number of things you need to pay attention to when writing universal code, as we will [discuss below](#writing-ssr-friendly-code).
+Этот файл и его зависимости являются общими для сервера и клиента — мы называем их **универсальным кодом**. При написании универсального кода необходимо обратить внимание на ряд моментов, о которых мы расскажем [ниже](#writing-ssr-friendly-code).
 
-Our client entry imports the universal code, creates the app, and performs the mount:
+Наш клиент импортирует универсальный код, создает приложение и выполняет монтаж:
 
 ```js
 // client.js
@@ -179,10 +179,10 @@ import { createApp } from './app.js'
 createApp().mount('#app')
 ```
 
-And the server uses the same app creation logic in the request handler:
+А сервер использует ту же логику создания приложения в обработчике запроса:
 
 ```js{2,5}
-// server.js (irrelevant code omitted)
+// server.js (неактуальный код опущен)
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {
@@ -193,142 +193,142 @@ server.get('/', (req, res) => {
 })
 ```
 
-In addition, in order to load the client files in the browser, we also need to:
+Кроме того, чтобы загрузить файлы клиента в браузер, нам также необходимо:
 
-1. Serve client files by adding `server.use(express.static('.'))` in `server.js`.
-2. Load the client entry by adding `<script type="module" src="/client.js"></script>` to the HTML shell.
-3. Support usage like `import * from 'vue'` in the browser by adding an [Import Map](https://github.com/WICG/import-maps) to the HTML shell.
+1. Отправьте клиентские файлы, добавив `server.use(express.static('.'))` в `server.js`.
+2. Загрузите запись клиента, добавив `<script type="module" src="/client.js"></script>` в оболочку HTML.
+3. Поддержка использования типа `import * from 'vue'` в браузере путем добавления [карты импорта](https://github.com/WICG/import-maps) в HTML-оболочку.
 
-[Try the completed example on StackBlitz](https://stackblitz.com/fork/vue-ssr-example?file=index.js). The button is now interactive!
+[Попробуйте выполнить пример на StackBlitz](https://stackblitz.com/fork/vue-ssr-example?file=index.js). Кнопка стала интерактивной!
 
-## Higher Level Solutions {#higher-level-solutions}
+## Решения более высокого уровня {#higher-level-solutions}
 
-Moving from the example to a production-ready SSR app involves a lot more. We will need to:
+Переход от примера к готовому к производству приложению SSR подразумевает гораздо большее. Нам потребуется:
 
-- Support Vue SFCs and other build step requirements. In fact, we will need to coordinate two builds for the same app: one for the client, and one for the server.
+- Поддержка однофайловых компонентов Vue и других требований к шагам сборки. Фактически, нам нужно будет согласовать две сборки для одного и того же приложения: одну для клиента и одну для сервера.
 
-  :::tip
-  Vue components are compiled differently when used for SSR - templates are compiled into string concatenations instead of Virtual DOM render functions for more efficient rendering performance.
+  :::tip Примечание
+  Компоненты Vue компилируются по-другому, когда используются для SSR — шаблоны компилируются в конкатенации строк вместо функций рендеринга виртуального DOM для более эффективной работы рендеринга.
   :::
 
-- In the server request handler, render the HTML with the correct client-side asset links and optimal resource hints. We may also need to switch between SSR and SSG mode, or even mix both in the same app.
+- В обработчике запроса сервера отобразите HTML с правильными ссылками на активы на стороне клиента и оптимальными подсказками ресурсов. Нам также может понадобиться переключаться между режимами SSR и SSG, или даже смешивать оба режима в одном приложении.
 
-- Manage routing, data fetching, and state management stores in a universal manner.
+- Универсальное управление маршрутизацией, получением данных и хранением состояний.
 
-A complete implementation would be quite complex and depends on the build toolchain you have chosen to work with. Therefore, we highly recommend going with a higher-level, opinionated solution that abstracts away the complexity for you. Below we will introduce a few recommended SSR solutions in the Vue ecosystem.
+Полная реализация будет довольно сложной и зависит от инструментария сборки, с которым вы решили работать. Поэтому мы настоятельно рекомендуем выбирать решения более высокого уровня, которые абстрагируют вас от сложностей. Ниже мы представим несколько рекомендуемых SSR-решений в экосистеме Vue.
 
 ### Nuxt {#nuxt}
 
-[Nuxt](https://nuxt.com/) is a higher-level framework built on top of the Vue ecosystem which provides a streamlined development experience for writing universal Vue applications. Better yet, you can also use it as a static site generator! We highly recommend giving it a try.
+[Nuxt](https://nuxt.com/) — это высокоуровневый фреймворк, построенный поверх экосистемы Vue, который обеспечивает оптимизированный опыт разработки для написания универсальных Vue-приложений. А ещё лучше — использовать его в качестве генератора статических сайтов! Мы настоятельно рекомендуем попробовать.
 
 ### Quasar {#quasar}
 
-[Quasar](https://quasar.dev) is a complete Vue-based solution that allows you to target SPA, SSR, PWA, mobile app, desktop app, and browser extension all using one codebase. It not only handles the build setup, but also provides a full collection of Material Design compliant UI components.
+[Quasar](https://quasar.dev) — это комплексное решение на основе Vue, позволяющее создавать SPA, SSR, PWA, мобильные приложения, десктопные приложения и браузерные расширения, используя одну кодовую базу. Он не только выполняет настройку сборки, но и предоставляет полную коллекцию UI-компонентов, соответствующих Material Design.
 
 ### Vite SSR {#vite-ssr}
 
-Vite provides built-in [support for Vue server-side rendering](https://vitejs.dev/guide/ssr.html), but it is intentionally low-level. If you wish to go directly with Vite, check out [vite-plugin-ssr](https://vite-plugin-ssr.com/), a community plugin that abstracts away many challenging details for you.
+Vite предоставляет встроенную [поддержку рендеринга Vue на стороне сервера](https://vitejs.dev/guide/ssr.html), но она намеренно низкоуровневая. Если вы хотите использовать Vite напрямую, обратите внимание на [vite-plugin-ssr](https://vite-plugin-ssr.com/), плагин сообщества, который абстрагирует вас от многих сложных деталей.
 
-You can also find an example Vue + Vite SSR project using manual setup [here](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue), which can serve as a base to build upon. Note this is only recommended if you are experienced with SSR / build tools and really want to have complete control over the higher-level architecture.
+Вы также можете найти пример проекта Vue + Vite SSR с ручной настройкой [здесь](https://github.com/vitejs/vite-plugin-vue/tree/main/playground/ssr-vue), который может послужить базой для построения. Обратите внимание, что это рекомендуется только в том случае, если у вас есть опыт работы с SSR или инструментами сборки и вы действительно хотите иметь полный контроль над высокоуровневой архитектурой.
 
-## Writing SSR-friendly Code {#writing-ssr-friendly-code}
+## Написание SSR-дружественного кода {#writing-ssr-friendly-code}
 
-Regardless of your build setup or higher-level framework choice, there are some principles that apply in all Vue SSR applications.
+Независимо от настройки сборки или выбора фреймворка более высокого уровня, есть несколько принципов, которые применяются во всех приложениях Vue SSR.
 
-### Reactivity on the Server {#reactivity-on-the-server}
+### Реактивность на сервере {#reactivity-on-the-server}
 
-During SSR, each request URL maps to a desired state of our application. There is no user interaction and no DOM updates, so reactivity is unnecessary on the server. By default, reactivity is disabled during SSR for better performance.
+Во время SSR каждый URL-адрес запроса соответствует желаемому состоянию нашего приложения. Здесь нет взаимодействия с пользователем и обновления DOM, поэтому реактивность на сервере не нужна. По умолчанию реактивность отключена во время SSR для повышения производительности.
 
-### Component Lifecycle Hooks {#component-lifecycle-hooks}
+### Хуки жизненного цикла компонентов {#component-lifecycle-hooks}
 
-Since there are no dynamic updates, lifecycle hooks such as <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> or <span class="options-api">`updated`</span><span class="composition-api">`onUpdated`</span> will **NOT** be called during SSR and will only be executed on the client.<span class="options-api"> The only hooks that are called during SSR are `beforeCreate` and `created`</span>
+Поскольку динамические обновления отсутствуют, хуки жизненного цикла, такие как <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> или <span class="options-api">`updated`</span><span class="composition-api">`onUpdated`</span> **НЕ** будут вызываться во время SSR и будут выполняться только на клиенте.<span class="options-api"> Единственные хуки, которые вызываются во время SSR, это `beforeCreate` и `created`.</span>
 
-You should avoid code that produces side effects that need cleanup in <span class="options-api">`beforeCreate` and `created`</span><span class="composition-api">`setup()` or the root scope of `<script setup>`</span>. An example of such side effects is setting up timers with `setInterval`. In client-side only code we may setup a timer and then tear it down in <span class="options-api">`beforeUnmount`</span><span class="composition-api">`onBeforeUnmount`</span> or <span class="options-api">`unmounted`</span><span class="composition-api">`onUnmounted`</span>. However, because the unmount hooks will never be called during SSR, the timers will stay around forever. To avoid this, move your side-effect code into <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span> instead.
+Вам следует избегать кода, который создает побочные эффекты, требующие очистки в <span class="options-api">`beforeCreate` и `created`</span><span class="composition-api">`setup()` или корневой области `<script setup>`</span>. Примером таких побочных эффектов является настройка таймеров с помощью `setInterval`. В коде, предназначенном только для клиентской стороны, мы можем установить таймер, а затем отключить его в <span class="options-api">`beforeUnmount`</span><span class="composition-api">`onBeforeUnmount`</span> или <span class="options-api">`unmounted`</span><span class="composition-api">`onUnmounted`</span>. Однако, поскольку хуки размонтирования никогда не будут вызываться во время SSR, таймеры будут существовать вечно. Чтобы избежать этого, перенесите код побочных эффектов в <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>.
 
-### Access to Platform-Specific APIs {#access-to-platform-specific-apis}
+### Доступ к API для конкретной платформы {#access-to-platform-specific-apis}
 
-Universal code cannot assume access to platform-specific APIs, so if your code directly uses browser-only globals like `window` or `document`, they will throw errors when executed in Node.js, and vice-versa.
+Универсальный код не может предполагать доступ к API, специфичным для конкретной платформы, поэтому если ваш код напрямую использует глобалы только для браузера, такие как `window` или `document`, они будут вызывать ошибки при выполнении в Node.js, и наоборот.
 
-For tasks that are shared between server and client but with different platform APIs, it's recommended to wrap the platform-specific implementations inside a universal API, or use libraries that do this for you. For example, you can use [`node-fetch`](https://github.com/node-fetch/node-fetch) to use the same fetch API on both server and client.
+Для задач, которые разделяются между сервером и клиентом, но имеют разные API платформы, рекомендуется обернуть специфические для платформы реализации в универсальный API или использовать библиотеки, которые сделают это за вас. Например, вы можете использовать [`node-fetch`](https://github.com/node-fetch/node-fetch), чтобы использовать один и тот же API fetch на сервере и клиенте.
 
-For browser-only APIs, the common approach is to lazily access them inside client-only lifecycle hooks such as <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>.
+Для API, предназначенных только для браузеров, распространённым подходом является ленивый доступ к ним внутри хуков жизненного цикла, предназначенных только для клиентов, таких как <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>.
 
-Note that if a third-party library is not written with universal usage in mind, it could be tricky to integrate it into a server-rendered app. You _might_ be able to get it working by mocking some of the globals, but it would be hacky and may interfere with the environment detection code of other libraries.
+Обратите внимание, что если сторонняя библиотека не написана с учётом универсального использования, её может быть сложно интегрировать в приложение с серверным рендерингом. Вы _можете_ заставить его работать, подражая некоторым глобалам, но это будет халтурно и может помешать коду определения окружения других библиотек.
 
-### Cross-Request State Pollution {#cross-request-state-pollution}
+### Загрязнение состояния при перекрёстных запросах {#cross-request-state-pollution}
 
-In the State Management chapter, we introduced a [simple state management pattern using Reactivity APIs](state-management#simple-state-management-with-reactivity-api). In an SSR context, this pattern requires some additional adjustments.
+В главе «Управление состоянием» мы представили [простой паттерн управления состоянием с использованием API реактивности](state-management#simple-state-management-with-reactivity-api). В контексте SSR этот паттерн требует некоторых дополнительных корректировок.
 
-The pattern declares shared state in a JavaScript module's root scope. This makes them **singletons** - i.e. there is only one instance of the reactive object throughout the entire lifecycle of our application. This works as expected in a pure client-side Vue application, since the modules in our application are initialized fresh for each browser page visit.
+Паттерн объявляет общее состояние в корневой области видимости модуля JavaScript. Это делает их **синглтонами** — т. е. на протяжении всего жизненного цикла нашего приложения существует только один экземпляр реактивного объекта. Это работает, как и ожидалось, в чисто клиентском приложении Vue, поскольку модули в нашем приложении инициализируются заново при каждом посещении страницы браузера.
 
-However, in an SSR context, the application modules are typically initialized only once on the server, when the server boots up. The same module instances will be reused across multiple server requests, and so will our singleton state objects. If we mutate the shared singleton state with data specific to one user, it can be accidentally leaked to a request from another user. We call this **cross-request state pollution.**
+Однако в контексте SSR модули приложения обычно инициализируются на сервере только один раз, при его загрузке. Одни и те же экземпляры модулей будут повторно использоваться при нескольких запросах к серверу, как и наши объекты состояния синглтонов. Если мы мутируем общее состояние синглтонов с данными, специфичными для одного пользователя, они могут случайно просочиться в запрос от другого пользователя. Мы называем это **загрязнением состояния при перекрёстных запросах**.
 
-We can technically re-initialize all the JavaScript modules on each request, just like we do in browsers. However, initializing JavaScript modules can be costly, so this would significantly affect server performance.
+Технически мы можем заново инициализировать все модули JavaScript при каждом запросе, как это делается в браузерах. Однако инициализация модулей JavaScript может быть дорогостоящей, поэтому это значительно повлияет на производительность сервера.
 
-The recommended solution is to create a new instance of the entire application - including the router and global stores - on each request. Then, instead of directly importing it in our components, we provide the shared state using [app-level provide](/guide/components/provide-inject#app-level-provide) and inject it in components that need it:
+Рекомендуемое решение — создавать новый экземпляр всего приложения, включая маршрутизатор и глобальные хранилища, при каждом запросе. Затем, вместо того чтобы напрямую импортировать его в наши компоненты, мы предоставляем общее состояние с помощью [provide на уровне приложения](/guide/components/provide-inject#app-level-provide) и инжектируем его в компоненты, которым оно необходимо:
 
 ```js
-// app.js (shared between server and client)
+// app.js (совместно используемый сервером и клиентом)
 import { createSSRApp } from 'vue'
 import { createStore } from './store.js'
 
-// called on each request
+// вызывается при каждом запросе
 export function createApp() {
   const app = createSSRApp(/* ... */)
-  // create new instance of store per request
+  // создание нового экземпляра хранилища по запросу
   const store = createStore(/* ... */)
-  // provide store at the app level
+  // обеспечиваем хранение на уровне приложения
   app.provide('store', store)
-  // also expose store for hydration purposes
+  // также разворачиваем хранилище для гидратации целей
   return { app, store }
 }
 ```
 
-State Management libraries like Pinia are designed with this in mind. Consult [Pinia's SSR guide](https://pinia.vuejs.org/ssr/) for more details.
+Библиотеки управления состояниями, такие как Pinia, разработаны с учётом этого. За более подробной информацией обратитесь к [Руководству по SSR в Pinia](https://pinia.vuejs.org/ssr/).
 
-### Hydration Mismatch {#hydration-mismatch}
+### Несоответствие гидратации {#hydration-mismatch}
 
-If the DOM structure of the pre-rendered HTML does not match the expected output of the client-side app, there will be a hydration mismatch error. Hydration mismatch is most commonly introduced by the following causes:
+Если структура DOM предварительно отрендеренного HTML не совпадает с ожидаемым результатом работы клиентского приложения, возникает ошибка несоответствия гидратации. Чаще всего несоответствие гидратации возникает по следующим причинам:
 
-1. The template contains invalid HTML nesting structure, and the rendered HTML got "corrected" by the browser's native HTML parsing behavior. For example, a common gotcha is that [`<div>` cannot be placed inside `<p>`](https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it):
+1. Шаблон содержит неправильную структуру вложенности HTML, и отрисованный HTML был «исправлен» собственным поведением браузера по разбору HTML. Например, часто встречается ситуация, когда [`<div>` не может быть размещён внутри `<p>`](https://stackoverflow.com/questions/8397852/why-cant-the-p-tag-contain-a-div-tag-inside-it):
 
    ```html
-   <p><div>hi</div></p>
+   <p><div>привет</div></p>
    ```
 
-   If we produce this in our server-rendered HTML, the browser will terminate the first `<p>` when `<div>` is encountered and parse it into the following DOM structure:
+   Если мы создадим это в нашем серверном HTML, браузер прервёт первый `<p>`, когда встретится `<div>`, и разберёт его в следующую структуру DOM:
 
    ```html
    <p></p>
-   <div>hi</div>
+   <div>привет</div>
    <p></p>
    ```
 
-2. The data used during render contains randomly generated values. Since the same application will run twice - once on the server, and once on the client - the random values are not guaranteed to be the same between the two runs. There are two ways to avoid random-value-induced mismatches:
+2. Данные, используемые во время рендеринга, содержат случайно сгенерированные значения. Поскольку одно и то же приложение будет запущено дважды — один раз на сервере, другой раз на клиенте, — не гарантируется, что случайные значения будут одинаковыми при двух запусках. Существует два способа избежать несовпадений, вызванных случайными значениями:
 
-   1. Use `v-if` + `onMounted` to render the part that depends on random values only on the client. Your framework may also have built-in features to make this easier, for example the `<ClientOnly>` component in VitePress.
+   1. Используйте `v-if` + `onMounted` для рендеринга части, зависящей от случайных значений, только на клиенте. Ваш фреймворк может иметь встроенные функции, облегчающие эту задачу, например, компонент `<ClientOnly>` в VitePress.
 
-   2. Use a random number generator library that supports generating with seeds, and guarantee the server run and the client run are using the same seed (e.g. by including the seed in serialized state and retrieving it on the client).
+   2. Используйте библиотеку генератора случайных чисел, поддерживающую генерацию с семенами, и гарантируйте, что сервер и клиент используют одно и то же семя (например, включив семя в сериализованное состояние и получив его на клиенте).
 
-3. The server and the client are in different time zones. Sometimes, we may want to convert a timestamp into the user's local time. However, the timezone during the server run and the timezone during the client run are not always the same, and we may not reliably know the user's timezone during the server run. In such cases, the local time conversion should also be performed as a client-only operation.
+3. Сервер и клиент находятся в разных часовых поясах. Иногда нам может потребоваться перевести временную метку в местное время пользователя. Однако часовой пояс во время работы сервера и часовой пояс во время работы клиента не всегда совпадают, и мы можем не знать достоверно часовой пояс пользователя во время работы сервера. В таких случаях преобразование местного времени также должно выполняться только для клиента.
 
-When Vue encounters a hydration mismatch, it will attempt to automatically recover and adjust the pre-rendered DOM to match the client-side state. This will lead to some rendering performance loss due to incorrect nodes being discarded and new nodes being mounted, but in most cases, the app should continue to work as expected. That said, it is still best to eliminate hydration mismatches during development.
+Когда Vue столкнется с несоответствием гидратации, он попытается автоматически восстановить и настроить предварительно отрендеренный DOM так, чтобы он соответствовал состоянию на стороне клиента. Это приведёт к некоторому снижению производительности рендеринга из-за отбрасывания неверных узлов и установки новых, но в большинстве случаев приложение продолжит работать так, как ожидалось. Тем не менее, лучше всего устранять несоответствия в процессе разработки.
 
-### Custom Directives {#custom-directives}
+### Пользовательские директивы {#custom-directives}
 
-Since most custom directives involve direct DOM manipulation, they are ignored during SSR. However, if you want to specify how a custom directive should be rendered (i.e. what attributes it should add to the rendered element), you can use the `getSSRProps` directive hook:
+Поскольку большинство пользовательских директив подразумевают прямые манипуляции с DOM, они игнорируются во время SSR. Однако если вы хотите указать, как должна отображаться пользовательская директива (т. е. какие атрибуты она должна добавить к отрисованному элементу), вы можете использовать хук директивы `getSSRProps`:
 
 ```js
 const myDirective = {
   mounted(el, binding) {
-    // client-side implementation:
-    // directly update the DOM
+    // реализация на стороне клиента:
+    // напрямую обновляем DOM
     el.id = binding.value
   },
   getSSRProps(binding) {
-    // server-side implementation:
-    // return the props to be rendered.
-    // getSSRProps only receives the directive binding.
+    // реализация на стороне сервера:
+    // возвращает параметры для отображаться.
+    // getSSRProps получает только привязку к директиве.
     return {
       id: binding.value
     }
@@ -336,23 +336,23 @@ const myDirective = {
 }
 ```
 
-### Teleports {#teleports}
+### Телепорты {#teleports}
 
-Teleports require special handling during SSR. If the rendered app contains Teleports, the teleported content will not be part of the rendered string. An easier solution is to conditionally render the Teleport on mount.
+Телепорты требуют особого обращения во время SSR. Если приложение содержит телепорты, то телепортированное содержимое не будет являться частью строки рендеринга. Более простым решением является условное отображение телепорта при монтировании.
 
-If you do need to hydrate teleported content, they are exposed under the `teleports` property of the ssr context object:
+Если вам нужно гидрировать телепортированное содержимое, то оно отображается в свойстве `teleports` объекта контекста ssr:
 
 ```js
 const ctx = {}
 const html = await renderToString(app, ctx)
 
-console.log(ctx.teleports) // { '#teleported': 'teleported content' }
+console.log(ctx.teleports) // { '#teleported': 'телепортированное содержимое' }
 ```
 
-You need to inject the teleport markup into the correct location in your final page HTML similar to how you need to inject the main app markup.
+Вам нужно внедрить разметку телепорта в нужное место в HTML конечной страницы, аналогично тому, как вы внедряете разметку основного приложения.
 
 :::tip
-Avoid targeting `body` when using Teleports and SSR together - usually, `<body>` will contain other server-rendered content which makes it impossible for Teleports to determine the correct starting location for hydration.
+При совместном использовании телепортов и SSR избегайте указания на `body` — обычно `<body>` содержит другой рендеренный сервером контент, из-за которого телепорты не могут определить правильное начальное место для гидратации.
 
-Instead, prefer a dedicated container, e.g. `<div id="teleported"></div>` which contains only teleported content.
+Вместо этого предпочтите специальный контейнер, например, `<div id="teleported"></div>`, который содержит только телепортированное содержимое.
 :::
