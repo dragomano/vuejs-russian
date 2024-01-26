@@ -1,117 +1,117 @@
-# Built-in Directives {#built-in-directives}
+# Встроенные директивы {#built-in-directives}
 
 ## v-text {#v-text}
 
-Update the element's text content.
+Обновление текстового содержимого элемента.
 
-- **Expects:** `string`
+- **Ожидается:** `string`
 
-- **Details**
+- **Подробности**
 
-  `v-text` works by setting the element's [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) property, so it will overwrite any existing content inside the element. If you need to update the part of `textContent`, you should use [mustache interpolations](/guide/essentials/template-syntax#text-interpolation) instead.
+  `v-text` работает, устанавливая свойство [textContent](https://developer.mozilla.org/ru/docs/Web/API/Node/textContent) элемента, поэтому он будет перезаписывать любое существующее содержимое внутри элемента. Если вам нужно обновить часть `textContent`, то вместо этого следует использовать [интерполяцию усов](/guide/essentials/template-syntax#text-interpolation).
 
-- **Example**
+- **Пример**
 
   ```vue-html
   <span v-text="msg"></span>
-  <!-- same as -->
+  <!-- то же, что и -->
   <span>{{msg}}</span>
   ```
 
-- **See also** [Template Syntax - Text Interpolation](/guide/essentials/template-syntax#text-interpolation)
+- **Смотрите также** [Синтаксис шаблона - Интерполяция текста](/guide/essentials/template-syntax#text-interpolation)
 
 ## v-html {#v-html}
 
-Update the element's [innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML).
+Обновление [innerHTML](https://developer.mozilla.org/ru/docs/Web/API/Element/innerHTML) элемента.
 
-- **Expects:** `string`
+- **Ожидается:** `string`
 
-- **Details**
+- **Подробности**
 
-  Contents of `v-html` are inserted as plain HTML - Vue template syntax will not be processed. If you find yourself trying to compose templates using `v-html`, try to rethink the solution by using components instead.
+  Содержимое `v-html` вставляется как обычный HTML — синтаксис шаблонов Vue не будет обработан. Если вы пытаетесь скомпоновать шаблоны с помощью `v-html`, попробуйте переосмыслить решение, используя вместо этого компоненты.
 
-  ::: warning Security Note
-  Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to [XSS attacks](https://en.wikipedia.org/wiki/Cross-site_scripting). Only use `v-html` on trusted content and **never** on user-provided content.
+  ::: warning Примечание по безопасности
+  Динамическая отрисовка произвольного HTML на вашем сайте может быть очень опасна, так как она легко может привести к [XSS-атакам](https://en.wikipedia.org/wiki/Cross-site_scripting). Используйте `v-html` только для доверенного содержимого и **никогда** для содержимого, предоставленного пользователем.
   :::
 
-  In [Single-File Components](/guide/scaling-up/sfc), `scoped` styles will not apply to content inside `v-html`, because that HTML is not processed by Vue's template compiler. If you want to target `v-html` content with scoped CSS, you can instead use [CSS modules](./sfc-css-features#css-modules) or an additional, global `<style>` element with a manual scoping strategy such as BEM.
+  В [однофайловых компонентах](/guide/scaling-up/sfc) стили `scoped` не будут применяться к содержимому внутри `v-html`, поскольку этот HTML не обрабатывается компилятором шаблонов Vue. Если вы хотите нацелить `v-html` контент с помощью развёрнутого CSS, вы можете использовать [CSS-модули](./sfc-css-features#css-modules) или дополнительный, глобальный `<style>` элемент с ручной стратегией развёртки, такой как BEM.
 
-- **Example**
+- **Пример**
 
   ```vue-html
   <div v-html="html"></div>
   ```
 
-- **See also** [Template Syntax - Raw HTML](/guide/essentials/template-syntax#raw-html)
+- **Смотрите также** [Синтаксис шаблона - Необработанный HTML](/guide/essentials/template-syntax#raw-html)
 
 ## v-show {#v-show}
 
-Toggle the element's visibility based on the truthy-ness of the expression value.
+Переключает видимость элемента в зависимости от истинности значения выражения.
 
-- **Expects:** `any`
+- **Ожидается:** `any`
 
-- **Details**
+- **Подробности**
 
-  `v-show` works by setting the `display` CSS property via inline styles, and will try to respect the initial `display` value when the element is visible. It also triggers transitions when its condition changes.
+  `v-show` работает, устанавливая CSS-свойство `display` через встроенные стили, и будет стараться соблюдать начальное значение `display`, когда элемент становится видимым. Он также запускает переходы при изменении своего состояния.
 
-- **See also** [Conditional Rendering - v-show](/guide/essentials/conditional#v-show)
+- **Смотрите также** [Условная отрисовка - v-show](/guide/essentials/conditional#v-show)
 
 ## v-if {#v-if}
 
-Conditionally render an element or a template fragment based on the truthy-ness of the expression value.
+Условное отображение элемента или фрагмента шаблона на основе истинности значения выражения.
 
-- **Expects:** `any`
+- **Ожидается:** `any`
 
-- **Details**
+- **Подробности**
 
-  When a `v-if` element is toggled, the element and its contained directives / components are destroyed and re-constructed. If the initial condition is falsy, then the inner content won't be rendered at all.
+  При переключении элемента `v-if` элемент и содержащиеся в нем директивы/компоненты уничтожаются и создаются заново. Если начальное условие ложноподобное, то внутреннее содержимое не будет отображаться вообще.
 
-  Can be used on `<template>` to denote a conditional block containing only text or multiple elements.
+  Может использоваться в `<template>` для обозначения условного блока, содержащего только текст или несколько элементов.
 
-  This directive triggers transitions when its condition changes.
+  Эта директива запускает переходы при изменении своего состояния.
 
-  When used together, `v-if` has a higher priority than `v-for`. We don't recommend using these two directives together on one element — see the [list rendering guide](/guide/essentials/list#v-for-with-v-if) for details.
+  При совместном использовании `v-if` имеет более высокий приоритет, чем `v-for`. Мы не рекомендуем использовать эти две директивы вместе в одном элементе — подробности см. в руководстве [Отрисовка списков](/guide/essentials/list#v-for-with-v-if).
 
-- **See also** [Conditional Rendering - v-if](/guide/essentials/conditional#v-if)
+- **Смотрите также** [Условная отрисовка - v-if](/guide/essentials/conditional#v-if)
 
 ## v-else {#v-else}
 
-Denote the "else block" for `v-if` or a `v-if` / `v-else-if` chain.
+Указание «блока else» для `v-if` или цепочки `v-if` / `v-else-if`.
 
-- **Does not expect expression**
+- **Не ожидает выражения**
 
-- **Details**
+- **Подробности**
 
-  - Restriction: previous sibling element must have `v-if` or `v-else-if`.
+  - Ограничение: предыдущий родственный элемент должен иметь `v-if` или `v-else-if`.
 
-  - Can be used on `<template>` to denote a conditional block containing only text or multiple elements.
+  - Может использоваться в `<template>` для обозначения условного блока, содержащего только текст или несколько элементов.
 
-- **Example**
+- **Пример**
 
   ```vue-html
   <div v-if="Math.random() > 0.5">
-    Now you see me
+    Сейчас вы меня видите
   </div>
   <div v-else>
-    Now you don't
+    А сейчас нет
   </div>
   ```
 
-- **See also** [Conditional Rendering - v-else](/guide/essentials/conditional#v-else)
+- **Смотрите также** [Условная отрисовка - v-else](/guide/essentials/conditional#v-else)
 
 ## v-else-if {#v-else-if}
 
-Denote the "else if block" for `v-if`. Can be chained.
+Указание блока «else if» для `v-if`. Может быть соединен в цепочку.
 
-- **Expects:** `any`
+- **Ожидается:** `any`
 
-- **Details**
+- **Подробности**
 
-  - Restriction: previous sibling element must have `v-if` or `v-else-if`.
+  - Ограничение: предыдущий родственный элемент должен иметь `v-if` или `v-else-if`.
 
-  - Can be used on `<template>` to denote a conditional block containing only text or multiple elements.
+  - Может использоваться в `<template>` для обозначения условного блока, содержащего только текст или несколько элементов.
 
-- **Example**
+- **Пример**
 
   ```vue-html
   <div v-if="type === 'A'">
@@ -124,21 +124,21 @@ Denote the "else if block" for `v-if`. Can be chained.
     C
   </div>
   <div v-else>
-    Not A/B/C
+    Не A/B/C
   </div>
   ```
 
-- **See also** [Conditional Rendering - v-else-if](/guide/essentials/conditional#v-else-if)
+- **Смотрите также** [Условная отрисовка - v-else-if](/guide/essentials/conditional#v-else-if)
 
 ## v-for {#v-for}
 
-Render the element or template block multiple times based on the source data.
+Многократное отображение элемента или блока шаблона на основе исходных данных.
 
-- **Expects:** `Array | Object | number | string | Iterable`
+- **Ожидается:** `Array | Object | number | string | Iterable`
 
-- **Details**
+- **Подробности**
 
-  The directive's value must use the special syntax `alias in expression` to provide an alias for the current element being iterated on:
+  Значение директивы должно использовать специальный синтаксис `alias in expression`, чтобы предоставить псевдоним для текущего элемента, над которым выполняется итерация:
 
   ```vue-html
   <div v-for="item in items">
@@ -146,7 +146,7 @@ Render the element or template block multiple times based on the source data.
   </div>
   ```
 
-  Alternatively, you can also specify an alias for the index (or the key if used on an Object):
+  Кроме того, вы можете указать псевдоним для индекса (или ключа, если он используется для объекта):
 
   ```vue-html
   <div v-for="(item, index) in items"></div>
@@ -154,7 +154,7 @@ Render the element or template block multiple times based on the source data.
   <div v-for="(value, name, index) in object"></div>
   ```
 
-  The default behavior of `v-for` will try to patch the elements in-place without moving them. To force it to reorder elements, you should provide an ordering hint with the `key` special attribute:
+  Поведение `v-for` по умолчанию будет пытаться исправлять элементы на месте, не перемещая их. Чтобы заставить его упорядочить элементы, необходимо указать подсказку для упорядочивания с помощью специального атрибута `key`:
 
   ```vue-html
   <div v-for="item in items" :key="item.id">
@@ -162,242 +162,241 @@ Render the element or template block multiple times based on the source data.
   </div>
   ```
 
-  `v-for` can also work on values that implement the [Iterable Protocol](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol), including native `Map` and `Set`.
+  `v-for` также может работать со значениями, которые реализуют [Iterable Protocol](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Iteration_protocols), включая нативные `Map` и `Set`.
 
-- **See also**
-  - [List Rendering](/guide/essentials/list)
+- **Смотрите также** [Отрисовка списков](/guide/essentials/list)
 
 ## v-on {#v-on}
 
-Attach an event listener to the element.
+Прикрепление к элементу слушателя событий.
 
-- **Shorthand:** `@`
+- **Короткий синтаксис:** `@`
 
-- **Expects:** `Function | Inline Statement | Object (without argument)`
+- **Ожидается:** `Function | Inline Statement | Object (без аргумента)`
 
-- **Argument:** `event` (optional if using Object syntax)
+- **Argument:** `event` (необязательно, если используется синтаксис объекта)
 
-- **Modifiers**
+- **Модификаторы**
 
-  - `.stop` - call `event.stopPropagation()`.
-  - `.prevent` - call `event.preventDefault()`.
-  - `.capture` - add event listener in capture mode.
-  - `.self` - only trigger handler if event was dispatched from this element.
-  - `.{keyAlias}` - only trigger handler on certain keys.
-  - `.once` - trigger handler at most once.
-  - `.left` - only trigger handler for left button mouse events.
-  - `.right` - only trigger handler for right button mouse events.
-  - `.middle` - only trigger handler for middle button mouse events.
-  - `.passive` - attaches a DOM event with `{ passive: true }`.
+  - `.stop` - вызов `event.stopPropagation()`.
+  - `.prevent` - вызов `event.preventDefault()`.
+  - `.capture` - добавление слушателя событий в режиме захвата.
+  - `.self` - запуск обработчика только в том случае, если событие было отправлено от этого элемента.
+  - `.{keyAlias}` - запуск обработчика только на определённых клавишах.
+  - `.once` - запуск обработчика не более одного раза.
+  - `.left` - запуск обработчика только для событий левой кнопки мыши.
+  - `.right` - запуск обработчика только для событий правой кнопки мыши.
+  - `.middle` - запуск обработчика только для событий средней кнопки мыши.
+  - `.passive` - присоединение события DOM с `{ passive: true }`.
 
-- **Details**
+- **Подробности**
 
-  The event type is denoted by the argument. The expression can be a method name, an inline statement, or omitted if there are modifiers present.
+  Тип события обозначается аргументом. Выражение может быть именем метода, встроенным оператором или опущено, если присутствуют модификаторы.
 
-  When used on a normal element, it listens to [**native DOM events**](https://developer.mozilla.org/en-US/docs/Web/Events) only. When used on a custom element component, it listens to **custom events** emitted on that child component.
+  При использовании на обычном элементе он слушает только [**нативные события DOM**](https://developer.mozilla.org/ru/docs/Web/Events). При использовании на компоненте пользовательского элемента, он прослушивает **пользовательские события**, испускаемые на этом дочернем компоненте.
 
-  When listening to native DOM events, the method receives the native event as the only argument. If using inline statement, the statement has access to the special `$event` property: `v-on:click="handle('ok', $event)"`.
+  При прослушивании нативных событий DOM метод получает собственное событие в качестве единственного аргумента. Если используется встроенное выражение, то утверждение имеет доступ к специальному свойству `$event`: `v-on:click="handle('ok', $event)"`.
 
-  `v-on` also supports binding to an object of event / listener pairs without an argument. Note when using the object syntax, it does not support any modifiers.
+  `v-on` также поддерживает привязку к объекту пары событие/слушатель без аргумента. Обратите внимание, что при использовании синтаксиса объекта он не поддерживает никаких модификаторов.
 
-- **Example**
+- **Пример**
 
   ```vue-html
-  <!-- method handler -->
+  <!-- обработчик метода -->
   <button v-on:click="doThis"></button>
 
-  <!-- dynamic event -->
+  <!-- динамическое событие -->
   <button v-on:[event]="doThis"></button>
 
-  <!-- inline statement -->
+  <!-- встроенное выражение -->
   <button v-on:click="doThat('hello', $event)"></button>
 
-  <!-- shorthand -->
+  <!-- короткий синтаксис -->
   <button @click="doThis"></button>
 
-  <!-- shorthand dynamic event -->
+  <!-- сокращённое обозначение динамического события -->
   <button @[event]="doThis"></button>
 
-  <!-- stop propagation -->
+  <!-- остановка распространения (stop propagation) -->
   <button @click.stop="doThis"></button>
 
-  <!-- prevent default -->
+  <!-- игнорирование поведения по умолчанию (prevent default) -->
   <button @click.prevent="doThis"></button>
 
-  <!-- prevent default without expression -->
+  <!-- игнорирование поведения по умолчанию без выражения -->
   <form @submit.prevent></form>
 
-  <!-- chain modifiers -->
+  <!-- цепочка модификаторов -->
   <button @click.stop.prevent="doThis"></button>
 
-  <!-- key modifier using keyAlias -->
+  <!-- модификатор клавиш с помощью KeyAlias -->
   <input @keyup.enter="onEnter" />
 
-  <!-- the click event will be triggered at most once -->
+  <!-- событие щелчка будет вызвано не более одного раза -->
   <button v-on:click.once="doThis"></button>
 
-  <!-- object syntax -->
+  <!-- синтаксис объекта -->
   <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
   ```
 
-  Listening to custom events on a child component (the handler is called when "my-event" is emitted on the child):
+  Прослушивание пользовательских событий на дочернем компоненте (обработчик вызывается, когда «my-event» излучается на дочернем элементе):
 
   ```vue-html
   <MyComponent @my-event="handleThis" />
 
-  <!-- inline statement -->
+  <!-- встроенное выражение -->
   <MyComponent @my-event="handleThis(123, $event)" />
   ```
 
-- **See also**
-  - [Event Handling](/guide/essentials/event-handling)
-  - [Components - Custom Events](/guide/essentials/component-basics#listening-to-events)
+- **Смотрите также**
+  - [Обработка событий](/guide/essentials/event-handling)
+  - [Компоненты - Пользовательские события](/guide/essentials/component-basics#listening-to-events)
 
 ## v-bind {#v-bind}
 
-Dynamically bind one or more attributes, or a component prop to an expression.
+Динамическая привязка одного или нескольких атрибутов или параметров компонента к выражению.
 
-- **Shorthand:** `:` or `.` (when using `.prop` modifier)
+- **Короткий синтаксис:** `:` or `.` (when using `.prop` modifier)
 
-- **Expects:** `any (with argument) | Object (without argument)`
+- **Ожидается:** `any (с аргументом) | Object (без аргумента)`
 
-- **Argument:** `attrOrProp (optional)`
+- **Argument:** `attrOrProp (опционально)`
 
-- **Modifiers**
+- **Модификаторы**
 
-  - `.camel` - transform the kebab-case attribute name into camelCase.
-  - `.prop` - force a binding to be set as a DOM property. <sup class="vt-badge">3.2+</sup>
-  - `.attr` - force a binding to be set as a DOM attribute. <sup class="vt-badge">3.2+</sup>
+  - `.camel` - преобразование имени атрибута в кебабном регистре в camelCase.
+  - `.prop` - установка привязки в качестве свойства DOM. <sup class="vt-badge">3.2+</sup>
+  - `.attr` - установка привязки в качестве атрибута DOM. <sup class="vt-badge">3.2+</sup>
 
-- **Usage**
+- **Использование**
 
-  When used to bind the `class` or `style` attribute, `v-bind` supports additional value types such as Array or Objects. See linked guide section below for more details.
+  При использовании для привязки атрибута `class` или `style`, `v-bind` поддерживает дополнительные типы значений, такие как Array или Objects. Более подробную информацию см. в разделе «Руководство по использованию ссылок» ниже.
 
-  When setting a binding on an element, Vue by default checks whether the element has the key defined as a property using an `in` operator check. If the property is defined, Vue will set the value as a DOM property instead of an attribute. This should work in most cases, but you can override this behavior by explicitly using `.prop` or `.attr` modifiers. This is sometimes necessary, especially when [working with custom elements](/guide/extras/web-components#passing-dom-properties).
+  При установке привязки к элементу Vue по умолчанию проверяет, есть ли у элемента ключ, определённый как свойство, с помощью проверки оператора `in`. Если свойство определено, Vue установит его значение как свойство DOM, а не как атрибут. Это должно работать в большинстве случаев, но вы можете переопределить это поведение, явно используя модификаторы `.prop` или `.attr`. Иногда это необходимо, особенно при [работе с пользовательскими элементами](/guide/extras/web-components#passing-dom-properties).
 
-  When used for component prop binding, the prop must be properly declared in the child component.
+  При использовании для привязки параметра компонента он должен быть правильно объявлен в дочернем компоненте.
 
-  When used without an argument, can be used to bind an object containing attribute name-value pairs.
+  При использовании без аргумента может использоваться для связывания объекта, содержащего пары имён-значений атрибутов.
 
-- **Example**
+- **Пример**
 
   ```vue-html
-  <!-- bind an attribute -->
+  <!-- привязка атрибута -->
   <img v-bind:src="imageSrc" />
 
-  <!-- dynamic attribute name -->
+  <!-- динамическое имя атрибута -->
   <button v-bind:[key]="value"></button>
 
-  <!-- shorthand -->
+  <!-- короткий синтаксис -->
   <img :src="imageSrc" />
 
-  <!-- shorthand dynamic attribute name -->
+  <!-- сокращённое имя динамического атрибута -->
   <button :[key]="value"></button>
 
-  <!-- with inline string concatenation -->
+  <!-- со встроенной конкатенацией строк -->
   <img :src="'/path/to/images/' + fileName" />
 
-  <!-- class binding -->
+  <!-- привязка класса -->
   <div :class="{ red: isRed }"></div>
   <div :class="[classA, classB]"></div>
   <div :class="[classA, { classB: isB, classC: isC }]"></div>
 
-  <!-- style binding -->
+  <!-- привязка стиля -->
   <div :style="{ fontSize: size + 'px' }"></div>
   <div :style="[styleObjectA, styleObjectB]"></div>
 
-  <!-- binding an object of attributes -->
+  <!-- связывание объекта с атрибутами -->
   <div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
 
-  <!-- prop binding. "prop" must be declared in the child component. -->
+  <!-- привязка prop. "prop" должен быть объявлен в дочернем компоненте. -->
   <MyComponent :prop="someThing" />
 
-  <!-- pass down parent props in common with a child component -->
+  <!-- передача родительских параметров, общих с дочерним компонентом -->
   <MyComponent v-bind="$props" />
 
   <!-- XLink -->
   <svg><a :xlink:special="foo"></a></svg>
   ```
 
-  The `.prop` modifier also has a dedicated shorthand, `.`:
+  Модификатор `.prop` также имеет специальное сокращение, `.`:
 
   ```vue-html
   <div :someProperty.prop="someObject"></div>
 
-  <!-- equivalent to -->
+  <!-- эквивалентно -->
   <div .someProperty="someObject"></div>
   ```
 
-  The `.camel` modifier allows camelizing a `v-bind` attribute name when using in-DOM templates, e.g. the SVG `viewBox` attribute:
+  Модификатор `.camel` позволяет изменять имя атрибута `v-bind` при использовании шаблонов в DOM. Пример с атрибутом SVG `viewBox`:
 
   ```vue-html
   <svg :view-box.camel="viewBox"></svg>
   ```
 
-  `.camel` is not needed if you are using string templates, or pre-compiling the template with a build step.
+  `.camel` не нужен, если вы используете строковые шаблоны или предварительно компилируете шаблон на этапе сборки.
 
-- **See also**
-  - [Class and Style Bindings](/guide/essentials/class-and-style)
-  - [Components - Prop Passing Details](/guide/components/props#prop-passing-details)
+- **Смотрите также**
+  - [Привязка классов и стилей](/guide/essentials/class-and-style)
+  - [Компоненты - Подробности передачи параметров](/guide/components/props#prop-passing-details)
 
 ## v-model {#v-model}
 
-Create a two-way binding on a form input element or a component.
+Создание двусторонней привязки к элементу ввода формы или компоненту.
 
-- **Expects:** varies based on value of form inputs element or output of components
+- **Ожидается:** варьируется в зависимости от значения входных элементов формы или выхода компонентов
 
-- **Limited to:**
+- **Ограничено:**
 
   - `<input>`
   - `<select>`
   - `<textarea>`
-  - components
+  - компоненты
 
-- **Modifiers**
+- **Модификаторы**
 
-  - [`.lazy`](/guide/essentials/forms#lazy) - listen to `change` events instead of `input`
-  - [`.number`](/guide/essentials/forms#number) - cast valid input string to numbers
-  - [`.trim`](/guide/essentials/forms#trim) - trim input
+  - [`.lazy`](/guide/essentials/forms#lazy) - прослушивает события `change` вместо `input`
+  - [`.number`](/guide/essentials/forms#number) - преобразование допустимой строки ввода в числа
+  - [`.trim`](/guide/essentials/forms#trim) - обрезает пробелы вокруг значения
 
-- **See also**
+- **Смотрите также**
 
-  - [Form Input Bindings](/guide/essentials/forms)
-  - [Component Events - Usage with `v-model`](/guide/components/v-model)
+  - [Привязка элементов формы](/guide/essentials/forms)
+  - [События компонентов - Использование с `v-model`](/guide/components/v-model)
 
 ## v-slot {#v-slot}
 
-Denote named slots or scoped slots that expect to receive props.
+Обозначает именованные слоты или слоты с ограниченной областью действия, которые ожидают получения параметров.
 
-- **Shorthand:** `#`
+- **Короткий синтаксис:** `#`
 
-- **Expects:** JavaScript expression that is valid in a function argument position, including support for destructuring. Optional - only needed if expecting props to be passed to the slot.
+- **Ожидается:** Выражение JavaScript, допустимое в позиции аргумента функции, включая поддержку деструктуризации. Необязательный — нужен только в том случае, если ожидается передача параметров в слот.
 
-- **Argument:** slot name (optional, defaults to `default`)
+- **Argument:** имя слота (необязательно, по умолчанию `default`)
 
-- **Limited to:**
+- **Ограничено:**
 
   - `<template>`
-  - [components](/guide/components/slots#scoped-slots) (for a lone default slot with props)
+  - [компоненты](/guide/components/slots#scoped-slots) (для одинокого слота по умолчанию с параметром)
 
-- **Example**
+- **Пример**
 
   ```vue-html
-  <!-- Named slots -->
+  <!-- Именованные слоты -->
   <BaseLayout>
     <template v-slot:header>
-      Header content
+      Шапка
     </template>
 
     <template v-slot:default>
-      Default slot content
+      Содержимое слота по умолчанию
     </template>
 
     <template v-slot:footer>
-      Footer content
+      Подвал
     </template>
   </BaseLayout>
 
-  <!-- Named slot that receives props -->
+  <!-- Именованные слоты с параметрами -->
   <InfiniteScroll>
     <template v-slot:item="slotProps">
       <div class="item">
@@ -406,70 +405,69 @@ Denote named slots or scoped slots that expect to receive props.
     </template>
   </InfiniteScroll>
 
-  <!-- Default slot that receive props, with destructuring -->
+  <!-- Слот по умолчанию, принимающий параметры, с деструктуризацией -->
   <Mouse v-slot="{ x, y }">
-    Mouse position: {{ x }}, {{ y }}
+    Позиция курсора мыши: {{ x }}, {{ y }}
   </Mouse>
   ```
 
-- **See also**
-  - [Components - Slots](/guide/components/slots)
+- **Смотрите также** [Компоненты - Слоты](/guide/components/slots)
 
 ## v-pre {#v-pre}
 
-Skip compilation for this element and all its children.
+Пропуск компиляции для этого элемента и всех его дочерних элементов.
 
-- **Does not expect expression**
+- **Не ожидает выражения**
 
-- **Details**
+- **Подробности**
 
-  Inside the element with `v-pre`, all Vue template syntax will be preserved and rendered as-is. The most common use case of this is displaying raw mustache tags.
+  Внутри элемента с `v-pre` весь синтаксис шаблонов Vue будет сохранён и отображён как есть. Наиболее распространённый вариант использования этого метода — отображение необработанных тегов усов.
 
-- **Example**
+- **Пример**
 
   ```vue-html
-  <span v-pre>{{ this will not be compiled }}</span>
+  <span v-pre>{{ это не будет скомпилировано }}</span>
   ```
 
 ## v-once {#v-once}
 
-Render the element and component once only, and skip future updates.
+Отрисовка элемента и компонента только один раз и пропуск последующих обновлений.
 
-- **Does not expect expression**
+- **Не ожидает выражения**
 
-- **Details**
+- **Подробности**
 
-  On subsequent re-renders, the element/component and all its children will be treated as static content and skipped. This can be used to optimize update performance.
+  При последующих повторных отрисовках этот элемент/компонент и все его дочерние элементы будут рассматриваться как статическое содержимое и пропускаться. Это можно использовать для оптимизации производительности обновления.
 
   ```vue-html
-  <!-- single element -->
-  <span v-once>This will never change: {{msg}}</span>
-  <!-- the element have children -->
+  <!-- одиночный элемент -->
+  <span v-once>Это никогда не изменится: {{msg}}</span>
+  <!-- элемент имеет дочерние элементы -->
   <div v-once>
     <h1>comment</h1>
     <p>{{msg}}</p>
   </div>
-  <!-- component -->
+  <!-- компонент -->
   <MyComponent v-once :comment="msg"></MyComponent>
-  <!-- `v-for` directive -->
+  <!-- директива `v-for` -->
   <ul>
     <li v-for="i in list" v-once>{{i}}</li>
   </ul>
   ```
 
-  Since 3.2, you can also memoize part of the template with invalidation conditions using [`v-memo`](#v-memo).
+  Начиная с версии 3.2, вы также можете мемоизировать часть шаблона с условиями недействительности, используя [`v-memo`](#v-memo).
 
-- **See also**
-  - [Data Binding Syntax - interpolations](/guide/essentials/template-syntax#text-interpolation)
+- **Смотрите также**
+  - [Синтаксис привязки данных - интерполяции](/guide/essentials/template-syntax#text-interpolation)
   - [v-memo](#v-memo)
 
 ## v-memo <sup class="vt-badge" data-text="3.2+" /> {#v-memo}
 
-- **Expects:** `any[]`
+- **Ожидается:** `any[]`
 
-- **Details**
+- **Подробности**
 
-  Memoize a sub-tree of the template. Can be used on both elements and components. The directive expects a fixed-length array of dependency values to compare for the memoization. If every value in the array was the same as last render, then updates for the entire sub-tree will be skipped. For example:
+  Запоминает поддерево шаблона. Можно использовать как на элементах, так и на компонентах. Директива ожидает массив значений зависимостей фиксированной длины для сравнения при мемоизации. Если все значения в массиве совпадут с последней отрисовкой, то обновление всего поддерева будет пропущено. Например:
 
   ```vue-html
   <div v-memo="[valueA, valueB]">
@@ -477,47 +475,46 @@ Render the element and component once only, and skip future updates.
   </div>
   ```
 
-  When the component re-renders, if both `valueA` and `valueB` remain the same, all updates for this `<div>` and its children will be skipped. In fact, even the Virtual DOM VNode creation will also be skipped since the memoized copy of the sub-tree can be reused.
+  При повторной отрисовке компонента, если `valueA` и `valueB` остаются неизменными, все обновления для этого `<div>` и его дочерних элементов будут пропущены. Фактически, даже создание виртуального узла DOM также будет пропущено, поскольку мемоизированная копия поддерева может быть использована повторно.
 
-  It is important to specify the memoization array correctly, otherwise we may skip updates that should indeed be applied. `v-memo` with an empty dependency array (`v-memo="[]"`) would be functionally equivalent to `v-once`.
+  Важно правильно указать массив мемоизации, иначе мы можем пропустить обновления, которые действительно должны быть применены. `v-memo` с пустым массивом зависимостей (`v-memo="[]"`) будет функционально эквивалентен `v-once`.
 
   **Usage with `v-for`**
 
-  `v-memo` is provided solely for micro optimizations in performance-critical scenarios and should be rarely needed. The most common case where this may prove helpful is when rendering large `v-for` lists (where `length > 1000`):
+  `v-memo` предоставляется исключительно для микрооптимизации в критических по производительности сценариях и может понадобиться крайне редко. Чаще всего это может оказаться полезным при отображении больших списков `v-for` (где `length > 1000`):
 
   ```vue-html
   <div v-for="item in list" :key="item.id" v-memo="[item.id === selected]">
     <p>ID: {{ item.id }} - selected: {{ item.id === selected }}</p>
-    <p>...more child nodes</p>
+    <p>...больше дочерних узлов</p>
   </div>
   ```
 
-  When the component's `selected` state changes, a large amount of VNodes will be created even though most of the items remained exactly the same. The `v-memo` usage here is essentially saying "only update this item if it went from non-selected to selected, or the other way around". This allows every unaffected item to reuse its previous VNode and skip diffing entirely. Note we don't need to include `item.id` in the memo dependency array here since Vue automatically infers it from the item's `:key`.
+  При изменении состояния `selected` компонента будет создано большое количество узлов, даже если большинство элементов остались прежними. Использование `v-memo` здесь, по сути, говорит: «Обновляйте этот элемент только в том случае, если он перешел из разряда невыбранных в разряд выбранных, или наоборот». Это позволяет каждому незатронутому элементу повторно использовать свой предыдущий узел и полностью отказаться от диффузии. Обратите внимание, что нам не нужно включать `item.id` в массив зависимостей memo, так как Vue автоматически определяет его из `:key` элемента.
 
   :::warning
-  When using `v-memo` with `v-for`, make sure they are used on the same element. **`v-memo` does not work inside `v-for`.**
+  При использовании `v-memo` с `v-for` убедитесь, что они применяются к одному и тому же элементу. **`v-memo` не работает внутри `v-for`.**.
   :::
 
-  `v-memo` can also be used on components to manually prevent unwanted updates in certain edge cases where the child component update check has been de-optimized. But again, it is the developer's responsibility to specify correct dependency arrays to avoid skipping necessary updates.
+  `v-memo` также можно использовать для компонентов, чтобы вручную предотвратить нежелательные обновления в некоторых крайних случаях, когда проверка обновлений дочерних компонентов была деоптимизирована. Но, опять же, ответственность за правильное указание массивов зависимостей лежит на разработчике, чтобы не пропустить необходимые обновления.
 
-- **See also**
-  - [v-once](#v-once)
+- **Смотрите также** [v-once](#v-once)
 
 ## v-cloak {#v-cloak}
 
-Used to hide un-compiled template until it is ready.
+Используется для скрытия некомпилированного шаблона до тех пор, пока он не будет готов.
 
-- **Does not expect expression**
+- **Не ожидает выражения**
 
-- **Details**
+- **Подробности**
 
-  **This directive is only needed in no-build-step setups.**
+  **Эта директива необходима только в пакетах без этапов сборки.**
 
-  When using in-DOM templates, there can be a "flash of un-compiled templates": the user may see raw mustache tags until the mounted component replaces them with rendered content.
+  При использовании шаблонов в DOM может возникнуть «вспышка некомпилированных шаблонов»: пользователь может видеть необработанные теги усов до тех пор, пока установленный компонент не заменит их отрисованным содержимым.
 
-  `v-cloak` will remain on the element until the associated component instance is mounted. Combined with CSS rules such as `[v-cloak] { display: none }`, it can be used to hide the raw templates until the component is ready.
+  `v-cloak` будет оставаться на элементе до тех пор, пока не будет смонтирован связанный с ним экземпляр компонента. В сочетании с правилами CSS, такими как `[v-cloak] { display: none }`, его можно использовать для скрытия необработанных шаблонов до тех пор, пока компонент не будет готов.
 
-- **Example**
+- **Пример**
 
   ```css
   [v-cloak] {
@@ -531,4 +528,4 @@ Used to hide un-compiled template until it is ready.
   </div>
   ```
 
-  The `<div>` will not be visible until the compilation is done.
+  `<div>` не будет виден до завершения компиляции.
