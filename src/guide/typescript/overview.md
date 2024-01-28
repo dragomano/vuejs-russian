@@ -111,7 +111,7 @@ export default defineComponent({
 })
 ```
 
-`defineComponent()` также поддерживает вывод реквизитов, переданных в `setup()`, при использовании Composition API без `<script setup>`:
+`defineComponent()` также поддерживает вывод параметров, переданных в `setup()`, при использовании Composition API без `<script setup>`:
 
 ```ts
 import { defineComponent } from 'vue'
