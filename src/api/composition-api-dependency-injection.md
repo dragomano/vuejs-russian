@@ -1,60 +1,60 @@
-# Composition API: <br>Dependency Injection {#composition-api-dependency-injection}
+# Composition API: <br>Внедрение зависимостей {#composition-api-dependency-injection}
 
 ## provide() {#provide}
 
-Provides a value that can be injected by descendant components.
+Предоставляет значение, которое может быть инжектировано компонентами-потомками.
 
-- **Type**
+- **Тип**
 
   ```ts
   function provide<T>(key: InjectionKey<T> | string, value: T): void
   ```
 
-- **Details**
+- **Подробности**
 
-  `provide()` takes two arguments: the key, which can be a string or a symbol, and the value to be injected.
+  `provide()` принимает два аргумента: ключ, который может быть строкой или символом, и значение для инъекции.
 
-  When using TypeScript, the key can be a symbol casted as `InjectionKey` - a Vue provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  При использовании TypeScript ключом может быть символ, преобразованный в `InjectionKey` — служебный тип, предоставляемый Vue, который расширяет `Symbol`, который можно использовать для синхронизации типа значения между `provide()` и `inject()`.
 
-  Similar to lifecycle hook registration APIs, `provide()` must be called synchronously during a component's `setup()` phase.
+  Подобно API регистрации хуков жизненного цикла, `provide()` должен вызываться синхронно на этапе `setup()` компонента.
 
-- **Example**
+- **Пример**
 
   ```vue
   <script setup>
   import { ref, provide } from 'vue'
   import { countSymbol } from './injectionSymbols'
 
-  // provide static value
+  // provide со статическим значением
   provide('path', '/project/')
 
-  // provide reactive value
+  // provide с реактивным значением
   const count = ref(0)
   provide('count', count)
 
-  // provide with Symbol keys
+  // provide с ключами Symbol
   provide(countSymbol, count)
   </script>
   ```
 
-- **See also**
-  - [Guide - Provide / Inject](/guide/components/provide-inject)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+- **Смотрите также**
+  - [Руководство - Provide / Inject](/guide/components/provide-inject)
+  - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
 
 ## inject() {#inject}
 
-Injects a value provided by an ancestor component or the application (via `app.provide()`).
+Вставляет значение, предоставленное компонентом-предком или приложением (через `app.provide()`).
 
-- **Type**
+- **Тип**
 
   ```ts
-  // without default value
+  // без значения по умолчанию
   function inject<T>(key: InjectionKey<T> | string): T | undefined
 
-  // with default value
+  // со значением по умолчанию
   function inject<T>(key: InjectionKey<T> | string, defaultValue: T): T
 
-  // with factory
+  // с фабрикой
   function inject<T>(
     key: InjectionKey<T> | string,
     defaultValue: () => T,
@@ -62,57 +62,57 @@ Injects a value provided by an ancestor component or the application (via `app.p
   ): T
   ```
 
-- **Details**
+- **Подробности**
 
-  The first argument is the injection key. Vue will walk up the parent chain to locate a provided value with a matching key. If multiple components in the parent chain provides the same key, the one closest to the injecting component will "shadow" those higher up the chain. If no value with matching key was found, `inject()` returns `undefined` unless a default value is provided.
+  Первым аргументом является ключ инъекции. Vue пройдётся по родительской цепочке, чтобы найти предоставленное значение с соответствующим ключом. Если несколько компонентов в родительской цепочке предоставляют один и тот же ключ, ближайший к инжектирующему компоненту будет «теневым» для тех, кто находится выше по цепочке. Если значение с подходящим ключом не найдено, `inject()` возвращает значение `undefined`, если не указано значение по умолчанию.
 
-  The second argument is optional and is the default value to be used when no matching value was found.
+  Второй аргумент является необязательным и представляет собой значение по умолчанию, которое будет использоваться, если не найдено ни одного подходящего значения.
 
-  The second argument can also be a factory function that returns values that are expensive to create. In this case, `true` must be passed as the third argument to indicate that the function should be used as a factory instead of the value itself.
+  Вторым аргументом также может быть фабричная функция, возвращающая значения, которые дорого создавать. В этом случае в качестве третьего аргумента необходимо передать `true`, чтобы указать, что функция должна использоваться в качестве фабрики, а не самого значения.
 
-  Similar to lifecycle hook registration APIs, `inject()` must be called synchronously during a component's `setup()` phase.
+  Подобно API регистрации хуков жизненного цикла, `inject()` должен вызываться синхронно на этапе `setup()` компонента.
 
-  When using TypeScript, the key can be of type of `InjectionKey` - a Vue-provided utility type that extends `Symbol`, which can be used to sync the value type between `provide()` and `inject()`.
+  При использовании TypeScript ключ может быть типа `InjectionKey` — это тип, предоставляемый Vue и расширяющий `Symbol`, который можно использовать для синхронизации типа значения между `provide()` и `inject()`.
 
-- **Example**
+- **Пример**
 
-  Assuming a parent component has provided values as shown in the previous `provide()` example:
+  Предположим, что родительский компонент предоставил значения, как показано в предыдущем примере с `provide()`:
 
   ```vue
   <script setup>
   import { inject } from 'vue'
   import { countSymbol } from './injectionSymbols'
 
-  // inject static value without default
+  // инжектируем статическое значение без значения по умолчанию
   const path = inject('path')
 
-  // inject reactive value
+  // инжектируем реактивное значение
   const count = inject('count')
 
-  // inject with Symbol keys
+  // инжектируем с ключами Symbol
   const count2 = inject(countSymbol)
 
-  // inject with default value
+  // инжектируем со значением по умолчанию
   const bar = inject('path', '/default-path')
 
-  // inject with function default value
+  // инъектируем со значением функции по умолчанию
   const fn = inject('function', () => {})
 
-  // inject with default value factory
+  // инжектируем со значением фабрики по умолчанию
   const baz = inject('factory', () => new ExpensiveObject(), true)
   </script>
   ```
 
 ## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
 
-Returns true if [inject()](#inject) can be used without warning about being called in the wrong place (e.g. outside of `setup()`). This method is designed to be used by libraries that want to use `inject()` internally without triggering a warning to the end user.
+Возвращает true, если [inject()](#inject) можно использовать без предупреждения о том, что он вызван не в том месте (например, за пределами `setup()`). Этот метод предназначен для библиотек, которые хотят использовать `inject()` внутри библиотеки, не вызывая предупреждения для конечного пользователя.
 
-- **Type**
+- **Тип**
 
   ```ts
   function hasInjectionContext(): boolean
   ```
 
-* **See also**
-  - [Guide - Provide / Inject](/guide/components/provide-inject)
-  - [Guide - Typing Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+* **Смотрите также**
+  - [Руководство - Provide / Inject](/guide/components/provide-inject)
+  - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
