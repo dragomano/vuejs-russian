@@ -1,10 +1,10 @@
-# Options: Rendering {#options-rendering}
+# Options: Отрисовка {#options-rendering}
 
 ## template {#template}
 
-A string template for the component.
+Строковый шаблон для компонента.
 
-- **Type**
+- **Тип**
 
   ```ts
   interface ComponentOptions {
@@ -12,25 +12,25 @@ A string template for the component.
   }
   ```
 
-- **Details**
+- **Подробности**
 
-  A template provided via the `template` option will be compiled on-the-fly at runtime. It is only supported when using a build of Vue that includes the template compiler. The template compiler is **NOT** included in Vue builds that have the word `runtime` in their names, e.g. `vue.runtime.esm-bundler.js`. Consult the [dist file guide](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use) for more details about the different builds.
+  Шаблон, предоставленный с помощью опции `template`, будет скомпилирован на лету во время выполнения. Он поддерживается только при использовании сборки Vue, включающей компилятор шаблонов. Компилятор шаблонов **НЕ** включен в сборки Vue, в названии которых есть слово `runtime`, например, `vue.runtime.esm-bundler.js`. Более подробную информацию о различных сборках можно найти в [руководстве по работе с файлами dist](https://github.com/vuejs/core/tree/main/packages/vue#which-dist-file-to-use).
 
-  If the string starts with `#` it will be used as a `querySelector` and use the selected element's `innerHTML` as the template string. This allows the source template to be authored using native `<template>` elements.
+  Если строка начинается с `#`, она будет использоваться в качестве `querySelector` и использовать `innerHTML` выбранного элемента в качестве строки шаблона. Это позволяет создавать исходный шаблон с помощью собственных элементов `<template>`.
 
-  If the `render` option is also present in the same component, `template` will be ignored.
+  Если в том же компоненте присутствует опция `render`, то `template` будет проигнорирован.
 
-  If the root component of your application doesn't have a `template` or `render` option specified, Vue will try to use the `innerHTML` of the mounted element as the template instead.
+  Если в корневом компоненте вашего приложения не указана опция `template` или `render`, Vue попытается использовать `innerHTML` смонтированного элемента в качестве шаблона.
 
-  :::warning Security Note
-  Only use template sources that you can trust. Do not use user-provided content as your template. See [Security Guide](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates) for more details.
+  :::warning Примечание по безопасности
+  Используйте только те источники шаблонов, которым вы можете доверять. Не используйте пользовательский контент в качестве шаблона. Подробнее см. в [Руководстве по безопасности](/guide/best-practices/security#rule-no-1-never-use-non-trusted-templates).
   :::
 
 ## render {#render}
 
-A function that programmatically returns the virtual DOM tree of the component.
+Функция, которая программно возвращает виртуальное DOM-дерево компонента.
 
-- **Type**
+- **Тип**
 
   ```ts
   interface ComponentOptions {
@@ -51,46 +51,46 @@ A function that programmatically returns the virtual DOM tree of the component.
   type VNodeArrayChildren = (VNodeArrayChildren | VNodeChildAtom)[]
   ```
 
-- **Details**
+- **Подробности**
 
-  `render` is an alternative to string templates that allows you to leverage the full programmatic power of JavaScript to declare the render output of the component.
+  `render` — это альтернатива строковым шаблонам, которая позволяет вам использовать всю программную мощь JavaScript для объявления вывода компонента на экран.
 
-  Pre-compiled templates, for example those in Single-File Components, are compiled into the `render` option at build time. If both `render` and `template` are present in a component, `render` will take higher priority.
+  Предварительно скомпилированные шаблоны, например, в однофайловых компонентах, компилируются в опцию `render` во время сборки. Если в компоненте присутствуют и `render`, и `template`, то `render` будет иметь более высокий приоритет.
 
-- **See also**
-  - [Rendering Mechanism](/guide/extras/rendering-mechanism)
-  - [Render Functions](/guide/extras/render-function)
+- **Смотрите также**
+  - [Механизм отрисовки](/guide/extras/rendering-mechanism)
+  - [Функции рендеринга](/guide/extras/render-function)
 
 ## compilerOptions {#compileroptions}
 
-Configure runtime compiler options for the component's template.
+Настройка параметров компилятора времени выполнения для шаблона компонента.
 
-- **Type**
+- **Тип**
 
   ```ts
   interface ComponentOptions {
     compilerOptions?: {
       isCustomElement?: (tag: string) => boolean
-      whitespace?: 'condense' | 'preserve' // default: 'condense'
-      delimiters?: [string, string] // default: ['{{', '}}']
-      comments?: boolean // default: false
+      whitespace?: 'condense' | 'preserve' // по умолчанию: 'condense'
+      delimiters?: [string, string] // по умолчанию: ['{{', '}}']
+      comments?: boolean // по умолчанию: false
     }
   }
   ```
 
-- **Details**
+- **Подробности**
 
-  This config option is only respected when using the full build (i.e. the standalone `vue.js` that can compile templates in the browser). It supports the same options as the app-level [app.config.compilerOptions](/api/application#app-config-compileroptions), and has higher priority for the current component.
+  Эта опция конфигурации соблюдается только при использовании полной сборки (т. е. автономный `vue.js`, который может компилировать шаблоны в браузере). Он поддерживает те же опции, что и [app.config.compilerOptions](/api/application#app-config-compileroptions) на уровне приложения, и имеет более высокий приоритет для текущего компонента.
 
-- **See also** [app.config.compilerOptions](/api/application#app-config-compileroptions)
+- **Смотрите также** [app.config.compilerOptions](/api/application#app-config-compileroptions)
 
 ## slots<sup class="vt-badge ts"/> {#slots}
 
-An option to assist with type inference when using slots programmatically in render functions. Only supported in 3.3+.
+Опция для помощи в определении типа при программном использовании слотов в функциях рендеринга. Поддерживается только в версии 3.3+.
 
-- **Details**
+- **Подробности**
 
-  This option's runtime value is not used. The actual types should be declared via type casting using the `SlotsType` type helper:
+  Значение этой опции во время выполнения не используется. Фактические типы должны быть объявлены через приведение типов с помощью помощника типа `SlotsType`:
 
   ```ts
   import { SlotsType } from 'vue'
