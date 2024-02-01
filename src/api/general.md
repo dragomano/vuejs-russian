@@ -1,12 +1,12 @@
-# Global API: General {#global-api-general}
+# Global API: Общее {#global-api-general}
 
 ## version {#version}
 
-Exposes the current version of Vue.
+Возвращает текущую версию Vue.
 
-- **Type:** `string`
+- **Тип:** `string`
 
-- **Example**
+- **Пример**
 
   ```js
   import { version } from 'vue'
@@ -16,21 +16,21 @@ Exposes the current version of Vue.
 
 ## nextTick() {#nexttick}
 
-A utility for waiting for the next DOM update flush.
+Утилита для ожидания следующего обновления DOM.
 
-- **Type**
+- **Тип**
 
   ```ts
   function nextTick(callback?: () => void): Promise<void>
   ```
 
-- **Details**
+- **Подробности**
 
-  When you mutate reactive state in Vue, the resulting DOM updates are not applied synchronously. Instead, Vue buffers them until the "next tick" to ensure that each component updates only once no matter how many state changes you have made.
+  Когда вы изменяете реактивное состояние в Vue, результирующие обновления DOM не применяются синхронно. Вместо этого Vue буферизирует их до «следующего тика», чтобы каждый компонент обновлялся только один раз, независимо от того, сколько изменений состояния вы произвели.
 
-  `nextTick()` can be used immediately after a state change to wait for the DOM updates to complete. You can either pass a callback as an argument, or await the returned Promise.
+  `nextTick()` можно использовать сразу после изменения состояния, чтобы дождаться завершения обновления DOM. Вы можете либо передать обратный вызов в качестве аргумента, либо ожидать возвращения Promise.
 
-- **Example**
+- **Пример**
 
   <div class="composition-api">
 
@@ -43,11 +43,11 @@ A utility for waiting for the next DOM update flush.
   async function increment() {
     count.value++
 
-    // DOM not yet updated
+    // DOM ещё не обновлен
     console.log(document.getElementById('counter').textContent) // 0
 
     await nextTick()
-    // DOM is now updated
+    // DOM обновлен
     console.log(document.getElementById('counter').textContent) // 1
   }
   </script>
@@ -74,11 +74,11 @@ A utility for waiting for the next DOM update flush.
       async increment() {
         this.count++
 
-        // DOM not yet updated
+        // DOM ещё не обновлен
         console.log(document.getElementById('counter').textContent) // 0
 
         await nextTick()
-        // DOM is now updated
+        // DOM обновлен
         console.log(document.getElementById('counter').textContent) // 1
       }
     }
@@ -92,36 +92,36 @@ A utility for waiting for the next DOM update flush.
 
   </div>
 
-- **See also** [`this.$nextTick()`](/api/component-instance#nexttick)
+- **Смотрите также** [`this.$nextTick()`](/api/component-instance#nexttick)
 
 ## defineComponent() {#definecomponent}
 
-A type helper for defining a Vue component with type inference.
+Помощник типов для определения компонента Vue с выводом типов.
 
-- **Type**
+- **Тип**
 
   ```ts
-  // options syntax
+  // синтаксис options
   function defineComponent(
     component: ComponentOptions
   ): ComponentConstructor
 
-  // function syntax (requires 3.3+)
+  // синтаксис функции (требует 3.3+)
   function defineComponent(
     setup: ComponentOptions['setup'],
     extraOptions?: ComponentOptions
   ): () => any
   ```
 
-  > Type is simplified for readability.
+  > Для удобства чтения тип упрощён.
 
-- **Details**
+- **Подробности**
 
-  The first argument expects a component options object. The return value will be the same options object, since the function is essentially a runtime no-op for type inference purposes only.
+  В качестве первого аргумента ожидается объект опций компонента. Возвращаемым значением будет тот же объект `options`, так как функция, по сути, не работает во время выполнения и предназначена только для определения типа.
 
-  Note that the return type is a bit special: it will be a constructor type whose instance type is the inferred component instance type based on the options. This is used for type inference when the returned type is used as a tag in TSX.
+  Обратите внимание, что тип возврата немного особенный: это будет тип конструктора, типом экземпляра которого является тип экземпляра компонента, определённый на основе опций. Используется для вывода типа, когда возвращаемый тип используется в качестве тега в TSX.
 
-  You can extract the instance type of a component (equivalent to the type of `this` in its options) from the return type of `defineComponent()` like this:
+  Вы можете извлечь тип экземпляра компонента (эквивалентный типу `this` в его опциях) из возвращаемого типа `defineComponent()` следующим образом:
 
   ```ts
   const Foo = defineComponent(/* ... */)
@@ -129,26 +129,26 @@ A type helper for defining a Vue component with type inference.
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Function Signature <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### Сигнатура функции <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
 
-  `defineComponent()` also has an alternative signature that is meant to be used with Composition API and [render functions or JSX](/guide/extras/render-function.html).
+  У `defineComponent()` также есть альтернативная подпись, предназначенная для использования с Composition API и [функциями рендеринга или JSX](/guide/extras/render-function.html).
 
-  Instead of passing in an options object, a function is expected instead. This function works the same as the Composition API [`setup()`](/api/composition-api-setup.html#composition-api-setup) function: it receives the props and the setup context. The return value should be a render function - both `h()` and JSX are supported:
+  Вместо передачи объекта `options` ожидается функция. Эта функция работает так же, как и функция Composition API [`setup()`](/api/composition-api-setup.html#composition-api-setup): она получает параметры и контекст. Возвращаемое значение должно быть функцией рендеринга — поддерживаются как `h()`, так и JSX:
 
   ```js
   import { ref, h } from 'vue'
 
   const Comp = defineComponent(
     (props) => {
-      // use Composition API here like in <script setup>
+      // используем здесь API Composition, как в <script setup>
       const count = ref(0)
 
       return () => {
-        // render function or JSX
+        // функция рендеринга или JSX
         return h('div', count.value)
       }
     },
-    // extra options, e.g. declare props and emits
+    // дополнительные опции, например, props или emits
     {
       props: {
         /* ... */
@@ -157,47 +157,47 @@ A type helper for defining a Vue component with type inference.
   )
   ```
 
-  The main use case for this signature is with TypeScript (and in particular with TSX), as it supports generics:
+  В основном эта сигнатура используется в TypeScript (и, в частности, в TSX), поскольку она поддерживает дженерики:
 
   ```tsx
   const Comp = defineComponent(
     <T extends string | number>(props: { msg: T; list: T[] }) => {
-      // use Composition API here like in <script setup>
+      // используем здесь API Composition, как в <script setup>
       const count = ref(0)
 
       return () => {
-        // render function or JSX
+        // функция рендеринга или JSX
         return <div>{count.value}</div>
       }
     },
-    // manual runtime props declaration is currently still needed.
+    // В настоящее время всё ещё требуется ручное объявление параметров во время выполнения
     {
       props: ['msg', 'list']
     }
   )
   ```
 
-  In the future, we plan to provide a Babel plugin that automatically infers and injects the runtime props (like for `defineProps` in SFCs) so that the runtime props declaration can be omitted.
+  В будущем мы планируем создать плагин Babel, который будет автоматически определять и внедрять параметры времени выполнения (как в случае с `defineProps` в SFC), так что объявление параметров времени выполнения можно будет опустить.
 
-  ### Note on webpack Treeshaking {#note-on-webpack-treeshaking}
+  ### Заметка о webpack Treeshaking {#note-on-webpack-treeshaking}
 
-  Because `defineComponent()` is a function call, it could look like that it would produce side-effects to some build tools, e.g. webpack. This will prevent the component from being tree-shaken even when the component is never used.
+  Поскольку `defineComponent()` — это вызов функции, это может выглядеть так, что это приведёт к побочным эффектам для некоторых инструментов сборки, например, webpack. Это позволит предотвратить древовидное сотрясение компонента, даже если он никогда не используется.
 
-  To tell webpack that this function call is safe to be tree-shaken, you can add a `/*#__PURE__*/` comment notation before the function call:
+  Чтобы сообщить webpack, что этот вызов функции безопасен для древовидного изменения, вы можете добавить комментарий `/*#__PURE__*/` перед вызовом функции:
 
   ```js
   export default /*#__PURE__*/ defineComponent(/* ... */)
   ```
 
-  Note this is not necessary if you are using Vite, because Rollup (the underlying production bundler used by Vite) is smart enough to determine that `defineComponent()` is in fact side-effect-free without the need for manual annotations.
+  Обратите внимание, что это не обязательно, если вы используете Vite, потому что Rollup (базовый пакет производства, используемый Vite) достаточно умён, чтобы определить, что `defineComponent()` на самом деле не имеет побочных эффектов, без необходимости ручных аннотаций.
 
-- **See also** [Guide - Using Vue with TypeScript](/guide/typescript/overview#general-usage-notes)
+- **Смотрите также** [Руководство - Использование Vue с TypeScript](/guide/typescript/overview#general-usage-notes)
 
 ## defineAsyncComponent() {#defineasynccomponent}
 
-Define an async component which is lazy loaded only when it is rendered. The argument can either be a loader function, or an options object for more advanced control of the loading behavior.
+Определите асинхронный компонент, который загружается только при рендеринге. В качестве аргумента может выступать либо функция загрузчика, либо объект options для более сложного управления поведением загрузки.
 
-- **Type**
+- **Тип**
 
   ```ts
   function defineAsyncComponent(
@@ -222,13 +222,13 @@ Define an async component which is lazy loaded only when it is rendered. The arg
   }
   ```
 
-- **See also** [Guide - Async Components](/guide/components/async)
+- **Смотрите также** [Руководство - Асинхронные компоненты](/guide/components/async)
 
 ## defineCustomElement() {#definecustomelement}
 
-This method accepts the same argument as [`defineComponent`](#definecomponent), but instead returns a native [Custom Element](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) class constructor.
+Этот метод принимает тот же аргумент, что и [`defineComponent`](#definecomponent), но вместо него возвращает собственный конструктор класса [CustomElement](https://developer.mozilla.org/ru/docs/Web/API/Web_components/Using_custom_elements).
 
-- **Type**
+- **Тип**
 
   ```ts
   function defineCustomElement(
@@ -240,29 +240,29 @@ This method accepts the same argument as [`defineComponent`](#definecomponent), 
   }
   ```
 
-  > Type is simplified for readability.
+  > Для удобства чтения тип упрощён.
 
-- **Details**
+- **Подробности**
 
-  In addition to normal component options, `defineCustomElement()` also supports a special option `styles`, which should be an array of inlined CSS strings, for providing CSS that should be injected into the element's shadow root.
+  В дополнение к обычным параметрам компонента, `defineCustomElement()` также поддерживает специальный параметр `styles`, который должен быть массивом вставленных CSS-строк, для предоставления CSS, который должен быть внедрён в теневой корень элемента.
 
-  The return value is a custom element constructor that can be registered using [`customElements.define()`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define).
+  Возвращаемое значение — это пользовательский конструктор элемента, который можно зарегистрировать с помощью [`customElements.define()`](https://developer.mozilla.org/ru/docs/Web/API/CustomElementRegistry/define).
 
-- **Example**
+- **Пример**
 
   ```js
   import { defineCustomElement } from 'vue'
 
   const MyVueElement = defineCustomElement({
-    /* component options */
+    /* параметры компонента */
   })
 
-  // Register the custom element.
+  // Регистрируем пользовательский элемент
   customElements.define('my-vue-element', MyVueElement)
   ```
 
-- **See also**
+- **Смотрите также**
 
-  - [Guide - Building Custom Elements with Vue](/guide/extras/web-components#building-custom-elements-with-vue)
+  - [Руководство - Создание пользовательских элементов с помощью Vue](/guide/extras/web-components#building-custom-elements-with-vue)
 
-  - Also note that `defineCustomElement()` requires [special config](/guide/extras/web-components#sfc-as-custom-element) when used with Single-File Components.
+  - Также обратите внимание, что `defineCustomElement()` требует [специальной конфигурации](/guide/extras/web-components#sfc-as-custom-element) при использовании с однофайловыми компонентами.
