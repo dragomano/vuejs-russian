@@ -658,7 +658,7 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-В Composition API шаблонные ссылки создаются путем передачи в vnode самого `ref()` в качестве параметра:
+В Composition API реактивные ссылки создаются путём передачи в vnode самого `ref()` в качестве параметра:
 
 ```js
 import { h, ref } from 'vue'
@@ -676,7 +676,7 @@ export default {
 </div>
 <div class="options-api">
 
-С помощью API Options шаблонные ссылки создаются путем передачи имени ссылки в виде строки в параметре vnode:
+С помощью API Options реактивные ссылки создаются путём передачи имени ссылки в виде строки в параметре vnode:
 
 ```js
 export default {

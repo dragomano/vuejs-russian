@@ -197,7 +197,7 @@ server.get('/', (req, res) => {
 
 1. Отправьте клиентские файлы, добавив `server.use(express.static('.'))` в `server.js`.
 2. Загрузите запись клиента, добавив `<script type="module" src="/client.js"></script>` в оболочку HTML.
-3. Поддержка использования типа `import * from 'vue'` в браузере путем добавления [карты импорта](https://github.com/WICG/import-maps) в HTML-оболочку.
+3. Поддержка использования типа `import * from 'vue'` в браузере путём добавления [карты импорта](https://github.com/WICG/import-maps) в HTML-оболочку.
 
 [Попробуйте выполнить пример на StackBlitz](https://stackblitz.com/fork/vue-ssr-example?file=index.js). Кнопка стала интерактивной!
 
