@@ -314,7 +314,7 @@ function BaseLayout(slots) {
 </base-layout>
 ```
 
-Обратите внимание, что выражение подчиняется [синтаксическим ограничениям](/guide/essentials/template-syntax#directives) динамических аргументов директивы.
+Обратите внимание, что выражение подчиняется [синтаксическим ограничениям](/guide/essentials/template-syntax.md#dynamic-argument-syntax-constraints) динамических аргументов директивы.
 
 ## Слоты с ограниченной областью действия {#scoped-slots}
 

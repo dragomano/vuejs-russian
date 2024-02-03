@@ -5,7 +5,9 @@ const show = ref(true)
 
 <template>
   <div class="demo">
-    <button @click="show = !show" style="margin-bottom: 20px">Toggle</button>
+    <button @click="show = !show" style="margin-bottom: 20px">
+      Toggle
+    </button>
     <Transition duration="550" name="nested">
       <div v-if="show" class="transition-demo-outer">
         <div class="transition-demo-inner">Hello</div>
@@ -24,6 +26,7 @@ const show = ref(true)
 
 .transition-demo-inner {
   background: #ccc;
+  color: rgb(33, 53, 71);
 }
 
 .nested-enter-active,

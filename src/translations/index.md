@@ -19,6 +19,8 @@ aside: false
 ## Переводы в процессе доработки {#work-in-progress-languages}
 
 - [فارسی / Persian](https://fa.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-fa)]
+- [Čeština / Czech](https://cs.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-cs)]
+- [العربية / Arabic](https://ar.vuejs.org/) [[source](https://github.com/vuejs-translations/docs-ar)]
 
 ## Начало нового перевода {#starting-a-new-translation}
 
