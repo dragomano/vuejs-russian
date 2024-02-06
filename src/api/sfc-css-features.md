@@ -1,4 +1,4 @@
-# Особенности SFC CSS {#sfc-css-features}
+# Особенности CSS SFC {#sfc-css-features}
 
 ## CSS с ограниченной областью действия {#scoped-css}
 
