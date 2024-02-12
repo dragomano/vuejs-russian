@@ -39,7 +39,7 @@
 
 ## ref {#ref}
 
-Обозначает [реактивную ссылку](/guide/essentials/template-refs).
+Обозначает [ссылку на элемент в шаблоне](/guide/essentials/template-refs).
 
 - **Ожидается:** `string | Function`
 
@@ -81,9 +81,9 @@
   `this.$refs` также не является реактивным, поэтому не стоит пытаться использовать его в шаблонах для привязки данных.
 
 - **Смотрите также**
-  - [Руководство - Реактивные ссылки](/guide/essentials/template-refs)
-  - [Руководство - Типизация реактивных ссылок](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
-  - [Руководство - Типизация реактивных ссылок на компоненты](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
+  - [Руководство - Ссылки на элементы шаблона](/guide/essentials/template-refs)
+  - [Руководство - Типизация ссылок на элементы шаблона](/guide/typescript/composition-api#typing-template-refs) <sup class="vt-badge ts" />
+  - [Руководство - Типизация ссылок на компоненты](/guide/typescript/composition-api#typing-component-template-refs) <sup class="vt-badge ts" />
 
 ## is {#is}
 

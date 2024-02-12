@@ -692,11 +692,11 @@ const vnode = withDirectives(h('div'), [
 
 Если директива зарегистрирована по имени и не может быть импортирована напрямую, её можно разрешить с помощью хэлпера [`resolveDirective`](/api/render-function#resolvedirective).
 
-### Шаблонные ссылки {#template-refs}
+### Ссылки на элементы шаблона {#template-refs}
 
 <div class="composition-api">
 
-В Composition API реактивные ссылки создаются путём передачи в vnode самого `ref()` в качестве параметра:
+В Composition API ссылки на элементы шаблона создаются путём передачи в vnode самого `ref()` в качестве параметра:
 
 ```js
 import { h, ref } from 'vue'
@@ -714,7 +714,7 @@ export default {
 </div>
 <div class="options-api">
 
-С помощью API Options реактивные ссылки создаются путём передачи имени ссылки в виде строки в параметре vnode:
+С помощью API Options ссылки на элементы шаблона создаются путём передачи имени ссылки в виде строки в параметре vnode:
 
 ```js
 export default {
