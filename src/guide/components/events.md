@@ -4,7 +4,7 @@ import { onMounted } from 'vue'
 if (typeof window !== 'undefined') {
   const hash = window.location.hash
 
-  // The docs for v-model used to be part of this page. Attempt to redirect outdated links.
+  // Документация по v-model раньше была частью этой страницы. Попробуем перенаправить устаревшие ссылки.
   if ([
     '#usage-with-v-model',
     '#v-model-arguments',
@@ -18,26 +18,26 @@ if (typeof window !== 'undefined') {
 }
 </script>
 
-# Component Events {#component-events}
+# События компонента {#component-events}
 
-> This page assumes you've already read the [Components Basics](/guide/essentials/component-basics). Read that first if you are new to components.
+> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Free Vue.js Lesson on Defining Custom Events"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Бесплатный урок по определению пользовательских событий в Vue.js"/>
 </div>
 
-## Emitting and Listening to Events {#emitting-and-listening-to-events}
+## Испускание и прослушивание событий {#emitting-and-listening-to-events}
 
-A component can emit custom events directly in template expressions (e.g. in a `v-on` handler) using the built-in `$emit` method:
+Компонент может испускать пользовательские события непосредственно в выражениях шаблона (например, в обработчике `v-on`) с помощью встроенного метода `$emit`:
 
 ```vue-html
 <!-- MyComponent -->
-<button @click="$emit('someEvent')">click me</button>
+<button @click="$emit('someEvent')">нажмите меня</button>
 ```
 
 <div class="options-api">
 
-The `$emit()` method is also available on the component instance as `this.$emit()`:
+Метод `$emit()` также доступен на экземпляре компонента как `this.$emit()`:
 
 ```js
 export default {
@@ -51,47 +51,47 @@ export default {
 
 </div>
 
-The parent can then listen to it using `v-on`:
+Родитель может прослушать его с помощью `v-on`:
 
 ```vue-html
 <MyComponent @some-event="callback" />
 ```
 
-The `.once` modifier is also supported on component event listeners:
+Модификатор `.once` также поддерживается для слушателей событий компонентов:
 
 ```vue-html
 <MyComponent @some-event.once="callback" />
 ```
 
-Like components and props, event names provide an automatic case transformation. Notice we emitted a camelCase event, but can listen for it using a kebab-cased listener in the parent. As with [props casing](/guide/components/props#prop-name-casing), we recommend using kebab-cased event listeners in templates.
+Как и компоненты и параметры, имена событий обеспечивают автоматическое преобразование регистров. Обратите внимание, что мы создали событие camelCase, но можем прослушать его с помощью слушателя kebab-cased в родителе. Как и в случае с [регистром имён параметров](/guide/components/props#prop-name-casing), мы рекомендуем использовать в шаблонах слушатели событий в шашлычной оболочке.
 
-:::tip
-Unlike native DOM events, component emitted events do **not** bubble. You can only listen to the events emitted by a direct child component. If there is a need to communicate between sibling or deeply nested components, use an external event bus or a [global state management solution](/guide/scaling-up/state-management).
+:::tip Совет
+В отличие от собственных событий DOM, события, испускаемые компонентом, **не** пузырятся. Вы можете прослушивать только события, испускаемые непосредственным дочерним компонентом. Если необходимо взаимодействовать между родственными или глубоко вложенными компонентами, используйте внешнюю шину событий или [глобальное решение для управления состоянием](/guide/scaling-up/state-management).
 :::
 
-## Event Arguments {#event-arguments}
+## Аргументы событий {#event-arguments}
 
-It's sometimes useful to emit a specific value with an event. For example, we may want the `<BlogPost>` component to be in charge of how much to enlarge the text by. In those cases, we can pass extra arguments to `$emit` to provide this value:
+Иногда бывает полезно выдать событию определённое значение. Например, мы можем захотеть, чтобы компонент `<BlogPost>` отвечал за то, на сколько увеличивать текст. В таких случаях мы можем передать `$emit` дополнительные аргументы, чтобы получить это значение:
 
 ```vue-html
 <button @click="$emit('increaseBy', 1)">
-  Increase by 1
+  Увеличить на 1
 </button>
 ```
 
-Then, when we listen to the event in the parent, we can use an inline arrow function as the listener, which allows us to access the event argument:
+Затем, когда мы прослушиваем событие в родителе, мы можем использовать встроенную стрелочную функцию в качестве слушателя, что позволит нам получить доступ к аргументу события:
 
 ```vue-html
 <MyButton @increase-by="(n) => count += n" />
 ```
 
-Or, if the event handler is a method:
+Или, если обработчик события является методом:
 
 ```vue-html
 <MyButton @increase-by="increaseCount" />
 ```
 
-Then the value will be passed as the first parameter of that method:
+Тогда значение будет передано в качестве первого параметра этого метода:
 
 <div class="options-api">
 
@@ -114,13 +114,13 @@ function increaseCount(n) {
 
 </div>
 
-:::tip
-All extra arguments passed to `$emit()` after the event name will be forwarded to the listener. For example, with `$emit('foo', 1, 2, 3)` the listener function will receive three arguments.
+:::tip Примечание
+Все дополнительные аргументы, переданные в `$emit()` после имени события, будут переданы слушателю. Например, при использовании `$emit('foo', 1, 2, 3)` функция listener получит три аргумента.
 :::
 
-## Declaring Emitted Events {#declaring-emitted-events}
+## Объявление испускаемых событий {#declaring-emitted-events}
 
-A component can explicitly declare the events it will emit using the <span class="composition-api">[`defineEmits()`](/api/sfc-script-setup#defineprops-defineemits) macro</span><span class="options-api">[`emits`](/api/options-state#emits) option</span>:
+Компонент может явно объявить события, которые он будет испускать, с помощью <span class="composition-api">макроса [`defineEmits()`](/api/sfc-script-setup#defineprops-defineemits) </span><span class="options-api">свойства [`emits`](/api/options-state#emits)</span>:
 
 <div class="composition-api">
 
@@ -130,7 +130,7 @@ defineEmits(['inFocus', 'submit'])
 </script>
 ```
 
-The `$emit` method that we used in the `<template>` isn't accessible within the `<script setup>` section of a component, but `defineEmits()` returns an equivalent function that we can use instead:
+Метод `$emit`, который мы использовали в `<template>`, недоступен в секции `<script setup>` компонента, но `defineEmits()` возвращает эквивалентную функцию, которую мы можем использовать вместо него:
 
 ```vue
 <script setup>
@@ -142,9 +142,9 @@ function buttonClick() {
 </script>
 ```
 
-The `defineEmits()` macro **cannot** be used inside a function, it must be placed directly within `<script setup>`, as in the example above.
+Макрос `defineEmits()` **не может** быть использован внутри функции, он должен быть помещен непосредственно в `<script setup>`, как в примере выше.
 
-If you're using an explicit `setup` function instead of `<script setup>`, events should be declared using the [`emits`](/api/options-state#emits) option, and the `emit` function is exposed on the `setup()` context:
+Если вы используете явную функцию `setup` вместо `<script setup>`, события должны быть объявлены с помощью опции [`emits`](/api/options-state#emits), а функция `emit` выставляется на контексте `setup()`:
 
 ```js
 export default {
@@ -155,7 +155,7 @@ export default {
 }
 ```
 
-As with other properties of the `setup()` context, `emit` can safely be destructured:
+Как и другие свойства контекста `setup()`, `emit` может быть безопасно деструктурирован:
 
 ```js
 export default {
@@ -177,7 +177,7 @@ export default {
 
 </div>
 
-The `emits` option and `defineEmits()` macro also support an object syntax. If using TypeScript you can type arguments, which allows us to perform runtime validation of the payload of the emitted events:
+Опция `emits` и макрос `defineEmits()` также поддерживают объектный синтаксис. Если вы используете TypeScript, вы можете ввести аргументы, что позволит нам выполнить проверку полезной нагрузки испускаемых событий во время выполнения:
 
 <div class="composition-api">
 
@@ -185,14 +185,14 @@ The `emits` option and `defineEmits()` macro also support an object syntax. If u
 <script setup>
 const emit = defineEmits({
   submit(payload: { email: string, password: string }) {
-    // return `true` or `false` to indicate
-    // validation pass / fail
+    // возвращает `true` или `false` для указания, что
+    // проверка пройдена / не пройдена
   }
 })
 </script>
 ```
 
-If you are using TypeScript with `<script setup>`, it's also possible to declare emitted events using pure type annotations:
+Если вы используете TypeScript с `<script setup>`, можно также объявлять испускаемые события с помощью аннотаций чистого типа:
 
 ```vue
 <script setup lang="ts">
@@ -203,7 +203,7 @@ const emit = defineEmits<{
 </script>
 ```
 
-More details: [Typing Component Emits](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
+Подробнее: [Типизация событий компонента](/guide/typescript/composition-api#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 <div class="options-api">
@@ -212,43 +212,43 @@ More details: [Typing Component Emits](/guide/typescript/composition-api#typing-
 export default {
   emits: {
     submit(payload: { email: string, password: string }) {
-      // return `true` or `false` to indicate
-      // validation pass / fail
+      // возвращает `true` или `false` для указания, что
+      // проверка пройдена / не пройдена
     }
   }
 }
 ```
 
-See also: [Typing Component Emits](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
+Смотрите также: [Типизация событий компонента](/guide/typescript/options-api#typing-component-emits) <sup class="vt-badge ts" />
 
 </div>
 
-Although optional, it is recommended to define all emitted events in order to better document how a component should work. It also allows Vue to exclude known listeners from [fallthrough attributes](/guide/components/attrs#v-on-listener-inheritance), avoiding edge cases caused by DOM events manually dispatched by 3rd party code.
+Хотя это необязательно, рекомендуется определять все испускаемые события, чтобы лучше документировать работу компонента. Это также позволяет Vue исключать известные слушатели из [обычных атрибутов](/guide/components/attrs#v-on-listener-inheritance), избегая краевых случаев, вызванных событиями DOM, вручную диспетчеризируемыми сторонним кодом.
 
-:::tip
-If a native event (e.g., `click`) is defined in the `emits` option, the listener will now only listen to component-emitted `click` events and no longer respond to native `click` events.
+:::tip Примечание
+Если в параметре `emits` задано собственное событие (например, `click`), то слушатель теперь будет слушать только события `click`, передаваемые компонентом, и больше не будет реагировать на собственные события `click`.
 :::
 
-## Events Validation {#events-validation}
+## Валидация событий {#events-validation}
 
-Similar to prop type validation, an emitted event can be validated if it is defined with the object syntax instead of the array syntax.
+Аналогично проверке типа параметра, испускаемое событие может быть проверено, если оно определено с помощью синтаксиса объекта, а не синтаксиса массива.
 
-To add validation, the event is assigned a function that receives the arguments passed to the <span class="options-api">`this.$emit`</span><span class="composition-api">`emit`</span> call and returns a boolean to indicate whether the event is valid or not.
+Чтобы добавить проверку, событию назначается функция, которая получает аргументы, переданные вызову <span class="options-api">`this.$emit`</span><span class="composition-api">`emit`</span>, и возвращает булево число, указывающее, является ли событие действительным или нет.
 
 <div class="composition-api">
 
 ```vue
 <script setup>
 const emit = defineEmits({
-  // No validation
+  // Без валидации
   click: null,
 
-  // Validate submit event
+  // Проверка события submit
   submit: ({ email, password }) => {
     if (email && password) {
       return true
     } else {
-      console.warn('Invalid submit event payload!')
+      console.warn('Неверная полезная нагрузка события sumbit!')
       return false
     }
   }
@@ -266,15 +266,15 @@ function submitForm(email, password) {
 ```js
 export default {
   emits: {
-    // No validation
+    // Без валидации
     click: null,
 
-    // Validate submit event
+    // Проверка события submit
     submit: ({ email, password }) => {
       if (email && password) {
         return true
       } else {
-        console.warn('Invalid submit event payload!')
+        console.warn('Неверная полезная нагрузка события sumbit!')
         return false
       }
     }
@@ -289,14 +289,14 @@ export default {
 
 </div>
 
-## Events as Props {#events-props}
+## События как параметры {#events-props}
 
-You may also declare and pass `events` as `props`, by prefixing the capitalized event name with `on`.
+Вы также можете объявлять и передавать `events` как `props`, префиксируя имя события заглавными буквами с `on`.
 
-Using `props.onEvent` has a different behaviour than using `emit('event')`, as the former will pass only handle the property based listener (either `@event` or `:on-event`)
+Использование `props.onEvent` отличается от использования `emit('event')`, так как в первом случае будет передаваться только обработка слушателя, основанного на свойстве (либо `@event`, либо `:on-event`).
 
-:::warning
-If both `:onEvent` and `@event` are passed `props.onEvent` might be an array of `functions` instead of `function`, this behavior is not stable and might change in the future.
+:::warning Предупреждение
+Если переданы `:onEvent` и `@event`, то `props.onEvent` может представлять собой массив `functions` вместо `function`, такое поведение не стабильно и может измениться в будущем.
 :::
 
-Because of this, it is recommended to use `emit('event')` instead of `props.onEvent` when emitting events.
+В связи с этим рекомендуется использовать `emit('event')` вместо `props.onEvent` при эмиссии событий.
