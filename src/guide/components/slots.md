@@ -2,7 +2,7 @@
 
 > Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics). Прочитайте это, если вы новичок в работе с компонентами.
 
-<VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Бесплатный урок Vue.js по слотам"/>
+<VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Бесплатный урок по слотам Vue.js"/>
 
 ## Содержимое и выход слота {#slot-content-and-outlet}
 

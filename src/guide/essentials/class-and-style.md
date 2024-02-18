@@ -5,11 +5,11 @@
 ## Привязка классов HTML {#binding-html-classes}
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Бесплатный урок по динамическим CSS-классам"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/dynamic-css-classes-with-vue-3" title="Бесплатный урок по динамическим CSS-классам Vue.js"/>
 </div>
 
 <div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Бесплатный урок по динамическим CSS-классам"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-dynamic-css-classes-with-vue" title="Бесплатный урок по динамическим CSS-классам Vue.js"/>
 </div>
 
 ### Привязка к объектам {#binding-to-objects}
