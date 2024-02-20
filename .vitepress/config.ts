@@ -190,12 +190,12 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Компоненты в деталях',
       items: [
         {
-          text: 'Registration',
+          text: 'Регистрация',
           link: '/guide/components/registration'
         },
-        { text: 'Props', link: '/guide/components/props' },
-        { text: 'Events', link: '/guide/components/events' },
-        { text: 'Component v-model', link: '/guide/components/v-model' },
+        { text: 'Параметры', link: '/guide/components/props' },
+        { text: 'События', link: '/guide/components/events' },
+        { text: 'v-model', link: '/guide/components/v-model' },
         {
           text: 'Обычные атрибуты',
           link: '/guide/components/attrs'
@@ -206,7 +206,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/components/provide-inject'
         },
         {
-          text: 'Async Components',
+          text: 'Асинхронные компоненты',
           link: '/guide/components/async'
         }
       ]
@@ -215,14 +215,14 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Многоразовое использование',
       items: [
         {
-          text: 'Composables',
+          text: 'Композитные функции',
           link: '/guide/reusability/composables'
         },
         {
-          text: 'Custom Directives',
+          text: 'Пользовательские директивы',
           link: '/guide/reusability/custom-directives'
         },
-        { text: 'Plugins', link: '/guide/reusability/plugins' }
+        { text: 'Плагины', link: '/guide/reusability/plugins' }
       ]
     },
     {
@@ -241,16 +241,16 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Масштабирование',
       items: [
-        { text: 'Single-File Components', link: '/guide/scaling-up/sfc' },
+        { text: 'Однофайловые компоненты', link: '/guide/scaling-up/sfc' },
         { text: 'Инструменты', link: '/guide/scaling-up/tooling' },
-        { text: 'Routing', link: '/guide/scaling-up/routing' },
+        { text: 'Маршрутизация', link: '/guide/scaling-up/routing' },
         {
-          text: 'State Management',
+          text: 'Управление состоянием',
           link: '/guide/scaling-up/state-management'
         },
-        { text: 'Testing', link: '/guide/scaling-up/testing' },
+        { text: 'Тестирование', link: '/guide/scaling-up/testing' },
         {
-          text: 'Server-Side Rendering (SSR)',
+          text: 'Рендеринг на стороне сервера (SSR)',
           link: '/guide/scaling-up/ssr'
         }
       ]
@@ -259,7 +259,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Лучшие практики',
       items: [
         {
-          text: 'Production Deployment',
+          text: 'Развёртывание',
           link: '/guide/best-practices/production-deployment'
         },
         {
@@ -267,11 +267,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/best-practices/performance'
         },
         {
-          text: 'Accessibility',
+          text: 'Доступность',
           link: '/guide/best-practices/accessibility'
         },
         {
-          text: 'Security',
+          text: 'Безопасность',
           link: '/guide/best-practices/security'
         }
       ]
@@ -294,11 +294,11 @@ export const sidebar: ThemeConfig['sidebar'] = {
       text: 'Дополнительные темы',
       items: [
         {
-          text: 'Ways of Using Vue',
+          text: 'Способы использования Vue',
           link: '/guide/extras/ways-of-using-vue'
         },
         {
-          text: 'Composition API FAQ',
+          text: 'ЧаВо по Composition API ',
           link: '/guide/extras/composition-api-faq'
         },
         {
@@ -318,7 +318,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/extras/web-components'
         },
         {
-          text: 'Animation Techniques',
+          text: 'Техники анимации',
           link: '/guide/extras/animation'
         }
         // {
@@ -336,9 +336,9 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Global API',
       items: [
-        { text: 'Application', link: '/api/application' },
+        { text: 'Приложение', link: '/api/application' },
         {
-          text: 'General',
+          text: 'Общее',
           link: '/api/general'
         }
       ]
@@ -348,23 +348,23 @@ export const sidebar: ThemeConfig['sidebar'] = {
       items: [
         { text: 'setup()', link: '/api/composition-api-setup' },
         {
-          text: 'Reactivity: Core',
+          text: 'Реактивность: Ядро',
           link: '/api/reactivity-core'
         },
         {
-          text: 'Reactivity: Utilities',
+          text: 'Реактивность: Утилиты',
           link: '/api/reactivity-utilities'
         },
         {
-          text: 'Reactivity: Advanced',
+          text: 'Реактивность: Дополнительно',
           link: '/api/reactivity-advanced'
         },
         {
-          text: 'Lifecycle Hooks',
+          text: 'Хуки жизненного цикла',
           link: '/api/composition-api-lifecycle'
         },
         {
-          text: 'Dependency Injection',
+          text: 'Внедрение зависимостей',
           link: '/api/composition-api-dependency-injection'
         }
       ]
@@ -372,53 +372,53 @@ export const sidebar: ThemeConfig['sidebar'] = {
     {
       text: 'Options API',
       items: [
-        { text: 'Options: State', link: '/api/options-state' },
-        { text: 'Options: Rendering', link: '/api/options-rendering' },
+        { text: 'Options: Состояние', link: '/api/options-state' },
+        { text: 'Options: Отрисовка', link: '/api/options-rendering' },
         {
-          text: 'Options: Lifecycle',
+          text: 'Options: Жизненный цикл',
           link: '/api/options-lifecycle'
         },
         {
-          text: 'Options: Composition',
+          text: 'Options: Композиция',
           link: '/api/options-composition'
         },
-        { text: 'Options: Misc', link: '/api/options-misc' },
+        { text: 'Options: Разное', link: '/api/options-misc' },
         {
-          text: 'Component Instance',
+          text: 'Экземпляр компонента',
           link: '/api/component-instance'
         }
       ]
     },
     {
-      text: 'Built-ins',
+      text: 'Встроенные',
       items: [
-        { text: 'Directives', link: '/api/built-in-directives' },
-        { text: 'Components', link: '/api/built-in-components' },
+        { text: 'Директивы', link: '/api/built-in-directives' },
+        { text: 'Компоненты', link: '/api/built-in-components' },
         {
-          text: 'Special Elements',
+          text: 'Специальные элементы',
           link: '/api/built-in-special-elements'
         },
         {
-          text: 'Special Attributes',
+          text: 'Специальные атрибуты',
           link: '/api/built-in-special-attributes'
         }
       ]
     },
     {
-      text: 'Single-File Component',
+      text: 'Однофайловый компонент',
       items: [
-        { text: 'Syntax Specification', link: '/api/sfc-spec' },
+        { text: 'Спецификация синтаксиса', link: '/api/sfc-spec' },
         { text: '<script setup>', link: '/api/sfc-script-setup' },
-        { text: 'CSS Features', link: '/api/sfc-css-features' }
+        { text: 'Особенности CSS', link: '/api/sfc-css-features' }
       ]
     },
     {
-      text: 'Advanced APIs',
+      text: 'Дополнительные API',
       items: [
-        { text: 'Render Function', link: '/api/render-function' },
-        { text: 'Server-Side Rendering', link: '/api/ssr' },
-        { text: 'TypeScript Utility Types', link: '/api/utility-types' },
-        { text: 'Custom Renderer', link: '/api/custom-renderer' }
+        { text: 'Функция render', link: '/api/render-function' },
+        { text: 'Рендеринг на стороне сервера', link: '/api/ssr' },
+        { text: 'Типы утилит TypeScript', link: '/api/utility-types' },
+        { text: 'Пользовательский рендерер', link: '/api/custom-renderer' }
       ]
     }
   ],
