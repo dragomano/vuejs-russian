@@ -1,26 +1,26 @@
-# Accessibility {#accessibility}
+# Доступность {#accessibility}
 
-Web accessibility (also known as a11y) refers to the practice of creating websites that can be used by anyone — be that a person with a disability, a slow connection, outdated or broken hardware or simply someone in an unfavorable environment. For example, adding subtitles to a video would help both your deaf and hard-of-hearing users and your users who are in a loud environment and can't hear their phone. Similarly, making sure your text isn't too low contrast will help both your low-vision users and your users who are trying to use their phone in bright sunlight.
+Веб-доступность (также известная как a11y) — это практика создания веб-сайтов, которыми может пользоваться любой человек — будь то инвалид, человек с медленным соединением, устаревшим или сломанным оборудованием или просто человек, находящийся в неблагоприятных условиях. Например, добавление субтитров к видео поможет как глухим и слабослышащим пользователям, так и пользователям, которые находятся в шумной обстановке и не слышат свой телефон. Аналогично, убедитесь, что ваш текст не слишком контрастный, это поможет как слабовидящим пользователям, так и тем, кто пытается пользоваться телефоном при ярком солнечном свете.
 
-Ready to start but aren’t sure where?
+Готовы начать, но не знаете, с чего начать?
 
-Checkout the [Planning and managing web accessibility guide](https://www.w3.org/WAI/planning-and-managing/) provided by [World Wide Web Consortium (W3C)](https://www.w3.org/)
+Ознакомьтесь с [Руководство по планированию и управлению доступностью веб-сайтов](https://www.w3.org/WAI/planning-and-managing/), предоставленным [Консорциумом Всемирной паутины (W3C)](https://www.w3.org/).
 
-## Skip link {#skip-link}
+## Переход к основному содержанию {#skip-link}
 
-You should add a link at the top of each page that goes directly to the main content area so users can skip content that is repeated on multiple Web pages.
+В верхней части каждой страницы следует добавить ссылку, ведущую непосредственно к основному содержанию, чтобы пользователи могли пропустить материалы, которые повторяются на нескольких веб-страницах.
 
-Typically this is done on the top of `App.vue` as it will be the first focusable element on all your pages:
+Обычно это делается в верхней части файла `App.vue`, поскольку он будет первым фокусируемым элементом на всех ваших страницах:
 
 ```vue-html
 <ul class="skip-links">
   <li>
-    <a href="#main" ref="skipLink" class="skip-link">Skip to main content</a>
+    <a href="#main" ref="skipLink" class="skip-link">Перейти к основному содержанию</a>
   </li>
 </ul>
 ```
 
-To hide the link unless it is focused, you can add the following style:
+Чтобы скрыть ссылку, если она не сфокусирована, можно добавить следующий стиль:
 
 ```css
 .skip-link {
@@ -40,7 +40,7 @@ To hide the link unless it is focused, you can add the following style:
 }
 ```
 
-Once a user changes route, bring focus back to the skip link. This can be achieved by calling focus on the skip link's template ref (assuming usage of `vue-router`):
+Как только пользователь изменит маршрут, верните внимание к ссылке на пропуск. Этого можно добиться, вызвав focus на шаблонном реферере пропускаемой ссылки (при условии использования `vue-router`):
 
 <div class="options-api">
 
@@ -78,66 +78,66 @@ watch(
 
 </div>
 
-[Read documentation on skip link to main content](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
+[Подробнее о ссылке перехода к основному содержимому](https://www.w3.org/WAI/WCAG21/Techniques/general/G1.html)
 
-## Content Structure {#content-structure}
+## Структура содержания {#content-structure}
 
-One of the most important pieces of accessibility is making sure that design can support accessible implementation. Design should consider not only color contrast, font selection, text sizing, and language, but also how the content is structured in the application.
+Одна из самых важных составляющих доступности — убедиться в том, что дизайн может поддерживать доступную реализацию. Дизайн должен учитывать не только цветовой контраст, выбор шрифта, размер текста и язык, но и то, как структурирован контент в приложении.
 
-### Headings {#headings}
+### Заголовки {#headings}
 
-Users can navigate an application through headings. Having descriptive headings for every section of your application makes it easier for users to predict the content of each section. When it comes to headings, there are a couple of recommended accessibility practices:
+Пользователи могут ориентироваться в приложении по заголовкам. Наличие описательных заголовков для каждого раздела вашего приложения облегчает пользователям прогнозирование содержания каждого раздела. Когда речь идет о заголовках, существует несколько рекомендуемых практик обеспечения доступности:
 
-- Nest headings in their ranking order: `<h1>` - `<h6>`
-- Don’t skip headings within a section
-- Use actual heading tags instead of styling text to give the visual appearance of headings
+- Расположите заголовки в порядке их ранжирования: `<h1>` - `<h6>`
+- Не пропускайте заголовки внутри раздела
+- Используйте настоящие теги заголовков вместо стилизации текста, чтобы придать заголовкам визуальный вид.
 
-[Read more about headings](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
+[Подробнее о заголовках](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ```vue-html
 <main role="main" aria-labelledby="main-title">
-  <h1 id="main-title">Main title</h1>
+  <h1 id="main-title">Главный заголовок</h1>
   <section aria-labelledby="section-title-1">
-    <h2 id="section-title-1"> Section Title </h2>
-    <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <h2 id="section-title-1"> Название раздела </h2>
+    <h3>Подзаголовок раздела</h3>
+    <!-- Контент -->
   </section>
   <section aria-labelledby="section-title-2">
-    <h2 id="section-title-2"> Section Title </h2>
-    <h3>Section Subtitle</h3>
-    <!-- Content -->
-    <h3>Section Subtitle</h3>
-    <!-- Content -->
+    <h2 id="section-title-2"> Название раздела </h2>
+    <h3>Подзаголовок раздела</h3>
+    <!-- Контент -->
+    <h3>Подзаголовок раздела</h3>
+    <!-- Контент -->
   </section>
 </main>
 ```
 
-### Landmarks {#landmarks}
+### Ориентиры {#landmarks}
 
-[Landmarks](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) provide programmatic access to sections within an application. Users who rely on assistive technology can navigate to each section of the application and skip over content. You can use [ARIA roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles) to help you achieve this.
+[Ориентиры](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role) обеспечивают программный доступ к разделам внутри приложения. Пользователи, использующие вспомогательные технологии, могут переходить к каждому разделу приложения и пропускать содержимое. Для достижения этой цели можно использовать [ARIA-роли](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles).
 
-| HTML            | ARIA Role            | Landmark Purpose                                                                                                 |
-| --------------- | -------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| header          | role="banner"        | Prime heading: title of the page                                                                                 |
-| nav             | role="navigation"    | Collection of links suitable for use when navigating the document or related documents                           |
-| main            | role="main"          | The main or central content of the document.                                                                     |
-| footer          | role="contentinfo"   | Information about the parent document: footnotes/copyrights/links to privacy statement                           |
-| aside           | role="complementary" | Supports the main content, yet is separated and meaningful on its own content                                    |
-| search          | role="search"        | This section contains the search functionality for the application                                               |
-| form            | role="form"          | Collection of form-associated elements                                                                           |
-| section         | role="region"        | Content that is relevant and that users will likely want to navigate to. Label must be provided for this element |
+| HTML    | Роль ARIA            | Назначение ориентира                                                                                                             |
+| ------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| header  | role="banner"        | Основной заголовок: название страницы                                                                                            |
+| nav     | role="navigation"    | Коллекция ссылок, подходящих для использования при навигации по документу или связанным с ним документам                         |
+| main    | role="main"          | Основное или центральное содержание документа                                                                                    |
+| footer  | role="contentinfo"   | Информация об исходном документе: сноски/авторские права/ссылки на заявление о конфиденциальности                                |
+| aside   | role="complementary" | Поддерживает основной контент, но при этом отделен и имеет смысл для собственного контента                                       |
+| search  | role="search"        | В этом разделе размещен функционал поиска по приложению                                                                          |
+| form    | role="form"          | Коллекция элементов, связанных с формой                                                                                          |
+| section | role="region"        | Контент, который актуален и к которому пользователи, скорее всего, захотят перейти. Для этого элемента должна быть указана метка |
 
-:::tip Tip:
-It is recommended to use landmark HTML elements with redundant landmark role attributes in order to maximize compatibility with legacy [browsers that don’t support HTML5 semantic elements](https://caniuse.com/#feat=html5semantic).
+:::tip Совет
+Рекомендуется использовать HTML-элементы ориентира с избыточными атрибутами роли ориентира, чтобы максимизировать совместимость с устаревшими [браузерами, которые не поддерживают семантические элементы HTML5](https://caniuse.com/#feat=html5semantic).
 :::
 
-[Read more about landmarks](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
+[Подробнее об ориентирах](https://www.w3.org/TR/wai-aria-1.2/#landmark_roles)
 
-## Semantic Forms {#semantic-forms}
+## Семантические формы {#semantic-forms}
 
-When creating a form, you can use the following elements: `<form>`, `<label>`, `<input>`, `<textarea>`, and `<button>`
+При создании формы вы можете использовать следующие элементы: `<form>`, `<label>`, `<input>`, `<textarea>` и `<button>`
 
-Labels are typically placed on top or to the left of the form fields:
+Метки обычно размещаются сверху или слева от полей формы:
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
@@ -150,31 +150,31 @@ Labels are typically placed on top or to the left of the form fields:
       v-model="item.value"
     />
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit">Отправить</button>
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Simple Form" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
+<!-- <common-codepen-snippet title="Простая форма" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Notice how you can include `autocomplete='on'` on the form element and it will apply to all inputs in your form. You can also set different [values for autocomplete attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) for each input.
+Обратите внимание, как вы можете включить `autocomplete='on'` в элемент формы, и это будет применяться ко всем входным данным в вашей форме. Вы также можете установить разные [значения атрибута автозаполнения](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) для каждого ввода.
 
-### Labels {#labels}
+### Метки {#labels}
 
-Provide labels to describe the purpose of all form control; linking `for` and `id`:
+Предоставьте метки, описывающие цель всех элементов управления формой; связывание `for` и `id`:
 
 ```vue-html
-<label for="name">Name: </label>
+<label for="name">Имя: </label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
 
 <!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-If you inspect this element in your chrome developer tools and open the Accessibility tab inside the Elements tab, you will see how the input gets its name from the label:
+Если вы проверите этот элемент в инструментах разработчика Chrome и откроете вкладку «Доступность» на вкладке «Элементы», вы увидите, как входные данные получают свое имя из метки:
 
-![Chrome Developer Tools showing input accessible name from label](./images/AccessibleLabelChromeDevTools.png)
+![Инструменты разработчика Chrome показывают доступное для ввода имя из метки](./images/AccessibleLabelChromeDevTools.png)
 
-:::warning Warning:
-Though you might have seen labels wrapping the input fields like this:
+:::warning Предупреждение
+Хотя вы, возможно, видели, как метки обертывают поля ввода таким образом:
 
 ```vue-html
 <label>
@@ -183,15 +183,15 @@ Though you might have seen labels wrapping the input fields like this:
 </label>
 ```
 
-Explicitly setting the labels with a matching id is better supported by assistive technology.
+Явная установка меток с соответствующим идентификатором лучше поддерживается вспомогательными технологиями.
 :::
 
 #### `aria-label` {#aria-label}
 
-You can also give the input an accessible name with [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label).
+Вы также можете дать вводимым данным доступное имя с помощью [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label).
 
 ```vue-html
-<label for="name">Name: </label>
+<label for="name">Имя: </label>
 <input
   type="text"
   name="name"
@@ -203,13 +203,13 @@ You can also give the input an accessible name with [`aria-label`](https://devel
 
 <!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-Feel free to inspect this element in Chrome DevTools to see how the accessible name has changed:
+Не стесняйтесь просмотреть этот элемент в Chrome DevTools, чтобы увидеть, как изменилось доступное имя:
 
-![Chrome Developer Tools showing input accessible name from aria-label](./images/AccessibleARIAlabelDevTools.png)
+![Инструменты разработчика Chrome показывают доступное для ввода имя из aria-label](./images/AccessibleARIAlabelDevTools.png)
 
 #### `aria-labelledby` {#aria-labelledby}
 
-Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) is similar to `aria-label` except it is used if the label text is visible on screen. It is paired to other elements by their `id` and you can link multiple `id`s:
+Использование [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) аналогично `aria-label`, за исключением того, что оно используется, если текст метки виден на экране. Он сопрягается с другими элементами по их `id`, и вы можете связать несколько `id`:
 
 ```vue-html
 <form
@@ -218,28 +218,28 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
   method="post"
   autocomplete="on"
 >
-  <h1 id="billing">Billing</h1>
+  <h1 id="billing">Счёт</h1>
   <div class="form-item">
-    <label for="name">Name: </label>
+    <label for="name">Имя: </label>
     <input
       type="text"
       name="name"
       id="name"
       v-model="name"
-      aria-labelledby="billing name"
+      aria-labelledby="название счёта"
     />
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit">Отправить</button>
 </form>
 ```
 
 <!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
+![Инструменты разработчика Chrome показывают доступное для ввода имя из aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
 #### `aria-describedby` {#aria-describedby}
 
-[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) is used the same way as `aria-labelledby` except provides a description with additional information that the user might need. This can be used to describe the criteria for any input:
+[aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) используется так же, как и `aria-labelledby`, но содержит описание с дополнительной информацией, которая может понадобиться пользователю. С его помощью можно описать критерии для любого ввода:
 
 ```vue-html
 <form
@@ -248,36 +248,36 @@ Using [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibi
   method="post"
   autocomplete="on"
 >
-  <h1 id="billing">Billing</h1>
+  <h1 id="billing">Счёт</h1>
   <div class="form-item">
-    <label for="name">Full Name: </label>
+    <label for="name">Полное имя: </label>
     <input
       type="text"
       name="name"
       id="name"
       v-model="name"
-      aria-labelledby="billing name"
+      aria-labelledby="название счёта"
       aria-describedby="nameDescription"
     />
-    <p id="nameDescription">Please provide first and last name.</p>
+    <p id="nameDescription">Пожалуйста, укажите имя и фамилию.</p>
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit">Отправить</button>
 </form>
 ```
 
 <!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-You can see the description by inspecting Chrome DevTools:
+Вы можете просмотреть описание, заглянув в Chrome DevTools:
 
-![Chrome Developer Tools showing input accessible name from aria-labelledby and description with aria-describedby](./images/AccessibleARIAdescribedby.png)
+![Инструменты разработчика Chrome показывают доступное для ввода имя с aria-labelledby и описание с aria-describedby](./images/AccessibleARIAdescribedby.png)
 
-### Placeholder {#placeholder}
+### Заполнитель {#placeholder}
 
-Avoid using placeholders as they can confuse many users.
+Избегайте использования заполнителей, так как они могут запутать многих пользователей.
 
-One of the issues with placeholders is that they don't meet the [color contrast criteria](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html) by default; fixing the color contrast makes the placeholder look like pre-populated data in the input fields. Looking at the following example, you can see that the Last Name placeholder which meets the color contrast criteria looks like pre-populated data:
+Одной из проблем с заполнителями является то, что по умолчанию они не соответствуют [критерию цветового контраста](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html); исправление цветового контраста приводит к тому, что в полях ввода заполнитель выглядит как предварительно заполненные данные. Если посмотреть на следующий пример, то можно увидеть, что заполнитель фамилии, отвечающий критериям цветового контраста, выглядит как предварительно заполненные данные:
 
-![Accessible placeholder](./images/AccessiblePlaceholder.png)
+![Доступный заполнитель](./images/AccessiblePlaceholder.png)
 
 ```vue-html
 <form
@@ -296,7 +296,7 @@ One of the issues with placeholders is that they don't meet the [color contrast 
       :placeholder="item.placeholder"
     />
   </div>
-  <button type="submit">Submit</button>
+  <button type="submit">Отправить</button>
 </form>
 ```
 
@@ -320,17 +320,17 @@ One of the issues with placeholders is that they don't meet the [color contrast 
 }
 ```
 
-It is best to provide all the information the user needs to fill out forms outside any inputs.
+Лучше всего предоставлять всю информацию, необходимую пользователю для заполнения формы, без каких-либо вводов.
 
-### Instructions {#instructions}
+### Инструкции {#instructions}
 
-When adding instructions for your input fields, make sure to link it correctly to the input.
-You can provide additional instructions and bind multiple ids inside an [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby). This allows for more flexible design.
+Добавляя инструкции для полей ввода, не забудьте правильно связать их с полем ввода.
+Вы можете предоставить дополнительные инструкции и связать несколько идентификаторов внутри [`aria-labelledby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby). Это позволяет создавать более гибкие конструкции.
 
 ```vue-html
 <fieldset>
   <legend>Using aria-labelledby</legend>
-  <label id="date-label" for="date">Current Date: </label>
+  <label id="date-label" for="date">Текущая дата: </label>
   <input
     type="date"
     name="date"
@@ -341,36 +341,36 @@ You can provide additional instructions and bind multiple ids inside an [`aria-l
 </fieldset>
 ```
 
-Alternatively, you can attach the instructions to the input with [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby):
+Кроме того, вы можете прикрепить инструкции к вводу с помощью [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby):
 
 ```vue-html
 <fieldset>
   <legend>Using aria-describedby</legend>
-  <label id="dob" for="dob">Date of Birth: </label>
+  <label id="dob" for="dob">Дата рождения: </label>
   <input type="date" name="dob" id="dob" aria-describedby="dob-instructions" />
   <p id="dob-instructions">MM/DD/YYYY</p>
 </fieldset>
 ```
 
-<!-- <common-codepen-snippet title="Form Instructions" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
+<!-- <common-codepen-snippet title="Инструкция по заполнению формы" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### Hiding Content {#hiding-content}
+### Скрытое содержимое {#hiding-content}
 
-Usually it is not recommended to visually hide labels, even if the input has an accessible name. However, if the functionality of the input can be understood with surrounding content, then we can hide the visual label.
+Обычно не рекомендуется визуально скрывать метки, даже если ввод имеет доступное имя. Однако если функциональность ввода может быть понятна из окружающего контента, то визуальную метку можно скрыть.
 
-Let's look at this search field:
+Давайте посмотрим на это поле поиска:
 
 ```vue-html
 <form role="search">
-  <label for="search" class="hidden-visually">Search: </label>
+  <label for="search" class="hidden-visually">Поиск: </label>
   <input type="text" name="search" id="search" v-model="search" />
-  <button type="submit">Search</button>
+  <button type="submit">Поиск</button>
 </form>
 ```
 
-We can do this because the search button will help visual users identify the purpose of the input field.
+Мы можем это сделать, потому что кнопка поиска поможет визуальным пользователям определить назначение поля ввода.
 
-We can use CSS to visually hide elements but keep them available for assistive technology:
+С помощью CSS мы можем визуально скрыть элементы, но сохранить их доступными для вспомогательных технологий:
 
 ```css
 .hidden-visually {
@@ -386,53 +386,53 @@ We can use CSS to visually hide elements but keep them available for assistive t
 }
 ```
 
-<!-- <common-codepen-snippet title="Form Search" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
+<!-- <common-codepen-snippet title="Форма поиска" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 #### `aria-hidden="true"` {#aria-hidden-true}
 
-Adding `aria-hidden="true"` will hide the element from assistive technology but leave it visually available for other users. Do not use it on focusable elements, purely on decorative, duplicated or offscreen content.
+Добавление `aria-hidden="true"` скроет элемент от вспомогательных технологий, но оставит его визуально доступным для других пользователей. Не используйте его на фокусируемых элементах, только на декоративном, дублирующемся или внеэкранном контенте.
 
 ```vue-html
-<p>This is not hidden from screen readers.</p>
-<p aria-hidden="true">This is hidden from screen readers.</p>
+<p>Это не скрыто от устройств чтения с экрана.</p>
+<p aria-hidden="true">Это скрыто от устройств чтения с экрана.</p>
 ```
 
-### Buttons {#buttons}
+### Кнопки {#buttons}
 
-When using buttons inside a form, you must set the type to prevent submitting the form.
-You can also use an input to create buttons:
+При использовании кнопок внутри формы необходимо установить тип, предотвращающий отправку формы.
+Вы также можете использовать вход для создания кнопок:
 
 ```vue-html
 <form action="/dataCollectionLocation" method="post" autocomplete="on">
   <!-- Buttons -->
-  <button type="button">Cancel</button>
-  <button type="submit">Submit</button>
+  <button type="button">Отменить</button>
+  <button type="submit">Отправить</button>
 
   <!-- Input buttons -->
-  <input type="button" value="Cancel" />
-  <input type="submit" value="Submit" />
+  <input type="button" value="Отменить" />
+  <input type="submit" value="Отправить" />
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Form Buttons" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
+<!-- <common-codepen-snippet title="Кнопки формы" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-### Functional Images {#functional-images}
+### Функциональные изображения {#functional-images}
 
-You can use this technique to create functional images.
+Вы можете использовать эту технику для создания функциональных изображений.
 
-- Input fields
+- Поля ввода
 
-  - These images will act as a submit type button on forms
+  - Эти изображения будут действовать как кнопки отправки в формах
 
   ```vue-html
   <form role="search">
-    <label for="search" class="hidden-visually">Search: </label>
+    <label for="search" class="hidden-visually">Поиск: </label>
     <input type="text" name="search" id="search" v-model="search" />
     <input
       type="image"
       class="btnImg"
       src="https://img.icons8.com/search"
-      alt="Search"
+      alt="Поиск"
     />
   </form>
   ```
@@ -441,99 +441,99 @@ You can use this technique to create functional images.
 
 ```vue-html
 <form role="search">
-  <label for="searchIcon" class="hidden-visually">Search: </label>
+  <label for="searchIcon" class="hidden-visually">Поиск: </label>
   <input type="text" name="searchIcon" id="searchIcon" v-model="searchIcon" />
   <button type="submit">
     <i class="fas fa-search" aria-hidden="true"></i>
-    <span class="hidden-visually">Search</span>
+    <span class="hidden-visually">Поиск</span>
   </button>
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Functional Images" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
+<!-- <common-codepen-snippet title="Функциональные изображения" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
-## Standards {#standards}
+## Стандарты {#standards}
 
-The World Wide Web Consortium (W3C) Web Accessibility Initiative (WAI) develops web accessibility standards for the different components:
+Инициатива по обеспечению веб-доступности (WAI) Консорциума Всемирной паутины (W3C) разрабатывает стандарты веб-доступности для различных компонентов:
 
-- [User Agent Accessibility Guidelines (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
-  - web browsers and media players, including some aspects of assistive technologies
-- [Authoring Tool Accessibility Guidelines (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
-  - authoring tools
-- [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
-  - web content - used by developers, authoring tools, and accessibility evaluation tools
+- [Руководство по доступности пользовательского агента (UAAG)](https://www.w3.org/WAI/standards-guidelines/uaag/)
+  - веб-браузеры и медиаплееры, включая некоторые аспекты вспомогательных технологий
+- [Руководство по обеспечению доступности средств создания (ATAG)](https://www.w3.org/WAI/standards-guidelines/atag/)
+  - авторские инструменты
+- [Руководство по доступности веб-контента (WCAG)](https://www.w3.org/WAI/standards-guidelines/wcag/)
+  - веб-контент — используется разработчиками, авторскими инструментами и инструментами оценки доступности
 
-### Web Content Accessibility Guidelines (WCAG) {#web-content-accessibility-guidelines-wcag}
+### Руководство по доступности веб-контента (WCAG) {#web-content-accessibility-guidelines-wcag}
 
-[WCAG 2.1](https://www.w3.org/TR/WCAG21/) extends on [WCAG 2.0](https://www.w3.org/TR/WCAG20/) and allows implementation of new technologies by addressing changes to the web. The W3C encourages use of the most current version of WCAG when developing or updating Web accessibility policies.
+[WCAG 2.1](https://www.w3.org/TR/WCAG21/) развивает [WCAG 2.0](https://www.w3.org/TR/WCAG20/) и позволяет внедрять новые технологии, учитывая изменения в Интернете. W3C рекомендует использовать самую последнюю версию WCAG при разработке или обновлении политики веб-доступности.
 
-#### WCAG 2.1 Four Main Guiding Principles (abbreviated as POUR): {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
+#### WCAG 2.1 Четыре основных руководящих принципа (сокращенно ВУПУ — POUR): {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
 
-- [Perceivable](https://www.w3.org/TR/WCAG21/#perceivable)
-  - Users must be able to perceive the information being presented
-- [Operable](https://www.w3.org/TR/WCAG21/#operable)
-  - Interface forms, controls, and navigation are operable
-- [Understandable](https://www.w3.org/TR/WCAG21/#understandable)
-  - Information and the operation of user interface must be understandable to all users
-- [Robust](https://www.w3.org/TR/WCAG21/#robust)
-  - Users must be able to access the content as technologies advance
+- [Воспринимаемость (Perceivable)](https://www.w3.org/TR/WCAG21/#perceivable)
+  - Пользователи должны иметь возможность воспринимать представляемую информацию
+- [Управляемость (Operable)](https://www.w3.org/TR/WCAG21/#operable)
+  - Формы интерфейса, элементы управления и навигации работоспособны
+- [Понятность (Understandable)](https://www.w3.org/TR/WCAG21/#understandable)
+  - Информация и работа пользовательского интерфейса должны быть понятны всем пользователям
+- [Устойчивость (Robust)](https://www.w3.org/TR/WCAG21/#robust)
+  - Пользователи должны иметь доступ к контенту по мере развития технологий
 
-#### Web Accessibility Initiative – Accessible Rich Internet Applications (WAI-ARIA) {#web-accessibility-initiative-–-accessible-rich-internet-applications-wai-aria}
+#### Инициатива по обеспечению доступности веб-сайтов – доступные многофункциональные интернет-приложения (WAI-ARIA){#web-accessibility-initiative-–-accessible-rich-internet-applications-wai-aria}
 
-W3C's WAI-ARIA provides guidance on how to build dynamic content and advanced user interface controls.
+WAI-ARIA W3C предоставляет рекомендации по созданию динамического контента и расширенных элементов управления пользовательским интерфейсом.
 
-- [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
-- [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
+- [Доступные многофункциональные интернет-приложения (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
+- [Практика разработки WAI-ARIA 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-## Resources {#resources}
+## Ресурсы {#resources}
 
-### Documentation {#documentation}
+### Документация {#documentation}
 
 - [WCAG 2.0](https://www.w3.org/TR/WCAG20/)
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/)
-- [Accessible Rich Internet Applications (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
-- [WAI-ARIA Authoring Practices 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
+- [Доступные многофункциональные интернет-приложения (WAI-ARIA) 1.2](https://www.w3.org/TR/wai-aria-1.2/)
+- [Практика разработки WAI-ARIA 1.2](https://www.w3.org/TR/wai-aria-practices-1.2/)
 
-### Assistive Technologies {#assistive-technologies}
+### Вспомогательные технологии {#assistive-technologies}
 
-- Screen Readers
+- Программы чтения с экрана
   - [NVDA](https://www.nvaccess.org/download/)
   - [VoiceOver](https://www.apple.com/accessibility/mac/vision/)
   - [JAWS](https://www.freedomscientific.com/products/software/jaws/?utm_term=jaws%20screen%20reader&utm_source=adwords&utm_campaign=All+Products&utm_medium=ppc&hsa_tgt=kwd-394361346638&hsa_cam=200218713&hsa_ad=296201131673&hsa_kw=jaws%20screen%20reader&hsa_grp=52663682111&hsa_net=adwords&hsa_mt=e&hsa_src=g&hsa_acc=1684996396&hsa_ver=3&gclid=Cj0KCQjwnv71BRCOARIsAIkxW9HXKQ6kKNQD0q8a_1TXSJXnIuUyb65KJeTWmtS6BH96-5he9dsNq6oaAh6UEALw_wcB)
   - [ChromeVox](https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)
-- Zooming Tools
+- Инструменты масштабирования
   - [MAGic](https://www.freedomscientific.com/products/software/magic/)
   - [ZoomText](https://www.freedomscientific.com/products/software/zoomtext/)
   - [Magnifier](https://support.microsoft.com/en-us/help/11542/windows-use-magnifier-to-make-things-easier-to-see)
 
-### Testing {#testing}
+### Тестирование {#testing}
 
-- Automated Tools
+- Автоматизированные инструменты
   - [Lighthouse](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
   - [WAVE](https://chrome.google.com/webstore/detail/wave-evaluation-tool/jbbplnpkjmmeebjpijfedlgcdilocofh)
   - [ARC Toolkit](https://chrome.google.com/webstore/detail/arc-toolkit/chdkkkccnlfncngelccgbgfmjebmkmce?hl=en-US)
-- Color Tools
+- Инструменты для работы с цветом
   - [WebAim Color Contrast](https://webaim.org/resources/contrastchecker/)
   - [WebAim Link Color Contrast](https://webaim.org/resources/linkcontrastchecker)
-- Other Helpful Tools
+- Другие полезные инструменты
   - [HeadingMap](https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi?hl=en…)
   - [Color Oracle](https://colororacle.org)
   - [NerdeFocus](https://chrome.google.com/webstore/detail/nerdefocus/lpfiljldhgjecfepfljnbjnbjfhennpd?hl=en-US…)
   - [Visual Aria](https://chrome.google.com/webstore/detail/visual-aria/lhbmajchkkmakajkjenkchhnhbadmhmk?hl=en-US)
   - [Silktide Website Accessibility Simulator](https://chrome.google.com/webstore/detail/silktide-website-accessib/okcpiimdfkpkjcbihbmhppldhiebhhaf?hl=en-US)
 
-### Users {#users}
+### Пользователи {#users}
 
-The World Health Organization estimates that 15% of the world's population has some form of disability, 2-4% of them severely so. That is an estimated 1 billion people worldwide; making people with disabilities the largest minority group in the world.
+По оценкам Всемирной организации здравоохранения, 15 % населения Земли имеют ту или иную форму инвалидности, 2-4 % из них — тяжелую. Это примерно 1 миллиард человек во всем мире; таким образом, люди с ограниченными возможностями стали самым многочисленным меньшинством в мире.
 
-There are a huge range of disabilities, which can be divided roughly into four categories:
+Существует огромное количество видов инвалидности, которые можно условно разделить на четыре категории:
 
-- _[Visual](https://webaim.org/articles/visual/)_ - These users can benefit from the use of screen readers, screen magnification, controlling screen contrast, or braille display.
-- _[Auditory](https://webaim.org/articles/auditory/)_ - These users can benefit from captioning, transcripts or sign language video.
-- _[Motor](https://webaim.org/articles/motor/)_ - These users can benefit from a range of [assistive technologies for motor impairments](https://webaim.org/articles/motor/assistive): voice recognition software, eye tracking, single-switch access, head wand, sip and puff switch, oversized trackball mouse, adaptive keyboard or other assistive technologies.
-- _[Cognitive](https://webaim.org/articles/cognitive/)_ - These users can benefit from supplemental media, structural organization of content, clear and simple writing.
+- _[Визуальная](https://webaim.org/articles/visual/)_ - Для таких пользователей могут быть полезны программы чтения с экрана, увеличение экрана, регулирование контрастности экрана или отображение текста шрифтом Брайля.
+- _[Слуховая](https://webaim.org/articles/auditory/)_ - Этим пользователям могут помочь субтитры, расшифровки или видео на языке жестов.
+- _[Двигательная](https://webaim.org/articles/motor/)_ - Эти пользователи могут воспользоваться рядом [вспомогательных технологий при двигательных нарушениях](https://webaim.org/articles/motor/assistive): программное обеспечение для распознавания голоса, отслеживание глаз, доступ с помощью одного переключателя, головная палочка, переключатель для глотка и затяжки, увеличенную мышь с трекболом, адаптивную клавиатуру или другие вспомогательные технологии.
+- _[Когнитивная](https://webaim.org/articles/cognitive/)_ - Для таких пользователей полезны дополнительные средства информации, структурная организация содержания, ясный и простой текст.
 
-Check out the following links from WebAim to understand from users:
+Ознакомьтесь со следующими ссылками от WebAim, чтобы узнать мнение пользователей:
 
-- [Web Accessibility Perspectives: Explore the Impact and Benefits for Everyone](https://www.w3.org/WAI/perspective-videos/)
-- [Stories of Web Users](https://www.w3.org/WAI/people-use-web/user-stories/)
+- [Перспективы доступности веб-сайтов: изучите влияние и преимущества для каждого](https://www.w3.org/WAI/perspective-videos/)
+- [Истории веб-пользователей](https://www.w3.org/WAI/people-use-web/user-stories/)
