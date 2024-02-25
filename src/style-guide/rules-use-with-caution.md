@@ -1,21 +1,21 @@
-# Priority D Rules: Use with Caution {#priority-d-rules-use-with-caution}
+# Правила приоритета D: Используйте с осторожностью {#priority-d-rules-use-with-caution}
 
-Some features of Vue exist to accommodate rare edge cases or smoother migrations from a legacy code base. When overused however, they can make your code more difficult to maintain or even become a source of bugs. These rules shine a light on potentially risky features, describing when and why they should be avoided.
+Некоторые функции Vue существуют для того, чтобы учесть редкие крайние случаи или сгладить миграцию с унаследованной кодовой базы. Однако при чрезмерном использовании они могут усложнить сопровождение кода или даже стать источником ошибок. Эти правила проливают свет на потенциально рискованные функции, описывая, когда и почему их следует избегать.
 
-## Element selectors with `scoped` {#element-selectors-with-scoped}
+## Селекторы элементов с `scoped` {#element-selectors-with-scoped}
 
-**Element selectors should be avoided with `scoped`.**
+**Селекторы элементов следует избегать с `scoped`.**
 
-Prefer class selectors over element selectors in `scoped` styles, because large numbers of element selectors are slow.
+Предпочитайте селекторы классов селекторам элементов в `scoped` стилях, потому что большое количество селекторов элементов работает медленно.
 
-::: details Detailed Explanation
-To scope styles, Vue adds a unique attribute to component elements, such as `data-v-f3f3eg9`. Then selectors are modified so that only matching elements with this attribute are selected (e.g. `button[data-v-f3f3eg9]`).
+::: details Подробное объяснение
+Чтобы охватить стили, Vue добавляет уникальный атрибут к элементам компонента, например `data-v-f3f3eg9`. Затем селекторы изменяются таким образом, чтобы выбирались только элементы с этим атрибутом (например, `button[data-v-f3f3eg9]`).
 
-The problem is that large numbers of element-attribute selectors (e.g. `button[data-v-f3f3eg9]`) will be considerably slower than class-attribute selectors (e.g. `.btn-close[data-v-f3f3eg9]`), so class selectors should be preferred whenever possible.
+Проблема заключается в том, что большое количество селекторов элементов-атрибутов (например, `button[data-v-f3f3eg9]`) будет значительно медленнее, чем селекторы с атрибутами классов (например, `.btn-close[data-v-f3f3eg9]`), поэтому при любой возможности следует отдавать предпочтение селекторам классов.
 :::
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue-html
 <template>
@@ -32,7 +32,7 @@ button {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue-html
 <template>
@@ -48,18 +48,18 @@ button {
 
 </div>
 
-## Implicit parent-child communication {#implicit-parent-child-communication}
+## Неявное общение родительских и дочерних элементов {#implicit-parent-child-communication}
 
-**Props and events should be preferred for parent-child component communication, instead of `this.$parent` or mutating props.**
+**Для связи между родительским и дочерним компонентами следует использовать параметры и события, а не `this.$parent` или мутирующие параметры.**
 
-An ideal Vue application is props down, events up. Sticking to this convention makes your components much easier to understand. However, there are edge cases where prop mutation or `this.$parent` can simplify two components that are already deeply coupled.
+Идеальное приложение Vue — параметры вниз, события вверх. Придерживаясь этой конвенции, вы значительно упростите понимание компонентов. Однако есть крайние случаи, когда мутация параметров или `this.$parent` могут упростить два компонента, которые уже глубоко связаны между собой.
 
-The problem is, there are also many _simple_ cases where these patterns may offer convenience. Beware: do not be seduced into trading simplicity (being able to understand the flow of your state) for short-term convenience (writing less code).
+Проблема в том, что существует множество _простых_ случаев, когда эти шаблоны могут предложить удобство. Остерегайтесь: Не поддавайтесь соблазну променять простоту (возможность понять поток вашего состояния) на краткосрочное удобство (написание меньшего количества кода).
 
 <div class="options-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```js
 app.component('TodoItem', {
@@ -105,7 +105,7 @@ app.component('TodoItem', {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```js
 app.component('TodoItem', {
@@ -156,7 +156,7 @@ app.component('TodoItem', {
 <div class="composition-api">
 
 <div class="style-example style-example-bad">
-<h3>Bad</h3>
+<h3>Плохо</h3>
 
 ```vue
 <script setup>
@@ -207,7 +207,7 @@ function removeTodo() {
 </div>
 
 <div class="style-example style-example-good">
-<h3>Good</h3>
+<h3>Хорошо</h3>
 
 ```vue
 <script setup>
