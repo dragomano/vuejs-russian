@@ -3,17 +3,19 @@ import { ref, computed } from 'vue'
 import gsap from 'gsap'
 
 const list = [
-  { msg: 'Bruce Lee' },
-  { msg: 'Jackie Chan' },
-  { msg: 'Chuck Norris' },
-  { msg: 'Jet Li' },
+  { msg: 'Брюс Ли' },
+  { msg: 'Джеки Чан' },
+  { msg: 'Чак Норрис' },
+  { msg: 'Джет Ли' },
   { msg: 'Kung Fury' }
 ]
 
 const query = ref('')
 
 const computedList = computed(() => {
-  return list.filter((item) => item.msg.toLowerCase().includes(query.value.toLowerCase()))
+  return list.filter((item) =>
+    item.msg.toLowerCase().includes(query.value.toLowerCase())
+  )
 })
 
 function onBeforeEnter(el) {

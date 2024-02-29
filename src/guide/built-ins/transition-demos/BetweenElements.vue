@@ -8,16 +8,24 @@ const docState = ref('saved')
 
 <template>
   <div class="demo transition-demo">
-    <span style="margin-right: 20px">Click to cycle through states:</span>
+    <span style="margin-right: 20px"
+      >Нажмите, чтобы переключиться между состояниями:</span
+    >
     <div class="btn-container">
       <Transition name="slide-up" :mode="mode">
         <button v-if="docState === 'saved'" @click="docState = 'edited'">
           Edit
         </button>
-        <button v-else-if="docState === 'edited'" @click="docState = 'editing'">
+        <button
+          v-else-if="docState === 'edited'"
+          @click="docState = 'editing'"
+        >
           Save
         </button>
-        <button v-else-if="docState === 'editing'" @click="docState = 'saved'">
+        <button
+          v-else-if="docState === 'editing'"
+          @click="docState = 'saved'"
+        >
           Cancel
         </button>
       </Transition>
