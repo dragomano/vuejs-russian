@@ -589,7 +589,7 @@ const i18n: ThemeConfig['i18n'] = {
 
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
-
+  base: '/vuejs-russian/',
   lang: 'ru-RU',
   title: 'Vue.js',
   description: 'Vue.js - Прогрессивный JavaScript-фреймворк',
