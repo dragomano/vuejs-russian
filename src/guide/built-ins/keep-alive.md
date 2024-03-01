@@ -6,7 +6,7 @@ import SwitchComponent from './keep-alive-demos/SwitchComponent.vue'
 
 `<KeepAlive>` — это встроенный компонент, который позволяет нам условно кэшировать экземпляры компонентов при динамическом переключении между несколькими компонентами.
 
-## Базовое использование {#basic-usage}
+## Пример использования {#basic-usage}
 
 В главе «Основы компонентов» мы представили синтаксис для [динамических компонентов](/guide/essentials/component-basics#dynamic-components), используя специальный элемент `<component>`:
 
@@ -139,4 +139,4 @@ export default {
 
 **Ссылки по теме**
 
-- [Ссылка на API `<KeepAlive>`](/api/built-in-components#keepalive)
+- [Справочник по API `<KeepAlive>`](/api/built-in-components#keepalive)

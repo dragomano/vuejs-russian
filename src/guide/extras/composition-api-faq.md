@@ -53,9 +53,9 @@ onMounted(() => {
 
 ### Лучшее повторное использование логики {#better-logic-reuse}
 
-Основное преимущество Composition API заключается в том, что он обеспечивает чистое и эффективное повторное использование логики в виде [композитных функций](/guide/reusability/composables). Он решает [все недостатки примесей](/guide/reusability/composables#vs-mixins), основного механизма повторного использования логики для API Options.
+Основное преимущество Composition API заключается в том, что он обеспечивает чистое и эффективное повторное использование логики в виде [композаблов](/guide/reusability/composables). Он решает [все недостатки примесей](/guide/reusability/composables#vs-mixins), основного механизма повторного использования логики для API Options.
 
-Возможность повторного использования логики в Composition API породила такие впечатляющие проекты сообщества, как [VueUse](https://vueuse.org/), постоянно растущую коллекцию композитных утилит. Он также служит чистым механизмом для лёгкой интеграции сторонних сервисов или библиотек с поддержкой состояния в систему реактивности Vue, например [неизменяемые данные](/guide/extras/reactivity-in-depth#immutable-data), [конечные автоматы](/guide/extras/reactivity-in-depth#state-machines) и [RxJS](/guide/extras/reactivity-in-depth#rxjs).
+Возможность повторного использования логики в Composition API породила такие впечатляющие проекты сообщества, как [VueUse](https://vueuse.org/), постоянно растущую коллекцию композаблов. Он также служит чистым механизмом для лёгкой интеграции сторонних сервисов или библиотек с поддержкой состояния в систему реактивности Vue, например [неизменяемые данные](/guide/extras/reactivity-in-depth#immutable-data), [конечные автоматы](/guide/extras/reactivity-in-depth#state-machines) и [RxJS](/guide/extras/reactivity-in-depth#rxjs).
 
 ### Более гибкая организация кода {#more-flexible-code-organization}
 

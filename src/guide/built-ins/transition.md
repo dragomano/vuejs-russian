@@ -581,4 +581,4 @@ export default {
 
 **Ссылки по теме**
 
-- [Ссылка на API `<Transition>`](/api/built-in-components#transition)
+- [Справочник по API `<Transition>`](/api/built-in-components#transition)

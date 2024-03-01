@@ -318,7 +318,6 @@ Vue предоставляет псевдонимы для наиболее ча
 - `.meta`
 
 ::: tip Примечание
-On Macintosh keyboards, meta is the command key (⌘). On Windows keyboards, meta is the Windows key (⊞). On Sun Microsystems keyboards, meta is marked as a solid diamond (◆). On certain keyboards, specifically MIT and Lisp machine keyboards and successors, such as the Knight keyboard, space-cadet keyboard, meta is labeled “META”. On Symbolics keyboards, meta is labeled “META” or “Meta”.
 На клавиатурах Macintosh `meta` — это клавиша command (⌘). На клавиатурах Windows `meta` — это клавиша Windows (⊞). На клавиатурах Sun Microsystems `meta` обозначается сплошным ромбом (◆). На некоторых клавиатурах, в частности, на клавиатурах машин MIT и Lisp и их преемниках, таких как клавиатура Knight, клавиатура с пробелами, `meta` обозначается как «META». На клавиатурах Symbolics мета обозначается как «META» или «Meta».
 :::
 

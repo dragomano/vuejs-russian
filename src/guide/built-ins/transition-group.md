@@ -20,7 +20,7 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 - Классы переходов CSS будут применяться к отдельным элементам в списке, **не** к самой группе/контейнеру.
 
-:::tip
+:::tip Совет
 При использовании в [DOM-шаблонах](/guide/essentials/component-basics#in-dom-template-parsing-caveats), на него следует ссылаться как на `<transition-group>`.
 :::
 

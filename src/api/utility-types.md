@@ -34,13 +34,13 @@
 
 ## MaybeRef\<T> {#mayberef}
 
-Псевдоним для `T | Ref<T>`. Полезно для аннотирования аргументов [композитных функций](/guide/reusability/composables.html).
+Псевдоним для `T | Ref<T>`. Полезно для аннотирования аргументов [композаблов](/guide/reusability/composables.html).
 
 - Поддерживается только в 3.3+.
 
 ## MaybeRefOrGetter\<T> {#maybereforgetter}
 
-Псевдоним для `T | Ref<T> | (() => T)`. Полезно для аннотирования аргументов [композитных функций](/guide/reusability/composables.html).
+Псевдоним для `T | Ref<T> | (() => T)`. Полезно для аннотирования аргументов [композаблов](/guide/reusability/composables.html).
 
 - Поддерживается только в 3.3+.
 

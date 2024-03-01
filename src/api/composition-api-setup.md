@@ -1,6 +1,6 @@
 # Composition API: setup() {#composition-api-setup}
 
-## Базовое использование {#basic-usage}
+## Пример использования {#basic-usage}
 
 Хук `setup()` служит точкой входа для использования Composition API в компонентах в следующих случаях:
 
