@@ -272,6 +272,41 @@ watch(
 
 </div>
 
+## Однократные наблюдатели <sup class="vt-badge" data-text="3.4+" /> {#once-watchers}
+
+Обратный вызов наблюдателя будет выполняться при каждом изменении наблюдаемого источника. Если вы хотите, чтобы обратный вызов срабатывал только один раз при изменении источника, используйте опцию `once: true`.
+
+<div class="options-api">
+
+```js
+export default {
+  watch: {
+    source: {
+      handler(newValue, oldValue) {
+        //при изменении `source` срабатывает только один раз
+      },
+      once: true
+    }
+  }
+}
+```
+
+</div>
+
+<div class="composition-api">
+
+```js
+watch(
+  source,
+  (newValue, oldValue) => {
+    // при изменении `source` срабатывает только один раз
+  },
+  { once: true }
+)
+```
+
+</div>
+
 <div class="composition-api">
 
 ## `watchEffect()` \*\* {#watcheffect}
