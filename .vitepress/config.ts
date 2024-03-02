@@ -608,13 +608,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
     [
-      'link',
-      {
-        rel: 'preconnect',
-        href: 'https://sponsors.vuejs.org'
-      }
-    ],
-    [
       'script',
       {},
       fs.readFileSync(
@@ -625,19 +618,19 @@ export default defineConfigWithTheme<ThemeConfig>({
     [
       'script',
       {
-        src: 'https://cdn.usefathom.com/script.js',
-        'data-site': 'XNOLWPLB',
-        'data-spa': 'auto',
-        defer: ''
+        src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
+        async: 'true'
       }
     ],
     [
       'script',
-      {
-        src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
-        async: 'true'
-      }
-    ]
+      {},
+      `(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "la33dit45x")`,
+    ],
   ],
 
   themeConfig: {
@@ -700,11 +693,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       searchParameters: {
         facetFilters: ['version:v3']
       }
-    },
-
-    carbonAds: {
-      code: 'CEBDT27Y',
-      placement: 'vuejsorg'
     },
 
     socialLinks: [

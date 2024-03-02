@@ -1,14 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import SiteMap from './SiteMap.vue'
-// import NewsLetter from './NewsLetter.vue'
-import { load, data, base } from './sponsors'
-import SponsorsGroup from './SponsorsGroup.vue'
 import VueMasteryModal from './VueMasteryModal.vue'
-
-onMounted(async () => {
-  await load()
-})
 </script>
 
 <template>
@@ -41,29 +33,6 @@ onMounted(async () => {
     </p>
   </section>
 
-  <section v-if="data && data.special" id="special-sponsor">
-    <span class="lead">Специальный спонсор</span>
-    <template v-for="{ url, img, name, description } of data.special">
-      <a :href="url" target="_blank" rel="sponsored noopener">
-        <picture v-if="img.endsWith('png')">
-          <source
-            type="image/avif"
-            :srcset="`${base}/images/${img.replace(/\.png$/, '.avif')}`"
-          />
-          <img :src="`${base}/images/${img}`" :alt="name" />
-        </picture>
-        <img
-          width="168"
-          height="42"
-          v-else
-          :src="`${base}/images/${img}`"
-          :alt="name"
-        />
-      </a>
-      <span>{{ description }}</span>
-    </template>
-  </section>
-
   <section id="highlights" class="vt-box-container">
     <div class="vt-box">
       <h2>Доступный</h2>
@@ -86,13 +55,6 @@ onMounted(async () => {
         библиотекой и полнофункциональным фреймворком.
       </p>
     </div>
-  </section>
-
-  <section id="sponsors">
-    <h2>Платиновые спонсоры</h2>
-    <SponsorsGroup tier="platinum" placement="landing" />
-    <h2>Золотые спонсоры</h2>
-    <SponsorsGroup tier="gold" placement="landing" />
   </section>
 
   <SiteMap />
