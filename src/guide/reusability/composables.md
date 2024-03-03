@@ -5,7 +5,7 @@ import { useMouse } from './mouse'
 const { x, y } = useMouse()
 </script>
 
-:::tip
+:::tip Совет
 Этот раздел предполагает базовые знания об API Composition. Если вы изучали Vue только с API Options, вы можете переключить стиль API на Composition API (с помощью переключателя в верхней части левой боковой панели) и перечитать главы [Основы реактивности](/guide/essentials/reactivity-fundamentals) и [Хуки жизненного цикла](/guide/essentials/lifecycle).
 :::
 
