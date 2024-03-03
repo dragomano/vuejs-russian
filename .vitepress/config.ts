@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import { defineConfigWithTheme } from 'vitepress'
+import { SearchPlugin } from "vitepress-plugin-search";
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
@@ -686,7 +687,7 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
 
-    algolia: {
+/*     algolia: {
       indexName: 'vuejs',
       appId: 'ML0LEBN7FQ',
       //appId: 'C0MWTQQP1U',
@@ -734,7 +735,7 @@ export default defineConfigWithTheme<ThemeConfig>({
           }
         }
       }
-    },
+    }, */
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
@@ -765,6 +766,15 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
 
   vite: {
+    plugins: [
+      SearchPlugin({
+        previewLength: 62,
+        buttonLabel: "Поиск",
+        placeholder: "Искать в документации",
+        allow: [],
+        ignore: [],
+      })
+    ],
     define: {
       __VUE_OPTIONS_API__: false
     },

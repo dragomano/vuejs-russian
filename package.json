@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=20.0.0"
   },
   "type": "module",
   "scripts": {
@@ -20,7 +20,9 @@
   "devDependencies": {
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.11.24",
-    "terser": "^5.28.1"
+    "flexsearch": "^0.7.43",
+    "terser": "^5.28.1",
+    "vitepress-plugin-search": "1.0.4-alpha.22"
   },
   "pnpm": {
     "overrides": {
