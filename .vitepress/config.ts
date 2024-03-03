@@ -591,6 +591,10 @@ const i18n: ThemeConfig['i18n'] = {
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
+  sitemap: {
+    hostname: 'https://vuejs.dragomano.ru/',
+  },
+
   lang: 'ru-RU',
   title: 'Vue.js',
   description: 'Vue.js - Прогрессивный JavaScript-фреймворк',
@@ -744,7 +748,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
 
     editLink: {
-      repo: 'vuejs/docs',
+      repo: 'dragomano/vuejs-russian',
       text: 'Редактировать эту страницу на GitHub'
     },
 
