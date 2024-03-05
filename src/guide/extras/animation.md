@@ -5,13 +5,13 @@ import Colors from './demos/Colors.vue'
 import AnimateWatcher from './demos/AnimateWatcher.vue'
 </script>
 
-# Animation Techniques {#animation-techniques}
+# Техники анимации {#animation-techniques}
 
-Vue provides the [`<Transition>`](/guide/built-ins/transition) and [`<TransitionGroup>`](/guide/built-ins/transition-group) components for handling enter / leave and list transitions. However, there are many other ways of using animations on the web, even in a Vue application. Here we will discuss a few additional techniques.
+Vue предоставляет компоненты [`<Transition>`](/guide/built-ins/transition) и [`<TransitionGroup>`](/guide/built-ins/transition-group) для обработки переходов входа/выхода и списка. Однако в Интернете существует множество других способов использования анимации, даже в приложении Vue. Здесь мы обсудим несколько дополнительных техник.
 
-## Class-based Animations {#class-based-animations}
+## Анимации на основе классов {#class-based-animations}
 
-For elements that are not entering / leaving the DOM, we can trigger animations by dynamically adding a CSS class:
+Для элементов, которые не входят/выходят из DOM, мы можем запускать анимацию, динамически добавляя класс CSS:
 
 <div class="composition-api">
 
@@ -51,8 +51,8 @@ export default {
 
 ```vue-html
 <div :class="{ shake: disabled }">
-  <button @click="warnDisabled">Click me</button>
-  <span v-if="disabled">This feature is disabled!</span>
+  <button @click="warnDisabled">Нажмите меня</button>
+  <span v-if="disabled">Эта функция отключена!</span>
 </div>
 ```
 
@@ -88,9 +88,9 @@ export default {
 
 <DisabledButton />
 
-## State-driven Animations {#state-driven-animations}
+## Управляемая состоянием анимация {#state-driven-animations}
 
-Some transition effects can be applied by interpolating values, for instance by binding a style to an element while an interaction occurs. Take this example for instance:
+Некоторые эффекты перехода можно применять путём интерполяции значений, например, с помощью привязки стиля к элементу во время взаимодействия. Возьмем, к примеру, этот пример:
 
 <div class="composition-api">
 
@@ -128,7 +128,7 @@ export default {
   :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
   class="movearea"
 >
-  <p>Move your mouse across this div...</p>
+  <p>Наведите курсор мыши на этот div...</p>
   <p>x: {{ x }}</p>
 </div>
 ```
@@ -141,13 +141,13 @@ export default {
 
 <Colors />
 
-In addition to color, you can also use style bindings to animate transform, width, or height. You can even animate SVG paths using spring physics - after all, they are all attribute data bindings:
+Помимо цвета, вы также можете использовать привязки стилей для анимации преобразования, ширины или высоты. Вы даже можете анимировать пути SVG, используя физику Spring — в конце концов, все они являются привязками данных атрибутов:
 
 <ElasticHeader />
 
-## Animating with Watchers {#animating-with-watchers}
+## Анимация с помощью наблюдателей {#animating-with-watchers}
 
-With some creativity, we can use watchers to animate anything based on some numerical state. For example, we can animate the number itself:
+Проявив некоторую креативность, мы можем использовать наблюдателей для анимации чего угодно на основе некоторого числового состояния. Например, мы можем анимировать само число:
 
 <div class="composition-api">
 
@@ -166,7 +166,7 @@ watch(number, (n) => {
 ```
 
 ```vue-html
-Type a number: <input v-model.number="number" />
+Введите число: <input v-model.number="number" />
 <p>{{ tweened.number.toFixed(0) }}</p>
 ```
 
@@ -192,7 +192,7 @@ export default {
 ```
 
 ```vue-html
-Type a number: <input v-model.number="number" />
+Введите число: <input v-model.number="number" />
 <p>{{ tweened.toFixed(0) }}</p>
 ```
 
@@ -202,11 +202,11 @@ Type a number: <input v-model.number="number" />
 
 <div class="composition-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNpNUstygzAM/BWNLyEzBDKd6YWSdHrpsacefSGgJG7xY7BImhL+vTKv9ILllXYlr+jEm3PJpUWRidyXjXIEHql1e2mUdrYh6KDBY8yfoiR1wRiuBZVn6OHYWA0r5q6W2pMv3ISHkBPSlNZ4AtPqAzawC2LRdj3DdEU0WA34qB910sBUnsFWmp6LpRmaRo9UHMLIrGG3h4EBQ/OEbDRpxjx51TYFKWtYKHmOF9WP4Qzs+x22EDoA9NLwmaejC/x+vhBqVxeEfAPIK3WBsi6830lRobZSDDjA580hFIt8roxrCS4bbSuskxFmzhhIAenEy92id1CnzZzfd91szETmZ72rH6zYOej7PA3rYXrKE3GUp//m5KunWx3C5CE6enS0hjZXVKczZXCwdfWyoF79YgZPqBliJ9iGSUTEYlzuRrO9X94a/lUGNTklvBTZvAMpwhYCIMWZyPksTVvjvk9JaXUacq9sSlujFJPnvej/AElH3FQ=)
+[Попробовать в Песочнице](https://play.vuejs.org/#eNpNUstygzAM/BWNLyEzBDKd6YWSdHrpsacefSGgJG7xY7BImhL+vTKv9ILllXYlr+jEm3PJpUWRidyXjXIEHql1e2mUdrYh6KDBY8yfoiR1wRiuBZVn6OHYWA0r5q6W2pMv3ISHkBPSlNZ4AtPqAzawC2LRdj3DdEU0WA34qB910sBUnsFWmp6LpRmaRo9UHMLIrGG3h4EBQ/OEbDRpxjx51TYFKWtYKHmOF9WP4Qzs+x22EDoA9NLwmaejC/x+vhBqVxeEfAPIK3WBsi6830lRobZSDDjA580hFIt8roxrCS4bbSuskxFmzhhIAenEy92id1CnzZzfd91szETmZ72rH6zYOej7PA3rYXrKE3GUp//m5KunWx3C5CE6enS0hjZXVKczZXCwdfWyoF79YgZPqBliJ9iGSUTEYlzuRrO9X94a/lUGNTklvBTZvAMpwhYCIMWZyPksTVvjvk9JaXUacq9sSlujFJPnvej/AElH3FQ=)
 
 </div>
 <div class="options-api">
 
-[Try it in the Playground](https://play.vuejs.org/#eNpNUctugzAQ/JWVLyESj6hSL5Sm6qXHnnr0xYENuAXbwus8Svj3GlxIJEvendHMvgb2bkx6cshyVtiyl4b2XMnO6J6gtsLAsdcdbKZwwxVXeJmpCo/CtQQDVwCVIBFtQwzQI7leLRmAct0B+xx28YLQGVFh5aGAjNM3zvRZUNnkizhII7V6w9xTSjqiRtoYBqhcL0hq5c3S5/hu/blKbzfYwbh9LMWVf0W2zusTws60gnDK6OtqEMTaeSGVcQSnpNMVtmmAXzkLAWeQzarCQNkKaz1zkHWysPthWNryjX/IC1bRbgvjWGTG64rssbQqLF3bKUzvHmH6o1aUnFHWDeVw0G31sqJW/mIOT9h5KEw2m7CYhUsmnV/at9XKX3n24v+E5WxdNmfTbieAs4bI2DzLnDI/dVrqLpu4Nz+/a5GzZYls/AM3dcFx)
+[Попробовать в Песочнице](https://play.vuejs.org/#eNpNUctugzAQ/JWVLyESj6hSL5Sm6qXHnnr0xYENuAXbwus8Svj3GlxIJEvendHMvgb2bkx6cshyVtiyl4b2XMnO6J6gtsLAsdcdbKZwwxVXeJmpCo/CtQQDVwCVIBFtQwzQI7leLRmAct0B+xx28YLQGVFh5aGAjNM3zvRZUNnkizhII7V6w9xTSjqiRtoYBqhcL0hq5c3S5/hu/blKbzfYwbh9LMWVf0W2zusTws60gnDK6OtqEMTaeSGVcQSnpNMVtmmAXzkLAWeQzarCQNkKaz1zkHWysPthWNryjX/IC1bRbgvjWGTG64rssbQqLF3bKUzvHmH6o1aUnFHWDeVw0G31sqJW/mIOT9h5KEw2m7CYhUsmnV/at9XKX3n24v+E5WxdNmfTbieAs4bI2DzLnDI/dVrqLpu4Nz+/a5GzZYls/AM3dcFx)
 
 </div>
