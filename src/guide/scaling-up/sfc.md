@@ -1,8 +1,8 @@
-# Single-File Components {#single-file-components}
+# Однофайловые компоненты {#single-file-components}
 
-## Introduction {#introduction}
+## Введение {#introduction}
 
-Vue Single-File Components (a.k.a. `*.vue` files, abbreviated as **SFC**) is a special file format that allows us to encapsulate the template, logic, **and** styling of a Vue component in a single file. Here's an example SFC:
+Однофайловые компоненты Vue (также известные как файлы `*.vue`, сокращенно **SFC**) — это специальный формат файла, который позволяет нам инкапсулировать шаблон, логику, **и** стили компонента Vue в одном файле. файл. Вот пример SFC:
 
 <div class="options-api">
 
@@ -11,7 +11,7 @@ Vue Single-File Components (a.k.a. `*.vue` files, abbreviated as **SFC**) is a s
 export default {
   data() {
     return {
-      greeting: 'Hello World!'
+      greeting: 'Привет, мир!'
     }
   }
 }
@@ -36,7 +36,7 @@ export default {
 ```vue
 <script setup>
 import { ref } from 'vue'
-const greeting = ref('Hello World!')
+const greeting = ref('Привет, мир!')
 </script>
 
 <template>
@@ -53,32 +53,32 @@ const greeting = ref('Hello World!')
 
 </div>
 
-As we can see, Vue SFC is a natural extension of the classic trio of HTML, CSS and JavaScript. The `<template>`, `<script>`, and `<style>` blocks encapsulate and colocate the view, logic and styling of a component in the same file. The full syntax is defined in the [SFC Syntax Specification](/api/sfc-spec).
+Как мы видим, Vue SFC — это естественное расширение классического трио HTML, CSS и JavaScript. Блоки `<template>`, `<script>` и `<style>` инкапсулируют и размещают представление, логику и стиль компонента в одном файле. Полный синтаксис определен в [Спецификации синтаксиса SFC](/api/sfc-spec).
 
-## Why SFC {#why-sfc}
+## Почему SFC {#why-sfc}
 
-While SFCs require a build step, there are numerous benefits in return:
+Хотя SFC требуют этапа сборки, взамен есть множество преимуществ:
 
-- Author modularized components using familiar HTML, CSS and JavaScript syntax
-- [Colocation of inherently coupled concerns](#what-about-separation-of-concerns)
-- Pre-compiled templates without runtime compilation cost
-- [Component-scoped CSS](/api/sfc-css-features)
-- [More ergonomic syntax when working with Composition API](/api/sfc-script-setup)
-- More compile-time optimizations by cross-analyzing template and script
-- [IDE support](/guide/scaling-up/tooling#ide-support) with auto-completion and type-checking for template expressions
-- Out-of-the-box Hot-Module Replacement (HMR) support
+- Создавайте модульные компоненты, используя знакомый синтаксис HTML, CSS и JavaScript
+- [Совместное размещение взаимосвязанных задач](#what-about-separation-of-concerns)
+- Предварительно скомпилированные шаблоны без затрат на компиляцию во время выполнения
+- [CSS на уровне компонента](/api/sfc-css-features)
+- [Более эргономичный синтаксис при работе с Composition API](/api/sfc-script-setup)
+- Больше оптимизации времени компиляции за счет перекрёстного анализа шаблона и скрипта
+- [Поддержка IDE](/guide/scaling-up/tooling#ide-support) с автозаполнением и проверкой типов для выражений шаблона
+- Готовая поддержка горячей замены модулей (HMR)
 
-SFC is a defining feature of Vue as a framework, and is the recommended approach for using Vue in the following scenarios:
+SFC — это определяющая особенность Vue как платформы и рекомендуемый подход для использования Vue в следующих сценариях:
 
-- Single-Page Applications (SPA)
-- Static Site Generation (SSG)
-- Any non-trivial frontend where a build step can be justified for better development experience (DX).
+- Одностраничные приложения (SPA)
+- Генерация статического сайта (SSG)
+- Любой нетривиальный интерфейс, шаг сборки которого может быть оправдан для улучшения опыта разработки (DX).
 
-That said, we do realize there are scenarios where SFCs can feel like overkill. This is why Vue can still be used via plain JavaScript without a build step. If you are just looking for enhancing largely static HTML with light interactions, you can also check out [petite-vue](https://github.com/vuejs/petite-vue), a 6 kB subset of Vue optimized for progressive enhancement.
+Тем не менее, мы понимаем, что существуют сценарии, в которых SFC могут показаться излишними. Вот почему Vue по-прежнему можно использовать с помощью простого JavaScript без этапа сборки. Если вы просто хотите улучшить статический HTML с помощью легких взаимодействий, вы также можете попробовать [petite-vue](https://github.com/vuejs/petite-vue), подмножество Vue размером 6 КБ, оптимизированное для постепенного улучшения.
 
-## How It Works {#how-it-works}
+## Как это работает {#how-it-works}
 
-Vue SFC is a framework-specific file format and must be pre-compiled by [@vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc) into standard JavaScript and CSS. A compiled SFC is a standard JavaScript (ES) module - which means with proper build setup you can import an SFC like a module:
+Vue SFC — это формат файла, специфичный для платформы, и он должен быть предварительно скомпилирован с помощью [@vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc) в стандартный JavaScript. и CSS. Скомпилированный SFC представляет собой стандартный модуль JavaScript (ES). Это означает, что при правильной настройке сборки вы можете импортировать SFC как модуль:
 
 ```js
 import MyComponent from './MyComponent.vue'
@@ -90,18 +90,18 @@ export default {
 }
 ```
 
-`<style>` tags inside SFCs are typically injected as native `<style>` tags during development to support hot updates. For production they can be extracted and merged into a single CSS file.
+Теги `<style>` внутри SFC обычно внедряются как собственные теги `<style>` во время разработки для поддержки горячих обновлений. Для производства их можно извлечь и объединить в один CSS-файл.
 
-You can play with SFCs and explore how they are compiled in the [Vue SFC Playground](https://play.vuejs.org/).
+Вы можете поиграть с SFC и узнать, как они компилируются, в [Песочнице Vue SFC](https://play.vuejs.org/).
 
-In actual projects, we typically integrate the SFC compiler with a build tool such as [Vite](https://vitejs.dev/) or [Vue CLI](http://cli.vuejs.org/) (which is based on [webpack](https://webpack.js.org/)), and Vue provides official scaffolding tools to get you started with SFCs as fast as possible. Check out more details in the [SFC Tooling](/guide/scaling-up/tooling) section.
+В реальных проектах мы обычно интегрируем компилятор SFC с инструментом сборки, таким как [Vite](https://vitejs.dev/) или [Vue CLI](http://cli.vuejs.org/) (основанный на [webpack](https://webpack.js.org/)), а Vue предоставляет официальные инструменты создания шаблонов, которые помогут вам как можно быстрее приступить к работе с SFC. Более подробную информацию можно найти в разделе [Инструменты SFC](/guide/scaling-up/tooling).
 
-## What About Separation of Concerns? {#what-about-separation-of-concerns}
+## А как насчет разделения ответственности? {#what-about-separation-of-concerns}
 
-Some users coming from a traditional web development background may have the concern that SFCs are mixing different concerns in the same place - which HTML/CSS/JS were supposed to separate!
+Некоторые пользователи, имеющие опыт традиционной веб-разработки, могут испытывать беспокойство по поводу того, что SFC смешивают в одном месте разные задачи, которые HTML/CSS/JS должны были разделять!
 
-To answer this question, it is important for us to agree that **separation of concerns is not equal to the separation of file types**. The ultimate goal of engineering principles is to improve the maintainability of codebases. Separation of concerns, when applied dogmatically as separation of file types, does not help us reach that goal in the context of increasingly complex frontend applications.
+Чтобы ответить на этот вопрос, нам важно согласиться с тем, что **разделение задач не равно разделению типов файлов**. Конечная цель инженерных принципов — улучшить удобство сопровождения кодовых баз. Разделение задач, если оно применяется догматически как разделение типов файлов, не помогает нам достичь этой цели в контексте всё более сложных интерфейсных приложений.
 
-In modern UI development, we have found that instead of dividing the codebase into three huge layers that interweave with one another, it makes much more sense to divide them into loosely-coupled components and compose them. Inside a component, its template, logic, and styles are inherently coupled, and colocating them actually makes the component more cohesive and maintainable.
+В современной разработке пользовательского интерфейса мы обнаружили, что вместо разделения базы кода на три огромных слоя, которые переплетаются друг с другом, гораздо разумнее разделить их на слабосвязанные компоненты и скомпоновать их. Внутри компонента его шаблон, логика и стили по своей сути связаны, и их совместное размещение фактически делает компонент более связным и удобным в обслуживании.
 
-Note even if you don't like the idea of Single-File Components, you can still leverage its hot-reloading and pre-compilation features by separating your JavaScript and CSS into separate files using [Src Imports](/api/sfc-spec#src-imports).
+Обратите внимание: даже если вам не нравится идея однофайловых компонентов, вы всё равно можете использовать их функции горячей перезагрузки и предварительной компиляции, разделив JavaScript и CSS на отдельные файлы с помощью [импорта через атрибут `src`](/api/sfc-spec#src-imports).
