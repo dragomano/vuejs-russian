@@ -28,9 +28,9 @@ counter.count++
 ```js
 import { ref } from 'vue'
 
-const message = ref('Hello World!')
+const message = ref('Привет, мир!')
 
-console.log(message.value) // "Hello World!"
+console.log(message.value) // "Привет, мир!"
 message.value = 'Изменено'
 ```
 
@@ -49,7 +49,7 @@ message.value = 'Изменено'
 ```js{2,5}
 setup() {
   const counter = reactive({ count: 0 })
-  const message = ref('Hello World!')
+  const message = ref('Привет, мир!')
   return {
     counter,
     message
@@ -82,7 +82,7 @@ setup() {
 export default {
   data() {
     return {
-      message: 'Hello World!'
+      message: 'Привет, мир!'
     }
   }
 }
@@ -95,7 +95,7 @@ export default {
 createApp({
   data() {
     return {
-      message: 'Hello World!'
+      message: 'Привет, мир!'
     }
   }
 })

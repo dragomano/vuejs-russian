@@ -109,7 +109,7 @@ p {{ msg }}
 - [Vue CLI](https://cli.vuejs.org/guide/css.html#pre-processors)
 - [webpack + vue-loader](https://vue-loader.vuejs.org/guide/pre-processors.html#using-pre-processors)
 
-## `src` Imports {#src-imports}
+## Импорт через атрибут `src` {#src-imports}
 
 Если вы предпочитаете разделять компоненты `*.vue` на несколько файлов, вы можете использовать атрибут `src` для импорта внешнего файла для языкового блока:
 
