@@ -1,6 +1,6 @@
 # Слоты {#slots}
 
-> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics). Прочитайте это, если вы новичок в работе с компонентами.
+> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Бесплатный урок по слотам Vue.js"/>
 

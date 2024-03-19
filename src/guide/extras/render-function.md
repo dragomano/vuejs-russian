@@ -283,7 +283,7 @@ h('div', [this.ok ? h('div', 'да') : h('span', 'нет')])
 
 ### `v-for` {#v-for}
 
-Template:
+Шаблон:
 
 ```vue-html
 <ul>

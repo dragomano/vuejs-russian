@@ -4,7 +4,7 @@ outline: deep
 
 # Обычные атрибуты {#fallthrough-attributes}
 
-> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics). Прочитайте это, если вы новичок в работе с компонентами.
+> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics).
 
 ## Наследование атрибутов {#attribute-inheritance}
 

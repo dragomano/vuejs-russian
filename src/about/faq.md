@@ -78,7 +78,7 @@ Vue 3 — один из самых производительных фронте
 
 Если вы новичок в Vue, мы предлагаем вам сравнение двух стилей на высоком уровне [здесь](/guide/introduction#which-to-choose).
 
-Если вы уже использовали Options API и сейчас оцениваете Composition API, ознакомьтесь с [этим FAQ](/guide/extras/composition-api-faq).
+Если вы уже использовали Options API и сейчас оцениваете Composition API, ознакомьтесь с [этими ЧаВо](/guide/extras/composition-api-faq).
 
 ## Следует ли использовать JavaScript или TypeScript с Vue? {#should-i-use-javascript-or-typescript-with-vue}
 
