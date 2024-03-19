@@ -72,7 +72,7 @@ const nav: ThemeConfig['nav'] = [
           },
           {
             text: 'Vue School',
-            link: 'https://vueschool.io/?friend=vuejs&utm_source=Vuejs.org&utm_medium=Link&utm_content=Navbar%20Dropdown'
+            link: 'https://vueschool.io/'
           }
         ]
       },
@@ -105,7 +105,7 @@ const nav: ThemeConfig['nav'] = [
     text: 'О Vue',
     activeMatch: `^/about/`,
     items: [
-      { text: 'FAQ', link: '/about/faq' },
+      { text: 'ЧаВо', link: '/about/faq' },
       { text: 'Команда', link: '/about/team' },
       { text: 'Релизы', link: '/about/releases' },
       {
@@ -619,13 +619,6 @@ export default defineConfigWithTheme<ThemeConfig>({
         path.resolve(__dirname, './inlined-scripts/restorePreference.js'),
         'utf-8'
       )
-    ],
-    [
-      'script',
-      {
-        src: 'https://vueschool.io/banner.js?affiliate=vuejs&type=top',
-        async: 'true'
-      }
     ],
     [
       'script',
