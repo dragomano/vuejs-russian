@@ -638,6 +638,11 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     localeLinks: [
       {
+        link: 'https://vuejs.org',
+        text: 'English',
+        repo: 'https://github.com/vuejs/docs'
+      },
+      {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
         repo: 'https://github.com/vuejs-translations/docs-zh-cn'
@@ -683,56 +688,6 @@ export default defineConfigWithTheme<ThemeConfig>({
         isTranslationsDesc: true
       }
     ],
-
-/*     algolia: {
-      indexName: 'vuejs',
-      appId: 'ML0LEBN7FQ',
-      //appId: 'C0MWTQQP1U',
-      apiKey: 'f49cbd92a74532cc55cfbffa5e5a7d01',
-      //apiKey: 'e675323c31c84a6558df483794ab764b',
-      searchParameters: {
-        facetFilters: ['version:v3']
-      },
-      placeholder: 'Поиск в документации',
-      translations: {
-        button: {
-          buttonText: 'Поиск',
-          buttonAriaLabel: 'Поиск'
-        },
-        modal: {
-          searchBox: {
-            resetButtonTitle: 'Сбросить поиск',
-            resetButtonAriaLabel: 'Сбросить поиск',
-            cancelButtonText: 'Отменить поиск',
-            cancelButtonAriaLabel: 'Отменить поиск'
-          },
-          startScreen: {
-            recentSearchesTitle: 'История поиска',
-            noRecentSearchesText: 'Нет истории поиска',
-            saveRecentSearchButtonTitle: 'Сохранить в истории поиска',
-            removeRecentSearchButtonTitle: 'Удалить из истории поиска',
-            favoriteSearchesTitle: 'Избранное',
-            removeFavoriteSearchButtonTitle: 'Удалить из избранного'
-          },
-          errorScreen: {
-            titleText: 'Невозможно получить результаты',
-            helpText: 'Вам может потребоваться проверить подключение к Интернету'
-          },
-          footer: {
-            selectText: 'выбрать',
-            navigateText: 'перейти',
-            closeText: 'закрыть',
-            searchByText: 'поставщик поиска'
-          },
-          noResultsScreen: {
-            noResultsText: 'Нет результатов для',
-            suggestedQueryText: 'Вы можете попытаться узнать',
-            reportMissingResultsText: 'Считаете, что поиск даёт ложные результаты？',
-            reportMissingResultsLinkText: 'Нажмите на кнопку «Обратная связь»'
-          }
-        }
-      }
-    }, */
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
