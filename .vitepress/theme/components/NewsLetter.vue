@@ -5,7 +5,9 @@ import { VTLink } from '@vue/theme'
 <template>
   <section id="newsletter" class="NewsLetter">
     <div class="container">
-      <h2 class="title">Subscribe to our weekly newsletter.</h2>
+      <h2 class="title">
+        Подпишитесь на нашу еженедельную рассылку новостей.
+      </h2>
 
       <div class="form">
         <form
@@ -22,7 +24,7 @@ import { VTLink } from '@vue/theme'
             id="member_email"
             name="member[email]"
             type="email"
-            placeholder="Email address"
+            placeholder="Имейл"
             required
           />
 
@@ -32,21 +34,24 @@ import { VTLink } from '@vue/theme'
               id="member_submit"
               name="member[subscribe]"
               type="submit"
-              value="SUBSCRIBE"
+              value="ПОДПИСАТЬСЯ"
             />
           </div>
         </form>
       </div>
 
       <p class="help">
-        You can read the previous issues and listen to our podcast at
-        <VTLink
-          class="link"
-          href="https://news.vuejs.org/"
-          no-icon
-        >news.vuejs.org</VTLink>. You may also go social at
-        <VTLink class="link" href="https://twitter.com/vuejs" no-icon>Twitter</VTLink>, or join our home at
-        <VTLink class="link" href="https://chat.vuejs.org/" no-icon>Discord</VTLink>.
+        Вы можете ознакомиться с предыдущими выпусками и послушать наш
+        подкаст по адресу
+        <VTLink class="link" href="https://news.vuejs.org/" no-icon
+          >news.vuejs.org</VTLink
+        >. Вы также можете пообщаться в
+        <VTLink class="link" href="https://twitter.com/vuejs" no-icon
+          >Twitter</VTLink
+        >, или присоединиться к нам в
+        <VTLink class="link" href="https://discord.com/invite/vue" no-icon
+          >Discord</VTLink
+        >.
       </p>
     </div>
   </section>

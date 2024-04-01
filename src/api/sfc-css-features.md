@@ -120,7 +120,7 @@ DOM-контент, созданный с помощью `v-html`, не подв
 
 Полученные классы хэшируются, чтобы избежать столкновений, что позволяет добиться того же эффекта, что и при привязке CSS только к текущему компоненту.
 
-Обратитесь к [спецификации CSS-модулей](https://github.com/css-modules/css-modules) для получения более подробной информации, такой как [глобальные исключения](https://github.com/css-modules/css-modules#exceptions) и [композиция](https://github.com/css-modules/css-modules#composition).
+Обратитесь к [спецификации CSS-модулей](https://github.com/css-modules/css-modules) для получения более подробной информации, такой как [глобальные исключения](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#exceptions) и [композиция](https://github.com/css-modules/css-modules/blob/master/docs/composition.md#composition).
 
 ### Пользовательское имя инъекции {#custom-inject-name}
 

@@ -103,6 +103,10 @@
   </script>
   ```
 
+* **Смотрите также**
+  - [Руководство - Provide / Inject](/guide/components/provide-inject)
+  - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />
+
 ## hasInjectionContext() <sup class="vt-badge" data-text="3.3+" /> {#has-injection-context}
 
 Возвращает true, если [inject()](#inject) можно использовать без предупреждения о том, что он вызван не в том месте (например, за пределами `setup()`). Этот метод предназначен для библиотек, которые хотят использовать `inject()` внутри библиотеки, не вызывая предупреждения для конечного пользователя.
@@ -112,7 +116,3 @@
   ```ts
   function hasInjectionContext(): boolean
   ```
-
-* **Смотрите также**
-  - [Руководство - Provide / Inject](/guide/components/provide-inject)
-  - [Руководство - Типизация Provide / Inject](/guide/typescript/composition-api#typing-provide-inject) <sup class="vt-badge ts" />

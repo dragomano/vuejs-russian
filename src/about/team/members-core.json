@@ -1,7 +1,7 @@
 [
   {
     "name": "Evan You",
-    "title": "Creator",
+    "title": "Создатель",
     "company": "Vue.js",
     "projects": [
       {
@@ -50,7 +50,7 @@
   },
   {
     "name": "Eduardo",
-    "title": "Developer & Consultant",
+    "title": "Разработчик и консультант",
     "company": "Freelance",
     "location": "Paris, France",
     "languages": ["Spanish", "French", "English"],
@@ -80,7 +80,7 @@
   },
   {
     "name": "Haoqun Jiang",
-    "title": "Developer",
+    "title": "Разработчик",
     "company": "Vue.js",
     "projects": [
       {
@@ -110,7 +110,7 @@
   },
   {
     "name": "Jinjiang",
-    "title": "Developer",
+    "title": "Разработчик",
     "projects": [
       {
         "label": "cn.vuejs.org",
@@ -177,7 +177,7 @@
   },
   {
     "name": "Rahul Kadyan",
-    "title": "Software Engineer",
+    "title": "Инженер-программист",
     "company": "Grammarly",
     "companyLink": "https://grammarly.com/",
     "projects": [
@@ -231,7 +231,7 @@
   },
   {
     "name": "Guillaume Chau",
-    "title": "Frontend Developer",
+    "title": "Фронтенд-разработчик",
     "company": "Livestorm",
     "companyLink": "https://livestorm.co/",
     "projects": [
@@ -278,7 +278,7 @@
   },
   {
     "name": "GU Yiling",
-    "title": "Senior web developer",
+    "title": "Старший веб-разработчик",
     "company": "Baidu, inc.",
     "companyLink": "https://www.baidu.com/",
     "projects": [
@@ -316,7 +316,7 @@
   },
   {
     "name": "Phan An",
-    "title": "Engineering Team Lead",
+    "title": "Руководитель инженерной группы",
     "company": "InterNations",
     "companyLink": "https://www.internations.org/",
     "projects": [
@@ -391,7 +391,7 @@
   },
   {
     "name": "Kia King Ishii",
-    "title": "Director",
+    "title": "Директор",
     "company": "Global Brain",
     "companyLink": "https://globalbrains.com/",
     "projects": [
@@ -445,7 +445,7 @@
   },
   {
     "name": "HcySunYang",
-    "title": "Developer",
+    "title": "Разработчик",
     "projects": [
       {
         "label": "vuejs/core",
@@ -461,7 +461,7 @@
   },
   {
     "name": "Johnson Chu",
-    "title": "Developer",
+    "title": "Разработчик",
     "projects": [
       {
         "label": "@vue/language-tools",
@@ -482,7 +482,7 @@
   },
   {
     "name": "Carlos Rodrigues",
-    "title": "Developer & Consultant",
+    "title": "Разработчик и консультант",
     "projects": [
       {
         "label": "vuejs/core",
@@ -499,7 +499,7 @@
   },
   {
     "name": "Divyansh Singh",
-    "title": "Developer",
+    "title": "Разработчик",
     "projects": [
       {
         "label": "vitepress",
@@ -511,6 +511,35 @@
     "socials": {
       "github": "brc-dd",
       "twitter": "_brc_dd"
+    },
+    "sponsor": true
+  },
+  {
+    "name": "Kevin Deng 三咲智子",
+    "title": "Open Sourceror",
+    "projects": [
+      {
+        "label": "vuejs/core",
+        "url": "https://github.com/vuejs/core"
+      },
+      {
+        "label": "vuejs/core-vapor",
+        "url": "https://github.com/vuejs/core-vapor"
+      },
+      {
+        "label": "Vue Macros",
+        "url": "https://github.com/vue-macros/vue-macros"
+      },
+      {
+        "label": "VueUse",
+        "url": "https://github.com/vueuse/vueuse"
+      }
+    ],
+    "location": ["Hangzhou", "Singapore"],
+    "languages": ["English", "Chinese"],
+    "socials": {
+      "github": "sxzz",
+      "twitter": "sanxiaozhizi"
     },
     "sponsor": true
   }

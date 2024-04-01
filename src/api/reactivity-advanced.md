@@ -304,7 +304,7 @@
 
     watch(doubled, () => console.log(doubled.value))
 
-    watchEffect(() => console.log('Count: ', doubled.value))
+    watchEffect(() => console.log('Счётчик: ', doubled.value))
   })
 
   // избавляемся от всех эффектов в области действия

@@ -224,7 +224,7 @@ export function register() {
 
 Если у вас много компонентов, вы также можете использовать такие функции инструментов сборки, как [glob import](https://vitejs.dev/guide/features.html#glob-import) от Vite или [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) от webpack для загрузки всех компонентов из каталога.
 
-### Веб-компоненты и Typescript {#web-components-and-typescript}
+### Веб-компоненты и TypeScript {#web-components-and-typescript}
 
 Если вы разрабатываете приложение или библиотеку, вам может понадобиться [проверка типов](/guide/scaling-up/tooling.html#typescript) ваших компонентов Vue, включая те, которые определены как пользовательские элементы.
 

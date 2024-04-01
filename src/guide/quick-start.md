@@ -21,7 +21,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 :::tip Предварительные условия
 
 - Знакомство с командной строкой
-- Установка [Node.js](https://nodejs.org/) версии 18.0 или выше
+- Установка [Node.js](https://nodejs.org/) версии 18.3 или выше
   :::
 
 В этом разделе мы расскажем, как создать [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue на вашей локальной машине. Созданный проект будет использовать настройку сборки на основе [Vite](https://vitejs.dev) и позволит нам использовать [однофайловые компоненты](/guide/scaling-up/sfc) (SFCs).
@@ -79,8 +79,8 @@ $ bun create vue@latest
 <VTCodeGroup>
   <VTCodeGroupTab label="npm">
 
-```sh
-$ cd <your-project-name>
+```sh-vue
+$ cd {{'<your-project-name>'}}
 $ npm install
 $ npm run dev
 ```
@@ -88,8 +88,8 @@ $ npm run dev
   </VTCodeGroupTab>
   <VTCodeGroupTab label="pnpm">
 
-```sh
-$ cd <your-project-name>
+```sh-vue
+$ cd {{'<your-project-name>'}}
 $ pnpm install
 $ pnpm run dev
 ```
@@ -97,8 +97,8 @@ $ pnpm run dev
   </VTCodeGroupTab>
   <VTCodeGroupTab label="yarn">
 
-```sh
-$ cd <your-project-name>
+```sh-vue
+$ cd {{'<your-project-name>'}}
 $ yarn
 $ yarn dev
 ```
@@ -106,8 +106,8 @@ $ yarn dev
   </VTCodeGroupTab>
   <VTCodeGroupTab label="bun">
 
-```sh
-$ cd <your-project-name>
+```sh-vue
+$ cd {{'<your-project-name>'}}
 $ bun install
 $ bun run dev
 ```
@@ -420,7 +420,7 @@ export default {
 
 Чтобы запустить локальный HTTP-сервер, сначала убедитесь, что у вас установлен [Node.js](https://nodejs.org/en/), затем запустите `npx serve` из командной строки в той же директории, где находится ваш HTML-файл. Вы также можете использовать любой другой HTTP-сервер, который может обслуживать статические файлы с правильными типами MIME.
 
-Вы могли заметить, что шаблон импортируемого компонента вставляется в виде строки JavaScript. Если вы используете VSCode, вы можете установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и префиксировать строки комментарием `/*html*/`, чтобы получить подсветку синтаксиса для них.
+Вы могли заметить, что шаблон импортируемого компонента вставляется в виде строки JavaScript. Если вы используете VS Code, вы можете установить расширение [es6-string-html](https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html) и префиксировать строки комментарием `/*html*/`, чтобы получить подсветку синтаксиса для них.
 
 ## Следующие шаги {#next-steps}
 

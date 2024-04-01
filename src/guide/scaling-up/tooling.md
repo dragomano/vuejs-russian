@@ -53,10 +53,10 @@
 
 ## Поддержка IDE {#ide-support}
 
-- Рекомендуемая настройка IDE — [VSCode](https://code.visualstudio.com/) + расширение [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Расширение обеспечивает подсветку синтаксиса, поддержку TypeScript и intellisense для шаблонных выражений и параметров компонентов.
+- Рекомендуемая настройка IDE — [VS Code](https://code.visualstudio.com/) + расширение [Vue Language Features (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.volar). Расширение обеспечивает подсветку синтаксиса, поддержку TypeScript и intellisense для шаблонных выражений и параметров компонентов.
 
   :::tip Совет
-  Volar заменяет [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VSCode для Vue 2. Если у вас установлен Vetur, не забудьте отключить его в проектах Vue 3.
+  Volar заменяет [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur), наше предыдущее официальное расширение VS Code для Vue 2. Если у вас установлен Vetur, не забудьте отключить его в проектах Vue 3.
   :::
 
 - [WebStorm](https://www.jetbrains.com/webstorm/) также обеспечивает отличную встроенную поддержку однофайловых компонентов Vue.
@@ -109,7 +109,7 @@
 
 1. `npm install -D eslint eslint-plugin-vue`, затем следуйте [руководству по настройке](https://eslint.vuejs.org/user-guide/#usage) `eslint-plugin-vue`.
 
-2. Установите расширения ESLint для IDE, например [ESLint для VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), чтобы получать обратную связь от линтера прямо в редакторе во время разработки. Это также позволяет избежать лишних затрат на линтинг при запуске dev-сервера.
+2. Установите расширения ESLint для IDE, например [ESLint для VS Code](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), чтобы получать обратную связь от линтера прямо в редакторе во время разработки. Это также позволяет избежать лишних затрат на линтинг при запуске dev-сервера.
 
 3. Запустите ESLint как часть команды сборки на производстве, чтобы получить полную обратную связь от линтера перед отправкой в производство.
 
@@ -117,7 +117,7 @@
 
 ## Форматирование {#formatting}
 
-- Расширение [Volar](https://github.com/johnsoncodehk/volar) VSCode предоставляет форматирование для Vue SFC из коробки.
+- Расширение [Volar](https://github.com/johnsoncodehk/volar) VS Code предоставляет форматирование для Vue SFC из коробки.
 
 - В качестве альтернативы [Prettier](https://prettier.io/) обеспечивает встроенную поддержку форматирования Vue SFC.
 

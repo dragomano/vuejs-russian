@@ -27,7 +27,7 @@
 При использовании пользовательской настройки убедитесь, что:
 
 1. `vue` преобразуется в `vue.runtime.esm-bundler.js`.
-2. [флаги функций времени компиляции](https://github.com/vuejs/core/tree/main/packages/vue#bundler-build-feature-flags) настроены правильно.
+2. [флаги функций во время компиляции](/api/compile-time-flags) настроены правильно.
 3. <code>process.env<wbr>.NODE_ENV</code> заменяется на `"production"` во время сборки.
 
 Дополнительные ссылки:

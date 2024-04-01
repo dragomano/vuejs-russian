@@ -391,7 +391,7 @@ h('input', {
 />
 ```
 
-Для других модификаторов событий и ключей можно использовать хэлпер [`withModifiers`](/api/render-function#withmodifiers):
+Для других модификаторов событий и ключей можно использовать хелпер [`withModifiers`](/api/render-function#withmodifiers):
 
 ```js
 import { withModifiers } from 'vue'
@@ -448,7 +448,7 @@ function render() {
 }
 ```
 
-Если компонент зарегистрирован по имени и не может быть импортирован напрямую (например, глобально зарегистрирован библиотекой), его можно программно разрешить с помощью хэлпера [`resolveComponent()`](/api/render-function#resolvecomponent).
+Если компонент зарегистрирован по имени и не может быть импортирован напрямую (например, глобально зарегистрирован библиотекой), его можно программно разрешить с помощью хелпера [`resolveComponent()`](/api/render-function#resolvecomponent).
 
 ### Отрисовка слотов {#rendering-slots}
 
@@ -690,7 +690,7 @@ const vnode = withDirectives(h('div'), [
 ])
 ```
 
-Если директива зарегистрирована по имени и не может быть импортирована напрямую, её можно разрешить с помощью хэлпера [`resolveDirective`](/api/render-function#resolvedirective).
+Если директива зарегистрирована по имени и не может быть импортирована напрямую, её можно разрешить с помощью хелпера [`resolveDirective`](/api/render-function#resolvedirective).
 
 ### Ссылки на элементы шаблона {#template-refs}
 
