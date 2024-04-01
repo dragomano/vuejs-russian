@@ -37,47 +37,45 @@ shuffleMembers(membersPartnerData as Member[])
   <div class="TeamPage">
     <TeamHero>
       <template #title>Познакомьтесь с командой</template>
-      <template #lead
-        >Разработкой Vue и его экосистемы занимается международная команда,
+      <template #lead>
+        Разработкой Vue и его экосистемы занимается международная команда,
         некоторые из которых решили
-        <span class="nowrap">рассказать о себе ниже.</span></template
-      >
-
+        <span class="nowrap">рассказать о себе ниже.</span>
+      </template>
       <template #action>
         <VTLink
           href="https://github.com/vuejs/governance/blob/master/Team-Charter.md"
-          >Узнайте больше о команде</VTLink
-        >
+          >Узнайте больше о команде
+        </VTLink>
       </template>
     </TeamHero>
 
-    <TeamList :members="membersCoreData as Member[]">
+    <TeamList :members="(membersCoreData as Member[])">
       <template #title>Члены основной команды</template>
-      <template #lead
-        >Члены основной команды - это те, кто активно участвует в
+      <template #lead>
+        Члены основной команды - это те, кто активно участвует в
         сопровождении одного или нескольких основных проектов. Они внесли
         значительный вклад в экосистему Vue и на протяжении длительного
-        времени заботятся об успехе проекта и его пользователей.</template
-      >
+        времени заботятся об успехе проекта и его пользователей.
+      </template>
     </TeamList>
 
-    <TeamList :members="membersEmeritiData as Member[]">
+    <TeamList :members="(membersEmeritiData as Member[])">
       <template #title>Почётные члены основной команды</template>
-      <template #lead
-        >Здесь мы чествуем некоторых уже неактивных членов основной
-        команды, которые внесли ценный вклад в развитие проекта в
-        прошлом.</template
-      >
+      <template #lead>
+        Здесь мы чествуем некоторых уже неактивных членов основной команды,
+        которые внесли ценный вклад в развитие проекта в прошлом.
+      </template>
     </TeamList>
 
-    <TeamList :members="membersPartnerData as Member[]">
+    <TeamList :members="(membersPartnerData as Member[])">
       <template #title>Общественные партнёры</template>
-      <template #lead
-        >Некоторые члены сообщества Vue настолько обогатили его, что
+      <template #lead>
+        Некоторые члены сообщества Vue настолько обогатили его, что
         заслуживают особого упоминания. Мы установили более тесные
         отношения с этими ключевыми партнерами, часто согласовывая с ними
-        предстоящие функции и новости.</template
-      >
+        предстоящие функции и новости.
+      </template>
     </TeamList>
   </div>
 </template>

@@ -182,9 +182,9 @@ export default {
 <div class="composition-api">
 
 ```vue
-<script setup>
+<script setup lang="ts">
 const emit = defineEmits({
-  submit(payload: { email: string, password: string }) {
+  submit(payload: { email: string; password: string }) {
     // возвращает `true` или `false` для указания, что
     // проверка пройдена / не пройдена
   }

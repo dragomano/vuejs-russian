@@ -189,7 +189,7 @@ data() {
 Однако это может быть слишком многословным, если у вас несколько условных классов. Поэтому синтаксис объекта можно использовать и внутри синтаксиса массива:
 
 ```vue-html
-<div :class="[{ active: isActive }, errorClass]"></div>
+<div :class="[{ activeClass: isActive }, errorClass]"></div>
 ```
 
 ### С компонентами {#with-components}

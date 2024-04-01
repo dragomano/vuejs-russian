@@ -7,6 +7,5 @@
 - [Якуб Анджеевский](https://dev.to/jacobandrewsky)
 - [Еженедельные новости Vue](https://weekly-vue.news/)
 - [Рассылка разработчиков Vue.js](https://vuejsdevelopers.com/newsletter/)
-- [VueDose](https://vuedose.tips/articles#newsletter)
 
 Если вы знаете отличный вариант, который ещё не включен в список, отправьте запрос на привлечение ресурсов по ссылке ниже!
