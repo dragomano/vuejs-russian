@@ -643,6 +643,11 @@ export default defineConfigWithTheme<ThemeConfig>({
         repo: 'https://github.com/vuejs/docs'
       },
       {
+        link: 'https://ru.vuejs.org',
+        text: 'Официальная локализация',
+        repo: 'https://github.com/vuejs-translations/docs-ru'
+      },
+/*       {
         link: 'https://cn.vuejs.org',
         text: '简体中文',
         repo: 'https://github.com/vuejs-translations/docs-zh-cn'
@@ -691,7 +696,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         link: 'https://cs.vuejs.org',
         text: 'Čeština',
         repo: 'https://github.com/vuejs-translations/docs-cs'
-      },
+      }, */
       {
         link: '/translations/',
         text: 'Помочь с переводом!',
