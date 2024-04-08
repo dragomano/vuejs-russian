@@ -161,7 +161,7 @@ $ bun run build
 
 ## Использование Vue из CDN {#using-vue-from-cdn}
 
-Вы можете использовать Vue непосредственно из CDN через тег сценария:
+Можно использовать Vue непосредственно из CDN через тег сценария:
 
 ```html
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
