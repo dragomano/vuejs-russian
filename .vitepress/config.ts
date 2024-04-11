@@ -735,7 +735,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   vite: {
     plugins: [
       SearchPlugin({
-        previewLength: 62,
+        previewLength: 150,
         buttonLabel: "Поиск",
         placeholder: "Искать в документации",
         allow: [],
