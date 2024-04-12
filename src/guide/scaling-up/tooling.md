@@ -153,7 +153,7 @@
 
 - [Документация](https://vue-loader.vuejs.org/)
 
-Официальный загрузчик, обеспечивающий поддержку Vue SFC в webpack. Если вы используете Vue CLI, также смотрите [Документацию по изменению опций `vue-loader` в Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
+Официальный загрузчик, обеспечивающий поддержку Vue SFC в webpack. Если вы используете Vue CLI, также смотрите [Документацию по изменению опций `vue-loader` во Vue CLI](https://cli.vuejs.org/guide/webpack.html#modifying-options-of-a-loader).
 
 ## Другие онлайн-песочницы {#other-online-playgrounds}
 

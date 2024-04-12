@@ -82,4 +82,4 @@
   export * from '@vue/runtime-core'
   ```
 
-  Собственный `@vue/runtime-dom` в Vue [реализован с использованием того же API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). Для более простой реализации посмотрите [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts), который представляет собой частный пакет для собственного модульного тестирования Vue.
+  Собственный `@vue/runtime-dom` во Vue [реализован с использованием того же API](https://github.com/vuejs/core/blob/main/packages/runtime-dom/src/index.ts). Для более простой реализации посмотрите [`@vue/runtime-test`](https://github.com/vuejs/core/blob/main/packages/runtime-test/src/index.ts), который представляет собой частный пакет для собственного модульного тестирования Vue.

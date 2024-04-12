@@ -1,11 +1,11 @@
 # Отрисовка списков {#list-rendering}
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/list-rendering-in-vue-3" title="Бесплатный урок по отрисовке списков в Vue.js"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/list-rendering-in-vue-3" title="Бесплатный урок по отрисовке списков во Vue.js"/>
 </div>
 
 <div class="composition-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-list-rendering-in-vue" title="Бесплатный урок по отрисовке списков в Vue.js"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/vue-fundamentals-capi-list-rendering-in-vue" title="Бесплатный урок по отрисовке списков во Vue.js"/>
 </div>
 
 ## `v-for` {#v-for}
@@ -140,7 +140,7 @@ items.forEach((item, index) => {
 
 ```js
 const myObject = reactive({
-  title: 'Как делать списки в Vue',
+  title: 'Как делать списки во Vue',
   author: 'Джейн Доу',
   publishedAt: '2016-04-10'
 })
@@ -153,7 +153,7 @@ const myObject = reactive({
 data() {
   return {
     myObject: {
-      title: 'Как делать списки в Vue',
+      title: 'Как делать списки во Vue',
       author: 'Джейн Доу',
       publishedAt: '2016-04-10'
     }

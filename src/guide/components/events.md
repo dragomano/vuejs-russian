@@ -23,7 +23,7 @@ if (typeof window !== 'undefined') {
 > Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
 
 <div class="options-api">
-  <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Бесплатный урок по определению пользовательских событий в Vue.js"/>
+  <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Бесплатный урок по определению пользовательских событий во Vue.js"/>
 </div>
 
 ## Испускание и прослушивание событий {#emitting-and-listening-to-events}

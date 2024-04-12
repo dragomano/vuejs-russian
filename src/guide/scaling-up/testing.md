@@ -205,7 +205,7 @@ await fireEvent.click(button)
 
 ### Рекомендация {#recommendation-1}
 
-- [Vitest](https://vitest.dev/) для компонентов или композаблов, которые обрабатывают логику и поведение, отделённые от пользовательского интерфейса (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) в VueUse). Компоненты и DOM можно протестировать с помощью [`@vue/test-utils`](https://github.com/vuejs/test-utils).
+- [Vitest](https://vitest.dev/) для компонентов или композаблов, которые обрабатывают логику и поведение, отделённые от пользовательского интерфейса (например, функция [`useFavicon`](https://vueuse.org/core/useFavicon/#usefavicon) во VueUse). Компоненты и DOM можно протестировать с помощью [`@vue/test-utils`](https://github.com/vuejs/test-utils).
 
 - [Тестирование компонентов Cypress](https://on.cypress.io/comComponent) для компонентов, ожидаемое поведение которых зависит от правильного рендеринга стилей или запуска собственных событий DOM. Его можно использовать с библиотекой тестирования через [@testing-library/cypress](https://testing-library.com/docs/cypress-testing-library/intro).
 

@@ -1,4 +1,4 @@
-# API функций рендеринга {#render-function-apis}
+# API рендер-функций {#render-function-apis}
 
 ## h() {#h}
 
@@ -93,7 +93,7 @@
   })
   ```
 
-- **Смотрите также** [Руководство - Функции рендеринга - Создание виртуальных узлов](/guide/extras/render-function#creating-vnodes)
+- **Смотрите также** [Руководство - Рендер-функции - Создание виртуальных узлов](/guide/extras/render-function#creating-vnodes)
 
 ## mergeProps() {#mergeprops}
 
@@ -228,7 +228,7 @@
 
   </div>
 
-- **Смотрите также** [Руководство - Функции рендеринга - Компоненты](/guide/extras/render-function#components)
+- **Смотрите также** [Руководство - Рендер-функции - Компоненты](/guide/extras/render-function#components)
 
 ## resolveDirective() {#resolvedirective}
 
@@ -248,7 +248,7 @@
 
   Если директива не найдена, будет выдано предупреждение, а функция вернет значение `undefined`.
 
-- **Смотрите также** [Руководство - Функции рендеринга - Пользовательские директивы](/guide/extras/render-function#custom-directives)
+- **Смотрите также** [Руководство - Рендер-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
 
 ## withDirectives() {#withdirectives}
 
@@ -296,7 +296,7 @@
   ])
   ```
 
-- **Смотрите также** [Руководство - Функции рендеринга - Пользовательские директивы](/guide/extras/render-function#custom-directives)
+- **Смотрите также** [Руководство - Рендер-функции - Пользовательские директивы](/guide/extras/render-function#custom-directives)
 
 ## withModifiers() {#withmodifiers}
 
@@ -321,4 +321,4 @@
   })
   ```
 
-- **Смотрите также** [Руководство - Функции рендеринга - Модификаторы событий](/guide/extras/render-function#event-modifiers)
+- **Смотрите также** [Руководство - Рендер-функции - Модификаторы событий](/guide/extras/render-function#event-modifiers)
