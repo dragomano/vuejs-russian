@@ -317,6 +317,7 @@ h(Transition, {
   ```ts
   interface SuspenseProps {
     timeout?: string | number
+    suspensible?: boolean
   }
   ```
 
@@ -331,5 +332,7 @@ h(Transition, {
   `<Suspense>` принимает два слота: слот `#default` и слот `#fallback`. Он отобразит содержимое запасного слота во время отрисовки слота по умолчанию в памяти.
 
   Если при отображении слота по умолчанию он встретит асинхронные зависимости ([Асинхронные компоненты](/guide/components/async) и компоненты с [`async setup()`](/guide/built-ins/suspense#async-setup)), он будет ждать, пока все они не будут разрешены, прежде чем отобразить слот по умолчанию.
+
+  Если установить для Suspense значение `suspensible`, вся асинхронная обработка зависимостей будет обрабатываться родительским Suspense. См. [подробности реализации](https://github.com/vuejs/core/pull/6736)
 
 - **Смотрите также** [Руководство по `Suspense`](/guide/built-ins/suspense)

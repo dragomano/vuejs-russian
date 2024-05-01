@@ -1,6 +1,6 @@
 # Регистрация компонентов {#component-registration}
 
-> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
+> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics).
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-global-vs-local-vue-components" title="Бесплатный урок по регистрации компонентов Vue.js"/>
 

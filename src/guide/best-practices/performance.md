@@ -124,6 +124,51 @@ const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 
 `v-memo` — это встроенная директива, которая может быть использована для условного пропуска обновления больших поддеревьев или списков `v-for`. Для получения более подробной информации обратитесь к [Путеводителю по API](/api/built-in-directives#v-memo).
 
+### Стабильность вычисляемых свойств <sup class="vt-badge" data-text="3.4+" /> {#computed-stability}
+
+Начиная с версии 3.4, вычисляемое свойство будет вызывать эффекты только тогда, когда его вычисляемое значение изменится по сравнению с предыдущим. Например, следующее вычисление `isEven` вызывает эффект только в том случае, если возвращаемое значение изменилось с `true` на `false`, или наоборот:
+
+```js
+const count = ref(0)
+const isEven = computed(() => count.value % 2 === 0)
+
+watchEffect(() => console.log(isEven.value)) // true
+
+// не вызовет новых сообщений в консоли, потому что вычисленное значение останется `true`
+count.value = 2
+count.value = 4
+```
+
+Это уменьшает количество ненужных срабатываний эффектов, но, к сожалению, не работает, если при каждом вычислении создается новый объект:
+
+```js
+const computedObj = computed(() => {
+  return {
+    isEven: count.value % 2 === 0
+  }
+})
+```
+
+Поскольку каждый раз создается новый объект, новое значение технически всегда отличается от старого. Даже если свойство `isEven` осталось прежним, Vue не сможет узнать об этом, пока не выполнит глубокое сравнение старого и нового значения. Такое сравнение может оказаться дорогостоящим и, скорее всего, не стоит того.
+
+Вместо этого мы можем оптимизировать этот процесс, вручную сравнивая новое значение со старым и условно возвращая старое значение, если мы знаем, что ничего не изменилось:
+
+```js
+const computedObj = computed((oldValue) => {
+  const newValue = {
+    isEven: count.value % 2 === 0
+  }
+  if (oldValue && oldValue.isEven === newValue.isEven) {
+    return oldValue
+  }
+  return newValue
+})
+```
+
+[Попробовать в Песочнице](https://play.vuejs.org/#eNqVVMtu2zAQ/JUFgSZK4UpuczMkow/40AJ9IC3aQ9mDIlG2EokUyKVt1PC/d0lKtoEminMQQC1nZ4c7S+7Yu66L11awGUtNoesOwQi03ZzLuu2URtiBFtUECtV2FkU5gU2OxWpRVaJA2EOlVQuXxHDJJZeFkgYJayVC5hKj6dUxLnzSjZXmV40rZfFrh3Vb/82xVrLH//5DCQNNKPkweNiNVFP+zBsrIJvDjksgGrRahjVAbRZrIWdBVLz2yBfwBrIsg6mD7LncPyryfIVnywupUmz68HOEEqqCI+XFBQzrOKR79MDdx66GCn1jhpQDZx8f0oZ+nBgdRVcH/aMuBt1xZ80qGvGvh/X6nlXwnGpPl6qsLLxTtitzFFTNl0oSN/79AKOCHHQuS5pw4XorbXsr9ImHZN7nHFdx1SilI78MeOJ7Ca+nbvgd+GgomQOv6CNjSQqXaRJuHd03+kHRdg3JoT+A3a7XsfcmpbcWkQS/LZq6uM84C8o5m4fFuOg0CemeOXXX2w2E6ylsgj2gTgeYio/f1l5UEqj+Z3yC7lGuNDlpApswNNTrql7Gd0ZJeqW8TZw5t+tGaMdDXnA2G4acs7xp1OaTj6G2YjLEi5Uo7h+I35mti3H2TQsj9Jp6etjDXC8Fhu3F9y9iS+vDZqtK2xB6ZPNGGNVYpzHA3ltZkuwTnFf70b+1tVz+MIstCmmGQzmh/p56PGf00H4YOfpR7nV8PTxubP8P2GAP9Q==)
+
+Обратите внимание, что перед сравнением и возвратом старого значения всегда следует выполнять полное вычисление, чтобы при каждом запуске можно было собирать одни и те же зависимости.
+
 ## Общие оптимизации {#general-optimizations}
 
 > Следующие советы влияют как на загрузку страницы, так и на производительность обновления.

@@ -1,6 +1,6 @@
 # Слоты {#slots}
 
-> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
+> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics).
 
 <VueSchoolLink href="https://vueschool.io/lessons/vue-3-component-slots" title="Бесплатный урок по слотам Vue.js"/>
 
@@ -297,9 +297,38 @@ function BaseLayout(slots) {
 }
 ```
 
+## Условные слоты {#conditional-slots}
+
+Иногда вы хотите отобразить что-то в зависимости от наличия или отсутствия слота.
+
+Для этого можно использовать свойство [$slots](/api/component-instance.html#slots) в сочетании с [v-if](/guide/essentials/conditional.html#v-if).
+
+В приведённом ниже примере мы определяем компонент Card с двумя условными слотами: `header` и `footer`.
+Когда присутствуют `header` или `footer`, мы хотим обернуть их, чтобы обеспечить дополнительную стилизацию:
+
+```vue-html
+<template>
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header" />
+    </div>
+
+    <div class="card-content">
+      <slot />
+    </div>
+
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer" />
+    </div>
+  </div>
+</template>
+```
+
+[Попробовать в Песочнице](https://play.vuejs.org/#eNqFVD1v2zAQ/SsEWyBLIjVoJlcN0AYZ2qEt2oxaaOkkMaZIgqRcGYH/e4+kqFi26wAejvfevfu0XugXrbPtAHRFC1sZrh2x4AZ9X0rea2UceWCmJo1RPbnKcv/w9KtSFnnkIxMfDnotmAN8EVJ4WrDQTgh51wGrwUx+RLrb+6eOW4I/1wGJcJGjewrND1RP1Gpo2CB8+klOL9QqJR1IV+S+lbfVGqXcYW3QL9QiXOToPqPmn1PLCz+9ps5iIQ1vs2erJA75xbNLWqlecwHmp3ZcSVvSFQmIx5gQ6u/34HNmgOvkrzqoNmf8z3b0vpL+MmDBbKGkM+aYacFF+PHPDxjRnsFe1YNA9gXwN1glBl9jpH0dZI1lH/BCtd/CqXDZPtnHEcduU1O+UM/cB35J8XQeLrT+Wu7H7C7ElXKPU0xn5690Ofeab0klmLWfcUDIKmlakEe2N7xB4L0VytksHlhJFwE3yfu6e88mkvWAlDkmnxePwpN9kGkhOd3eieYbGstq48kdV5u856udY04zJevob1BYtxNxlplPkHaxVgb7XpFbPRI8AV6TtWDV5lNENatr3PaKfAgO3NIsMM1z1sGg1ig8G5yKUKhoN7u1GOBY6U6Pp1rTIJPYZXJs/v+JBW871xq2u5g6fNjCTOj+H/sTpqs=)
+
 ## Динамические имена слотов {#dynamic-slot-names}
 
-[Аргументы динамических директив](/guide/essentials/template-syntax.md#dynamic-arguments) также работают с `v-slot`, позволяя определять динамические имена слотов:
+[Динамические аргументы](/guide/essentials/template-syntax.md#dynamic-arguments) также работают с `v-slot`, позволяя определять динамические имена слотов:
 
 ```vue-html
 <base-layout>

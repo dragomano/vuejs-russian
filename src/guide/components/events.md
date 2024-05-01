@@ -20,7 +20,7 @@ if (typeof window !== 'undefined') {
 
 # События компонента {#component-events}
 
-> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
+> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics).
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/defining-custom-events-emits" title="Бесплатный урок по определению пользовательских событий во Vue.js"/>
@@ -32,7 +32,7 @@ if (typeof window !== 'undefined') {
 
 ```vue-html
 <!-- MyComponent -->
-<button @click="$emit('someEvent')">нажмите меня</button>
+<button @click="$emit('someEvent')">Нажми меня</button>
 ```
 
 <div class="options-api">

@@ -1,4 +1,4 @@
-# Особенности CSS SFC {#sfc-css-features}
+# Особенности CSS в однофайловых компонентах {#sfc-css-features}
 
 ## CSS с ограниченной областью действия {#scoped-css}
 
@@ -155,7 +155,7 @@ useCssModule('classes')
 
 ## `v-bind()` в CSS {#v-bind-in-css}
 
-Теги SFC `<style>` поддерживают привязку значений CSS к динамическому состоянию компонента с помощью CSS-функции `v-bind`:
+Теги `<style>` в однофайловых компонентах поддерживают привязку значений CSS к динамическому состоянию компонента с помощью CSS-функции `v-bind`:
 
 ```vue
 <template>
@@ -183,9 +183,10 @@ export default {
 
 ```vue
 <script setup>
-const theme = {
+import { ref } from 'vue'
+const theme = ref({
   color: 'red'
-}
+})
 </script>
 
 <template>

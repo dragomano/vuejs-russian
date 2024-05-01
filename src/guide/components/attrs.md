@@ -8,13 +8,13 @@ outline: deep
 
 ## Наследование атрибутов {#attribute-inheritance}
 
-«Обычный атрибут» — атрибут или слушатель `v-on`, который передаётся в компонент, но не имеет соответствующего свойства указанного в [props](./props) или [emits](./events#declaring-emitted-events). Примерами подобных атрибутов являются `class`, `style` и `id`.
+«Обычный атрибут» — атрибут или слушатель `v-on`, который передаётся в компонент, но не имеет соответствующего свойства, указанного в [props](./props) или [emits](./events#declaring-emitted-events). Примерами подобных атрибутов являются `class`, `style` и `id`.
 
 Когда компонент отображает один корневой элемент, обычные атрибуты будут автоматически добавлены к атрибутам корневого элемента. Например, задан компонент `<MyButton>` со следующим шаблоном:
 
 ```vue-html
 <!-- шаблон <MyButton> -->
-<button>нажми меня</button>
+<button>Нажми меня</button>
 ```
 
 И родитель, использующий этот компонент с:
@@ -26,7 +26,7 @@ outline: deep
 Окончательный вариант DOM будет выглядеть так:
 
 ```html
-<button class="large">нажми меня</button>
+<button class="large">Нажми меня</button>
 ```
 
 Здесь `<MyButton>` не объявил `class` в качестве принимаемого параметра. Поэтому `class` рассматривается как обычный атрибут и автоматически добавляется к корневому элементу `<MyButton>`.
@@ -37,13 +37,13 @@ outline: deep
 
 ```vue-html
 <!-- шаблон <MyButton> -->
-<button class="btn">нажми меня</button>
+<button class="btn">Нажми меня</button>
 ```
 
 Тогда окончательный вид DOM будет выглядеть так:
 
 ```html
-<button class="btn large">нажми меня</button>
+<button class="btn large">Нажми меня</button>
 ```
 
 ### Наследование слушателей `v-on` {#v-on-listener-inheritance}
@@ -110,7 +110,7 @@ defineOptions({
 
 ```vue-html
 <div class="btn-wrapper">
-  <button class="btn">нажми меня</button>
+  <button class="btn">Нажми меня</button>
 </div>
 ```
 
@@ -118,7 +118,7 @@ defineOptions({
 
 ```vue-html{2}
 <div class="btn-wrapper">
-  <button class="btn" v-bind="$attrs">нажми меня</button>
+  <button class="btn" v-bind="$attrs">Нажми меня</button>
 </div>
 ```
 

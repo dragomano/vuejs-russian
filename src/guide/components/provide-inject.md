@@ -1,6 +1,6 @@
 # Provide / Inject {#provide-inject}
 
-> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
+> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics).
 
 ## Сквозная передача параметров {#prop-drilling}
 

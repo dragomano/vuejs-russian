@@ -467,7 +467,7 @@ watch(
 
 [WCAG 2.1](https://www.w3.org/TR/WCAG21/) развивает [WCAG 2.0](https://www.w3.org/TR/WCAG20/) и позволяет внедрять новые технологии, учитывая изменения в Интернете. W3C рекомендует использовать самую последнюю версию WCAG при разработке или обновлении политики веб-доступности.
 
-#### WCAG 2.1 Четыре основных руководящих принципа (сокращенно ВУПУ — POUR): {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
+#### WCAG 2.1 Четыре основных руководящих принципа (сокращённо ВУПУ — POUR): {#wcag-2-1-four-main-guiding-principles-abbreviated-as-pour}
 
 - [Воспринимаемость (Perceivable)](https://www.w3.org/TR/WCAG21/#perceivable)
   - Пользователи должны иметь возможность воспринимать представляемую информацию

@@ -1,6 +1,6 @@
 # Параметры {#props}
 
-> Эта страница предполагает, что вы уже прочитали [Основы работы с компонентами](/guide/essentials/component-basics).
+> Эта страница предполагает, что вы уже прочитали [Основы компонентов](/guide/essentials/component-basics).
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/vue-3-reusable-components-with-props" title="Бесплатный урок по параметрам Vue.js"/>
@@ -12,7 +12,7 @@
 
 <div class="composition-api">
 
-В SFC, использующих `<script setup>`, параметры могут быть объявлены с помощью макроса `defineProps()`:
+В однофайловых компонентах, использующих `<script setup>`, параметры могут быть объявлены с помощью макроса `defineProps()`:
 
 ```vue
 <script setup>
@@ -389,13 +389,18 @@ defineProps({
     type: String,
     required: true
   },
-  // Число со значением по умолчанию
+  // Обязательная, но допускающая значение NULL строка
   propD: {
+    type: [String, null],
+    required: true
+  },
+  // Число со значением по умолчанию
+  propE: {
     type: Number,
     default: 100
   },
   // Объект со значением по умолчанию
-  propE: {
+  propF: {
     type: Object,
     // Объект или массив по умолчанию должен быть возвращен из
     // фабричной функции. Функция получает необработанный
@@ -405,19 +410,19 @@ defineProps({
     }
   },
   // Пользовательская функция валидатора
-  propF: {
+  propG: {
     validator(value) {
       // Значение должно соответствовать одной из этих строк
       return ['success', 'warning', 'danger'].includes(value)
     }
   },
   // Функция со значением по умолчанию
-  propG: {
+  propH: {
     type: Function,
     // В отличие от объекта или массива по умолчанию, это не фабричная функция
-    // - это функция, служащая значением по умолчанию.
+    // function - это функция, служащая значением по умолчанию.
     default() {
-      return 'Функция по умолчанию'
+      return 'Default function'
     }
   }
 })
@@ -554,6 +559,39 @@ export default {
 </div>
 
 Vue будет использовать `instanceof Person` для проверки того, действительно ли значение свойства `author` является экземпляром класса `Person`.
+
+### Тип `null` {#nullable-type}
+
+Если тип является обязательным, но допускает значение NULL, вы можете использовать синтаксис массива, включающий `null`:
+
+<div class="composition-api">
+
+```js
+defineProps({
+  id: {
+    type: [String, null],
+    required: true
+  }
+})
+```
+
+</div>
+<div class="options-api">
+
+```js
+export default {
+  props: {
+    id: {
+      type: [String, null],
+      required: true
+    }
+  }
+}
+```
+
+</div>
+
+Обратите внимание, что если `type` — это просто `null` без использования синтаксиса массива, то будет разрешён любой тип.
 
 ## Приведение к булевому типу {#boolean-casting}
 
