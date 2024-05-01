@@ -88,7 +88,7 @@ import { defineAsyncComponent } from 'vue'
 const Foo = defineAsyncComponent(() => import('./Foo.vue'))
 ```
 
-В приложениях, использующих Vue Router, настоятельно рекомендуется использовать ленивую загрузку для компонентов маршрута. Vue Router имеет явную поддержку ленивой загрузки, отдельную от `defineAsyncComponent`. Дополнительные сведения см. в разделе [Маршруты ленивой загрузки](https://router.vuejs.org/guide/advanced/lazy-loading.html).
+В приложениях, использующих Vue Router, настоятельно рекомендуется использовать ленивую загрузку для компонентов маршрута. Vue Router имеет явную поддержку ленивой загрузки, отдельную от `defineAsyncComponent`. Дополнительные сведения см. в разделе [Ленивая загрузка маршрутов](https://vue-router-ru.netlify.app/guide/advanced/lazy-loading.html).
 
 ## Оптимизация обновления {#update-optimizations}
 

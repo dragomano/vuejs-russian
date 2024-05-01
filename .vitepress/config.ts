@@ -55,8 +55,8 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'Официальные библиотеки',
         items: [
-          { text: 'Vue Router', link: 'https://router.vuejs.org/' },
-          { text: 'Pinia', link: 'https://pinia.vuejs.org/' },
+          { text: 'Vue Router', link: 'https://vue-router-ru.netlify.app' },
+          { text: 'Pinia', link: 'https://pinia-ru.netlify.app' },
           { text: 'Руководство по инструментам', link: '/guide/scaling-up/tooling.html' }
         ]
       },

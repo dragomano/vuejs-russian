@@ -17,7 +17,7 @@
   </VueSchoolLink>
 </div>
 
-Vue хорошо подходит для создания SPA. Для большинства SPA рекомендуется использовать официально поддерживаемую библиотеку [Vue Router](https://github.com/vuejs/router). Более подробную информацию можно найти в [документации](https://router.vuejs.org/) Vue Router.
+Vue хорошо подходит для создания SPA. Для большинства SPA рекомендуется использовать официально поддерживаемую библиотеку [Vue Router](https://github.com/vuejs/router). Более подробную информацию можно найти в [документации](https://vue-router-ru.netlify.app) Vue Router.
 
 ## Простая маршрутизация с нуля {#simple-routing-from-scratch}
 
