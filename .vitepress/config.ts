@@ -49,7 +49,7 @@ const nav: ThemeConfig['nav'] = [
           { text: 'Компоненты UI', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'Сертификация',
-            link: 'https://certification.vuejs.org/?ref=vuejs-nav'
+            link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
           },
           { text: 'Работа', link: 'https://vuejobs.com/?ref=vuejs' },
           { text: 'Магазин футболок', link: 'https://vue.threadless.com/' }
@@ -113,6 +113,7 @@ const nav: ThemeConfig['nav'] = [
         link: '/about/community-guide'
       },
       { text: 'Кодекс поведения', link: '/about/coc' },
+      { text: 'Политика конфиденциальности', link: '/about/privacy' },
       {
         text: 'Документальный фильм',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
