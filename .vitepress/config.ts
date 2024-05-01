@@ -16,12 +16,9 @@ const nav: ThemeConfig['nav'] = [
       { text: 'Учебник', link: '/tutorial/' },
       { text: 'Примеры', link: '/examples/' },
       { text: 'Быстрый старт', link: '/guide/quick-start' },
-      // { text: 'Style Guide', link: '/style-guide/' },
+      { text: 'Руководство по стилю', link: '/style-guide/' },
       { text: 'Глоссарий', link: '/glossary/' },
-      {
-        text: 'Документация Vue 2',
-        link: 'https://ru.vuejs.org/'
-      },
+      { text: 'Справочник по ошибкам', link: '/error-reference/' },
       {
         text: 'Переход с Vue 2',
         link: 'https://v3.ru.vuejs.org/ru/guide/migration/introduction.html'
