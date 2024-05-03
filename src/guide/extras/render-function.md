@@ -630,7 +630,7 @@ export default {
 
 ### `v-model` {#v-model}
 
-Директива `v-model` расширяется до параметров `modelValue` и `onUpdate:modelValue` во время компиляции шаблона — нам придётся предоставить эти параметры самостоятельно:
+Директива `v-model` расширяется до параметров `modelValue` и `onUpdate:modelValue` на этапе компиляции шаблона — нам придётся предоставить эти параметры самостоятельно:
 
 <div class="composition-api">
 
