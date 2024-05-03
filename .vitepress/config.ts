@@ -1,7 +1,6 @@
 import fs from 'fs'
 import path from 'path'
 import { defineConfigWithTheme } from 'vitepress'
-import { SearchPlugin } from "vitepress-plugin-search";
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
@@ -599,6 +598,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   srcExclude: ['tutorial/**/description.md'],
 
   head: [
+    ['link', { rel: 'preconnect', href: 'https://WB13I1BINF-dsn.algolia.net', crossorigin: true }],
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
@@ -701,6 +701,51 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     ],
 
+    algolia: {
+      indexName: 'vuejs-dragomano',
+      appId: 'WB13I1BINF',
+      apiKey: '6b9bfea5846a1efee61047049f5858f9',
+      placeholder: 'Поиск в документации',
+      translations: {
+        button: {
+          buttonText: 'Поиск',
+          buttonAriaLabel: 'Поиск'
+        },
+        modal: {
+          searchBox: {
+            resetButtonTitle: 'Сбросить поиск',
+            resetButtonAriaLabel: 'Сбросить поиск',
+            cancelButtonText: 'Отменить поиск',
+            cancelButtonAriaLabel: 'Отменить поиск'
+          },
+          startScreen: {
+            recentSearchesTitle: 'История поиска',
+            noRecentSearchesText: 'Нет истории поиска',
+            saveRecentSearchButtonTitle: 'Сохранить в истории поиска',
+            removeRecentSearchButtonTitle: 'Удалить из истории поиска',
+            favoriteSearchesTitle: 'Избранное',
+            removeFavoriteSearchButtonTitle: 'Удалить из избранного'
+          },
+          errorScreen: {
+            titleText: 'Невозможно получить результаты',
+            helpText: 'Вам может потребоваться проверить подключение к Интернету'
+          },
+          footer: {
+            selectText: 'выбрать',
+            navigateText: 'перейти',
+            closeText: 'закрыть',
+            searchByText: ''
+          },
+          noResultsScreen: {
+            noResultsText: 'Нет результатов для',
+            suggestedQueryText: 'Вы можете попытаться узнать',
+            reportMissingResultsText: 'Считаете, что поиск даёт ложные результаты？',
+            reportMissingResultsLinkText: 'Нажмите на кнопку «Обратная связь»'
+          }
+        }
+      },
+    },
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
       { icon: 'twitter', link: 'https://twitter.com/vuejs' },
@@ -729,15 +774,6 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
 
   vite: {
-    plugins: [
-      SearchPlugin({
-        previewLength: 150,
-        buttonLabel: "Поиск",
-        placeholder: "Искать в документации",
-        allow: [],
-        ignore: [],
-      })
-    ],
     define: {
       __VUE_OPTIONS_API__: false
     },

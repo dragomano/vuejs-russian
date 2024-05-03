@@ -4,9 +4,3 @@
 @import "./inline-demo.css";
 @import "./utilities.css";
 @import "./style-guide.css";
-
-@media (min-width: 768px) {
-  .VPNavBarSearch {
-    flex-grow: 1;
-  }
-}

@@ -14,15 +14,14 @@
     "@vue/theme": "^2.2.5",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.12.5",
+    "pagefind": "^1.1.0",
     "vitepress": "^1.1.4",
     "vue": "^3.4.26"
   },
   "devDependencies": {
-    "@types/markdown-it": "^14.0.1",
-    "@types/node": "^20.12.7",
-    "flexsearch": "^0.7.43",
-    "terser": "^5.31.0",
-    "vitepress-plugin-search": "1.0.4-alpha.22"
+    "@types/markdown-it": "^14.1.1",
+    "@types/node": "^20.12.8",
+    "terser": "^5.31.0"
   },
   "pnpm": {
     "overrides": {
