@@ -1,5 +1,6 @@
 ---
 page: true
+title: Все партнёры
 footer: false
 ---
 

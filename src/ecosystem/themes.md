@@ -1,5 +1,6 @@
 ---
 page: true
+title: Темы
 ---
 
 <script setup>
