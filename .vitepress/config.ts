@@ -598,7 +598,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   srcExclude: ['tutorial/**/description.md'],
 
   head: [
-    ['link', { rel: 'preconnect', href: 'https://WB13I1BINF-dsn.algolia.net', crossorigin: true }],
+    ['link', { rel: 'preconnect', href: 'https://WB13I1BINF-dsn.algolia.net', crossorigin: "true" }],
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
@@ -644,56 +644,6 @@ export default defineConfigWithTheme<ThemeConfig>({
         text: 'Официальная локализация',
         repo: 'https://github.com/vuejs-translations/docs-ru'
       },
-/*       {
-        link: 'https://cn.vuejs.org',
-        text: '简体中文',
-        repo: 'https://github.com/vuejs-translations/docs-zh-cn'
-      },
-      {
-        link: 'https://ja.vuejs.org',
-        text: '日本語',
-        repo: 'https://github.com/vuejs-translations/docs-ja'
-      },
-      {
-        link: 'https://ua.vuejs.org',
-        text: 'Українська',
-        repo: 'https://github.com/vuejs-translations/docs-uk'
-      },
-      {
-        link: 'https://fr.vuejs.org',
-        text: 'Français',
-        repo: 'https://github.com/vuejs-translations/docs-fr'
-      },
-      {
-        link: 'https://ko.vuejs.org',
-        text: '한국어',
-        repo: 'https://github.com/vuejs-translations/docs-ko'
-      },
-      {
-        link: 'https://pt.vuejs.org',
-        text: 'Português',
-        repo: 'https://github.com/vuejs-translations/docs-pt'
-      },
-      {
-        link: 'https://bn.vuejs.org',
-        text: 'বাংলা',
-        repo: 'https://github.com/vuejs-translations/docs-bn'
-      },
-      {
-        link: 'https://it.vuejs.org',
-        text: 'Italiano',
-        repo: 'https://github.com/vuejs-translations/docs-it'
-      },
-      {
-        link: 'https://fa.vuejs.org',
-        text: 'فارسی',
-        repo: 'https://github.com/vuejs-translations/docs-fa'
-      },
-      {
-        link: 'https://cs.vuejs.org',
-        text: 'Čeština',
-        repo: 'https://github.com/vuejs-translations/docs-cs'
-      }, */
       {
         link: '/translations/',
         text: 'Помочь с переводом!',
@@ -759,10 +709,10 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     footer: {
       license: {
-        text: 'MIT License',
+        text: 'Лицензия MIT',
         link: 'https://opensource.org/licenses/MIT'
       },
-      copyright: `Copyright © 2014-${new Date().getFullYear()} Evan You`
+      copyright: `© 2014-${new Date().getFullYear()} Эван Ю`
     }
   },
 
