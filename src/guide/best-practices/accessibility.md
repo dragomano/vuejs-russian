@@ -154,8 +154,6 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Простая форма" slug="dyNzzWZ" :height="368" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 Обратите внимание, как вы можете включить `autocomplete='on'` в элемент формы, и это будет применяться ко всем входным данным в вашей форме. Вы также можете установить разные [значения атрибута автозаполнения](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) для каждого ввода.
 
 ### Метки {#labels}
@@ -166,8 +164,6 @@ watch(
 <label for="name">Имя: </label>
 <input type="text" name="name" id="name" v-model="name" />
 ```
-
-<!-- <common-codepen-snippet title="Form Label" slug="XWpaaaj" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 Если вы проверите этот элемент в инструментах разработчика Chrome и откроете вкладку «Доступность» на вкладке «Элементы», вы увидите, как входные данные получают свое имя из метки:
 
@@ -201,8 +197,6 @@ watch(
 />
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA label" slug="NWdvvYQ" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 Не стесняйтесь просмотреть этот элемент в Chrome DevTools, чтобы увидеть, как изменилось доступное имя:
 
 ![Инструменты разработчика Chrome показывают доступное для ввода имя из aria-label](./images/AccessibleARIAlabelDevTools.png)
@@ -233,8 +227,6 @@ watch(
 </form>
 ```
 
-<!-- <common-codepen-snippet title="Form ARIA labelledby" slug="MWJvvBe" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ![Инструменты разработчика Chrome показывают доступное для ввода имя из aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
 #### `aria-describedby` {#aria-describedby}
@@ -264,8 +256,6 @@ watch(
   <button type="submit">Отправить</button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Form ARIA describedby" slug="gOgxxQE" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 Вы можете просмотреть описание, заглянув в Chrome DevTools:
 
@@ -352,8 +342,6 @@ watch(
 </fieldset>
 ```
 
-<!-- <common-codepen-snippet title="Инструкция по заполнению формы" slug="WNREEqv" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 ### Скрытое содержимое {#hiding-content}
 
 Обычно не рекомендуется визуально скрывать метки, даже если ввод имеет доступное имя. Однако если функциональность ввода может быть понятна из окружающего контента, то визуальную метку можно скрыть.
@@ -386,8 +374,6 @@ watch(
 }
 ```
 
-<!-- <common-codepen-snippet title="Форма поиска" slug="QWdMqWy" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
-
 #### `aria-hidden="true"` {#aria-hidden-true}
 
 Добавление `aria-hidden="true"` скроет элемент от вспомогательных технологий, но оставит его визуально доступным для других пользователей. Не используйте его на фокусируемых элементах, только на декоративном, дублирующемся или внеэкранном контенте.
@@ -413,8 +399,6 @@ watch(
   <input type="submit" value="Отправить" />
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Кнопки формы" slug="JjEyrYZ" :height="467" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ### Функциональные изображения {#functional-images}
 
@@ -449,8 +433,6 @@ watch(
   </button>
 </form>
 ```
-
-<!-- <common-codepen-snippet title="Функциональные изображения" slug="jOyLGqM" :height="265" tab="js,result" theme="light" :preview="false" :editable="false" /> -->
 
 ## Стандарты {#standards}
 

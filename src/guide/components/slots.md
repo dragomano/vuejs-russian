@@ -303,8 +303,8 @@ function BaseLayout(slots) {
 
 Для этого можно использовать свойство [$slots](/api/component-instance.html#slots) в сочетании с [v-if](/guide/essentials/conditional.html#v-if).
 
-В приведённом ниже примере мы определяем компонент Card с двумя условными слотами: `header` и `footer`.
-Когда присутствуют `header` или `footer`, мы хотим обернуть их, чтобы обеспечить дополнительную стилизацию:
+В приведённом ниже примере мы определяем компонент Card с тремя условными слотами: `header`, `footer` и `default`.
+Когда присутствуют `header`, `footer` или `default`, мы хотим обернуть их, чтобы обеспечить дополнительную стилизацию:
 
 ```vue-html
 <template>
@@ -313,7 +313,7 @@ function BaseLayout(slots) {
       <slot name="header" />
     </div>
 
-    <div class="card-content">
+    <div v-if="$slots.default" class="card-content">
       <slot />
     </div>
 
@@ -324,7 +324,7 @@ function BaseLayout(slots) {
 </template>
 ```
 
-[Попробовать в Песочнице](https://play.vuejs.org/#eNqFVD1v2zAQ/SsEWyBLIjVoJlcN0AYZ2qEt2oxaaOkkMaZIgqRcGYH/e4+kqFi26wAejvfevfu0XugXrbPtAHRFC1sZrh2x4AZ9X0rea2UceWCmJo1RPbnKcv/w9KtSFnnkIxMfDnotmAN8EVJ4WrDQTgh51wGrwUx+RLrb+6eOW4I/1wGJcJGjewrND1RP1Gpo2CB8+klOL9QqJR1IV+S+lbfVGqXcYW3QL9QiXOToPqPmn1PLCz+9ps5iIQ1vs2erJA75xbNLWqlecwHmp3ZcSVvSFQmIx5gQ6u/34HNmgOvkrzqoNmf8z3b0vpL+MmDBbKGkM+aYacFF+PHPDxjRnsFe1YNA9gXwN1glBl9jpH0dZI1lH/BCtd/CqXDZPtnHEcduU1O+UM/cB35J8XQeLrT+Wu7H7C7ElXKPU0xn5690Ofeab0klmLWfcUDIKmlakEe2N7xB4L0VytksHlhJFwE3yfu6e88mkvWAlDkmnxePwpN9kGkhOd3eieYbGstq48kdV5u856udY04zJevob1BYtxNxlplPkHaxVgb7XpFbPRI8AV6TtWDV5lNENatr3PaKfAgO3NIsMM1z1sGg1ig8G5yKUKhoN7u1GOBY6U6Pp1rTIJPYZXJs/v+JBW871xq2u5g6fNjCTOj+H/sTpqs=)
+[Попробовать в Песочнице](https://play.vuejs.org/#eNqVVMtu2zAQ/BWCLZBLIjVoTq4aoA1yaA9t0eaoCy2tJcYUSZCUKyPwv2dJioplOw4C+EDuzM4+ONYT/aZ1tumBLmhhK8O1IxZcr29LyTutjCN3zNRkZVRHLrLcXzz9opRFHvnIxIuDTgvmAG+EFJ4WTnhOCPnQAqvBjHFE2uvbh5Zbgj/XAolwkWN4TM33VI/UalixXvjyo5yeqVVKOpCuyP0ob6utlHL7vUE3U4twkWP4hJq/jiPP4vSSOouNrHiTPVolcclPnl3SSnWaCzC/teNK2pIuSEA8xoRQ/3+GmDM9XKZ41UK1PhF/tIOPlfSPAQtmAyWdMMdMAy7C9/9+wYDnCexU3QtknwH/glWi9z1G2vde1tj2Hi90+yNYhcvmwd4PuHabhvKNeuYu8EuK1rk7M/pLu5+zm5BXyh1uMdnOu3S+95pvSCWYtV9xQcgqaXogj2yu+AqBj1YoZ7NosJLOEq5S9OXtPZtI1gFSppx8engUHs+vVhq9eVhq9ORRrXdpRyseSqfo6SmmnONK6XTw9yis24q448wXSG+0VAb3sSDXeiBoDV6TpWDV+ktENatrdMGCfAoBfL1JYNzzpINJjVFoJ9yKUKho19ul6OFQ6UYPx1rjIpPYeXIc/vXCgjetawzbni0dPnhhJ3T3DMVSruI=)
 
 ## Динамические имена слотов {#dynamic-slot-names}
 
@@ -396,7 +396,7 @@ MyComponent({
 })
 
 function MyComponent(slots) {
-  const greetingMessage = 'hello'
+  const greetingMessage = 'привет'
   return `<div>${
     // вызываем функцию слота с помощью параметров!
     slots.default({ text: greetingMessage, count: 1 })
@@ -437,41 +437,44 @@ function MyComponent(slots) {
 Передача параметров в именованный слот:
 
 ```vue-html
-<slot name="header" message="hello"></slot>
+<slot name="header" message="привет"></slot>
 ```
 
-Обратите внимание, что `имя` слота не будет включено в параметр, потому что оно зарезервировано — таким образом, результирующий `headerProps` будет выглядеть как `{ message: 'hello' }`.
+Обратите внимание, что `имя` слота не будет включено в параметр, потому что оно зарезервировано — таким образом, результирующий `headerProps` будет выглядеть как `{ message: 'привет' }`.
 
 Если вы смешиваете именованные слоты со слотом с ограниченной областью видимости по умолчанию, вам нужно использовать явный тег `<template>` для слота по умолчанию. Попытка разместить директиву `v-slot` непосредственно на компоненте приведёт к ошибке компиляции. Это необходимо для того, чтобы избежать двусмысленности в отношении области видимости параметра слота по умолчанию. Например:
 
 ```vue-html
+<!-- Шаблон <MyComponent> -->
+<div>
+  <slot :message="привет"></slot>
+  <slot name="footer" />
+</div>
+```
+
+```vue-html
 <!-- Этот шаблон не компилируется -->
-<template>
-  <MyComponent v-slot="{ message }">
+<MyComponent v-slot="{ message }">
+  <p>{{ message }}</p>
+  <template #footer>
+    <!-- сообщение принадлежит слоту по умолчанию и здесь недоступно -->
     <p>{{ message }}</p>
-    <template #footer>
-      <!-- сообщение принадлежит слоту по умолчанию и здесь недоступно -->
-      <p>{{ message }}</p>
-    </template>
-  </MyComponent>
-</template>
+  </template>
+</MyComponent>
 ```
 
 Использование явного тега `<template>` для слота по умолчанию помогает понять, что параметр `message` недоступен в другом слоте:
 
 ```vue-html
-<template>
-  <MyComponent>
-    <!-- Использовать явный слот по умолчанию -->
-    <template #default="{ message }">
-      <p>{{ message }}</p>
-    </template>
-
-    <template #footer>
-      <p>Вот контактная информация</p>
-    </template>
-  </MyComponent>
-</template>
+<MyComponent>
+  <!-- Использовать явный слот по умолчанию -->
+  <template #default="{ message }">
+    <p>{{ message }}</p>
+  </template>
+  <template #footer>
+    <p>Вот контактная информация</p>
+  </template>
+</MyComponent>
 ```
 
 ### Пример необычного списка {#fancy-list-example}

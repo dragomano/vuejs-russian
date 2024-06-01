@@ -130,7 +130,7 @@ const publishedBooksMessage = computed(() => {
 
 [Попробовать в Песочнице](https://play.vuejs.org/#eNp1kE9Lw0AQxb/KI5dtoTainkoaaREUoZ5EEONhm0ybYLO77J9CCfnuzta0vdjbzr6Zeb95XbIwZroPlMySzJW2MR6OfDB5oZrWaOvRwZIsfbOnCUrdmuCpQo+N1S0ET4pCFarUynnI4GttMT9PjLpCAUq2NIN41bXCkyYxiZ9rrX/cDF/xDYiPQLjDDRbVXqqSHZ5DUw2tg3zP8lK6pvxHe2DtvSasDs6TPTAT8F2ofhzh0hTygm5pc+I1Yb1rXE3VMsKsyDm5JcY/9Y5GY8xzHI+wnIpVw4nTI/10R2rra+S4xSPEJzkBvvNNs310ztK/RDlLLjy1Zic9cQVkJn+R7gIwxJGlMXiWnZEq77orhH3Pq2NH9DjvTfpfSBSbmA==)
 
-Здесь мы объявили вычисляемое свойство `publishedBooksMessage`. Функция `computed()` ожидает передачи геттера, а возвращаемое значение представляет собой **вычисляемую ссылку**. Как и в случае с обычными ссылками, вы можете получить доступ к вычисляемому результату через `publishedBooksMessage.value`. Вычисляемые ссылки также автоматически разворачиваются в шаблонах, поэтому вы можете ссылаться на них без `.value` в выражениях шаблона.
+Здесь мы объявили вычисляемое свойство `publishedBooksMessage`. Функция `computed()` ожидает передачи [геттера](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/get#описание), а возвращаемое значение представляет собой **вычисляемую ссылку**. Как и в случае с обычными ссылками, вы можете получить доступ к вычисляемому результату через `publishedBooksMessage.value`. Вычисляемые ссылки также автоматически разворачиваются в шаблонах, поэтому вы можете ссылаться на них без `.value` в выражениях шаблона.
 
 Вычисляемое свойство автоматически отслеживает свои реактивные зависимости. Vue знает, что вычисление `publishedBooksMessage` зависит от `author.books`, поэтому он будет обновлять любые привязки, которые зависят от `publishedBooksMessage`, при изменении `author.books`.
 

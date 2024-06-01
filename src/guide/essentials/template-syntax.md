@@ -85,7 +85,8 @@ Vue использует синтаксис шаблонов на основе H
 ```js
 const objectOfAttrs = {
   id: 'container',
-  class: 'wrapper'
+  class: 'wrapper',
+  style: 'background-color:green'
 }
 ```
 

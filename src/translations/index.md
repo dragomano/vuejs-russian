@@ -1,5 +1,6 @@
 ---
 aside: false
+description: Список всех локализаций документации Vue.js
 ---
 
 # Переводы {#translations}
@@ -18,10 +19,13 @@ aside: false
 - [فارسی / Persian](https://fa.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-fa)]
 - [Русский / Russian](https://ru.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / Czech](https://cs.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-cs)]
+- [繁體中文 / Traditional Chinese](https://zh-hk.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-zh-hk)]
 
 ## Переводы в процессе доработки {#work-in-progress-languages}
 
 - [العربية / Arabic](https://ar.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ar)]
+
+- [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[источник](https://github.com/icarusgk/vuejs-spanish-docs)]
 
 ## Начало нового перевода {#starting-a-new-translation}
 

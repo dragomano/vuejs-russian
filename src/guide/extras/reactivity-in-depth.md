@@ -67,7 +67,7 @@ whenDepsChange(update)
 
 Мы не можем отслеживать чтение и запись локальных переменных, как в примере. В ванильном JavaScript просто нет механизма для этого. Но что мы **можем** сделать, так это перехватить чтение и запись **свойств объекта**.
 
-Существует два способа перехвата доступа к свойствам в JavaScript: [геттер](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/get) / [сеттер](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/set) и [Прокси](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Vue 2 использовал геттеры/сеттеры исключительно из-за ограничений поддержки браузерами. В Vue 3 прокси используются для реактивных объектов, а геттеры/сеттеры — для реактивных ссылок. Вот псевдокод, иллюстрирующий их работу:
+Существует два способа перехвата доступа к свойствам в JavaScript: [геттер](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/get#описание) / [сеттер](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/set#описание) и [Прокси](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Proxy). Vue 2 использовал геттеры/сеттеры исключительно из-за ограничений поддержки браузерами. В Vue 3 прокси используются для реактивных объектов, а геттеры/сеттеры — для реактивных ссылок. Вот псевдокод, иллюстрирующий их работу:
 
 ```js{4,9,17,22}
 function reactive(obj) {

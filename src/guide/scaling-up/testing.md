@@ -267,13 +267,13 @@ await fireEvent.click(button)
 
 - [Cypress](https://www.cypress.io/)
 
-  В целом, мы считаем, что Cypress предоставляет наиболее полное решение E2E с такими функциями, как информативный графический интерфейс, отличная возможность отладки, встроенные утверждения и заглушки, устойчивость к взлому, параллелизация и снимки. Как упоминалось выше, он также обеспечивает поддержку [Тестирования компонентов](https://docs.cypress.io/guides/comComponent-testing/introduction). Однако он поддерживает только браузеры на базе Chromium и Firefox.
+  В целом, мы считаем, что Cypress предоставляет наиболее полное решение E2E с такими функциями, как информативный графический интерфейс, отличная отладка, встроенные утверждения, заглушки, устойчивость к взлому, распараллеливание и моментальные снимки. Как упоминалось выше, он также обеспечивает поддержку [Тестирования компонентов](https://docs.cypress.io/guides/component-testing/introduction). Он поддерживает браузеры на базе Chromium, Firefox и Electron. Поддержка WebKit доступна, но отмечена как экспериментальная.
 
 ### Другие параметры {#other-options-2}
 
-- [Playwright](https://playwright.dev/) также является отличным решением для E2E-тестирования с более широкой поддержкой браузеров (в основном WebKit). Дополнительную информацию см. в разделе [Почему Playwright](https://playwright.dev/docs/why-playwright).
+- [Playwright](https://playwright.dev/) также является отличным решением для E2E-тестирования, которое поддерживает все современные движки рендеринга, включая Chromium, WebKit и Firefox. Тестируйте на Windows, Linux и macOS, локально или в CI, без head или с head, с нативной эмуляцией Google Chrome для Android и Mobile Safari.
 
-- [Nightwatch](https://nightwatchjs.org/) — это решение для тестирования E2E, основанное на [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это дает ему самый широкий диапазон поддержки браузеров.
+- [Nightwatch](https://nightwatchjs.org/) — это решение для E2E-тестирования на основе [Selenium WebDriver](https://www.npmjs.com/package/selenium-webdriver). Это обеспечивает самую широкую поддержку браузеров, включая нативное мобильное тестирование. Решения на основе Selenium будут медленнее, чем Playwright или Cypress.
 
 - [WebdriverIO](https://webdriver.io/) — это платформа автоматизации тестирования для веб- и мобильных устройств, основанная на протоколе WebDriver.
 
