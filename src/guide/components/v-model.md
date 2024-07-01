@@ -58,7 +58,7 @@ const model = defineModel()
 
 Вот как можно реализовать тот же дочерний компонент, показанный выше, до версии 3.4:
 
-````vue
+```vue
 <!-- Child.vue -->
 <script setup>
 const props = defineProps(['modelValue'])
@@ -71,12 +71,14 @@ const emit = defineEmits(['update:modelValue'])
     @input="emit('update:modelValue', $event.target.value)"
   />
 </template>
+```
 
-Тогда `v-model="modelValue"` в родительском компоненте будет скомпилировано
-в: ```vue-html
+Тогда `v-model="foo"` в родительском компоненте будет скомпилировано в:
+
+```vue-html
 <!-- Parent.vue -->
 <Child :modelValue="foo" @update:modelValue="($event) => (foo = $event)" />
-````
+```
 
 Как видите, он более многословен. Однако полезно понимать, что происходит под капотом.
 
