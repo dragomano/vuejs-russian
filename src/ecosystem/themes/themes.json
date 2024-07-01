@@ -292,5 +292,54 @@
         "image": "https://org-public-assets.s3.us-west-2.amazonaws.com/Banners/Able+pro-pro-vue.png"
       }
     ]
+  },
+  {
+    "name": "ThemeSelection",
+    "description": "Посмотрите на [шаблоны дашбордов](https://themeselection.com/item/category/admin-templates/) админки, созданные нашими партнерами из ThemeSelection.\n\nОни предоставляют готовые к производству и легко настраиваемые бесплатные и премиум [шаблоны админки Vue](https://themeselection.com/item/category/vuejs-admin-templates/), Vue + Laravel & NuxtJS для создания современных веб-приложений в кратчайшие сроки!",
+    "seeMoreUrl": "https://themeselection.com/item/category/vuejs-admin-templates/",
+    "products": [
+      {
+        "name": "Materio - Vue Admin Template",
+        "price": 0,
+        "description": "Free & Open Source VueJS Admin inspired by Material Design",
+        "url": "https://themeselection.com/item/materio-free-vuetify-vuejs-admin-template/",
+        "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-vuejs-admin-template-free/banner/banner.png"
+      },
+      {
+        "name": "Materio - Vue Admin Template",
+        "price": 69,
+        "description": "Most Powerful & Comprehensive VueJS Admin built for developers",
+        "url": "https://themeselection.com/item/materio-vuetify-vuejs-admin-template/",
+        "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-vuejs-admin-template/banner/banner.png"
+      },
+      {
+        "name": "Sneat - Vue Laravel Admin",
+        "price": 0,
+        "description": "Free & Open Source VueJS Laravel Admin using Sneat Design System",
+        "url": "https://themeselection.com/item/sneat-free-vuetify-vuejs-laravel-admin-template/ref=14",
+        "image": "https://cdn.themeselection.com/ts-assets/sneat/sneat-vuetify-vuejs-laravel-admin-template-free/banner/banner.png"
+      },
+      {
+        "name": "Sneat - Vue Laravel Admin",
+        "price": 79,
+        "description": "Production Ready, Carefully Crafted VueJS Laravel Dashboard",
+        "url": "https://themeselection.com/item/sneat-vuetify-vuejs-laravel-admin-template/",
+        "image": "https://cdn.themeselection.com/ts-assets/sneat/sneat-vuetify-vuejs-laravel-admin-template/banner/banner.png"
+      },
+      {
+        "name": "Materio - NuxtJS Dashboard",
+        "price": 0,
+        "description": "Free & Open Source NuxtJS Admin inspired by Material Design",
+        "url": "https://themeselection.com/item/materio-free-vuetify-nuxtjs-admin-template/",
+        "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-nuxtjs-admin-template-free/banner/banner.png"
+      },
+      {
+        "name": "Materio - NuxtJS Dashboard",
+        "price": 79,
+        "description": "Incredibly versatile, flexible and powerful NuxtJS Admin Template",
+        "url": "https://themeselection.com/item/materio-vuetify-nuxtjs-admin-template/",
+        "image": "https://cdn.themeselection.com/ts-assets/materio/materio-vuetify-nuxtjs-admin-template/banner/banner.png"
+      }
+    ]
   }
 ]
