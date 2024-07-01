@@ -20,6 +20,7 @@ function update() {
 
 <template>
   <div>v-model, связанная с родительским компонентом: {{ model }}</div>
+  <button @click="update">Увеличить</button>
 </template>
 ```
 
