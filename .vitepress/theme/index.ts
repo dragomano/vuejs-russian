@@ -2,6 +2,7 @@ import './styles/index.css'
 import { h, App } from 'vue'
 import { VPTheme } from '@vue/theme'
 import PreferenceSwitch from './components/PreferenceSwitch.vue'
+import SecurityUpdateBtn from './components/SecurityUpdateBtn.vue'
 import {
   preferComposition,
   preferSFC,
@@ -14,6 +15,7 @@ export default Object.assign({}, VPTheme, {
     // @ts-ignore
     return h(VPTheme.Layout, null, {
       'sidebar-top': () => h(PreferenceSwitch),
+      'sidebar-bottom': () => h(SecurityUpdateBtn),
     })
   },
   enhanceApp({ app }: { app: App }) {
