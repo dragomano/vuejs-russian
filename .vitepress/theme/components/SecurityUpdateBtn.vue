@@ -7,7 +7,7 @@
       href="https://www.herodevs.com/support/nes-vue?utm_source=vuejs_org&utm_medium=sidebar_link&utm_campaign=vue2eol"
       target="_blank"
     >
-      Обновления безопасности для Vue 2
+      Обновления безопасности для&#160;Vue&#160;2
       <svg
         class="icon"
         xmlns="http://www.w3.org/2000/svg"
