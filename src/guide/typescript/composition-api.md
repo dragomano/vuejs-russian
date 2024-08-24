@@ -423,3 +423,34 @@ import type { ComponentPublicInstance } from 'vue'
 
 const child = ref<ComponentPublicInstance | null>(null)
 ```
+
+Бывают случаи, когда компонент, на который ссылаются, является [универсальным](/guide/typescript/overview.html#generic-components). Например, `MyGenericModal`:
+
+```vue
+<!-- MyGenericModal.vue -->
+<script setup lang="ts" generic="ContentType extends string | number">
+import { ref } from 'vue'
+
+const content = ref<ContentType | null>(null)
+const open = (newContent: ContentType) => (content.value = newContent)
+
+defineExpose({
+  open
+})
+</script>
+```
+
+На такие компоненты нужно ссылаться с помощью `ComponentExposed` из библиотеки [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers), так как `InstanceType` не будет работать.
+
+```vue
+<!-- App.vue -->
+<script setup lang="ts">
+import MyGenericModal from './MyGenericModal.vue'
+import type { ComponentExposed } from 'vue-component-type-helpers'
+
+const modal = ref<ComponentExposed<typeof MyModal> | null>(null)
+const openModal = () => {
+  modal.value?.open('newValue')
+}
+</script>
+```
