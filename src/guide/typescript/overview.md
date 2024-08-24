@@ -192,9 +192,9 @@ let x: string | number = 1
 
 Vue также поддерживает авторские компоненты с JSX/TSX. Подробности описаны в руководстве [Рендер-функции и JSX](/guide/extras/render-function.html#jsx-tsx).
 
-## Общие компоненты {#generic-components}
+## Универсальные компоненты {#generic-components}
 
-Общие компоненты поддерживаются в двух случаях:
+Универсальные компоненты поддерживаются в двух случаях:
 
 - В однофайловых компонентах: [`<script setup>` с атрибутом `generic`](/api/sfc-script-setup.html#generics)
 - Рендер-функция / компоненты JSX: [Сигнатура функции `defineComponent()`](/api/general.html#function-signature)
