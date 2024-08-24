@@ -21,7 +21,40 @@
 
 Чтобы начать работу с Vite + Vue, просто запустите программу:
 
-<div class="language-sh"><pre><code><span class="line"><span style="color:var(--vt-c-green);">$</span> <span style="color:#A6ACCD;">npm create vue@latest</span></span></code></pre></div>
+<VTCodeGroup>
+  <VTCodeGroupTab label="npm">
+
+```sh
+$ npm create vue@latest
+```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="pnpm">
+
+```sh
+$ pnpm create vue@latest
+```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="yarn">
+
+```sh
+# For Yarn Modern (v2+)
+$ yarn create vue@latest
+
+# For Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
+
+  </VTCodeGroupTab>
+  <VTCodeGroupTab label="bun">
+
+```sh
+$ bun create vue@latest
+```
+
+  </VTCodeGroupTab>
+</VTCodeGroup>
 
 Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue), официальный инструмент для создания заготовок для проектов Vue.
 
