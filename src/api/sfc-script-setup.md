@@ -469,7 +469,7 @@ defineProps<{
 </script>
 ```
 
-Чтобы использовать ссылку на общий компонент в `ref`, необходимо использовать библиотеку [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers), поскольку `InstanceType` не будет работать.
+Чтобы использовать ссылку на универсальный компонент в `ref`, необходимо использовать библиотеку [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers), поскольку `InstanceType` не будет работать.
 
 ```vue
 <script setup lang="ts">
