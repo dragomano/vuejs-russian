@@ -104,17 +104,14 @@ $ bun create vue@latest
 
 ## Инструменты разработчика в браузере {#browser-devtools}
 
-<VueSchoolLink href="https://vueschool.io/lessons/using-vue-dev-tools-with-vuejs-3" title="Бесплатный урок по Devtools для Vue.js"/>
-
 Расширение Vue Devtools для браузера позволяет исследовать дерево компонентов приложения Vue, проверять состояние отдельных компонентов, отслеживать события управления состоянием и профилировать производительность.
 
-![Скриншот инструментов разработчика](https://raw.githubusercontent.com/vuejs/devtools/main/media/screenshot-shadow.png)
+![Скриншот инструментов разработчика](./images/devtools.png)
 
 - [Документация](https://devtools.vuejs.org/)
-- [Расширение Chrome](https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-- [Аддон Firefox](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-- [Расширение Edge](https://microsoftedge.microsoft.com/addons/detail/vuejs-devtools/olofadcdnkkjdfgjcmjaadnlehnnihnl)
-- [Автономное приложение Electron](https://devtools.vuejs.org/guide/installation.html#standalone)
+- [Расширение Chrome](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Плагин Vite](https://devtools.vuejs.org/guide/vite-plugin)
+- [Автономное приложение Electron](https://devtools.vuejs.org/guide/standalone)
 
 ## TypeScript {#typescript}
 
