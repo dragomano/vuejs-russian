@@ -111,7 +111,8 @@
 - **Смотрите также**
   - [Руководство - Вычисляемые свойства](/guide/essentials/computed)
   - [Руководство - Отладка вычисляемых свойств](/guide/extras/reactivity-in-depth#computed-debugging)
-  - [Руководство - Типизация `computed()`](/guide/typescript/composition-api#typing-computed) <sup class="vt-badge ts" />
+  - [Руководство - Типизация `computed()`](/guide/typescript/composition-api#typing-computed)
+  - [Руководство - Производительность - Стабильность вычисляемых свойств](/guide/best-practices/performance#computed-stability)
 
 ## reactive() {#reactive}
 
@@ -402,7 +403,7 @@
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // по умолчанию: false
-    deep?: boolean // по умолчанию: false
+    deep?: boolean | number // по умолчанию: false
     flush?: 'pre' | 'post' | 'sync' // по умолчанию: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
@@ -436,10 +437,11 @@
 
   Третий необязательный аргумент — это объект options, который поддерживает следующие опции:
 
-  - **`immediate`**: запускать обратный вызов непосредственно при создании наблюдателя. При первом вызове старое значение будет `undefined`.
-  - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких мутациях. Смотрите [Глубокие наблюдатели](/guide/essentials/watchers#deep-watchers).
+  - **`immediate`**: запустить обратный вызов непосредственно при создании наблюдателя. При первом вызове старое значение будет `undefined`.
+  - **`deep`**: принудительный глубокий обход источника, если он является объектом, чтобы обратный вызов срабатывал при глубоких мутациях. В версии 3.5+ это также может быть число, указывающее на максимальную глубину обхода. Смотрите [Глубокие наблюдатели](/guide/essentials/watchers#deep-watchers).
   - **`flush`**: настроить время обратного вызова на промывку. Смотрите разделы [Время сброса обратного вызова](/guide/essentials/watchers#callback-flush-timing) и [`watchEffect()`](/api/reactivity-core#watcheffect).
   - **`onTrack / onTrigger`**: отладка зависимостей наблюдателя. Смотрите раздел [Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging).
+  - **`once`**: (3.4+) запустить обратный вызов только один раз. Наблюдатель автоматически останавливается после первого выполнения обратного вызова.
 
   По сравнению с [`watchEffect()`](#watcheffect), `watch()` позволяет нам:
 
