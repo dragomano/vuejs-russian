@@ -360,6 +360,17 @@ const foo = inject('foo') as string
 
 ## Типизация ссылок на элементы в шаблоне {#typing-template-refs}
 
+В Vue 3.5 и `@vue/language-tools` 2.1 (обеспечивающем работу языкового сервиса IDE и `vue-tsc`) тип ссылок, созданных с помощью `useTemplateRef()` в SFC, может быть **автоматически выведен** для статических ссылок на основе того, в каком элементе используется соответствующий атрибут `ref`.
+
+В случаях, когда автоматический вывод невозможен, вы всё равно можете привести шаблонную ссылку к явному типу через общий аргумент:
+
+```ts
+const el = useTemplateRef<HTMLInputElement>(null)
+```
+
+<details>
+<summary>Использование до версии 3.5</summary>
+
 Шаблонные ссылки должны создаваться с явным аргументом общего типа и начальным значением `null`:
 
 ```vue
@@ -378,50 +389,45 @@ onMounted(() => {
 </template>
 ```
 
+</details>
+
 Чтобы получить правильный интерфейс DOM, вы можете посмотреть страницы вроде [MDN](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input).
 
 Обратите внимание, что для обеспечения строгой безопасности типов при обращении к `el.value` необходимо использовать опциональную цепочку или защиту типов. Это связано с тем, что начальное значение ref имеет значение `null` до тех пор, пока компонент не будет смонтирован, а также может быть установлено в значение `null`, если элемент, на который ссылается ссылка, будет размонтирован с помощью `v-if`.
 
 ## Типизация ссылок на компоненты {#typing-component-template-refs}
 
-Иногда вам может понадобиться аннотировать ссылку на шаблон для дочернего компонента, чтобы вызвать его публичный метод. Например, у нас есть дочерний компонент `MyModal` с методом, который открывает модальное окно:
+В Vue 3.5 и `@vue/language-tools` 2.1 (обеспечивающем работу языкового сервиса IDE и `vue-tsc`), тип ссылок, созданных с помощью `useTemplateRef()` в SFC, может быть **автоматически выведен** для статических ссылок на основе того, в каком элементе или компоненте используется соответствующий атрибут `ref`.
 
-```vue
-<!-- MyModal.vue -->
-<script setup lang="ts">
-import { ref } from 'vue'
+В случаях, когда автоматический вывод невозможен (например, использование не-SFC или динамических компонентов), вы всё равно можете привести ссылку на шаблон к явному типу с помощью универсального аргумента.
 
-const isContentShown = ref(false)
-const open = () => (isContentShown.value = true)
-
-defineExpose({
-  open
-})
-</script>
-```
-
-Чтобы получить тип экземпляра `MyModal`, нам нужно сначала получить его тип через `typeof`, а затем использовать встроенную в TypeScript утилиту `InstanceType` для извлечения его типа экземпляра:
+Чтобы получить тип экземпляра импортируемого компонента, нам нужно сначала получить его тип через typeof, а затем использовать встроенную в TypeScript утилиту InstanceType для извлечения типа экземпляра:
 
 ```vue{5}
 <!-- App.vue -->
 <script setup lang="ts">
-import MyModal from './MyModal.vue'
+import { useTemplateRef } from 'vue'
+import Foo from './Foo.vue'
+import Bar from './Bar.vue'
 
-const modal = ref<InstanceType<typeof MyModal> | null>(null)
+type FooType = InstanceType<typeof Foo>
+type BarType = InstanceType<typeof Bar>
 
-const openModal = () => {
-  modal.value?.open()
-}
+const compRef = useTemplateRef<FooType | BarType>('comp')
 </script>
+
+<template>
+  <component :is="Math.random() > 0.5 ? Foo : Bar" ref="comp" />
+</template>
 ```
 
 В случаях, когда точный тип компонента недоступен или не важен, вместо него можно использовать `ComponentPublicInstance`. Это будет включать только те свойства, которые являются общими для всех компонентов, например `$el`:
 
 ```ts
-import { ref } from 'vue'
+import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = ref<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance | null>(null)
 ```
 
 Бывают случаи, когда компонент, на который ссылаются, является [универсальным](/guide/typescript/overview.html#generic-components). Например, `MyGenericModal`:
@@ -432,6 +438,7 @@ const child = ref<ComponentPublicInstance | null>(null)
 import { ref } from 'vue'
 
 const content = ref<ContentType | null>(null)
+
 const open = (newContent: ContentType) => (content.value = newContent)
 
 defineExpose({
@@ -445,12 +452,16 @@ defineExpose({
 ```vue
 <!-- App.vue -->
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = ref<ComponentExposed<typeof MyModal> | null>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyModal>>(null)
+
 const openModal = () => {
   modal.value?.open('newValue')
 }
 </script>
 ```
+
+Обратите внимание, что в `@vue/language-tools` 2.1+ типы статических шаблонных ссылок могут быть выведены автоматически, и вышеописанное необходимо только в крайних случаях.
