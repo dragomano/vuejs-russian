@@ -237,7 +237,7 @@
   function watchEffect(
     effect: (onCleanup: OnCleanup) => void,
     options?: WatchEffectOptions
-  ): StopHandle
+  ): WatchHandle
 
   type OnCleanup = (cleanupFn: () => void) => void
 
@@ -247,7 +247,12 @@
     onTrigger?: (event: DebuggerEvent) => void
   }
 
-  type StopHandle = () => void
+  interface WatchHandle {
+    (): void // вызываемый, как и `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
+  }
   ```
 
 - **Подробности**
@@ -294,6 +299,47 @@
   stop()
   ```
 
+  Приостановка/возобновление работы наблюдателя: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // временная приостановка работы наблюдателя
+  pause()
+
+  // возобновление работы
+  resume()
+
+  // остановка
+  stop()
+  ```
+
+  Очистка от побочных эффектов:
+
+  ```js
+  watchEffect(async (onCleanup) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` будет вызван, если `id` изменится, отменяя
+    // предыдущий запрос, если он ещё не завершен
+    onCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
+  Устранение побочных эффектов в версии 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watchEffect(async () => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` будет вызван, если `id` изменится, отменяя
+    // предыдущий запрос, если он ещё не завершен
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
   Параметры:
 
   ```js
@@ -332,14 +378,14 @@
     source: WatchSource<T>,
     callback: WatchCallback<T>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   // наблюдение за несколькими источниками
   function watch<T>(
     sources: WatchSource<T>[],
     callback: WatchCallback<T[]>,
     options?: WatchOptions
-  ): StopHandle
+  ): WatchHandle
 
   type WatchCallback<T> = (
     value: T,
@@ -360,6 +406,14 @@
     flush?: 'pre' | 'post' | 'sync' // по умолчанию: 'pre'
     onTrack?: (event: DebuggerEvent) => void
     onTrigger?: (event: DebuggerEvent) => void
+    once?: boolean // по умолчанию: false (3.4+)
+  }
+
+  interface WatchHandle {
+    (): void // вызываемый, как и `stop`
+    pause: () => void
+    resume: () => void
+    stop: () => void
   }
   ```
 
@@ -469,7 +523,22 @@
   stop()
   ```
 
-  Очистка побочных эффектов:
+  Приостановка/возобновление работы наблюдателя: <sup class="vt-badge" data-text="3.5+" />
+
+  ```js
+  const { stop, pause, resume } = watchEffect(() => {})
+
+  // временная приостановка работы наблюдателя
+  pause()
+
+  // возобновление работы
+  resume()
+
+  // остановка
+  stop()
+  ```
+
+  Очистка от побочных эффектов:
 
   ```js
   watch(id, async (newId, oldId, onCleanup) => {
@@ -481,7 +550,45 @@
   })
   ```
 
+  Устранение побочных эффектов в версии 3.5+:
+
+  ```js
+  import { onWatcherCleanup } from 'vue'
+
+  watch(id, async (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    onWatcherCleanup(cancel)
+    data.value = await response
+  })
+  ```
+
 - **Смотрите также**
 
   - [Руководство - Наблюдатели](/guide/essentials/watchers)
   - [Руководство - Отладка наблюдателей](/guide/extras/reactivity-in-depth#watcher-debugging)
+
+## onWatcherCleanup() <sup class="vt-badge" data-text="3.5+" /> {#onwatchercleanup}
+
+Регистрация функцию очистки, которая будет выполняться при повторном запуске текущего наблюдателя. Может быть вызвана только во время синхронного выполнения функции эффекта `watchEffect` или функции обратного вызова `watch` (т. е. её нельзя вызывать после оператора `await` в асинхронной функции).
+
+- **Тип**
+
+  ```ts
+  function onWatcherCleanup(
+    cleanupFn: () => void,
+    failSilently?: boolean
+  ): void
+  ```
+
+- **Пример**
+
+  ```ts
+  import { watch, onWatcherCleanup } from 'vue'
+
+  watch(id, (newId) => {
+    const { response, cancel } = doAsyncWork(newId)
+    // `cancel` будет вызван, если `id` изменится, отменяя
+    // предыдущий запрос, если он ещё не завершён
+    onWatcherCleanup(cancel)
+  })
+  ```
