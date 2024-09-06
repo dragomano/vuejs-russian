@@ -129,7 +129,9 @@
   type FooInstance = InstanceType<typeof Foo>
   ```
 
-  ### Сигнатура функции <sup class="vt-badge" data-text="3.3+" /> {#function-signature}
+  ### Сигнатура функции {#function-signature}
+
+  - Поддерживается только в 3.3+
 
   У `defineComponent()` также есть альтернативная подпись, предназначенная для использования с Composition API и [рендер-функциями или JSX](/guide/extras/render-function.html).
 
@@ -223,46 +225,3 @@
   ```
 
 - **Смотрите также** [Руководство - Асинхронные компоненты](/guide/components/async)
-
-## defineCustomElement() {#definecustomelement}
-
-Этот метод принимает тот же аргумент, что и [`defineComponent`](#definecomponent), но вместо него возвращает собственный конструктор класса [CustomElement](https://developer.mozilla.org/ru/docs/Web/API/Web_components/Using_custom_elements).
-
-- **Тип**
-
-  ```ts
-  function defineCustomElement(
-    component:
-      | (ComponentOptions & { styles?: string[] })
-      | ComponentOptions['setup']
-  ): {
-    new (props?: object): HTMLElement
-  }
-  ```
-
-  > Для удобства чтения тип упрощён.
-
-- **Подробности**
-
-  В дополнение к обычным параметрам компонента, `defineCustomElement()` также поддерживает специальный параметр `styles`, который должен быть массивом вставленных CSS-строк, для предоставления CSS, который должен быть внедрён в теневой корень элемента.
-
-  Возвращаемое значение — это пользовательский конструктор элемента, который можно зарегистрировать с помощью [`customElements.define()`](https://developer.mozilla.org/ru/docs/Web/API/CustomElementRegistry/define).
-
-- **Пример**
-
-  ```js
-  import { defineCustomElement } from 'vue'
-
-  const MyVueElement = defineCustomElement({
-    /* параметры компонента */
-  })
-
-  // Регистрируем пользовательский элемент
-  customElements.define('my-vue-element', MyVueElement)
-  ```
-
-- **Смотрите также**
-
-  - [Руководство - Создание пользовательских элементов с помощью Vue](/guide/extras/web-components#building-custom-elements-with-vue)
-
-  - Также обратите внимание, что `defineCustomElement()` требует [специальной конфигурации](/guide/extras/web-components#sfc-as-custom-element) при использовании с однофайловыми компонентами.
