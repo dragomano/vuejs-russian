@@ -285,6 +285,11 @@ h(Transition, {
      * Может изменяться динамически.
      */
     disabled?: boolean
+    /**
+     * Если `true`, телепорт будет отложен до тех пор, пока другие
+     * части приложения не достигнут своей цели. (3.5+)
+     */
+    defer?: boolean
   }
   ```
 
@@ -304,6 +309,14 @@ h(Transition, {
   <Teleport to="#popup" :disabled="displayVideoInline">
     <video src="./my-movie.mp4">
   </Teleport>
+  ```
+
+  Откладывание решения задачи <sup class="vt-badge" data-text="3.5+" />:
+
+  ```vue-html
+  <Teleport defer to="#late-div">...</Teleport>
+  <!-- где-то позже в шаблоне -->
+  <div id="late-div"></div>
   ```
 
 - **Смотрите также** [Руководство по `Teleport`](/guide/built-ins/teleport)
