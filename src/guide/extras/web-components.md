@@ -81,7 +81,7 @@ module.exports = {
 
 ### defineCustomElement {#definecustomelement}
 
-Vue поддерживает создание пользовательских элементов, используя точно такие же API компонентов Vue, с помощью метода [`defineCustomElement`](/api/general#definecustomelement). Метод принимает тот же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо него возвращает пользовательский конструктор элемента, который расширяет `HTMLElement`:
+Vue поддерживает создание пользовательских элементов, используя точно такие же API компонентов Vue, с помощью метода [`defineCustomElement`](/api/custom-elements#definecustomelement). Метод принимает тот же аргумент, что и [`defineComponent`](/api/general#definecomponent), но вместо него возвращает пользовательский конструктор элемента, который расширяет `HTMLElement`:
 
 ```vue-html
 <my-vue-element></my-vue-element>
@@ -96,7 +96,7 @@ const MyVueElement = defineCustomElement({
   emits: {},
   template: `...`,
 
-  // только defineCustomElement: CSS будет внедрен в теневой корень
+  // только defineCustomElement: CSS будет внедрен в теневой корневой узел
   styles: [`/* встроенный CSS */`]
 })
 
@@ -116,7 +116,7 @@ document.body.appendChild(
 
 #### Жизненный цикл {#lifecycle}
 
-- Пользовательский элемент Vue монтирует внутренний экземпляр компонента Vue внутри своего теневого корня при первом вызове [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) элемента.
+- Пользовательский элемент Vue монтирует внутренний экземпляр компонента Vue внутри своего теневого корневого узла при первом вызове [`connectedCallback`](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks) элемента.
 
 - Когда вызывается `disconnectedCallback` элемента, Vue проверяет, отсоединен ли элемент от документа после тика микрозадачи.
 
@@ -171,11 +171,25 @@ document.body.appendChild(
 
 API [Provide / Inject](/guide/components/provide-inject#provide-inject) и его эквивалент [Composition API](/api/composition-api-dependency-injection#provide) также работают между пользовательскими элементами, определяемыми Vue. Однако обратите внимание, что это работает **только между пользовательскими элементами**, т. е. пользовательский элемент, определённый Vue, не сможет внедрить свойства, предоставляемые компонентом Vue, не являющимся пользовательским элементом.
 
+#### Настройка уровня приложения <sup class="vt-badge" data-text="3.5+" /> {#app-level-config}
+
+Вы можете настроить экземпляр приложения для пользовательского элемента Vue с помощью опции `configureApp`:
+
+```js
+defineCustomElement(MyComponent, {
+  configureApp(app) {
+    app.config.errorHandler = (err) => {
+      /* ... */
+    }
+  }
+})
+```
+
 ### SFC как пользовательский элемент {#sfc-as-custom-element}
 
-`defineCustomElement` также работает с однофайловыми компонентами Vue (SFC). Однако при стандартной настройке инструментария `<style>` внутри SFC все равно будут извлечены и объединены в один CSS-файл во время сборки. При использовании SFC в качестве пользовательского элемента часто желательно внедрить теги `<style>` в теневой корень пользовательского элемента.
+`defineCustomElement` также работает с однофайловыми компонентами Vue (SFC). Однако при стандартной настройке инструментария `<style>` внутри SFC все равно будут извлечены и объединены в один CSS-файл во время сборки. При использовании SFC в качестве пользовательского элемента часто желательно внедрить теги `<style>` в теневой корневой узел пользовательского элемента.
 
-Официальные инструменты SFC поддерживают импорт SFC в «режиме пользовательского элемента» (требуется `@vitejs/plugin-vue@^1.4.0` или `vue-loader@^16.5.0`). SFC, загруженный в режиме пользовательского элемента, вставляет свои теги `<style>` в виде строк CSS и раскрывает их в опции компонента `styles`. Это будет подхвачено `defineCustomElement` и вставлено в теневой корень элемента при его инстанцировании.
+Официальные инструменты SFC поддерживают импорт SFC в «режиме пользовательского элемента» (требуется `@vitejs/plugin-vue@^1.4.0` или `vue-loader@^16.5.0`). SFC, загруженный в режиме пользовательского элемента, вставляет свои теги `<style>` в виде строк CSS и раскрывает их в опции компонента `styles`. Это будет подхвачено `defineCustomElement` и вставлено в теневой корневой узел элемента при его инстанцировании.
 
 Чтобы перейти в этот режим, просто завершите имя файла компонента символом `.ce.vue`:
 
