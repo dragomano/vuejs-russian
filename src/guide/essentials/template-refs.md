@@ -12,14 +12,35 @@
 
 <div class="composition-api">
 
-Чтобы получить ссылку с помощью Composition API, нам нужно объявить `ref` с тем же именем:
+Чтобы получить ссылку с помощью Composition API, используйте хелпер [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" />:
+
+```vue
+<script setup>
+import { useTemplateRef, onMounted } from 'vue'
+// первый аргумент должен соответствовать значению ref в шаблоне
+const input = useTemplateRef('my-input')
+onMounted(() => {
+  input.value.focus()
+})
+</script>
+<template>
+  <input ref="my-input" />
+</template>
+```
+
+При использовании TypeScript поддержка IDE Vue и `vue-tsc` будут автоматически определять тип `inputRef.value` на основе того, в каком элементе или компоненте используется соответствующий атрибут `ref`.
+
+<details>
+<summary>Использование до версии 3.5</summary>
+
+В версиях до 3.5, где `useTemplateRef()` не была введена, нам нужно объявить ref с именем, которое соответствует значению атрибута ссылки на элемент шаблона:
 
 ```vue
 <script setup>
 import { ref, onMounted } from 'vue'
 
-// объявляем ref для хранения ссылки на элемент
-// имя должно соответствовать значению шаблона ref
+// объявляем ref для хранения ссылки на элемент шаблона
+// имя должно соответствовать значению атрибута ref в разметке
 const input = ref(null)
 
 onMounted(() => {
@@ -45,6 +66,8 @@ export default {
   }
 }
 ```
+
+</details>
 
 </div>
 <div class="options-api">
@@ -97,6 +120,29 @@ watchEffect(() => {
 
 ```vue
 <script setup>
+import { ref, useTemplateRef, onMounted } from 'vue'
+const list = ref([
+  /* ... */
+])
+const itemRefs = useTemplateRef('items')
+onMounted(() => console.log(itemRefs.value))
+</script>
+<template>
+  <ul>
+    <li v-for="item in list" ref="items">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+
+[Попробовать в Песочнице](https://play.vuejs.org/#eNp9UsluwjAQ/ZWRLwQpDepyQoDUIg6t1EWUW91DFAZq6tiWF4oU5d87dtgqVRyyzLw3b+aN3bB7Y4ptQDZkI1dZYTw49MFMuBK10dZDAxZXOQSHC6yNLD3OY6zVsw7K4xJaWFldQ49UelxxVWnlPEhBr3GszT6uc7jJ4fazf4KFx5p0HFH+Kme9CLle4h6bZFkfxhNouAIoJVqfHQSKbSkDFnVpMhEpovC481NNVcr3SaWlZzTovJErCqgydaMIYBRk+tKfFLC9Wmk75iyqg1DJBWfRxT7pONvTAZom2YC23QsMpOg0B0l0NDh2YjnzjpyvxLrYOK1o3ckLZ5WujSBHr8YL2gxnw85lxEop9c9TynkbMD/kqy+svv/Jb9wu5jh7s+jQbpGzI+ZLu0byEuHZ+wvt6Ays9TJIYl8A5+i0DHHGjvYQ1JLGPuOlaR/TpRFqvXCzHR2BO5iKg0Zmm/ic0W2ZXrB+Gve2uEt1dJKs/QXbwePE)
+
+<details>
+<summary>Использование до версии 3.5</summary>
+
+```vue
+<script setup>
 import { ref, onMounted } from 'vue'
 
 const list = ref([
@@ -117,7 +163,7 @@ onMounted(() => console.log(itemRefs.value))
 </template>
 ```
 
-[Попробовать в Песочнице](https://play.vuejs.org/#eNpFjs1qwzAQhF9l0CU2uDZtb8UOlJ576bXqwaQyCGRJyCsTEHr3rGwnOehnd2e+nSQ+vW/XqMSH6JdL0J6wKIr+LK2evQuEhKCmBs5+u2hJ/SNjCm7GiV0naaW9OLsQjOZrKNrq97XBW4P3v/o51qTmHzUtd8k+e0CrqsZwRpIWGI0KVN0N7TqaqNp59JUuEt2SutKXY5elmimZT9/t2Tk1F+z0ZiTFFdBHs738Mxrry+TCIEWhQ9sttRQl0tEsK6U4HEBKW3LkfDA6o3dst3H77rFM5BtTfm/P)
+</details>
 
 </div>
 <div class="options-api">
@@ -175,6 +221,23 @@ export default {
 
 ```vue
 <script setup>
+import { useTemplateRef, onMounted } from 'vue'
+import Child from './Child.vue'
+const childRef = useTemplateRef('child')
+onMounted(() => {
+  // childRef.value будет содержать экземпляр <Child />
+})
+</script>
+<template>
+  <Child ref="child" />
+</template>
+```
+
+<details>
+<summary>Использование до версии 3.5</summary>
+
+```vue
+<script setup>
 import { ref, onMounted } from 'vue'
 import Child from './Child.vue'
 
@@ -189,6 +252,8 @@ onMounted(() => {
   <Child ref="child" />
 </template>
 ```
+
+</details>
 
 </div>
 <div class="options-api">
