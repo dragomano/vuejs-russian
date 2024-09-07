@@ -108,6 +108,106 @@ const AsyncComp = defineAsyncComponent({
 
 Если указан компонент ошибки, он будет отображаться, когда Promise, возвращённый функцией загрузчика, будет отклонён. Вы также можете указать тайм-аут для отображения компонента ошибки, если запрос выполняется слишком долго.
 
+## Ленивая гидратация <sup class="vt-badge" data-text="3.5+" /> {#lazy-hydration}
+
+> Этот раздел применим только при использовании [рендеринга на стороне сервера](/guide/scaling-up/ssr).
+
+В Vue 3.5+ асинхронные компоненты могут контролировать время гидратации, предоставляя стратегию гидратации.
+
+- Vue предоставляет несколько встроенных стратегий гидратации. Эти встроенные стратегии необходимо импортировать по отдельности, чтобы их можно было вытеснить из дерева, если они не используются.
+
+- Дизайн намеренно низкоуровневый для обеспечения гибкости. Синтаксический сахар компилятора потенциально может быть построен на основе этого в будущем либо в ядре, либо в решениях более высокого уровня (например, в Nuxt).
+
+### Гидратация на холостом ходу
+
+Запуск `hydrate` через `requestIdleCallback`:
+
+```js
+import { defineAsyncComponent, hydrateOnIdle } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate:
+    hydrateOnIdle(/* опциональная передача максимального тайм-аута */)
+})
+```
+
+### Гидратация на видимом элементе
+
+Запуск `hydrate`, когда элемент(ы) становятся видимыми через `IntersectionObserver`.
+
+```js
+import { defineAsyncComponent, hydrateOnVisible } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnVisible()
+})
+```
+
+В качестве опции можно передать значение объекта options для наблюдателя:
+
+```js
+hydrateOnVisible({ rootMargin: '100px' })
+```
+
+### Гидратация при медиазапросе
+
+Запуск `hydrate` при совпадении указанного медиазапроса.
+
+```js
+import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnMediaQuery('(max-width:500px)')
+})
+```
+
+### Гидратация при взаимодействии
+
+Запуск `hydrate` при наступлении указанного события (событий) на элементе (элементах) компонента. Событие, вызвавшее гидратацию, также будет воспроизведено после завершения гидратации.
+
+```js
+import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: hydrateOnInteraction('click')
+})
+```
+
+Также может быть списком нескольких типов событий:
+
+```js
+hydrateOnInteraction(['wheel', 'mouseover'])
+```
+
+### Индивидуальная стратегия
+
+```ts
+import { defineAsyncComponent, type HydrationStrategy } from 'vue'
+
+const myStrategy: HydrationStrategy = (hydrate, forEachElement) => {
+  // forEachElement - это помощник для перебора всех корневых элементов
+  // в негидратированном DOM компонента, поскольку корневой элемент может быть фрагментом
+  // вместо одного элемента
+  forEachElement((el) => {
+    // ...
+  })
+  // вызываем `hydrate` при готовности
+  hydrate()
+  return () => {
+    // при необходимости возвращаем функцию разрушения
+  }
+}
+
+const AsyncComp = defineAsyncComponent({
+  loader: () => import('./Comp.vue'),
+  hydrate: myStrategy
+})
+```
+
 ## Использование с Suspense {#using-with-suspense}
 
 Асинхронные компоненты можно использовать со встроенным компонентом `<Suspense>`. Взаимодействие между `<Suspense>` и асинхронными компонентами описано в главе [`<Suspense>`](/guide/built-ins/suspense).
