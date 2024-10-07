@@ -1,12 +1,22 @@
 # Пользовательские директивы {#custom-directives}
 
 <script setup>
-const vFocus = {
+const vHighlight = {
   mounted: el => {
-    el.focus()
+    el.classList.add('is-highlight')
   }
 }
 </script>
+
+<style>
+.vt-doc p.is-highlight {
+  margin-bottom: 0;
+}
+.is-highlight {
+  background-color: yellow;
+  color: black;
+}
+</style>
 
 ## Введение {#introduction}
 
@@ -20,14 +30,16 @@ const vFocus = {
 
 ```vue
 <script setup>
-// включает v-focus в шаблонах
-const vFocus = {
-  mounted: (el) => el.focus()
+// включает v-highlight в шаблонах
+const vHighlight = {
+  mounted: (el) => {
+    el.classList.add('is-highlight')
+  }
 }
 </script>
 
 <template>
-  <input v-focus />
+  <p v-highlight>Это предложение очень важно!</p>
 </template>
 ```
 
@@ -36,33 +48,31 @@ const vFocus = {
 <div class="options-api">
 
 ```js
-const focus = {
-  mounted: (el) => el.focus()
+const highlight = {
+  mounted: (el) => el.classList.add('is-highlight')
 }
 
 export default {
   directives: {
-    // включает v-focus в шаблонах
-    focus
+    // включает v-highlight в шаблонах
+    highlight
   }
 }
 ```
 
 ```vue-html
-<input v-focus />
+<p v-highlight>Это предложение очень важно!</p>
 ```
 
 </div>
 
 <div class="demo">
-  <input v-focus placeholder="This should be focused" />
+  <p v-highlight>Это предложение очень важно!</p>
 </div>
-
-Если предположить, что вы не нажимали на другие кнопки на странице, ввод выше должен быть автофокусированным. Эта директива более полезна, чем атрибут `autofocus`, потому что она работает не только при загрузке страницы — она также работает, когда элемент динамически вставляется Vue.
 
 <div class="composition-api">
 
-В `<script setup>` любая переменная в «верблюжьем» регистре, начинающаяся с префикса `v`, может быть использована в качестве пользовательской директивы. В приведённом выше примере `vFocus` можно использовать в шаблоне как `v-focus`.
+В `<script setup>` любая переменная в «верблюжьем» регистре, начинающаяся с префикса `v`, может быть использована в качестве пользовательской директивы. В приведённом выше примере `vHighlight` можно использовать в шаблоне как `v-highlight`.
 
 Если не используется `<script setup>`, пользовательские директивы могут быть зарегистрированы с помощью опции `directives`:
 
@@ -72,8 +82,8 @@ export default {
     /*...*/
   },
   directives: {
-    // включает v-focus в шаблонах
-    focus: {
+    // включает v-highlight в шаблонах
+    highlight: {
       /* ... */
     }
   }
@@ -93,15 +103,57 @@ export default {
 ```js
 const app = createApp({})
 
-// делаем v-focus пригодным для использования во всех компонентах
-app.directive('focus', {
+// делаем v-highlight пригодным для использования во всех компонентах
+app.directive('highlight', {
   /* ... */
 })
 ```
 
-:::tip Совет
-Пользовательские директивы следует использовать только в тех случаях, когда требуемая функциональность может быть достигнута только путём прямого манипулирования DOM. Предпочитайте декларативную шаблонизацию с использованием встроенных директив, таких как `v-bind`, когда это возможно, потому что они более эффективны и удобны для серверного рендеринга.
-:::
+## Когда использовать пользовательские директивы {#when-to-use}
+
+Пользовательские директивы следует использовать только в тех случаях, когда требуемая функциональность может быть достигнута только путём прямого манипулирования DOM.
+
+Частым примером этого является пользовательская директива `v-focus`, которая переводит элемент в фокус.
+
+<div class="composition-api">
+
+```vue
+<script setup>
+// включает v-focus в шаблонах
+const vFocus = {
+  mounted: (el) => el.focus()
+}
+</script>
+<template>
+  <input v-focus />
+</template>
+```
+
+</div>
+
+<div class="options-api">
+
+```js
+const focus = {
+  mounted: (el) => el.focus()
+}
+export default {
+  directives: {
+    // включает v-focus в шаблонах
+    focus
+  }
+}
+```
+
+```vue-html
+<input v-focus />
+```
+
+</div>
+
+Эта директива более полезна, чем атрибут `autofocus`, потому что она работает не только при загрузке страницы, но и когда элемент динамически вставляется Vue!
+
+Декларативный шаблонизатор со встроенными директивами, такими как `v-bind`, рекомендуется использовать, когда это возможно, поскольку они более эффективны и удобны для серверного рендеринга.
 
 ## Хуки директив {#directive-hooks}
 
