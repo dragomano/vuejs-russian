@@ -278,19 +278,6 @@
   // -> выводит 1
   ```
 
-  Очистка от побочных эффектов:
-
-  ```js
-  watchEffect(async (onCleanup) => {
-    const { response, cancel } = doAsyncWork(id.value)
-    // `cancel` будет вызван, если `id` изменится
-    // чтобы предыдущий запрос был отменен
-    // если ещё не завершился
-    onCleanup(cancel)
-    data.value = await response
-  })
-  ```
-
   Остановка наблюдателя:
 
   ```js
@@ -397,9 +384,7 @@
   type WatchSource<T> =
     | Ref<T> // ref
     | (() => T) // геттер
-    | T extends object
-    ? T
-    : never // реактивный объект
+    | (T extends object ? T : never) // реактивный объект
 
   interface WatchOptions extends WatchEffectOptions {
     immediate?: boolean // по умолчанию: false
@@ -528,7 +513,7 @@
   Приостановка/возобновление работы наблюдателя: <sup class="vt-badge" data-text="3.5+" />
 
   ```js
-  const { stop, pause, resume } = watchEffect(() => {})
+  const { stop, pause, resume } = watch(() => {})
 
   // временная приостановка работы наблюдателя
   pause()
