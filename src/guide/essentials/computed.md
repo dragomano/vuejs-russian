@@ -259,6 +259,113 @@ const fullName = computed({
 
 </div>
 
+## Получение предыдущего значения {#previous}
+
+- Поддерживается только в версии 3.4+
+
+Если вам понадобится, вы можете получить предыдущее значение, возвращённое вычисляемым свойством, обратившись к первому аргументу геттера:
+
+<div class="options-api">
+
+```js
+export default {
+  data() {
+    return {
+      count: 2
+    }
+  },
+  computed: {
+    // Это вычисление вернёт значение count, если оно меньше или равно 3.
+    // Когда count будет >=4, будет возвращено последнее значение, которое выполнило наше условие
+    // пока счетчик не станет меньше или равен 3
+    alwaysSmall(previous) {
+      if (this.count <= 3) {
+        return this.count;
+      }
+
+      return previous;
+    }
+  }
+}
+```
+</div>
+
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(2)
+
+// Это вычисление вернёт значение count, если оно меньше или равно 3.
+// Когда count будет >=4, будет возвращено последнее значение, которое выполнило наше условие
+// пока счетчик не станет меньше или равен 3
+const alwaysSmall = computed((previous) => {
+  if (count.value <= 3) {
+    return count.value;
+  }
+
+  return previous;
+})
+</script>
+```
+</div>
+
+Если вы используете вычисляемое свойство с возможностью записи:
+
+<div class="options-api">
+
+```js
+export default {
+  data() {
+    return {
+      count: 2
+    }
+  },
+  computed: {
+    alwaysSmall: {
+      get(previous) {
+        if (this.count <= 3) {
+          return this.count;
+        }
+
+        return previous;
+      },
+      set(newValue) {
+        this.count = newValue * 2;
+      }
+    }
+  }
+}
+```
+
+</div>
+<div class="composition-api">
+
+```vue
+<script setup>
+import { ref, computed } from 'vue'
+
+const count = ref(2)
+
+const alwaysSmall = computed({
+  get(previous) {
+    if (count.value <= 3) {
+      return count.value;
+    }
+
+    return previous;
+  },
+  set(newValue) {
+    count.value = newValue * 2;
+  }
+})
+</script>
+```
+
+</div>
+
 ## Лучшие практики {#best-practices}
 
 ### Геттеры не должны иметь побочных эффектов {#getters-should-be-side-effect-free}
