@@ -1,7 +1,7 @@
 ---
 page: true
-title: Партнёры
 footer: false
+title: Партнёры Vue
 ---
 
 <script setup>
