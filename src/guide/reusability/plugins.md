@@ -135,3 +135,7 @@ export default {
 ```
 
 </div>
+
+### Пакет для NPM
+
+Если вы хотите создать и опубликовать свой плагин, чтобы им могли воспользоваться другие пользователи, смотрите раздел [Library Mode](https://vitejs.dev/guide/build.html#library-mode) в документации Vite.
