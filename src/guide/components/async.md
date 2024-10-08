@@ -118,7 +118,7 @@ const AsyncComp = defineAsyncComponent({
 
 - Дизайн намеренно низкоуровневый для обеспечения гибкости. Синтаксический сахар компилятора потенциально может быть построен на основе этого в будущем либо в ядре, либо в решениях более высокого уровня (например, в Nuxt).
 
-### Гидратация на холостом ходу
+### Гидратация на холостом ходу {#hydrate-on-idle}
 
 Запуск `hydrate` через `requestIdleCallback`:
 
@@ -132,7 +132,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Гидратация на видимом элементе
+### Гидратация на видимом элементе {#hydrate-on-visible}
 
 Запуск `hydrate`, когда элемент(ы) становятся видимыми через `IntersectionObserver`.
 
@@ -151,7 +151,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnVisible({ rootMargin: '100px' })
 ```
 
-### Гидратация при медиазапросе
+### Гидратация при медиазапросе {#hydrate-on-media-query}
 
 Запуск `hydrate` при совпадении указанного медиазапроса.
 
@@ -164,7 +164,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-### Гидратация при взаимодействии
+### Гидратация при взаимодействии {#hydrate-on-interaction}
 
 Запуск `hydrate` при наступлении указанного события (событий) на элементе (элементах) компонента. Событие, вызвавшее гидратацию, также будет воспроизведено после завершения гидратации.
 
@@ -183,7 +183,7 @@ const AsyncComp = defineAsyncComponent({
 hydrateOnInteraction(['wheel', 'mouseover'])
 ```
 
-### Индивидуальная стратегия
+### Индивидуальная стратегия {#custom-strategy}
 
 ```ts
 import { defineAsyncComponent, type HydrationStrategy } from 'vue'
