@@ -478,6 +478,20 @@ const post = await fetch(`/api/post/1`).then((r) => r.json())
 `async setup()` необходимо использовать в сочетании с [`Suspense`](/guide/built-ins/suspense), которая в настоящее время всё ещё является экспериментальной функцией. Мы планируем доработать и задокументировать его в одном из будущих выпусков, но если вам интересно, вы можете обратиться к [тестам](https://github.com/vuejs/core/blob/main/packages/runtime-core/__tests__/components/Suspense.spec.ts), чтобы увидеть, как она работает.
 :::
 
+## Импортируемые операторы {#imports-statements}
+
+Импортируемые операторы в Vue следуют [спецификации модулей ECMAScript](https://nodejs.org/api/esm.html).
+Кроме того, вы можете использовать псевдонимы, определённые в конфигурации вашего инструмента сборки:
+
+```vue
+<script setup>
+import { ref } from 'vue'
+import { componentA } from './Components'
+import { componentB } from '@/Components'
+import { componentC } from '~/Components'
+</script>
+```
+
 ## Дженерики <sup class="vt-badge ts" /> {#generics}
 
 Параметры общего типа могут быть объявлены с помощью атрибута `generic` в теге `<script>`:
