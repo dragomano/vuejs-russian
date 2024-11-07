@@ -80,6 +80,10 @@ import ListStagger from './transition-demos/ListStagger.vue'
 
 [Полный пример](/examples/#list-transition)
 
+### Пользовательские классы TransitionGroup
+
+Вы также можете указать пользовательские классы переходов для перемещаемого элемента, передав свойство `moveClass` в `<TransitionGroup>`, так же как и [пользовательские классы переходов на `<Transition>`](/guide/built-ins/transition.html#custom-transition-classes).
+
 ## Потрясающие переходы списков {#staggering-list-transitions}
 
 Взаимодействуя с переходами JavaScript через атрибуты данных, можно также перемежать переходы в списке. Сначала мы отображаем индекс элемента как атрибут данных на элементе DOM:
