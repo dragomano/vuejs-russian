@@ -195,9 +195,9 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Регистрация',
           link: '/guide/components/registration'
         },
-        { text: 'Параметры', link: '/guide/components/props' },
+        { text: 'Пропсы', link: '/guide/components/props' },
         { text: 'События', link: '/guide/components/events' },
-        { text: 'v-model', link: '/guide/components/v-model' },
+        { text: 'Директива v-model', link: '/guide/components/v-model' },
         {
           text: 'Обычные атрибуты',
           link: '/guide/components/attrs'

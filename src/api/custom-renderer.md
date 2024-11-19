@@ -1,4 +1,4 @@
-# API пользовательского рендерера {#custom-renderer-api}
+# Custom Renderer API {#custom-renderer-api}
 
 ## createRenderer() {#createrenderer}
 

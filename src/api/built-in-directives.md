@@ -340,7 +340,7 @@
 
 - **Смотрите также**
   - [Привязка классов и стилей](/guide/essentials/class-and-style)
-  - [Компоненты - Подробности передачи параметров](/guide/components/props#prop-passing-details)
+  - [Компоненты - Подробности передачи пропсов](/guide/components/props#prop-passing-details)
 
 ## v-model {#v-model}
 

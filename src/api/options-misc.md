@@ -103,7 +103,7 @@
 
 - **Смотрите также**
 
-  - [Обычные атрибуты](/guide/components/attrs)
+  - [Передаваемые атрибуты](/guide/components/attrs)
   <div class="composition-api">
 
   - [Использование `inheritAttrs` вместе с обычным `<script>`](/api/sfc-script-setup.html#usage-alongside-normal-script)

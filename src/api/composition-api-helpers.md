@@ -2,7 +2,7 @@
 
 ## useAttrs() {#useattrs}
 
-Возвращает объект `attrs` из [настройки контекста](/api/composition-api-setup#setup-context), который включает в себя [обычные атрибуты](/guide/components/attrs#fallthrough-attributes) текущего компонента. Он предназначен для использования в `<script setup>`, где объект настройки контекста недоступен.
+Возвращает объект `attrs` из [настройки контекста](/api/composition-api-setup#setup-context), который включает в себя [передаваемые атрибуты](/guide/components/attrs#fallthrough-attributes) текущего компонента. Он предназначен для использования в `<script setup>`, где объект настройки контекста недоступен.
 
 - **Тип**
 

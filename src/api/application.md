@@ -1,4 +1,4 @@
-# API приложения {#application-api}
+# Application API {#application-api}
 
 ## createApp() {#createapp}
 

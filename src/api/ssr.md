@@ -1,4 +1,4 @@
-# API рендеринга на стороне сервера {#server-side-rendering-api}
+# Server Side Rendering API {#server-side-rendering-api}
 
 ## renderToString() {#rendertostring}
 

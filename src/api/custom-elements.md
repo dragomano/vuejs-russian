@@ -1,4 +1,4 @@
-# API пользовательских элементов {#custom-elements-api}
+# Custom Elements API {#custom-elements-api}
 
 ## defineCustomElement() {#definecustomelement}
 

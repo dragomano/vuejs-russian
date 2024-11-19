@@ -1,4 +1,4 @@
-# Компонентная `v-model` {#component-v-model}
+# Директива `v-model` {#component-v-model}
 
 ## Пример использования {#basic-usage}
 

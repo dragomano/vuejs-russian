@@ -1,4 +1,4 @@
-# API рендер-функций {#render-function-apis}
+# Render Function API {#render-function-apis}
 
 ## h() {#h}
 
