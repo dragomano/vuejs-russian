@@ -199,7 +199,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
         { text: 'События', link: '/guide/components/events' },
         { text: 'Директива v-model', link: '/guide/components/v-model' },
         {
-          text: 'Обычные атрибуты',
+          text: 'Передаваемые атрибуты',
           link: '/guide/components/attrs'
         },
         { text: 'Слоты', link: '/guide/components/slots' },
@@ -664,7 +664,7 @@ export default defineConfigWithTheme<ThemeConfig>({
     algolia: {
       indexName: 'vuejs-dragomano',
       appId: 'WB13I1BINF',
-      apiKey: '6b9bfea5846a1efee61047049f5858f9',
+      apiKey: 'ac607366f4cd99782106a7403827b86b',
       placeholder: 'Поиск в документации',
       translations: {
         button: {
