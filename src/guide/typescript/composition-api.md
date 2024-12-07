@@ -365,7 +365,7 @@ const foo = inject('foo') as string
 В случаях, когда автоматический вывод невозможен, вы всё равно можете привести шаблонную ссылку к явному типу через общий аргумент:
 
 ```ts
-const el = useTemplateRef<HTMLInputElement>(null)
+const el = useTemplateRef<HTMLInputElement>('el')
 ```
 
 <details>
@@ -427,7 +427,7 @@ const compRef = useTemplateRef<FooType | BarType>('comp')
 import { useTemplateRef } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 
-const child = useTemplateRef<ComponentPublicInstance | null>(null)
+const child = useTemplateRef<ComponentPublicInstance>('child')
 ```
 
 Бывают случаи, когда компонент, на который ссылаются, является [универсальным](/guide/typescript/overview.html#generic-components). Например, `MyGenericModal`:
@@ -456,7 +456,7 @@ import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'
 import type { ComponentExposed } from 'vue-component-type-helpers'
 
-const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>(null)
+const modal = useTemplateRef<ComponentExposed<typeof MyGenericModal>>('modal')
 
 const openModal = () => {
   modal.value?.open('newValue')
