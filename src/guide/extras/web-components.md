@@ -220,6 +220,8 @@ customElements.define('my-example', ExampleElement)
 Рекомендуется экспортировать отдельные конструкторы элементов, чтобы ваши пользователи могли импортировать их по требованию и регистрировать их с нужными именами тегов. Вы также можете экспортировать удобную функцию для автоматической регистрации всех элементов. Вот пример точки входа в библиотеку пользовательских элементов Vue:
 
 ```js
+// elements.js
+
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
 import Bar from './MyBar.ce.vue'
@@ -236,30 +238,267 @@ export function register() {
 }
 ```
 
-Если у вас много компонентов, вы также можете использовать такие функции инструментов сборки, как [glob import](https://vitejs.dev/guide/features.html#glob-import) от Vite или [`require.context`](https://webpack.js.org/guides/dependency-management/#requirecontext) от webpack для загрузки всех компонентов из каталога.
+Можно использовать элементы в файле Vue,
+
+```vue
+<script setup>
+import { register } from 'path/to/elements.js'
+register()
+</script>
+
+<template>
+  <my-foo ...>
+    <my-bar ...></my-bar>
+  </my-foo>
+</template>
+```
+
+или в любом другом фреймворке, таком как фреймворк с JSX, и с пользовательскими именами:
+
+```jsx
+import { MyFoo, MyBar } from 'path/to/elements.js'
+
+customElements.define('some-foo', MyFoo)
+customElements.define('some-bar', MyBar)
+
+export function MyComponent() {
+  return <>
+    <some-foo ...>
+      <some-bar ...></some-bar>
+    </some-foo>
+  </>
+}
+```
 
 ### Веб-компоненты и TypeScript {#web-components-and-typescript}
 
-Если вы разрабатываете приложение или библиотеку, вам может понадобиться [проверка типов](/guide/scaling-up/tooling.html#typescript) ваших компонентов Vue, включая те, которые определены как пользовательские элементы.
+При написании шаблонов Vue SFC вам может потребоваться [проверка типа](/guide/scaling-up/tooling.html#typescript) ваших компонентов Vue, включая те, которые определены как пользовательские элементы.
 
-Пользовательские элементы регистрируются глобально с помощью собственных API, поэтому по умолчанию они не будут иметь определения типа при использовании в шаблонах Vue. Чтобы обеспечить поддержку типов для компонентов Vue, зарегистрированных как пользовательские элементы, мы можем зарегистрировать глобальные типы компонентов с помощью интерфейса [`GlobalComponents`](https://github.com/vuejs/language-tools/blob/master/packages/vscode-vue/README.md#usage) в шаблонах Vue и/или в [JSX](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements):
+Пользовательские элементы регистрируются глобально в браузерах с помощью их собственных API, поэтому по умолчанию они не будут иметь определения типа при использовании в шаблонах Vue. Чтобы обеспечить поддержку типов для компонентов Vue, зарегистрированных как пользовательские элементы, мы можем зарегистрировать глобальные типы компонентов с помощью интерфейса [`GlobalComponents`](https://github.com/vuejs/language-tools/wiki/Global-Component-Types) для проверки типов в шаблонах Vue (вместо этого пользователи JSX могут дополнить тип [JSX.IntrinsicElements](https://www.typescriptlang.org/docs/handbook/jsx.html#intrinsic-elements), который здесь не показан).
+
+Вот как определить тип для пользовательского элемента, созданного с помощью Vue:
 
 ```typescript
 import { defineCustomElement } from 'vue'
 
-// vue SFC
-import CounterSFC from './src/components/counter.ce.vue'
+// Импортируем компонент Vue.
+import SomeComponent from './src/components/SomeComponent.ce.vue'
 
-// превращаем компоненты в веб-компоненты
-export const Counter = defineCustomElement(CounterSFC)
+// Преобразовываем компонент Vue в класс пользовательского элемента.
+export const SomeElement = defineCustomElement(SomeComponent)
 
-// регистрируем глобальные типы
+// Регистрируем класс элемента в браузере.
+customElements.define('some-element', SomeElement)
+
+// Добавляем новый тип элемента в тип GlobalComponents Vue.
 declare module 'vue' {
-  export interface GlobalComponents {
-    Counter: typeof Counter
+  interface GlobalComponents {
+    // Обязательно передайте здесь тип компонента Vue (SomeComponent, *а не* SomeElement).
+    // Пользовательские элементы требуют дефис в своем имени, поэтому используйте имя элемента с дефисом здесь.
+    'some-element': typeof SomeComponent
   }
 }
 ```
+
+## Веб-компоненты, не относящиеся к Vue, и TypeScript {#non-vue-web-components-and-typescript}
+
+Вот рекомендуемый способ включения проверки типов в шаблонах SFC пользовательских элементов, которые не созданы с помощью Vue.
+
+> [!Note] Примечание
+> Этот подход является одним из возможных способов сделать это, но он может варьироваться в зависимости от
+> фреймворка, используемого для создания пользовательских элементов.
+
+Предположим, у нас есть пользовательский элемент с некоторыми определёнными JS-свойствами и событиями, и
+он поставляется в библиотеке под названием `some-lib`:
+
+```ts
+// file: some-lib/src/SomeElement.ts
+
+// Определяем класс с типизированными JS-свойствами.
+export class SomeElement extends HTMLElement {
+  foo: number = 123
+  bar: string = 'blah'
+
+  lorem: boolean = false
+
+  // Этот метод не должен быть доступен для типов шаблонов.
+  someMethod() {
+    /* ... */
+  }
+
+  // ... детали реализации опущены ...
+  // ... предположим, что элемент генерирует события с именем "apple-fell" ...
+}
+
+customElements.define('some-element', SomeElement)
+
+// Это список свойств SomeElement, которые будут выбраны для проверки типов
+// в шаблонах фреймворка (например, в шаблонах Vue SFC). Любые другие
+// свойства не будут доступны.
+export type SomeElementAttributes = 'foo' | 'bar'
+
+// Определяем типы событий, которые генерирует SomeElement.
+export type SomeElementEvents = {
+  'apple-fell': AppleFellEvent
+}
+
+export class AppleFellEvent extends Event {
+  /* ... детали опущены ... */
+}
+```
+
+Детали реализации опущены, но важная часть заключается в том, что у нас есть определения типов для двух вещей: типов свойств и типов событий.
+
+Давайте создадим вспомогательный тип для удобной регистрации определений типов пользовательских элементов в Vue:
+
+```ts
+// file: some-lib/src/DefineCustomElement.ts
+
+// Мы можем повторно использовать этот вспомогательный тип для каждого элемента, который нам нужно определить.
+type DefineCustomElement<
+  ElementType extends HTMLElement,
+  Events extends EventMap = {},
+  SelectedAttributes extends keyof ElementType = keyof ElementType
+> = new () => ElementType & {
+  // Используйте $props для определения свойств, доступных для проверки типов в шаблонах. Vue
+  // специально считывает определения свойств из типа `$props`. Обратите внимание, что мы
+  // комбинируем свойства элемента с глобальными HTML-свойствами и специальными
+  // свойствами Vue.
+  /** @deprecated Не используйте свойство $props на ссылке на пользовательский элемент, это предназначено только для типов свойств шаблона. */
+  $props: HTMLAttributes &
+    Partial<Pick<ElementType, SelectedAttributes>> &
+    PublicProps
+
+  // Используйте $emit для конкретного определения типов событий. Vue специально считывает типы событий
+  // из типа `$emit`. Обратите внимание, что `$emit` ожидает определённый формат,
+  // который мы сопоставляем с `Events`.
+  /** @deprecated Не используйте свойство $emit на ссылке на пользовательский элемент, это предназначено только для типов свойств шаблона. */
+  $emit: VueEmit<Events>
+}
+
+type EventMap = {
+  [event: string]: Event
+}
+
+// Это сопоставляет EventMap с форматом, который ожидает тип $emit Vue.
+type VueEmit<T extends EventMap> = EmitFn<{
+  [K in keyof T]: (event: T[K]) => void
+}>
+```
+
+> [!Note] Примечание
+> Мы пометили `$props` и `$emit` как устаревшие, чтобы, когда мы получаем `ref` к
+> пользовательскому элементу, мы не были искушены использовать эти свойства, так как эти
+> свойства предназначены только для целей проверки типов в отношении пользовательских элементов.
+> Эти свойства фактически не существуют в экземплярах пользовательских элементов.
+
+Используя вспомогательный тип, мы теперь можем выбрать JS-свойства, которые должны быть
+экспонированы для проверки типов в шаблонах Vue:
+
+```ts
+// file: some-lib/src/SomeElement.vue.ts
+
+import {
+  SomeElement,
+  SomeElementAttributes,
+  SomeElementEvents
+} from './SomeElement.js'
+import type { Component } from 'vue'
+import type { DefineCustomElement } from './DefineCustomElement'
+
+// Добавляем новый тип элемента в тип GlobalComponents Vue.
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElement,
+      SomeElementAttributes,
+      SomeElementEvents
+    >
+  }
+}
+```
+
+Предположим, что `some-lib` компилирует свои исходные файлы TypeScript в папку `dist/`. Пользователь `some-lib` может затем импортировать `SomeElement` и использовать его в Vue SFC следующим образом:
+
+```vue
+<script setup lang="ts">
+// Это создаст и зарегистрирует элемент в браузере.
+import 'some-lib/dist/SomeElement.js'
+
+// Пользователь, который использует TypeScript и Vue, должен дополнительно импортировать
+// определения типов, специфичные для Vue (пользователи других фреймворков могут импортировать
+// другие определения типов, специфичные для фреймворка).
+import type {} from 'some-lib/dist/SomeElement.vue.js'
+
+import { useTemplateRef, onMounted } from 'vue'
+
+const el = useTemplateRef('el')
+
+onMounted(() => {
+  console.log(
+    el.value!.foo,
+    el.value!.bar,
+    el.value!.lorem,
+    el.value!.someMethod()
+  )
+
+  // Не используйте эти пропсы, они `неопределены` (IDE покажет их перечёркнутыми):
+  el.$props
+  el.$emit
+})
+</script>
+
+<template>
+  <!-- Теперь мы можем использовать элемент с проверкой типа: -->
+  <some-element
+    ref="el"
+    :foo="456"
+    :blah="'hello'"
+    @apple-fell="
+      (event) => {
+        // Здесь предполагается, что типом события является `AppleFellEvent`
+      }
+    "
+  ></some-element>
+</template>
+```
+
+Если у элемента нет определений типов, типы свойств и событий можно указать вручную:
+
+```vue
+<script setup lang="ts">
+// Предположим, что `some-lib` — это простой JS без определений типов,
+// а TypeScript не может вывести типы:
+import { SomeElement } from 'some-lib'
+
+// Мы будем использовать хелпер того же типа, что и раньше.
+import { DefineCustomElement } from './DefineCustomElement'
+
+type SomeElementProps = { foo?: number; bar?: string }
+type SomeElementEvents = { 'apple-fell': AppleFellEvent }
+interface AppleFellEvent extends Event {
+  /* ... */
+}
+
+// Добавляем новый тип элемента в тип GlobalComponents Vue.
+declare module 'vue' {
+  interface GlobalComponents {
+    'some-element': DefineCustomElement<
+      SomeElementProps,
+      SomeElementEvents
+    >
+  }
+}
+
+// ... так же, как и раньше, используйте ссылку на элемент ...
+</script>
+
+<template>
+  <!-- ... так же, как и раньше, используйте элемент в шаблоне ... -->
+</template>
+```
+
+Авторы пользовательских элементов не должны автоматически экспортировать определения типов, специфичных для фреймворка, из своих библиотек. Например, они не должны экспортировать их из файла `index.ts`, который также экспортирует остальную часть библиотеки, иначе у пользователей возникнут неожиданные ошибки увеличения модуля. Пользователи должны импортировать файл определения типов, специфичный для фреймворка, который им нужен.
 
 ## Веб-компоненты и компоненты Vue {#web-components-vs-vue-components}
 
