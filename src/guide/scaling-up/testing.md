@@ -1,6 +1,29 @@
 <script setup>
 import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 </script>
+<style>
+.lambdatest {
+  background-color: var(--vt-c-bg-soft);
+  border-radius: 8px;
+  padding: 12px 16px 12px 12px;
+  font-size: 13px;
+  a {
+    display: flex;
+    color: var(--vt-c-text-2);
+  }
+  img {
+    background-color: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-right: 24px;
+  }
+  .testing-partner {
+    color: var(--vt-c-text-1);
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+</style>
 
 # Тестирование {#testing}
 
@@ -268,6 +291,16 @@ await fireEvent.click(button)
 - [Playwright](https://playwright.dev/) — это отличное решение для E2E-тестирования, которое поддерживает Chromium, WebKit и Firefox. Тестируйте на Windows, Linux и macOS, локально или в CI, с графическим интерфейсом или без него, с нативной эмуляцией Google Chrome для Android и Mobile Safari. Он имеет информативный пользовательский интерфейс, отличную отлаживаемость, встроенные утверждения, распараллеливание, трассировку и предназначен для устранения нестабильных тестов. Поддержка [Component Testing](https://playwright.dev/docs/test-components) доступна, но отмечена как экспериментальная. Playwright имеет открытый исходный код и поддерживается компанией Microsoft.
 
 - [Cypress](https://www.cypress.io/) имеет информативный графический интерфейс, отличную отлаживаемость, встроенные утверждения, заглушки, устойчивость к взлому и моментальные снимки. Как уже упоминалось выше, он обеспечивает стабильную поддержку [Component Testing](https://docs.cypress.io/guides/component-testing/introduction). Cypress поддерживает браузеры на базе Chromium, Firefox и Electron. Поддержка WebKit доступна, но отмечена как экспериментальная. Cypress находится под лицензией MIT, но некоторые функции, такие как распараллеливание, требуют подписки на Cypress Cloud.
+
+<div class="lambdatest">
+  <a href="https://lambdatest.com" target="_blank">
+    <img src="/images/lambdatest.svg">
+    <div>
+      <div class="testing-partner">Спонсор тестирования</div>
+      <div>Lambdatest — это облачная платформа для проведения тестов E2E, доступности и визуальной регрессии во всех основных браузерах и реальных устройствах с созданием тестов с помощью искусственного интеллекта!</div>
+    </div>
+  </a>
+</div>
 
 ### Другие параметры {#other-options-2}
 
