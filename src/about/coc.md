@@ -41,6 +41,6 @@
 ## Атрибуция {#attribution}
 
 Этот кодекс поведения адаптирован из [Кодекса Поведения участника][homepage], версии 1.4, доступном по адресу https://www.contributor-covenant.org/version/1/4/code-of-conduct.html.
-Ответы на распространенные вопросы об этом кодексе поведения см. на сайте https://www.contributor-covenant.org/faq.
+Ответы на распространённые вопросы об этом кодексе поведения см. на сайте https://www.contributor-covenant.org/faq.
 
 [homepage]: https://www.contributor-covenant.org
