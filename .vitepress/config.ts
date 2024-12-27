@@ -167,7 +167,7 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/class-and-style'
         },
         {
-          text: 'Условная отрисовка',
+          text: 'Отрисовка по условию',
           link: '/guide/essentials/conditional'
         },
         { text: 'Отрисовка списков', link: '/guide/essentials/list' },
