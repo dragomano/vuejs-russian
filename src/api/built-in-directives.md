@@ -54,7 +54,7 @@
 
   `v-show` работает, устанавливая CSS-свойство `display` через встроенные стили, и будет стараться соблюдать начальное значение `display`, когда элемент становится видимым. Он также запускает переходы при изменении своего состояния.
 
-- **Смотрите также** [Условная отрисовка - v-show](/guide/essentials/conditional#v-show)
+- **Смотрите также** [Отрисовка по условию - v-show](/guide/essentials/conditional#v-show)
 
 ## v-if {#v-if}
 
@@ -72,7 +72,7 @@
 
   При совместном использовании `v-if` имеет более высокий приоритет, чем `v-for`. Мы не рекомендуем использовать эти две директивы вместе в одном элементе — подробности см. в руководстве [Отрисовка списков](/guide/essentials/list#v-for-with-v-if).
 
-- **Смотрите также** [Условная отрисовка - v-if](/guide/essentials/conditional#v-if)
+- **Смотрите также** [Отрисовка по условию - v-if](/guide/essentials/conditional#v-if)
 
 ## v-else {#v-else}
 
@@ -97,7 +97,7 @@
   </div>
   ```
 
-- **Смотрите также** [Условная отрисовка - v-else](/guide/essentials/conditional#v-else)
+- **Смотрите также** [Отрисовка по условию - v-else](/guide/essentials/conditional#v-else)
 
 ## v-else-if {#v-else-if}
 
@@ -128,7 +128,7 @@
   </div>
   ```
 
-- **Смотрите также** [Условная отрисовка - v-else-if](/guide/essentials/conditional#v-else-if)
+- **Смотрите также** [Отрисовка по условию - v-else-if](/guide/essentials/conditional#v-else-if)
 
 ## v-for {#v-for}
 
