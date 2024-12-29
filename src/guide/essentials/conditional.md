@@ -1,4 +1,4 @@
-# Условная отрисовка {#conditional-rendering}
+# Отрисовка по условию {#conditional-rendering}
 
 <div class="options-api">
   <VueSchoolLink href="https://vueschool.io/lessons/conditional-rendering-in-vue-3" title="Бесплатный урок по условной отрисовке Vue.js"/>
