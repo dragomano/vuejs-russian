@@ -95,6 +95,6 @@ createApp({
 </div>
 </div>
 
-Это называется **хуком жизненного цикла** — он позволяет нам зарегистрировать обратный вызов, который будет вызываться в определенные моменты жизненного цикла компонента. Существуют и другие хуки, такие как <span class="options-api">`created` и `updated`</span><span class="composition-api">`onUpdated` и `onUnmounted`</span>. Посмотрите <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">Диаграмму жизненного цикла</a> для получения более подробной информации.
+Это называется **хуком жизненного цикла** — он позволяет нам зарегистрировать обратный вызов, который будет вызываться в определённые моменты жизненного цикла компонента. Существуют и другие хуки, такие как <span class="options-api">`created` и `updated`</span><span class="composition-api">`onUpdated` и `onUnmounted`</span>. Посмотрите <a target="_blank" href="/guide/essentials/lifecycle.html#lifecycle-diagram">Диаграмму жизненного цикла</a> для получения более подробной информации.
 
 Теперь попробуйте добавить хук <span class="options-api">`mounted`</span><span class="composition-api">`onMounted`</span>, обратившись к элементу `<p>` через <span class="options-api">`this.$refs.pElementRef`</span><span class="composition-api">`pElementRef.value`</span>, и выполнить над ним некоторые прямые операции DOM (например, изменить его `textContent`).
