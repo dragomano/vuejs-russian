@@ -176,15 +176,15 @@ export const sidebar: ThemeConfig['sidebar'] = {
           link: '/guide/essentials/event-handling'
         },
         { text: 'Привязка элементов форм', link: '/guide/essentials/forms' },
-        {
-          text: 'Хуки жизненного цикла',
-          link: '/guide/essentials/lifecycle'
-        },
         { text: 'Наблюдатели', link: '/guide/essentials/watchers' },
         { text: 'Ссылки на элементы шаблона', link: '/guide/essentials/template-refs' },
         {
           text: 'Основы компонентов',
           link: '/guide/essentials/component-basics'
+        },
+        {
+          text: 'Хуки жизненного цикла',
+          link: '/guide/essentials/lifecycle'
         }
       ]
     },
