@@ -123,12 +123,12 @@
   const app = createApp({})
 
   // регистрируем объект параметров
-  app.component('my-component', {
+  app.component('MyComponent', {
     /* ... */
   })
 
   // получаем зарегистрированный компонент
-  const MyComponent = app.component('my-component')
+  const MyComponent = app.component('MyComponent')
   ```
 
 - **Смотрите также** [Регистрация компонентов](/guide/components/registration)
@@ -156,17 +156,17 @@
   })
 
   // регистрируем (директива объекта)
-  app.directive('my-directive', {
+  app.directive('myDirective', {
     /* хуки для пользовательских директив */
   })
 
   // регистрируем (сокращение директивы функции)
-  app.directive('my-directive', () => {
+  app.directive('myDirective', () => {
     /* ... */
   })
 
   // получаем зарегистрированную директиву
-  const myDirective = app.directive('my-directive')
+  const myDirective = app.directive('myDirective')
   ```
 
 - **Смотрите также** [Пользовательские директивы](/guide/reusability/custom-directives)
@@ -632,13 +632,13 @@ console.log(app.config)
 - **Пример**
 
   ```js
-  app.config.idPrefix = 'my-app'
+  app.config.idPrefix = 'myApp'
   ```
 
   ```js
   // в компоненте:
-  const id1 = useId() // 'my-app:0'
-  const id2 = useId() // 'my-app:1'
+  const id1 = useId() // 'myApp:0'
+  const id2 = useId() // 'myApp:1'
   ```
 
 ## app.config.throwUnhandledErrorInProduction <sup class="vt-badge" data-text="3.5+" /> {#app-config-throwunhandlederrorinproduction}
