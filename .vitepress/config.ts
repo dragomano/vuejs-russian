@@ -113,6 +113,14 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'Документальный фильм',
         link: 'https://www.youtube.com/watch?v=OrxmtDw4pVI'
+      },
+      {
+        text: 'Наиболее часто задаваемые вопросы по Vue.js',
+        link: 'https://vue-faq.org/ru/'
+      },
+      {
+        text: 'Шаблоны проектирования и лучшие практики',
+        link: 'https://vue-faq.org/ru/book/'
       }
     ]
   },
