@@ -16,7 +16,7 @@ const props = defineProps<{
     :filter="props.filter"
     :cardComponent="PartnerCard"
     :showLinkToAll="props.showLinkToAll"
-    browseLinkText="Просмотреть других разработчиков"
+    browseLinkText="Посмотреть других разработчиков"
     browseLinkUrl="./all.html"
     shuffleItems
   />
