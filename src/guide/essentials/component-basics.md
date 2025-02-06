@@ -468,7 +468,7 @@ export default {
 
 Этого можно добиться с помощью пользовательского элемента Vue `<slot>`:
 
-```vue{4}
+```vue{5}
 <!-- AlertBox.vue -->
 <template>
   <div class="alert-box">
