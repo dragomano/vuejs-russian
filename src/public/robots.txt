@@ -1,5 +1,3 @@
 User-agent: *
-Allow: /$
-Allow: /guide
 
 Sitemap: https://vuejs.dragomano.ru/sitemap.xml
