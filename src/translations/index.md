@@ -24,8 +24,8 @@ description: Список всех локализаций документаци
 ## Переводы в процессе доработки {#work-in-progress-languages}
 
 - [العربية / Arabic](https://ar.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ar)]
-
 - [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[источник](https://github.com/icarusgk/vuejs-spanish-docs)]
+- [Deutsch / German](https://de.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-de)]
 
 ## Начало нового перевода {#starting-a-new-translation}
 
