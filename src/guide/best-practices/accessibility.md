@@ -13,6 +13,7 @@
 Обычно это делается в верхней части файла `App.vue`, поскольку он будет первым фокусируемым элементом на всех ваших страницах:
 
 ```vue-html
+<span ref="backToTop" tabindex="-1" />
 <ul class="skip-links">
   <li>
     <a href="#main" ref="skipLink" class="skip-link">Перейти к основному содержанию</a>
@@ -23,6 +24,9 @@
 Чтобы скрыть ссылку, если она не сфокусирована, можно добавить следующий стиль:
 
 ```css
+.skip-links {
+  list-style: none;
+}
 .skip-link {
   white-space: nowrap;
   margin: 1em auto;
@@ -40,7 +44,7 @@
 }
 ```
 
-Как только пользователь изменит маршрут, верните внимание к ссылке на пропуск. Этого можно добиться, вызвав focus на шаблонном реферере пропускаемой ссылки (при условии использования `vue-router`):
+При смене маршрута фокус должен возвращаться в начало страницы, перед ссылкой «Пропустить». Это можно сделать, вызвав `focus` на шаблонной ссылке `backToTop` (при использовании `vue-router`):
 
 <div class="options-api">
 
@@ -49,7 +53,7 @@
 export default {
   watch: {
     $route() {
-      this.$refs.skipLink.focus()
+      this.$refs.backToTop.focus()
     }
   }
 }
@@ -65,12 +69,12 @@ import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const skipLink = ref()
+const backToTop = ref()
 
 watch(
   () => route.path,
   () => {
-    skipLink.value.focus()
+    backToTop.value.focus()
   }
 )
 </script>
