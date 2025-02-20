@@ -616,7 +616,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   srcExclude: ['tutorial/**/description.md'],
 
   head: [
-    ['link', { rel: 'preconnect', href: 'https://WB13I1BINF-dsn.algolia.net', crossorigin: "true" }],
+    //['link', { rel: 'preconnect', href: 'https://WB13I1BINF-dsn.algolia.net', crossorigin: "true" }],
     ['meta', { name: 'theme-color', content: '#3c8772' }],
     ['meta', { name: 'twitter:site', content: '@vuejs' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
@@ -735,7 +735,7 @@ export default defineConfigWithTheme<ThemeConfig>({
   },
 
   markdown: {
-    theme: 'github-dark',
+    theme: 'ayu-dark',
     config(md) {
       md.use(headerPlugin)
     }
@@ -761,7 +761,6 @@ export default defineConfigWithTheme<ThemeConfig>({
       }
     },
     build: {
-      minify: 'terser',
       chunkSizeWarningLimit: Infinity
     },
     json: {
