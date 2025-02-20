@@ -213,7 +213,7 @@ API времени выполнения, используемый для пол�
   import { useSSRContext } from 'vue'
 
   // следите за тем, чтобы вызывать его только во время SSR
-  // https://vitejs.dev/guide/ssr.html#conditional-logic
+  // https://dragomano.github.io/vite-docs/guide/ssr.html#conditional-logic
   if (import.meta.env.SSR) {
     const ctx = useSSRContext()
     // ...прикрепляем свойства к контексту
