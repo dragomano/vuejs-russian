@@ -32,11 +32,11 @@
 
 Дополнительные ссылки:
 
-- [Руководство Vite по продакшен-сборке](https://vitejs.dev/guide/build.html)
-- [Руководство Vite по разработке](https://vitejs.dev/guide/static-deploy.html)
-- [Руководство Vue CLI по разработке](https://cli.vuejs.org/guide/deployment.html)
+- [Руководство Vite по продакшен-сборке](https://dragomano.github.io/vite-docs/guide/build.html)
+- [Руководство Vite по развёртыванию](https://dragomano.github.io/vite-docs/guide/static-deploy.html)
+- [Руководство Vue CLI по развёртыванию](https://cli.vuejs.org/guide/deployment.html)
 
-## Отслеживание ошибок времени выполнения {#tracking-runtime-errors}
+## Отслеживание ошибок среды выполнения {#tracking-runtime-errors}
 
 [Обработчик ошибок уровня приложения](/api/application#app-config-errorhandler) можно использовать для сообщения об ошибках службам отслеживания:
 
