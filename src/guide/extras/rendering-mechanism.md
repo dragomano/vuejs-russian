@@ -68,23 +68,23 @@ const vnode = {
 
 Ниже мы рассмотрим несколько основных оптимизаций, сделанных компилятором шаблонов Vue для повышения производительности Virtual DOM во время выполнения.
 
-### Статическое поднятие {#static-hoisting}
+### Кэширование статики {#cache-static}
 
 Довольно часто в шаблоне встречаются части, не содержащие каких-либо динамических привязок:
 
 ```vue-html{2-3}
 <div>
-  <div>foo</div>
-  <div>bar</div>
+  <div>foo</div> <!-- cached -->
+  <div>bar</div> <!-- cached -->
   <div>{{ dynamic }}</div>
 </div>
 ```
 
-[Инспектировать в проводнике шаблонов](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGhvaXN0ZWQgLS0+XG4gIDxkaXY+YmFyPC9kaXY+IDwhLS0gaG9pc3RlZCAtLT5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj5cbiIsIm9wdGlvbnMiOnsiaG9pc3RTdGF0aWMiOnRydWV9fQ==)
+[Инспектировать в проводнике шаблонов](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2PmZvbzwvZGl2PiA8IS0tIGNhY2hlZCAtLT5cbiAgPGRpdj5iYXI8L2Rpdj4gPCEtLSBjYWNoZWQgLS0+XG4gIDxkaXY+e3sgZHluYW1pYyB9fTwvZGl2PlxuPC9kaXY+XG4iLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)
 
-Элементы div `foo` и `bar` статичны — повторное создание узлов и их сравнение при каждой повторной отрисовке не требуется. Компилятор Vue автоматически извлекает вызовы создания узлов из рендер-функции и повторно использует одни и те же узлы при каждой отрисовке. Средство визуализации также может полностью пропустить их различие, когда заметит, что старый и новый узлы совпадают.
+Элементы div `foo` и `bar` статичны — повторное создание узлов и их сравнение при каждой повторной отрисовке не требуется. Рендерер создает эти узлы во время первоначального рендеринга, кэширует их и повторно использует те же узлы для каждой последующей повторной отрисовки. Средство визуализации также может полностью пропустить их различие, когда заметит, что старый и новый узлы совпадают.
 
-Кроме того, если имеется достаточное количество последовательных статических элементов, они будут сжаты в один «статический узел», который содержит простую строку HTML для всех этих узлов ([Пример](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Эти статические узлы монтируются путём непосредственной установки `innerHTML`. Они также кэшируют соответствующие узлы DOM при первоначальном монтировании — если один и тот же фрагмент контента повторно используется где-либо в приложении, новые узлы DOM создаются с использованием встроенного метода `cloneNode()`, что чрезвычайно эффективно.
+Кроме того, если имеется достаточное количество последовательных статических элементов, они будут сжаты в один «статический узел», который содержит простую строку HTML для всех этих узлов ([Пример](https://template-explorer.vuejs.org/#eyJzcmMiOiI8ZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImZvb1wiPmZvbzwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiZm9vXCI+Zm9vPC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJmb29cIj5mb288L2Rpdj5cbiAgPGRpdj57eyBkeW5hbWljIH19PC9kaXY+XG48L2Rpdj4iLCJzc3IiOmZhbHNlLCJvcHRpb25zIjp7ImhvaXN0U3RhdGljIjp0cnVlfX0=)). Эти статические узлы монтируются путём непосредственной установки `innerHTML`.
 
 ### Флаги исправлений {#patch-flags}
 
