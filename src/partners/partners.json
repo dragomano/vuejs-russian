@@ -22,7 +22,7 @@
     "location": ["Онтарио, Канада"],
     "website": {
       "text": "www.vehikl.com",
-      "url": "https://www.vehikl.com?utm_source=vue_partners_page"
+      "url": "https://www.vehikl.com"
     },
     "contact": "go+vuepartner@vehikl.com",
     "hiring": "https://vehikl.com/jobs/developer/",
@@ -78,10 +78,10 @@
     "region": ["Европа"],
     "website": {
       "text": "www.monterail.com",
-      "url": "https://www.monterail.com/services/vue/?utm_source=vuejs.org"
+      "url": "https://www.monterail.com/services/vue/"
     },
     "contact": "hello@monterail.com",
-    "hiring": "https://www.monterail.com/careers?utm_source=vuejs.org&utm_medium=referral&utm_campaign=partner-hiring-link",
+    "hiring": "https://www.monterail.com/careers",
     "platinum": true
   },
   {
@@ -172,10 +172,10 @@
     "proficiencies": ["Vue", "Laravel", "Nuxt", "Ionic", "Node.js"],
     "website": {
       "text": "webreinvent.com",
-      "url": "https://webreinvent.com/?utm_source=vuejs.org&utm_medium=website&utm_campaign=partners"
+      "url": "https://webreinvent.com/"
     },
     "contact": "we@webreinvent.com",
-    "hiring": "https://webreinvent.com/career?utm_source=vuejs.org&utm_medium=website&utm_campaign=partner-hiring-link"
+    "hiring": "https://webreinvent.com/career"
   },
   {
     "name": "HeroDevs",
@@ -228,10 +228,10 @@
     ],
     "website": {
       "text": "proxify.io",
-      "url": "https://proxify.io?utm_source=partnership&utm_medium=vuejs&utm_campaign=partners-proxify.html"
+      "url": "https://proxify.io"
     },
-    "contactPage": "https://proxify.io/hire-vuejs?utm_source=partnership&utm_medium=vuejs&utm_campaign=partners-proxify.html",
-    "hiring": "https://career.proxify.io/apply?utm_source=partnership&utm_medium=vuejs&utm_campaign=partners-proxify.html",
+    "contactPage": "https://proxify.io/hire-vuejs",
+    "hiring": "https://career.proxify.io/apply",
     "platinum": true
   }
 ]
