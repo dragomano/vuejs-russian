@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfigWithTheme } from 'vitepress'
+import { defineConfigWithTheme, type HeadConfig } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
@@ -602,6 +602,17 @@ const i18n: ThemeConfig['i18n'] = {
   ariaSidebarNav: 'Боковая панель навигации'
 }
 
+function inlineScript(file: string): HeadConfig {
+  return [
+    'script',
+    {},
+    fs.readFileSync(
+      path.resolve(__dirname, `./inlined-scripts/${file}`),
+      'utf-8'
+    )
+  ]
+}
+
 export default defineConfigWithTheme<ThemeConfig>({
   extends: baseConfig,
 
@@ -627,14 +638,7 @@ export default defineConfigWithTheme<ThemeConfig>({
         content: 'https://vuejs.org/images/logo.png'
       }
     ],
-    [
-      'script',
-      {},
-      fs.readFileSync(
-        path.resolve(__dirname, './inlined-scripts/restorePreference.js'),
-        'utf-8'
-      )
-    ],
+    inlineScript('restorePreference.js'),
     [
       'script',
       {},
