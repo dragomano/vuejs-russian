@@ -26,6 +26,7 @@ description: Список всех локализаций документаци
 - [العربية / Arabic](https://ar.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ar)]
 - [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[источник](https://github.com/icarusgk/vuejs-spanish-docs)]
 - [Deutsch / German](https://de.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-de)]
+- [Polski / Polish](https://pl.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-pl)]
 
 ## Начало нового перевода {#starting-a-new-translation}
 
