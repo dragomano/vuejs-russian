@@ -4,7 +4,7 @@
   <div class="container">
     <a
       class="security"
-      href="https://www.herodevs.com/support/nes-vue?utm_source=vuejs_org&utm_medium=sidebar_link&utm_campaign=vue2eol"
+      href="https://www.herodevs.com/support/nes-vue"
       target="_blank"
     >
       Обновления безопасности для&#160;Vue&#160;2
