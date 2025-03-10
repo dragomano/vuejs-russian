@@ -47,7 +47,7 @@ onMounted(async () => {
         <div class="vj-company-logo">
           <img
             :src="job.organization.avatar"
-            :alt="`Logo for ${job.organization.name}`"
+            :alt="`Лого для ${job.organization.name}`"
           />
         </div>
         <div
@@ -67,11 +67,11 @@ onMounted(async () => {
       </a>
     </div>
     <div class="vj-link">
-      Jobs by
+      Вакансии от
       <a
-        href="https://vuejobs.com/?utm_source=vuejs&utm_medium=referral&utm_campaign=jobs_widget&utm_content=bottom_link"
+        href="https://vuejobs.com/"
         target="_blank"
-        title="Hire Vue.js developers"
+        title="Нанять разработчиков Vue.js"
         >vuejobs.com</a
       >
     </div>
