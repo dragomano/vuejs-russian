@@ -50,46 +50,46 @@
   },
   {
     "name": "MDBootstrap",
-    "description": "Ознакомьтесь с темами UI Kits и плагинами, созданными нашими партнёрами из [MDBootstrap](https://mdbootstrap.com/?utm_ref_id=82665). Узнайте, как использовать Vue в профессиональных проектах наряду с такими технологиями, как Bootstrap. Шаблоны и готовые компоненты сделают вашу разработку быстрее и эффективнее.",
-    "seeMoreUrl": "https://mdbootstrap.com/docs/vue/?utm_ref_id=82665",
+    "description": "Ознакомьтесь с темами UI Kits и плагинами, созданными нашими партнёрами из [MDBootstrap](https://mdbootstrap.com/). Узнайте, как использовать Vue в профессиональных проектах наряду с такими технологиями, как Bootstrap. Шаблоны и готовые компоненты сделают вашу разработку быстрее и эффективнее.",
+    "seeMoreUrl": "https://mdbootstrap.com/docs/vue/",
     "products": [
       {
-        "url": "https://mdbootstrap.com/docs/vue/pro/?utm_ref_id=82665",
+        "url": "https://mdbootstrap.com/docs/vue/pro/",
         "name": "Vue Material Bootstrap Pro",
         "description": "Premium Vue.js UI Kit",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/ui-kit.jpg",
         "price": 199
       },
       {
-        "url": "https://mdbootstrap.com/docs/vue/?utm_ref_id=82665",
+        "url": "https://mdbootstrap.com/docs/vue/",
         "name": "Vue Material Bootstrap Kit",
         "description": "Free Vue.js UI Kit",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/ui-kit.jpg",
         "price": 0
       },
       {
-        "url": "https://mdbootstrap.com/docs/vue/templates/admin-dashboard/?utm_ref_id=82665",
+        "url": "https://mdbootstrap.com/docs/vue/templates/admin-dashboard/",
         "name": " Vue Admin Bootstrap Pro",
         "description": "Premium Vue.js Templates Pack",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/admin-pack.jpg",
         "price": 199
       },
       {
-        "url": "https://mdbootstrap.com/freebies/vue/admin-dashboard?utm_ref_id=82665",
+        "url": "https://mdbootstrap.com/freebies/vue/admin-dashboard",
         "name": "Vue Admin Bootstrap",
         "description": "Free Vue.js Templates Pack",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/admin-pack.jpg",
         "price": 0
       },
       {
-        "url": "https://mdbootstrap.com/docs/vue/plugins/calendar/?utm_ref_id=82665",
+        "url": "https://mdbootstrap.com/docs/vue/plugins/calendar/",
         "name": "Vue Calendar Bootstrap",
         "description": "Premium Vue.js Plugin",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/plugins/calendar.jpg",
         "price": 199
       },
       {
-        "url": "https://mdbootstrap.com/docs/vue/plugins/color-picker/?utm_ref_id=82665",
+        "url": "https://mdbootstrap.com/docs/vue/plugins/color-picker/",
         "name": "Vue Color Picker Bootstrap",
         "description": "Premium Vue.js Plugin",
         "image": "https://mdbootstrap.com/img/Marketing/mdb-press-pack/vuejs/plugins/color-picker.jpg",
