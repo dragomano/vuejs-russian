@@ -481,7 +481,7 @@ WAI-ARIA W3C предоставляет рекомендации по созда
 - Программы чтения с экрана
   - [NVDA](https://www.nvaccess.org/download/)
   - [VoiceOver](https://www.apple.com/accessibility/mac/vision/)
-  - [JAWS](https://www.freedomscientific.com/products/software/jaws/?utm_term=jaws%20screen%20reader&utm_source=adwords&utm_campaign=All+Products&utm_medium=ppc&hsa_tgt=kwd-394361346638&hsa_cam=200218713&hsa_ad=296201131673&hsa_kw=jaws%20screen%20reader&hsa_grp=52663682111&hsa_net=adwords&hsa_mt=e&hsa_src=g&hsa_acc=1684996396&hsa_ver=3&gclid=Cj0KCQjwnv71BRCOARIsAIkxW9HXKQ6kKNQD0q8a_1TXSJXnIuUyb65KJeTWmtS6BH96-5he9dsNq6oaAh6UEALw_wcB)
+  - [JAWS](https://www.freedomscientific.com/products/software/jaws/)
   - [ChromeVox](https://chrome.google.com/webstore/detail/chromevox-classic-extensi/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en)
 - Инструменты масштабирования
   - [MAGic](https://www.freedomscientific.com/products/software/magic/)
