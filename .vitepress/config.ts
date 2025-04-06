@@ -45,9 +45,9 @@ const nav: ThemeConfig['nav'] = [
           { text: 'Компоненты UI', link: 'https://ui-libs.vercel.app/' },
           {
             text: 'Сертификация',
-            link: 'https://certificates.dev/vuejs/?ref=vuejs-nav'
+            link: 'https://certificates.dev/vuejs/'
           },
-          { text: 'Работа', link: 'https://vuejobs.com/?ref=vuejs' },
+          { text: 'Работа', link: 'https://vuejobs.com/' },
           { text: 'Магазин футболок', link: 'https://vue.threadless.com/' }
         ]
       },
@@ -121,6 +121,10 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'Шаблоны проектирования и лучшие практики',
         link: 'https://vue-faq.org/ru/book/'
+      },
+      {
+        text: 'Бесплатный курс по Vue.js',
+        link: 'https://www.youtube.com/playlist?list=PLvTBThJr861yMBhpKafII3HZLAYujuNWw'
       }
     ]
   },
