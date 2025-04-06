@@ -20,13 +20,13 @@ description: Список всех локализаций документаци
 - [Русский / Russian](https://ru.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ru)]
 - [Čeština / Czech](https://cs.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-cs)]
 - [繁體中文 / Traditional Chinese](https://zh-hk.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-zh-hk)]
+- [Polski / Polish](https://pl.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-pl)]
 
 ## Переводы в процессе доработки {#work-in-progress-languages}
 
 - [العربية / Arabic](https://ar.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ar)]
 - [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[источник](https://github.com/icarusgk/vuejs-spanish-docs)]
 - [Deutsch / German](https://de.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-de)]
-- [Polski / Polish](https://pl.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-pl)]
 
 ## Начало нового перевода {#starting-a-new-translation}
 
