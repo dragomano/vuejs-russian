@@ -1,3 +1,7 @@
+<script setup>
+import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
+</script>
+
 # Инструменты {#tooling}
 
 ## Попробуйте онлайн {#try-it-online}
@@ -39,10 +43,10 @@ $ pnpm create vue@latest
   <VTCodeGroupTab label="yarn">
 
 ```sh
-# For Yarn Modern (v2+)
+# Для Yarn Modern (v2+)
 $ yarn create vue@latest
 
-# For Yarn ^v4.11
+# Для Yarn ^v4.11
 $ yarn dlx create-vue@latest
 ```
 
@@ -109,7 +113,7 @@ $ bun create vue@latest
 ![Скриншот инструментов разработчика](./images/devtools.png)
 
 - [Документация](https://devtools.vuejs.org/)
-- [Расширение Chrome](https://chromewebstore.google.com/detail/vuejs-devtools-beta/ljjemllljcmogpfapbkkighbhhppjdbg)
+- [Расширение Chrome](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
 - [Плагин Vite](https://devtools.vuejs.org/guide/vite-plugin)
 - [Автономное приложение Electron](https://devtools.vuejs.org/guide/standalone)
 
