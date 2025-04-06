@@ -116,7 +116,11 @@ import { h } from 'vue'
 export default {
   setup() {
     // используйте массив, чтобы вернуть несколько корневых узлов
-    return () => [h('div'), h('div'), h('div')]
+    return () => [
+      h('div'),
+      h('div'),
+      h('div')
+    ]
   }
 }
 ```
@@ -163,7 +167,11 @@ import { h } from 'vue'
 export default {
   render() {
     // используем массив, чтобы вернуть несколько корневых узлов
-    return [h('div'), h('div'), h('div')]
+    return [
+      h('div'),
+      h('div'),
+      h('div')
+    ]
   }
 }
 ```
@@ -233,11 +241,21 @@ const vnode = <div id={dynamicId}>привет, {userName}</div>
 
 ### Вывод типов в JSX {#jsx-type-inference}
 
-Подобно трансформации, JSX во Vue также нуждается в различных определениях типов. В настоящее время типы Vue автоматически регистрируют типы Vue JSX глобально. Это означает, что TSX будет работать из коробки, когда будет доступен тип Vue.
+Подобно преобразованию, JSX в Vue также требует различных определений типов.
 
-Глобальные типы JSX могут вызвать конфликт при использовании вместе с другими библиотеками, которым также требуется вывод типов JSX, в частности React. Начиная с версии 3.3, Vue поддерживает указание пространства имен JSX через опцию TypeScript [jsxImportSource](https://www.typescriptlang.org/tsconfig#jsxImportSource). Мы планируем убрать регистрацию глобального пространства имён JSX по умолчанию в версии 3.4.
+Начиная с Vue 3.4, Vue больше не регистрирует неявно глобальное пространство имен `JSX`. Чтобы указать TypeScript использовать определения типов JSX от Vue, убедитесь, что в вашем `tsconfig.json` указано следующее:
 
-Для пользователей TSX предлагается установить [jsxImportSource](https://www.typescriptlang.org/tsconfig#jsxImportSource) на `'vue'` в `tsconfig.json` после обновления до 3.3, или опционально в файле с `/* @jsxImportSource vue */`. Это позволит вам отказаться от нового поведения уже сейчас и плавно перейти на него, когда выйдет 3.4.
+```json
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue"
+    // ...
+  }
+}
+```
+
+Вы также можете включить это для каждого файла отдельно, добавив комментарий `/* @jsxImportSource vue */` в начало файла.
 
 Если есть код, который зависит от наличия глобального пространства имен `JSX`, вы можете сохранить точное поведение глобального пространства до версии 3.4, явно ссылаясь на `vue/jsx`, которое регистрирует глобальное пространство имен `JSX`.
 
@@ -567,10 +585,9 @@ JSX equivalent:
 // родительский компонент
 export default {
   setup() {
-    return () =>
-      h(MyComp, null, {
-        default: ({ text }) => h('p', text)
-      })
+    return () => h(MyComp, null, {
+      default: ({ text }) => h('p', text)
+    })
   }
 }
 ```
@@ -590,11 +607,9 @@ export default {
 JSX-эквивалент:
 
 ```jsx
-<MyComponent>
-  {{
-    default: ({ text }) => <p>{text}</p>
-  }}
-</MyComponent>
+<MyComponent>{{
+  default: ({ text }) => <p>{text}</p>
+}}</MyComponent>
 ```
 
 ### Встроенные компоненты {#built-in-components}
@@ -658,8 +673,7 @@ export default {
   render() {
     return h(SomeComponent, {
       modelValue: this.modelValue,
-      'onUpdate:modelValue': (value) =>
-        this.$emit('update:modelValue', value)
+      'onUpdate:modelValue': (value) => this.$emit('update:modelValue', value)
     })
   }
 }
@@ -676,12 +690,8 @@ import { h, withDirectives } from 'vue'
 
 // пользовательская директива
 const pin = {
-  mounted() {
-    /* ... */
-  },
-  updated() {
-    /* ... */
-  }
+  mounted() { /* ... */ },
+  updated() { /* ... */ }
 }
 
 // <div v-pin:top.animate="200"></div>
@@ -696,7 +706,25 @@ const vnode = withDirectives(h('div'), [
 
 <div class="composition-api">
 
-В Composition API ссылки на элементы шаблона создаются путём передачи в vnode самого `ref()` в качестве параметра:
+С использованием Composition API, при применении [`useTemplateRef()`](/api/composition-api-helpers#usetemplateref) <sup class="vt-badge" data-text="3.5+" /> ссылки на шаблон создаются путём передачи строкового значения как свойства в vnode:
+
+```js
+import { h, useTemplateRef } from 'vue'
+
+export default {
+  setup() {
+    const divEl = useTemplateRef('my-div')
+
+    // <div ref="my-div">
+    return () => h('div', { ref: 'my-div' })
+  }
+}
+```
+
+<details>
+<summary>Использование до 3.5</summary>
+
+В версиях до 3.5, где функция `useTemplateRef()` ещё не была введена, ссылки на шаблон создаются путём передачи самого `ref()` как свойства в vnode:
 
 ```js
 import { h, ref } from 'vue'
@@ -710,22 +738,7 @@ export default {
   }
 }
 ```
-
-или (начиная с версии >= 3.5)
-
-```js
-import { h, useTemplateRef } from 'vue'
-
-export default {
-  setup() {
-    const divEl = useTemplateRef('my-div')
-
-    // <div ref="divEl">
-    return () => h('div', { ref: 'my-div' })
-  }
-}
-```
-
+</details>
 </div>
 <div class="options-api">
 
