@@ -22,7 +22,7 @@
 
   Затем параметры будут определены как реактивные свойства, и будет задано состояние, такое как `data()` или `computed`.
 
-  Обратите внимание, что хук `setup()` API Composition вызывается раньше всех хуков API Options, даже `beforeCreate()`.
+  Обратите внимание, что хук `setup()` API Composition вызывается раньше всех хуков Options API, даже `beforeCreate()`.
 
 ## created {#created}
 
