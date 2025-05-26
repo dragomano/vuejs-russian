@@ -146,7 +146,7 @@ export default defineComponent({
 })
 ```
 
-Свойство `props` чаще всего используется с API Options, поэтому более подробные примеры вы найдете в руководстве [TypeScript с Options API](/guide/typescript/options-api#typing-component-props). Приёмы, показанные в этих примерах, также применимы к объявлениям во время выполнения с помощью `defineProps()`.
+Свойство `props` чаще всего используется с Options API, поэтому более подробные примеры вы найдете в руководстве [TypeScript с Options API](/guide/typescript/options-api#typing-component-props). Приёмы, показанные в этих примерах, также применимы к объявлениям во время выполнения с помощью `defineProps()`.
 
 ## Типизация событий компонента {#typing-component-emits}
 
