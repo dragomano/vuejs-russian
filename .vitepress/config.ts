@@ -501,10 +501,6 @@ export const sidebar: ThemeConfig['sidebar'] = {
           text: 'Список с переходами',
           link: '/examples/#list-transition'
         },
-        {
-          text: 'Список дел',
-          link: '/examples/#todomvc'
-        }
       ]
     },
     {
