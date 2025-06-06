@@ -9,6 +9,7 @@ import {
   filterHeadersByPreference
 } from './components/preferences'
 import VueSchoolLink from './components/VueSchoolLink.vue'
+import ScrimbaLink from './components/ScrimbaLink.vue'
 
 export default Object.assign({}, VPTheme, {
   Layout: () => {
@@ -23,5 +24,6 @@ export default Object.assign({}, VPTheme, {
     app.provide('prefer-sfc', preferSFC)
     app.provide('filter-headers', filterHeadersByPreference)
     app.component('VueSchoolLink', VueSchoolLink)
+    app.component('ScrimbaLink', ScrimbaLink)
   }
 })

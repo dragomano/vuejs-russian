@@ -1,5 +1,9 @@
 # TypeScript с Composition API {#typescript-with-composition-api}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-ts-composition-api" title="Бесплатный урок по TypeScript с Composition API в Vue.js" type="scrimba">
+  Посмотрите интерактивный видео-урок на Scrimba
+</ScrimbaLink>
+
 > Предполагается, что вы уже прочитали главу [Использование Vue с TypeScript](./overview).
 
 ## Типизация пропсов компонента {#typing-component-props}

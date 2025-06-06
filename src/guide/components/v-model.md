@@ -1,5 +1,9 @@
 # Директива `v-model` {#component-v-model}
 
+<ScrimbaLink href="https://scrimba.com/links/vue-component-v-model" title="Бесплатный урок по компоненту v-model в Vue.js" type="scrimba">
+  Посмотрите интерактивный видео-урок на Scrimba
+</ScrimbaLink>
+
 ## Пример использования {#basic-usage}
 
 `v-model` можно использовать в компоненте для реализации двусторонней привязки.
