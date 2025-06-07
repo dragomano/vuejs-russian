@@ -60,7 +60,7 @@ jobs:
 
       - name: Build with VitePress
         run: |
-          pnpm run docs:build
+          pnpm run build
           touch .vitepress/dist/.nojekyll
 
       - name: Upload artifact
