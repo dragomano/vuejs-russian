@@ -30,24 +30,17 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 Убедитесь, что у вас установлена актуальная версия [Node.js](https://nodejs.org/), а ваш текущий рабочий каталог — тот, в котором вы собираетесь создать проект. Выполните следующую команду в командной строке (без знака `$`):
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-```sh
+```sh [npm]
 $ npm create vue@latest
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
-
-```sh
+```sh [pnpm]
 $ pnpm create vue@latest
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
-
-```sh
+```sh [yarn]
 # Для Yarn (v1+)
 $ yarn create vue
 
@@ -58,15 +51,10 @@ $ yarn create vue@latest
 $ yarn dlx create-vue@latest
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-```sh
+```sh [bun]
 $ bun create vue@latest
 ```
-
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue), официальный инструмент для создания заготовок проектов Vue. Вам будет предложено выбрать несколько дополнительных функций, таких как TypeScript и поддержка тестирования:
 
@@ -86,44 +74,34 @@ $ bun create vue@latest
 
 Если вы не уверены в выборе, просто выберите `No`, нажав Enter. После создания проекта следуйте инструкциям по установке зависимостей и запуску dev-сервера:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-```sh-vue
+```sh-vue [npm]
 $ cd {{'<your-project-name>'}}
 $ npm install
 $ npm run dev
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
-
-```sh-vue
+```sh-vue [pnpm]
 $ cd {{'<your-project-name>'}}
 $ pnpm install
 $ pnpm run dev
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
-
-```sh-vue
+```sh-vue [yarn]
 $ cd {{'<your-project-name>'}}
 $ yarn
 $ yarn dev
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-```sh-vue
+```sh-vue [bun]
 $ cd {{'<your-project-name>'}}
 $ bun install
 $ bun run dev
 ```
 
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
+
 
 Теперь у вас должен работать ваш первый проект Vue! Обратите внимание, что примеры компонентов в сгенерированном проекте написаны с использованием [Composition API](/guide/introduction#composition-api) и `<script setup>`, а не [Options API](/guide/introduction#options-api). Вот несколько дополнительных советов:
 
@@ -134,36 +112,26 @@ $ bun run dev
 
 Когда вы будете готовы отправить свое приложение в продакшен, выполните следующие действия:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-```sh
+```sh [npm]
 $ npm run build
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
-
-```sh
+```sh [pnpm]
 $ pnpm run build
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
-
-```sh
+```sh [yarn]
 $ yarn build
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-```sh
+```sh [bun]
 $ bun run build
 ```
 
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
+
 
 Это создаст готовую к работе сборку вашего приложения в директории проекта `./dist`. Ознакомьтесь с [Руководством по развёртыванию в продакшене](/guide/best-practices/production-deployment), чтобы узнать больше о доставке приложения в продакшен.
 
@@ -383,8 +351,7 @@ import { createApp } from 'vue'
 
 По мере углубления в руководство нам может понадобиться разделить наш код на отдельные файлы JavaScript, чтобы ими было легче управлять. Например:
 
-```html
-<!-- index.html -->
+```html [index.html]
 <div id="app"></div>
 
 <script type="module">
@@ -397,8 +364,7 @@ import { createApp } from 'vue'
 
 <div class="options-api">
 
-```js
-// my-component.js
+```js [my-component.js]
 export default {
   data() {
     return { count: 0 }
@@ -410,8 +376,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```js
-// my-component.js
+``` [my-component.js]
 import { ref } from 'vue'
 export default {
   setup() {

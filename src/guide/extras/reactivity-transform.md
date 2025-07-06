@@ -296,8 +296,7 @@ Vue предоставляет типизацию для этих макросо
 - Применяется к файлам SFC и js(x)/ts(x). Перед применением преобразования для файлов выполняется быстрая проверка использования, поэтому для файлов, не использующих макросы, не должна снижаться производительность.
   — Обратите внимание, что `reactivityTransform` теперь является опцией корневого уровня плагина, а не вложенной как `script.refSugar`, поскольку она влияет не только на SFC.
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   plugins: [
     vue({
@@ -312,8 +311,7 @@ export default {
 - В настоящее время влияет только на SFC.
 - Требуется `vue-loader@>=17.0.0`
 
-```js
-// vue.config.js
+```js [vue.config.]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -334,8 +332,7 @@ module.exports = {
 - В настоящее время влияет только на SFC.
 - Требуется `vue-loader@>=17.0.0`
 
-```js
-// webpack.config.js
+```js [webpack.config.js]
 module.exports = {
   module: {
     rules: [

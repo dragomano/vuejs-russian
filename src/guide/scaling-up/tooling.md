@@ -25,24 +25,17 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 
 Чтобы начать работу с Vite + Vue, просто запустите команду:
 
-<VTCodeGroup>
-  <VTCodeGroupTab label="npm">
+::: code-group
 
-```sh
+```sh [npm]
 $ npm create vue@latest
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="pnpm">
-
-```sh
+```sh [pnpm]
 $ pnpm create vue@latest
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="yarn">
-
-```sh
+```sh [yarn]
 # Для Yarn Modern (v2+)
 $ yarn create vue@latest
 
@@ -50,15 +43,11 @@ $ yarn create vue@latest
 $ yarn dlx create-vue@latest
 ```
 
-  </VTCodeGroupTab>
-  <VTCodeGroupTab label="bun">
-
-```sh
+```sh [bun]
 $ bun create vue@latest
 ```
 
-  </VTCodeGroupTab>
-</VTCodeGroup>
+:::
 
 Эта команда установит и выполнит [create-vue](https://github.com/vuejs/create-vue), официальный инструмент для создания заготовок для проектов Vue.
 

@@ -32,8 +32,7 @@ import { ... } from 'vue/dist/vue.esm-bundler.js'
 
 внутри ваших скриптов, либо настроили ваш инструмент сборки на соответствующее разрешение `vue`. Образец конфигурации для [Vite](https://dragomano.github.io/vite-docs/):
 
-```js
-// vite.config.js
+```js [vite.config.js]
 export default {
   resolve: {
     alias: {

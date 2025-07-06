@@ -172,8 +172,7 @@ export function createApp() {
 
 Наш клиент импортирует универсальный код, создает приложение и выполняет монтаж:
 
-```js
-// client.js
+```js [client.js]
 import { createApp } from './app.js'
 
 createApp().mount('#app')
@@ -181,8 +180,8 @@ createApp().mount('#app')
 
 А сервер использует ту же логику создания приложения в обработчике запроса:
 
-```js{2,5}
-// server.js (неактуальный код опущен)
+```js{2,5} [server.js]
+// (неактуальный код опущен)
 import { createApp } from './app.js'
 
 server.get('/', (req, res) => {
