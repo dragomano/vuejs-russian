@@ -296,7 +296,7 @@ provide('read-only-count', readonly(count))
 
 Чтобы инъекции были реактивно связаны с провайдером, нам нужно предоставить вычисляемое свойство с помощью функции [computed()](/api/reactivity-core#computed):
 
-```js{10}
+```js{12}
 import { computed } from 'vue'
 
 export default {
@@ -326,8 +326,7 @@ export default {
 
 Рекомендуется экспортировать символы в отдельный файл:
 
-```js
-// keys.js
+```js [keys.js]
 export const myInjectionKey = Symbol()
 ```
 

@@ -43,8 +43,7 @@ export default {
 
 #### Пример конфигурации Vue CLI {#example-vue-cli-config}
 
-```js
-// vue.config.js
+```js [vue.config.js]
 module.exports = {
   chainWebpack: (config) => {
     config.module
@@ -218,8 +217,7 @@ customElements.define('my-example', ExampleElement)
 
 Рекомендуется экспортировать отдельные конструкторы элементов, чтобы ваши пользователи могли импортировать их по требованию и регистрировать их с нужными именами тегов. Вы также можете экспортировать удобную функцию для автоматической регистрации всех элементов. Вот пример точки входа в библиотеку пользовательских элементов Vue:
 
-```js
-// elements.js
+```js [elements.js]
 
 import { defineCustomElement } from 'vue'
 import Foo from './MyFoo.ce.vue'
@@ -311,9 +309,7 @@ declare module 'vue' {
 
 Предположим, у нас есть пользовательский элемент с некоторыми определёнными JS-свойствами и событиями, и он поставляется в библиотеке под названием `some-lib`:
 
-```ts
-// file: some-lib/src/SomeElement.ts
-
+```ts [some-lib/src/SomeElement.ts]
 // Определяем класс с типизированными JS-свойствами.
 export class SomeElement extends HTMLElement {
   foo: number = 123
@@ -351,9 +347,7 @@ export class AppleFellEvent extends Event {
 
 Давайте создадим вспомогательный тип для удобной регистрации определений типов пользовательских элементов в Vue:
 
-```ts
-// file: some-lib/src/DefineCustomElement.ts
-
+```ts [some-lib/src/DefineCustomElement.ts]
 // Мы можем повторно использовать этот вспомогательный тип для каждого элемента, который нам нужно определить.
 type DefineCustomElement<
   ElementType extends HTMLElement,
@@ -394,9 +388,7 @@ type VueEmit<T extends EventMap> = EmitFn<{
 
 Используя вспомогательный тип, мы теперь можем выбрать JS-свойства, которые должны быть экспонированы для проверки типов в шаблонах Vue:
 
-```ts
-// file: some-lib/src/SomeElement.vue.ts
-
+```ts [some-lib/src/SomeElement.vue.ts]
 import {
   SomeElement,
   SomeElementAttributes,
@@ -419,7 +411,7 @@ declare module 'vue' {
 
 Предположим, что `some-lib` компилирует свои исходные файлы TypeScript в папку `dist/`. Пользователь `some-lib` может затем импортировать `SomeElement` и использовать его в Vue SFC следующим образом:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // Это создаст и зарегистрирует элемент в браузере.
 import 'some-lib/dist/SomeElement.js'
@@ -465,7 +457,7 @@ onMounted(() => {
 
 Если у элемента нет определений типов, типы свойств и событий можно указать вручную:
 
-```vue
+```vue [SomeElementImpl.vue]
 <script setup lang="ts">
 // Предположим, что `some-lib` — это простой JS без определений типов,
 // а TypeScript не может вывести типы:

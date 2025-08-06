@@ -68,21 +68,32 @@ const props = defineProps<Props>()
 
 В версии 3.2 и ниже параметр общего типа для `defineProps()` был ограничен литералом типа или ссылкой на локальный интерфейс.
 
-Это ограничение было устранено в версии 3.3. Последняя версия Vue поддерживает ссылки на импортируемые и ограниченный набор сложных типов в позиции параметра типа. Однако, поскольку преобразование типов к времени выполнения всё ещё основано на AST, некоторые сложные типы, требующие фактического анализа типов, например условные типы, не поддерживаются. Вы можете использовать условные типы для типа отдельного параметра, но не всего объекта параметров.
+Это ограничение устранено в версии 3.3. Vue теперь поддерживает ссылки на импортируемые модули и некоторые сложные типы в позиции параметра типа. Однако, поскольку преобразование типов во время выполнения основано на AST, определённые сложные типы, такие как условные, не поддерживаются, так как требуют полноценного анализа. Условные типы можно использовать для отдельного параметра, но не для всего объекта параметров.
 
 ### Значения по умолчанию для пропсов {#props-default-values}
 
-При использовании объявления на основе типов мы теряем возможность объявлять значения по умолчанию для пропсов. Это можно решить с помощью макроса компилятора `withDefaults`:
+При использовании **типизированного объявления пропсов** теряется возможность указания значений по умолчанию. Эту проблему можно решить с помощью [деструктуризации реактивных пропсов](/guide/components/props#reactive-props-destructure) <sup class="vt-badge" data-text="3.5+" />
 
 ```ts
-export interface Props {
+interface Props {
+  msg?: string
+  labels?: string[]
+}
+
+const { msg = 'привет', labels = ['один', 'два'] } = defineProps<Props>()
+```
+
+В версиях 3.4 и ниже деструктуризация реактивных пропсов не включена по умолчанию. В качестве альтернативы можно использовать макрос компилятора `withDefaults`:
+
+```ts
+interface Props {
   msg?: string
   labels?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
   msg: 'привет',
-  labels: () => ['раз', 'два']
+  labels: () => ['один', 'два']
 })
 ```
 
@@ -407,8 +418,7 @@ onMounted(() => {
 
 Чтобы получить тип экземпляра импортируемого компонента, нам нужно сначала получить его тип через typeof, а затем использовать встроенную в TypeScript утилиту InstanceType для извлечения типа экземпляра:
 
-```vue{5}
-<!-- App.vue -->
+```vue{6,7} [App.vue]
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import Foo from './Foo.vue'
@@ -436,8 +446,7 @@ const child = useTemplateRef<ComponentPublicInstance>('child')
 
 Бывают случаи, когда компонент, на который ссылаются, является [универсальным](/guide/typescript/overview.html#generic-components). Например, `MyGenericModal`:
 
-```vue
-<!-- MyGenericModal.vue -->
+```vue [MyGenericModal.vue]
 <script setup lang="ts" generic="ContentType extends string | number">
 import { ref } from 'vue'
 
@@ -453,8 +462,7 @@ defineExpose({
 
 На такие компоненты нужно ссылаться с помощью `ComponentExposed` из библиотеки [`vue-component-type-helpers`](https://www.npmjs.com/package/vue-component-type-helpers), так как `InstanceType` не будет работать.
 
-```vue
-<!-- App.vue -->
+```vue [App.vue]
 <script setup lang="ts">
 import { useTemplateRef } from 'vue'
 import MyGenericModal from './MyGenericModal.vue'

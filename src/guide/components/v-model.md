@@ -12,8 +12,7 @@
 
 Начиная с Vue 3.4, для достижения этой цели рекомендуется использовать макрос [`defineModel()`](/api/sfc-script-setup#definemodel):
 
-```vue
-<!-- Child.vue -->
+```vue [Child.vue]
 <script setup>
 const model = defineModel()
 
@@ -30,8 +29,7 @@ function update() {
 
 Родитель может связать значение с `v-model`:
 
-```vue-html
-<!-- Parent.vue -->
+```vue-html [Parent.vue]
 <Child v-model="countModel" />
 ```
 
@@ -63,8 +61,7 @@ const model = defineModel()
 
 Вот как можно реализовать тот же дочерний компонент, показанный выше, до версии 3.4:
 
-```vue
-<!-- Child.vue -->
+```vue [Child.vue]
 <script setup>
 const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
@@ -80,9 +77,11 @@ const emit = defineEmits(['update:modelValue'])
 
 Тогда `v-model="foo"` в родительском компоненте будет скомпилировано в:
 
-```vue-html
-<!-- Parent.vue -->
-<Child :modelValue="foo" @update:modelValue="($event) => (foo = $event)" />
+```vue-html [Parent.vue]
+<Child
+  :modelValue="foo"
+  @update:modelValue="($event) => (foo = $event)"
+/>
 ```
 
 Как видите, он более многословен. Однако полезно понимать, что происходит под капотом.
@@ -100,20 +99,20 @@ const model = defineModel({ default: 0 })
 :::warning Предупреждение
 Если у вас есть значение `default` для свойства `defineModel` и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В примере ниже родительский `myRef` не определен, а дочерний `model` равен 1:
 
-**Дочерний компонент:**
-
-```js
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
+</script>
 ```
 
-**Родительский компонент:**
-
-```js
+```vue [Parent.vue]
+<script setup>
 const myRef = ref()
-```
+</script>
 
-```html
-<Child v-model="myRef"></Child>
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 
 :::
@@ -153,8 +152,7 @@ const myRef = ref()
 
 Вот это в действии:
 
-```vue
-<!-- CustomInput.vue -->
+```vue [CustomInput.vue]
 <script>
 export default {
   props: ['modelValue'],
@@ -180,8 +178,7 @@ export default {
 
 Другой способ реализации `v-model` в этом компоненте — использовать записываемое свойство `computed` с геттером и сеттером. Метод `get` должен возвращать свойство `modelValue`, а метод `set` должен вызывать соответствующее событие:
 
-```vue
-<!-- CustomInput.vue -->
+```vue [CustomInput.vue]
 <script>
 export default {
   props: ['modelValue'],
@@ -218,8 +215,7 @@ export default {
 
 В дочернем компоненте мы можем поддержать соответствующий аргумент, передав строку в `defineModel()` в качестве его первого аргумента:
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script setup>
 const title = defineModel('title')
 </script>
@@ -240,8 +236,7 @@ const title = defineModel('title', { required: true })
 <details>
 <summary>Использование до 3.4</summary>
 
-```vue
-<!-- MyComponent.vue -->
+```vue [MyComponent.vue]
 <script setup>
 defineProps({
   title: {
@@ -409,7 +404,7 @@ console.log(modifiers) // { capitalize: true }
 
 Чтобы условно настроить чтение/запись значения на основе модификаторов, мы можем передать `get` и `set` опции в `defineModel()`. Эти две опции получают значение при get/set модели ref и должны возвращать преобразованное значение. Вот как мы можем использовать опцию `set` для реализации модификатора `capitalize`:
 
-```vue{6-8}
+```vue{4-6}
 <script setup>
 const [model, modifiers] = defineModel({
   set(value) {
@@ -574,10 +569,10 @@ console.log(lastNameModifiers) // { uppercase: true }
 ```vue{5,6,10,11}
 <script setup>
 const props = defineProps({
-firstName: String,
-lastName: String,
-firstNameModifiers: { default: () => ({}) },
-lastNameModifiers: { default: () => ({}) }
+  firstName: String,
+  lastName: String,
+  firstNameModifiers: { default: () => ({}) },
+  lastNameModifiers: { default: () => ({}) }
 })
 defineEmits(['update:firstName', 'update:lastName'])
 

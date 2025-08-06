@@ -466,19 +466,18 @@ export default {
 
 Переходы можно использовать повторно с помощью системы компонентов Vue. Чтобы создать многократно используемый переход, мы можем создать компонент, который обернет компонент `<Transition>` и передаст содержимое слота:
 
-```vue{5}
-<!-- MyTransition.vue -->
+```vue{6} [MyTransition.vue]
 <script>
-// JavaScript подключает логику...
+// размещаем логику с помощью JavaScript...
 </script>
 
 <template>
-  <!-- обернуть встроенный компонент Transition -->
+  <!-- оборачиваем встроенный компонент Transition -->
   <Transition
     name="my-transition"
     @enter="onEnter"
     @leave="onLeave">
-    <slot></slot> <!-- передавать содержимое слота -->
+    <slot></slot> <!-- передаём содержимое слота -->
   </Transition>
 </template>
 

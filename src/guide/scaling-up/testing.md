@@ -74,7 +74,7 @@ export function increment(current, max = 10) {
 
 Если какое-либо из этих утверждений не сработает, ясно, что проблема кроется в функции `increment`.
 
-```js{4-16} [helpers.spec.js]
+```js{3-15} [helpers.spec.js]
 import { increment } from './helpers'
 
 describe('increment', () => {
@@ -431,7 +431,7 @@ export function withSetup(composable) {
 }
 ```
 
-```js
+```js [foo.test.js]
 import { withSetup } from './test-utils'
 import { useFoo } from './foo'
 

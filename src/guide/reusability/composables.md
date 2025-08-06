@@ -21,7 +21,7 @@ const { x, y } = useMouse()
 
 Если бы мы реализовали функцию отслеживания мыши с помощью Composition API непосредственно внутри компонента, это выглядело бы следующим образом:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
@@ -42,8 +42,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 
 Но что, если мы хотим повторно использовать одну и ту же логику в нескольких компонентах? Мы можем извлечь логику во внешний файл в виде композабла:
 
-```js
-// mouse.js
+```js [mouse.js]
 import { ref, onMounted, onUnmounted } from 'vue'
 
 // По соглашению, имена композаблов начинаются с "use"
@@ -70,7 +69,7 @@ export function useMouse() {
 
 Вот как его можно использовать в компонентах:
 
-```vue
+```vue [MouseComponent.vue]
 <script setup>
 import { useMouse } from './mouse.js'
 
@@ -92,8 +91,7 @@ const { x, y } = useMouse()
 
 Например, мы можем выделить логику добавления и удаления слушателя событий DOM в отдельный компонент:
 
-```js
-// event.js
+```js [event.js]
 import { onMounted, onUnmounted } from 'vue'
 
 export function useEventListener(target, event, callback) {
@@ -106,8 +104,7 @@ export function useEventListener(target, event, callback) {
 
 И теперь наша функция `useMouse()` может быть упрощена до:
 
-```js{3,9-12}
-// mouse.js
+```js{2,8-11} [mouse.js]
 import { ref } from 'vue'
 import { useEventListener } from './event'
 
@@ -157,8 +154,7 @@ fetch('...')
 
 Было бы утомительно повторять этот шаблон в каждом компоненте, которому нужно получить данные. Давайте извлечем его в виде композабла:
 
-```js
-// fetch.js
+```js [fetch.js]
 import { ref } from 'vue'
 
 export function useFetch(url) {
@@ -208,8 +204,7 @@ const { data, error } = useFetch(() => `/posts/${props.id}`)
 
 Мы можем отрефакторить нашу существующую реализацию с помощью API [`watchEffect()`](/api/reactivity-core.html#watcheffect) и [`toValue()`](/api/reactivity-utilities.html#tovalue):
 
-```js{8,13}
-// fetch.js
+```js{7,12} [fetch.js]
 import { ref, watchEffect, toValue } from 'vue'
 
 export function useFetch(url) {

@@ -188,8 +188,7 @@ import ButtonCounter from './ButtonCounter.vue'
 
 <div class="options-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script>
 export default {
   props: ['title']
@@ -206,8 +205,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue
-<!-- BlogPost.vue -->
+```vue [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 </script>
@@ -352,8 +350,8 @@ const postFontSize = ref(1)
 
 Теперь давайте добавим кнопку в шаблон компонента `<BlogPost>`.:
 
-```vue{5}
-<!-- BlogPost.vue, пропускаем <script> -->
+```vue{5} [BlogPost.vue]
+<!-- пропускаем <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -373,8 +371,8 @@ const postFontSize = ref(1)
 
 Затем дочерний компонент может вызвать событие на себя, вызвав встроенный метод [**`$emit`**](/api/component-instance#emit), передав имя события:
 
-```vue{5}
-<!-- BlogPost.vue, пропускаем <script> -->
+```vue{5} [BlogPost.vue]
+<!-- пропускаем <script> -->
 <template>
   <div class="blog-post">
     <h4>{{ title }}</h4>
@@ -400,8 +398,7 @@ const postFontSize = ref(1)
 
 <div class="options-api">
 
-```vue{5}
-<!-- BlogPost.vue -->
+```vue{4} [BlogPost.vue]
 <script>
 export default {
   props: ['title'],
@@ -413,8 +410,7 @@ export default {
 </div>
 <div class="composition-api">
 
-```vue{4}
-<!-- BlogPost.vue -->
+```vue{3} [BlogPost.vue]
 <script setup>
 defineProps(['title'])
 defineEmits(['enlarge-text'])
@@ -472,8 +468,7 @@ export default {
 
 Этого можно добиться с помощью пользовательского элемента Vue `<slot>`:
 
-```vue{5}
-<!-- AlertBox.vue -->
+```vue{4} [AlertBox.vue]
 <template>
   <div class="alert-box">
     <strong>Это ошибка для демонстрационных целей</strong>

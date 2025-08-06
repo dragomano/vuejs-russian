@@ -298,16 +298,20 @@ function inc() {
 :::warning Предупреждение
 Если у вас есть значение `default` для свойства `defineModel` и вы не предоставляете никакого значения для этого свойства из родительского компонента, это может привести к рассинхронизации между родительским и дочерним компонентами. В примере ниже родительский `myRef` не определён, а дочерний `model` равен 1:
 
-```js
-// дочерний компонент:
+```vue [Child.vue]
+<script setup>
 const model = defineModel({ default: 1 })
-
-// родительский компонент:
-const myRef = ref()
+</script>
 ```
 
-```html
-<Child v-model="myRef"></Child>
+```vue [Parent.vue]
+<script setup>
+const myRef = ref()
+</script>
+
+<template>
+  <Child v-model="myRef"></Child>
+</template>
 ```
 
 :::
@@ -417,7 +421,7 @@ const slots = defineSlots<{
 
 ## `useSlots()` и `useAttrs()` {#useslots-useattrs}
 
-Использование `slots` и `attrs` внутри `<script setup>` должно быть относительно редким, так как вы можете получить к ним прямой доступ как `$slots` и `$attrs` в шаблоне. В редких случаях, когда они вам понадобятся, используйте хелперы `useSlots` и `useAttrs` соответственно:
+Использование `slots` и `attrs` внутри `<script setup>` должно быть относительно редким, так как вы можете получить к ним прямой доступ через переменные `$slots` и `$attrs` в шаблоне. В редких случаях, когда они вам понадобятся, используйте хелперы `useSlots` и `useAttrs` соответственно:
 
 ```vue
 <script setup>
@@ -428,7 +432,7 @@ const attrs = useAttrs()
 </script>
 ```
 
-`useSlots` и `useAttrs` — это фактические функции времени выполнения, которые возвращают эквивалент `setupContext.slots` и `setupContext.attrs`. Их можно использовать и в обычных функциях API.
+`useSlots` и `useAttrs` — это фактические рантайм-функции, которые возвращают эквивалент `setupContext.slots` и `setupContext.attrs`. Их можно использовать и в обычных функциях API.
 
 ## Использование вместе с обычным `<script>` {#usage-alongside-normal-script}
 
