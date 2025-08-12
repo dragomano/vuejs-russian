@@ -118,9 +118,9 @@ const AsyncComp = defineAsyncComponent({
 
 - Дизайн намеренно низкоуровневый для обеспечения гибкости. Синтаксический сахар компилятора потенциально может быть построен на основе этого в будущем либо в ядре, либо в решениях более высокого уровня (например, в Nuxt).
 
-### Гидратация на холостом ходу {#hydrate-on-idle}
+### Гидратация при простое {#hydrate-on-idle}
 
-Запуск `hydrate` через `requestIdleCallback`:
+Запускается через `requestIdleCallback`:
 
 ```js
 import { defineAsyncComponent, hydrateOnIdle } from 'vue'
@@ -134,7 +134,7 @@ const AsyncComp = defineAsyncComponent({
 
 ### Гидратация на видимом элементе {#hydrate-on-visible}
 
-Запуск `hydrate`, когда элемент(ы) становятся видимыми через `IntersectionObserver`.
+Запускается, когда элементы становятся видимыми через `IntersectionObserver`:
 
 ```js
 import { defineAsyncComponent, hydrateOnVisible } from 'vue'
@@ -145,7 +145,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-В качестве опции можно передать значение объекта options для наблюдателя:
+В качестве опции можно передать объект с настройками для наблюдателя:
 
 ```js
 hydrateOnVisible({ rootMargin: '100px' })
@@ -153,7 +153,7 @@ hydrateOnVisible({ rootMargin: '100px' })
 
 ### Гидратация при медиазапросе {#hydrate-on-media-query}
 
-Запуск `hydrate` при совпадении указанного медиазапроса.
+Запускается при совпадении указанного медиазапроса:
 
 ```js
 import { defineAsyncComponent, hydrateOnMediaQuery } from 'vue'
@@ -166,7 +166,7 @@ const AsyncComp = defineAsyncComponent({
 
 ### Гидратация при взаимодействии {#hydrate-on-interaction}
 
-Запуск `hydrate` при наступлении указанного события (событий) на элементе (элементах) компонента. Событие, вызвавшее гидратацию, также будет воспроизведено после завершения гидратации.
+Запускается при наступлении указанных событий на элементах компонента. Событие, вызвавшее гидратацию, также будет воспроизведено после завершения гидратации:
 
 ```js
 import { defineAsyncComponent, hydrateOnInteraction } from 'vue'
@@ -177,7 +177,7 @@ const AsyncComp = defineAsyncComponent({
 })
 ```
 
-Также может быть списком нескольких типов событий:
+Список событий можно передать в виде массива:
 
 ```js
 hydrateOnInteraction(['wheel', 'mouseover'])
