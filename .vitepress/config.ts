@@ -640,6 +640,12 @@ export default defineConfigWithTheme<ThemeConfig>({
     ],
     inlineScript('restorePreference.js'),
     [
+      'script', {
+        id: 'cookieyes',
+        src: 'https://cdn-cookieyes.com/client_data/66fe79888cac96e495395167/script.js'
+      }
+    ],
+    [
       'script',
       {},
       `(function(c,l,a,r,i,t,y){
