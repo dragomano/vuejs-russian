@@ -11,10 +11,11 @@ const show = ref(false)
 const { page } = useData()
 
 type Source = 'url-query' | 'url-header' | 'default'
-let source: Source | false =
+const source = ref<Source | false>(
   inBrowser && localStorage.getItem(preferCompositionKey) === null
     ? 'default'
     : false
+)
 
 if (inBrowser) {
   // 1. check if URL contains explicit preference
@@ -59,11 +60,11 @@ function findHeader(
 
 function setPreference(capi: boolean, s: Source) {
   if (capi && !preferComposition.value) {
-    source = s
+    source.value = s
     preferComposition.value = true
     document.documentElement.classList.add('prefer-composition')
   } else if (!capi && preferComposition.value) {
-    source = s
+    source.value = s
     preferComposition.value = false
     document.documentElement.classList.remove('prefer-composition')
   }
@@ -72,7 +73,7 @@ function setPreference(capi: boolean, s: Source) {
 onMounted(() => {
   if (
     !page.value.relativePath.startsWith('tutorial/') &&
-    source !== false
+    source.value !== false
   ) {
     show.value = true
     // dismiss if user switches with the tooltip open
@@ -86,12 +87,16 @@ onMounted(() => {
 function dismiss() {
   show.value = false
   // save if default
-  if (source === 'default') {
+  if (source.value === 'default') {
     localStorage.setItem(
       preferCompositionKey,
       String(preferComposition.value)
     )
   }
+}
+
+function isUrlQuerySource(s: Source | false): s is 'url-query' {
+  return s === 'url-query'
 }
 </script>
 
@@ -112,7 +117,7 @@ function dismiss() {
           {{ preferComposition ? 'Composition' : 'Options' }} API,
           поскольку
           {{
-            source === 'url-query'
+            isUrlQuerySource(source)
               ? 'он указан в URL-запросе.'
               : 'целевой раздел доступен только для этого API.'
           }}
