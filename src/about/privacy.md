@@ -24,7 +24,7 @@
 
   - Политика конфиденциальности Fathom Analytics: https://usefathom.com/legal/privacy
 
-- **Данные об использовании поисковой функциональности.** Наша поисковая система работает на базе [Algolia DocSearch](https://docsearch.algolia.com/), которая не осуществляет никакого отслеживания пользователей и не использует файлы cookie. Услуги Algolia соответствуют стандартам GPDR, CCPA и TRUSTe Certified.
+- **Данные об использовании поисковой функциональности.** Наша поисковая система работает на базе [Algolia DocSearch](https://docsearch.algolia.com/), которая не осуществляет никакого отслеживания пользователей и не использует файлы cookie. Услуги Algolia соответствуют стандартам GDPR, CCPA и TRUSTe Certified.
 
   - Политика конфиденциальности Algolia: https://www.algolia.com/policies/privacy/
   - Соблюдение требований безопасности и конфиденциальности Algolia: https://www.algolia.com/distributed-secure/security-compliance/
