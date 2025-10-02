@@ -23,7 +23,7 @@ import { VTCodeGroup, VTCodeGroupTab } from '@vue/theme'
 :::tip Предварительные условия
 
 - Знакомство с командной строкой
-- Установка [Node.js](https://nodejs.org/) версии 18.3 или выше
+- Установка [Node.js](https://nodejs.org/) версии `^20.19.0 || >=22.12.0`
   :::
 
 В этом разделе мы расскажем, как создать [одностраничное приложение](/guide/extras/ways-of-using-vue#single-page-application-spa) Vue на вашей локальной машине. Созданный проект будет использовать настройку сборки на основе [Vite](https://dragomano.github.io/vite-docs/) и позволит нам использовать [однофайловые компоненты](/guide/scaling-up/sfc) (SFC).
