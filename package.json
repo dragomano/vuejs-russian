@@ -16,14 +16,14 @@
     "dynamics.js": "^1.1.5",
     "gsap": "^3.13.0",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.18"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
     "@types/body-scroll-lock": "^3.1.2",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.2.0",
     "typescript": "^5.9.2",
-    "vitepress-plugin-group-icons": "^1.6.1",
+    "vitepress-plugin-group-icons": "^1.6.3",
     "vue-tsc": "^3.0.5"
   },
   "packageManager": "pnpm@9.12.1"
