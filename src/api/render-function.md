@@ -2,7 +2,7 @@
 
 ## h() {#h}
 
-Создает виртуальные узлы DOM (vnodes).
+Создает узлы Virtual DOM (vnodes).
 
 - **Тип**
 
@@ -93,7 +93,7 @@
   })
   ```
 
-- **Смотрите также** [Руководство - Рендер-функции - Создание виртуальных узлов](/guide/extras/render-function#creating-vnodes)
+- **Смотрите также** [Руководство - Рендер-функции - Создание узлов Virtual DOM](/guide/extras/render-function#creating-vnodes)
 
 ## mergeProps() {#mergeprops}
 
@@ -141,7 +141,7 @@
 
 ## cloneVNode() {#clonevnode}
 
-Клонирует виртуальный узел.
+Клонирует узел Virtual DOM.
 
 - **Тип**
 
