@@ -41,7 +41,6 @@ const nav: ThemeConfig['nav'] = [
         text: 'Ресурсы',
         items: [
           { text: 'Партнёры', link: '/partners/' },
-          { text: 'Разработчики', link: '/developers/' },
           { text: 'Темы', link: '/ecosystem/themes' },
           { text: 'Компоненты UI', link: 'https://ui-libs.vercel.app/' },
           { text: 'Коллекция плагинов', link: 'https://www.vue-plugins.org/' },
@@ -135,12 +134,9 @@ const nav: ThemeConfig['nav'] = [
     link: '/sponsor/'
   },
   {
-    text: 'Эксперты',
-    activeMatch: `^/(partners|developers)/`,
-    items: [
-      { text: 'Партнёры', link: '/partners/' },
-      { text: 'Разработчики', link: '/developers/' }
-    ]
+    text: 'Партнёры',
+    activeMatch: `^/partners/`,
+    link: '/partners/'
   }
 ]
 
