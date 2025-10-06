@@ -1,20 +1,13 @@
 [
   {
     "name": "Nuxt UI",
-    "description": "[Nuxt UI](https://ui.nuxt.com) — это бесплатная и открытая библиотека пользовательского интерфейса для Vue.js. Она построена на основе Tailwind CSS и включает в себя множество компонентов и утилит, которые можно использовать для быстрого создания современных, адаптивных веб-приложений.",
-    "seeMoreUrl": "https://ui.nuxt.com/pro",
+    "description": "[Nuxt UI](https://ui.nuxt.com/) — интуитивная open-source библиотека UI для приложений на Vue и Nuxt. Построенная на Tailwind CSS и Reka UI, она предлагает более 100 тщательно проработанных, доступных компонентов с гибкой системой дизайна на основе CSS.",
+    "seeMoreUrl": "https://ui.nuxt.com",
     "products": [
       {
-        "name": "UI Pro Components",
-        "price": 199,
-        "description": "Премиум-компоненты Vue, композаблы и утилиты, основанные на Nuxt UI.",
-        "url": "https://ui.nuxt.com/pro",
-        "image": "https://res.cloudinary.com/nuxt/image/upload/v1742036103/nuxt-ui/nuxt-ui-pro-og-image_vzvwge.png"
-      },
-      {
         "name": "Dashboard",
-        "price": 199,
-        "description": "Шаблон панели управления Vue, созданный с использованием Nuxt UI Pro.",
+        "price": 0,
+        "description": "Профессиональный шаблон дашборда на Vue, демонстрирующий возможности Nuxt UI.",
         "url": "https://vue-dashboard-template.nuxt.dev",
         "image": "https://res.cloudinary.com/nuxt/image/upload/v1742036101/nuxt-ui/nuxt-ui-dashboard-social-card_kpeysq.png"
       }
@@ -22,49 +15,49 @@
   },
   {
     "name": "Creative Tim",
-    "description": "На примерах, созданных нашими партнёрами из [Creative Tim](https://creative-tim.com?affiliate_id=116187), вы можете увидеть, как создается реальное приложение, какой технологический стек за ним стоит и как большинство концепций, которые вы изучили до сих пор, применяются в реальном приложении.",
-    "seeMoreUrl": "https://www.creative-tim.com/bootstrap-themes/vuejs-themes?affiliate_id=116187",
+    "description": "На примерах, созданных нашими партнёрами из [Creative Tim](https://creative-tim.com), вы можете увидеть, как создается реальное приложение, какой технологический стек за ним стоит и как большинство концепций, которые вы изучили до сих пор, применяются в реальном приложении.",
+    "seeMoreUrl": "https://www.creative-tim.com/bootstrap-themes/vuejs-themes",
     "products": [
       {
         "name": "Vue Argon Design System",
         "price": 0,
         "description": "Free Vue.js Design System",
-        "url": "https://www.creative-tim.com/product/vue-argon-design-system?affiliate_id=116187",
+        "url": "https://www.creative-tim.com/product/vue-argon-design-system",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-argon-design-system/vue-argon-design-system.jpg"
       },
       {
         "name": "Vue Black Dashboard Pro",
         "price": 59,
         "description": "Premium Vue.js Admin Template",
-        "url": "https://www.creative-tim.com/product/vue-black-dashboard-pro?affiliate_id=116187",
+        "url": "https://www.creative-tim.com/product/vue-black-dashboard-pro",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-black-dashboard-pro/vue-black-dashboard-pro.jpg"
       },
       {
         "name": "Vue Paper Dashboard 2 Pro",
         "price": 59,
         "description": "Premium Vue.js Admin Template",
-        "url": "https://www.creative-tim.com/product/vue-paper-dashboard-2-pro?affiliate_id=116187",
+        "url": "https://www.creative-tim.com/product/vue-paper-dashboard-2-pro",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-black-dashboard-pro/vue-black-dashboard-pro.jpg"
       },
       {
         "name": "Vue Material Kit",
         "price": 0,
         "description": "Free Vue.js UI Kit",
-        "url": "https://www.creative-tim.com/product/vue-material-kit?affiliate_id=116187",
+        "url": "https://www.creative-tim.com/product/vue-material-kit",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-material-kit/vue-material-kit.jpg"
       },
       {
         "name": "Vue Black Dashboard",
         "price": 0,
         "description": "Free Vue.js Admin Template",
-        "url": "https://www.creative-tim.com/product/vue-black-dashboard?affiliate_id=116187",
+        "url": "https://www.creative-tim.com/product/vue-black-dashboard",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-black-dashboard/vue-black-dashboard.jpg"
       },
       {
         "name": "Vue Now UI Kit Pro",
         "price": 79,
         "description": "Premium Vue.js UI Kit",
-        "url": "https://www.creative-tim.com/product/vue-now-ui-kit-pro?affiliate_id=116187",
+        "url": "https://www.creative-tim.com/product/vue-now-ui-kit-pro",
         "image": "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/vue-now-ui-kit-pro/vue-now-ui-kit-pro.jpg"
       }
     ]
@@ -120,49 +113,49 @@
   },
   {
     "name": "PrimeVue",
-    "description": "Библиотека компонентов пользовательского интерфейса с открытым исходным кодом [PrimeVue](https://www.primefaces.org/primevue/?af_id=4218) предлагает более 90 гибких компонентов для создания ваших приложений! У них есть тонна различных тем компонентов и шаблонов приложений, чтобы вы могли выбрать тот внешний вид, который вам больше всего подходит.",
-    "seeMoreUrl": "https://www.primefaces.org/primevue/?af_id=4218",
+    "description": "Библиотека компонентов пользовательского интерфейса с открытым исходным кодом [PrimeVue](https://www.primefaces.org/primevue/) предлагает более 90 гибких компонентов для создания ваших приложений! У них есть тонна различных тем компонентов и шаблонов приложений, чтобы вы могли выбрать тот внешний вид, который вам больше всего подходит.",
+    "seeMoreUrl": "https://www.primefaces.org/primevue/",
     "products": [
       {
         "name": "Sakai",
         "price": 0,
         "description": "Free Admin Template",
-        "url": "https://www.primefaces.org/sakai-vue/#/?af_id=4218",
+        "url": "https://www.primefaces.org/sakai-vue/#/",
         "image": "https://www.primefaces.org/vue-templates/sakai.jpg"
       },
       {
         "name": "Apollo",
         "price": 59,
         "description": "Next-Gen Application Template",
-        "url": "https://www.primefaces.org/layouts/apollo-vue?af_id=4218",
+        "url": "https://www.primefaces.org/layouts/apollo-vue",
         "image": "https://www.primefaces.org/vue-templates/apollo.jpg"
       },
       {
         "name": "Atlantis",
         "price": 59,
         "description": "Premium Admin Template",
-        "url": "https://www.primefaces.org/layouts/atlantis-vue?af_id=4218",
+        "url": "https://www.primefaces.org/layouts/atlantis-vue",
         "image": "https://www.primefaces.org/vue-templates/atlantis.jpg"
       },
       {
         "name": "Freya",
         "price": 59,
         "description": "Premium Admin Template",
-        "url": "https://www.primefaces.org/layouts/freya-vue?af_id=4218",
+        "url": "https://www.primefaces.org/layouts/freya-vue",
         "image": "https://www.primefaces.org/vue-templates/freya.jpg"
       },
       {
         "name": "Ultima",
         "price": 79,
         "description": "Material Design Admin Template",
-        "url": "https://www.primefaces.org/layouts/ultima-vue?af_id=4218",
+        "url": "https://www.primefaces.org/layouts/ultima-vue",
         "image": "https://www.primefaces.org/vue-templates/ultima.jpg"
       },
       {
         "name": "Diamond",
         "price": 59,
         "description": "PrimeOne Design Admin Template",
-        "url": "https://www.primefaces.org/layouts/diamond-vue?af_id=4218",
+        "url": "https://www.primefaces.org/layouts/diamond-vue",
         "image": "https://www.primefaces.org/vue-templates/diamond.jpg"
       }
     ]
