@@ -44,6 +44,7 @@ const nav: ThemeConfig['nav'] = [
           { text: 'Разработчики', link: '/developers/' },
           { text: 'Темы', link: '/ecosystem/themes' },
           { text: 'Компоненты UI', link: 'https://ui-libs.vercel.app/' },
+          { text: 'Коллекция плагинов', link: 'https://www.vue-plugins.org/' },
           {
             text: 'Сертификация',
             link: 'https://certificates.dev/vuejs/'
@@ -91,7 +92,7 @@ const nav: ThemeConfig['nav'] = [
         text: 'Новости',
         items: [
           { text: 'Блог', link: 'https://blog.vuejs.org/' },
-          { text: 'Twitter', link: 'https://twitter.com/vuejs' },
+          { text: 'Twitter', link: 'https://x.com/vuejs' },
           { text: 'События', link: 'https://events.vuejs.org/' },
           { text: 'Рассылки', link: '/ecosystem/newsletters' }
         ]
@@ -720,7 +721,7 @@ export default defineConfigWithTheme<ThemeConfig>({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/' },
-      { icon: 'twitter', link: 'https://twitter.com/vuejs' },
+      { icon: 'twitter', link: 'https://x.com/vuejs' },
       { icon: 'discord', link: 'https://discord.com/invite/vue' }
     ],
 
