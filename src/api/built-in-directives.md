@@ -8,7 +8,7 @@
 
 - **Подробности**
 
-  `v-text` работает, устанавливая свойство [textContent](https://developer.mozilla.org/ru/docs/Web/API/Node/textContent) элемента, поэтому он будет перезаписывать любое существующее содержимое внутри элемента. Если вам нужно обновить часть `textContent`, то вместо этого следует использовать [интерполяцию усов](/guide/essentials/template-syntax#text-interpolation).
+  `v-text` работает путём установки свойства элемента [textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent), поэтому он полностью перезаписывает всё содержимое внутри элемента. Если нужно обновлять только часть текста, используйте вместо этого [интерполяцию в двойных фигурных скобках](/guide/essentials/template-syntax#text-interpolation) (например: <span v-pre>`<span>Оставить этот текст, но обновить {{dynamicPortion}}</span>`</span>).
 
 - **Пример**
 
