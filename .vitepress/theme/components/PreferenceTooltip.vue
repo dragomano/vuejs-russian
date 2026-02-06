@@ -13,7 +13,7 @@ const { page } = useData()
 type Source = 'url-query' | 'url-header' | 'default'
 const source = ref<Source | false>(
   inBrowser && localStorage.getItem(preferCompositionKey) === null
-    ? 'default'
+    ? 'default' as Source
     : false
 )
 
@@ -111,7 +111,7 @@ function isUrlQuerySource(s: Source | false): s is 'url-query' {
           выбора нужного стиля.
         </p>
       </template>
-      <template v-if="source && source.startsWith('url')">
+      <template v-else-if="source && source.startsWith('url')">
         <p>
           Отображение содержимого для
           {{ preferComposition ? 'Composition' : 'Options' }} API,
