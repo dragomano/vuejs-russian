@@ -32,8 +32,8 @@
 
 Дополнительные ссылки:
 
-- [Руководство Vite по продакшен-сборке](https://dragomano.github.io/vite-docs/guide/build.html)
-- [Руководство Vite по развёртыванию](https://dragomano.github.io/vite-docs/guide/static-deploy.html)
+- [Руководство Vite по продакшен-сборке](https://vite-docs.ru/guide/build.html)
+- [Руководство Vite по развёртыванию](https://vite-docs.ru/guide/static-deploy.html)
 - [Руководство Vue CLI по развёртыванию](https://cli.vuejs.org/guide/deployment.html)
 
 ## Отслеживание ошибок среды выполнения {#tracking-runtime-errors}
