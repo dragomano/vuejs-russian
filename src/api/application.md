@@ -396,6 +396,11 @@ console.log(app.config)
   }
   ```
 
+- **По умолчанию**
+
+  Обработчик ошибок по умолчанию будет перебрасывать (re-throw) ошибки в режиме разработки и логировать их в продакшене.
+  Настроить это можно с помощью свойства [`throwUnhandledErrorInProduction`](#app-config-throwunhandlederrorinproduction).
+
 ## app.config.warnHandler {#app-config-warnhandler}
 
 Назначаем пользовательский обработчик предупреждений от Vue.
