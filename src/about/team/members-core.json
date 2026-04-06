@@ -13,8 +13,8 @@
         "url": "https://www.github.com/vitejs"
       }
     ],
-    "location": "Singapore",
-    "languages": ["English", "Chinese"],
+    "location": "Сингапур",
+    "languages": ["Английский", "Китайский"],
     "website": {
       "label": "evanyou.me",
       "url": "https://evanyou.me"
@@ -27,15 +27,15 @@
   },
   {
     "name": "Ben Hong",
-    "title": "Staff Developer Experience Engineer",
+    "title": "Штатный инженер по инструментам для разработчиков",
     "projects": [
       {
         "label": "vuejs/docs",
         "url": "https://www.github.com/vuejs/docs"
       }
     ],
-    "location": "Washington, DC, USA",
-    "languages": ["English", "Chinese"],
+    "location": "Вашингтон, округ Колумбия, США",
+    "languages": ["Английский", "Китайский"],
     "website": {
       "label": "bencodezen.io",
       "url": "https://www.bencodezen.io"
@@ -48,10 +48,10 @@
   },
   {
     "name": "Eduardo",
-    "title": "Разработчик и консультант",
+    "title": "Разработчик",
     "company": "Freelance",
-    "location": "Paris, France",
-    "languages": ["Spanish", "French", "English"],
+    "location": "Берлин, Германия",
+    "languages": ["Испанский", "Французский", "Английский"],
     "socials": {
       "github": "posva",
       "twitter": "posva"
@@ -78,12 +78,17 @@
   },
   {
     "name": "Haoqun Jiang",
-    "title": "Разработчик",
-    "company": "Vue.js",
+    "title": "Руководитель направления",
+    "company": "Global Brain",
+    "companyLink": "https://globalbrains.com/",
     "projects": [
       {
         "label": "create-vue",
         "url": "https://github.com/vuejs/create-vue"
+      },
+      {
+        "label": "ecosystem-ci",
+        "url": "https://github.com/vuejs/ecosystem-ci"
       },
       {
         "label": "vite",
@@ -92,19 +97,19 @@
       {
         "label": "vue-cli",
         "url": "https://github.com/vuejs/vue-cli"
-      },
-      {
-        "label": "vue-loader",
-        "url": "https://github.com/vuejs/vue-loader"
       }
     ],
-    "location": "Hangzhou, China",
-    "languages": ["Chinese", "English"],
+    "location": "Токио, Япония",
+    "languages": ["Китайский", "Английский"],
     "socials": {
       "github": "sodatea",
       "twitter": "haoqunjiang"
     },
-    "sponsor": true
+    "sponsor": true,
+    "website": {
+      "label": "haoqun.dev",
+      "url": "https://haoqun.dev/"
+    }
   },
   {
     "name": "Jinjiang",
@@ -131,8 +136,8 @@
         "url": "https://github.com/jinjiang/vue-keyboard-over"
       }
     ],
-    "location": "Singapore",
-    "languages": ["Chinese", "English"],
+    "location": "Сингапур",
+    "languages": ["Китайский", "Английский"],
     "socials": {
       "github": "jinjiang",
       "twitter": "zhaojinjiang"
@@ -140,7 +145,7 @@
   },
   {
     "name": "Kazupon",
-    "title": "Engineer & Part-time Open Sourceror",
+    "title": "Инженер и разработчик open source-проектов на полставки",
     "company": "PLAID, Inc.",
     "companyLink": "https://plaid.co.jp",
     "projects": [
@@ -161,8 +166,8 @@
         "url": "https://jp.vuejs.org"
       }
     ],
-    "location": "Tokyo, Japan",
-    "languages": ["Japanese", "English"],
+    "location": "Токио, Япония",
+    "languages": ["Японский", "Английский"],
     "website": {
       "label": "patreon.com/kazupon",
       "url": "https://www.patreon.com/kazupon"
@@ -175,9 +180,9 @@
   },
   {
     "name": "Linusborg",
-    "title": "Hive-Mind Community Wrangler (Probably a Bot)",
-    "location": "Mannheim, Germany",
-    "languages": ["German", "English"],
+    "title": "Координатор сообщества (возможно, бот)",
+    "location": "Мангейм, Германия",
+    "languages": ["Немецкий", "Английский"],
     "projects": [
       {
         "label": "vuejs/*",
@@ -234,8 +239,8 @@
         "url": "https://github.com/Akyrum/v-tooltip"
       }
     ],
-    "location": "Bordeaux, France",
-    "languages": ["French", "English"],
+    "location": "Бордо, Франция",
+    "languages": ["Французский", "Английский"],
     "website": {
       "label": "guillaume-chau.info",
       "url": "https://guillaume-chau.info/"
@@ -248,7 +253,7 @@
   },
   {
     "name": "GU Yiling",
-    "title": "Штатный инженер-программист",
+    "title": "Штатный разработчик",
     "company": "Kong Inc.",
     "companyLink": "https://konghq.com/",
     "projects": [
@@ -269,8 +274,8 @@
         "url": "https://github.com/ecomfe/veui"
       }
     ],
-    "location": "Shanghai, China",
-    "languages": ["Chinese", "English"],
+    "location": "Шанхай, Китай",
+    "languages": ["Китайский", "Английский"],
     "socials": {
       "github": "Justineo",
       "twitter": "_justineo"
@@ -278,35 +283,27 @@
   },
   {
     "name": "Phan An",
-    "title": "Руководитель инженерной группы",
-    "company": "InterNations",
-    "companyLink": "https://www.internations.org/",
+    "title": "Руководитель команды разработки",
+    "company": "Qwello",
+    "companyLink": "https://qwello.eu",
     "projects": [
       {
         "label": "vuejs.org",
         "url": "https://www.vuejs.org"
-      },
-      {
-        "label": "vuequery",
-        "url": "https://github.com/phanan/vuequery"
-      },
-      {
-        "label": "vue-google-signin-button",
-        "url": "https://github.com/vue-google-signin-button"
       }
     ],
-    "location": "Munich, Germany",
-    "languages": ["Vietnamese", "English"],
+    "location": "Мюнхен, Германия",
+    "languages": ["Вьетнамский", "Английский", "Немецкий"],
     "socials": { "github": "phanan", "twitter": "notphanan" },
     "website": {
-      "label": "https://phanan.net/",
+      "label": "phanan.net",
       "url": "https://phanan.net/"
     },
     "sponsor": true
   },
   {
     "name": "Natalia Tepluhina",
-    "title": "Главный инженер",
+    "title": "Ведущий инженер",
     "company": "GitLab",
     "companyLink": "https://gitlab.com/",
     "projects": [
@@ -316,8 +313,8 @@
       },
       { "label": "vue-cli", "url": "https://github.com/vuejs/vue-cli" }
     ],
-    "location": "Amsterdam, Netherlands",
-    "languages": ["Ukrainian", "Russian", "English"],
+    "location": "Амстердам, Нидерланды",
+    "languages": ["Украинский", "Русский", "Английский"],
     "socials": {
       "github": "NataliaTepluhina",
       "twitter": "N_Tepluhina"
@@ -326,7 +323,7 @@
   },
   {
     "name": "Yosuke Ota",
-    "title": "Ведущий веб-инженер",
+    "title": "Ведущий веб-разработчик",
     "company": "Future Corporation",
     "companyLink": "https://www.future.co.jp/",
     "projects": [
@@ -343,8 +340,8 @@
         "url": "https://github.com/future-architect/eslint-plugin-vue-scoped-css"
       }
     ],
-    "location": "Kanagawa, Japan",
-    "languages": ["Japanese"],
+    "location": "Канагава, Япония",
+    "languages": ["Японский"],
     "socials": {
       "github": "ota-meshi",
       "twitter": "omoteota"
@@ -366,8 +363,8 @@
         "url": "https://github.com/vuex-orm"
       }
     ],
-    "location": "Kanagawa, Japan",
-    "languages": ["English", "Japanese"],
+    "location": "Канагава, Япония",
+    "languages": ["Английский", "Японский"],
     "socials": {
       "github": "kiaking",
       "twitter": "KiaKing85"
@@ -376,7 +373,7 @@
   },
   {
     "name": "Anthony Fu",
-    "title": "Open Sourceror",
+    "title": "Разработчик проектов с открытым исходным кодом",
     "company": "NuxtLabs",
     "companyLink": "https://nuxtlabs.com/",
     "projects": [
@@ -393,8 +390,8 @@
         "url": "https://github.com/vueuse/vue-demi"
       }
     ],
-    "location": "Paris, France",
-    "languages": ["Chinese", "English"],
+    "location": "Париж, Франция",
+    "languages": ["Китайский", "Английский"],
     "socials": {
       "github": "antfu",
       "twitter": "antfu7"
@@ -418,8 +415,8 @@
         "url": "https://github.com/volarjs"
       }
     ],
-    "location": "Hong Kong, China",
-    "languages": ["Chinese", "English"],
+    "location": "Гонконг, Китай",
+    "languages": ["Китайский", "Английский"],
     "socials": {
       "github": "johnsoncodehk",
       "twitter": "johnsoncodehk"
@@ -435,8 +432,8 @@
         "url": "https://github.com/vuejs/core"
       }
     ],
-    "location": "London, United Kingdom",
-    "languages": ["English", "Portuguese"],
+    "location": "Лондон, Великобритания",
+    "languages": ["Английский", "Португальский"],
     "socials": {
       "github": "pikax",
       "twitter": "pikax_dev"
@@ -452,8 +449,8 @@
         "url": "https://github.com/vuejs/vitepress"
       }
     ],
-    "location": "India",
-    "languages": ["English", "Hindi"],
+    "location": "Индия",
+    "languages": ["Английский", "Хинди"],
     "socials": {
       "github": "brc-dd",
       "twitter": "_brc_dd"
@@ -462,7 +459,7 @@
   },
   {
     "name": "Kevin Deng 三咲智子",
-    "title": "Open Sourceror",
+    "title": "Разработчик проектов с открытым исходным кодом",
     "projects": [
       {
         "label": "vuejs/core",
@@ -481,12 +478,97 @@
         "url": "https://github.com/vueuse/vueuse"
       }
     ],
-    "location": ["Hangzhou", "Singapore"],
-    "languages": ["English", "Chinese"],
+    "location": ["Ханчжоу", "Сингапур"],
+    "languages": ["Английский", "Китайский"],
     "socials": {
       "github": "sxzz",
       "twitter": "sanxiaozhizi"
     },
     "sponsor": true
+  },
+  {
+    "name": "Edison",
+    "title": "Разработчик",
+    "company": "Vue.js",
+    "projects": [
+      {
+        "label": "vuejs/core",
+        "url": "https://github.com/vuejs/core"
+      }
+    ],
+    "location": "Нанкин, Китай",
+    "languages": ["Китайский", "Английский"],
+    "socials": {
+      "github": "edison1105",
+      "twitter": "edison11051"
+    },
+    "sponsor": true
+  },
+  {
+    "name": "ubugeeei",
+    "title": "Ведущий инженер",
+    "company": "Mates Inc.",
+    "companyLink": "https://github.com/mates-system",
+    "projects": [
+      {
+        "label": "vuejs/vue-vapor",
+        "url": "https://github.com/vuejs/vue-vapor"
+      },
+      {
+        "label": "Vize",
+        "url": "https://github.com/ubugeeei/vize"
+      },
+      {
+        "label": "chibivue",
+        "url": "https://github.com/chibivue-land"
+      },
+      {
+        "label": "Ox Content",
+        "url": "https://github.com/ubugeeei/ox-content"
+      },
+      {
+        "label": "Vue Fes Japan",
+        "url": "https://vuefes.jp"
+      },
+      {
+        "label": "Vue.js Japan User Group",
+        "url": "https://github.com/vuejs-jp"
+      }
+    ],
+    "location": "Токио, Япония",
+    "languages": ["Японский"],
+    "website": {
+      "label": "wtrclred.io",
+      "url": "https://wtrclred.io"
+    },
+    "socials": {
+      "github": "ubugeeei",
+      "twitter": "ubugeeei"
+    },
+    "sponsor": true
+  },
+  {
+    "name": "Vincent Ngai • SerKo",
+    "title": "Фулстек-разработчик",
+    "projects": [
+      {
+        "label": "vuejs/language-tools",
+        "url": "https://github.com/vuejs/language-tools"
+      },
+      {
+        "label": "Vue AI",
+        "url": "https://github.com/vuejs-ai"
+      }
+    ],
+    "location": ["Гонконг", "Тайвань"],
+    "languages": ["Китайский", "Английский"],
+    "website": {
+      "label": "serko.dev",
+      "url": "https://serko.dev"
+    },
+    "socials": {
+      "github": "serkodev",
+      "twitter": "serkodev"
+    }
   }
 ]
