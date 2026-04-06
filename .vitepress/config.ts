@@ -9,12 +9,13 @@ import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-i
 const nav: ThemeConfig['nav'] = [
   {
     text: 'Документация',
-    activeMatch: `^/(guide|style-guide|cookbook|examples)/`,
+    activeMatch: `^/(guide|tutorial|examples|api|glossary|error-reference)/`,
     items: [
+      { text: 'Быстрый старт', link: '/guide/quick-start' },
       { text: 'Руководство', link: '/guide/introduction' },
       { text: 'Учебник', link: '/tutorial/' },
       { text: 'Примеры', link: '/examples/' },
-      { text: 'Быстрый старт', link: '/guide/quick-start' },
+      { text: 'API', link: '/api/' },
       { text: 'Руководство по стилю', link: '/style-guide/' },
       { text: 'Глоссарий', link: '/glossary/' },
       { text: 'Справочник по ошибкам', link: '/error-reference/' },
@@ -23,11 +24,6 @@ const nav: ThemeConfig['nav'] = [
         link: 'https://v3-migration.vuejs.org'
       }
     ]
-  },
-  {
-    text: 'API',
-    activeMatch: `^/api/`,
-    link: '/api/'
   },
   {
     text: 'Песочница',
@@ -40,7 +36,6 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'Ресурсы',
         items: [
-          { text: 'Партнёры', link: '/partners/' },
           { text: 'Темы', link: '/ecosystem/themes' },
           { text: 'Компоненты UI', link: 'https://ui-libs.vercel.app/' },
           { text: 'Коллекция плагинов', link: 'https://www.vue-plugins.org/' },
@@ -130,13 +125,12 @@ const nav: ThemeConfig['nav'] = [
     ]
   },
   {
-    text: 'Спонсорство',
-    link: '/sponsor/'
-  },
-  {
-    text: 'Партнёры',
-    activeMatch: `^/partners/`,
-    link: '/partners/'
+    text: 'Поддержка',
+    activeMatch: `^/(sponsor|partners)/`,
+    items: [
+      { text: 'Спонсоры', link: '/sponsor/' },
+      { text: 'Партнёры', link: '/partners/' }
+    ]
   }
 ]
 
