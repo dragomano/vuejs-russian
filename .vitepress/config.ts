@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { defineConfigWithTheme, type HeadConfig } from 'vitepress'
+import { defineConfig, type HeadConfig } from 'vitepress'
 import type { Config as ThemeConfig } from '@vue/theme'
 import baseConfig from '@vue/theme/config'
 import { headerPlugin } from './headerMdPlugin'
@@ -604,7 +604,7 @@ function inlineScript(file: string): HeadConfig {
   ]
 }
 
-export default defineConfigWithTheme<ThemeConfig>({
+export default defineConfig<ThemeConfig>({
   extends: baseConfig,
 
   sitemap: {
