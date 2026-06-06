@@ -229,6 +229,31 @@ watch(
 
 ![Инструменты разработчика Chrome показывают доступное для ввода имя из aria-labelledby](./images/AccessibleARIAlabelledbyDevTools.png)
 
+Когда этот шаблон используется внутри переиспользуемого компонента, генерируйте идентификаторы с помощью [`useId()`](/api/composition-api-helpers.html#useid) вместо их жесткого кодирования. Это обеспечивает уникальность значений `id` для каждого экземпляра компонента, одновременно сохраняя связь видимого текста с элементом управления формы.
+
+```vue
+<script setup>
+import { useId } from 'vue'
+
+const sectionId = useId()
+const nameId = useId()
+</script>
+
+<template>
+  <section class="form-section">
+    <h2 :id="sectionId">Счёт</h2>
+
+    <label :id="nameId" :for="`${nameId}-input`">Имя: </label>
+    <input
+      :id="`${nameId}-input`"
+      type="text"
+      name="name"
+      :aria-labelledby="`${sectionId} ${nameId}`"
+    />
+  </section>
+</template>
+```
+
 #### `aria-describedby` {#aria-describedby}
 
 [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) используется так же, как и `aria-labelledby`, но содержит описание с дополнительной информацией, которая может понадобиться пользователю. С его помощью можно описать критерии для любого ввода:
