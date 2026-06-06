@@ -1,0 +1,9 @@
+allowBuilds:
+  esbuild: true
+  vue-demi: true
+
+overrides:
+  "vitepress>vite": "npm:vite@8.0.16"
+
+minimumReleaseAgeExclude:
+  - '@types/node@25.9.2'

@@ -757,7 +757,16 @@ export default defineConfig<ThemeConfig>({
       }
     },
     build: {
-      chunkSizeWarningLimit: Infinity
+      chunkSizeWarningLimit: Infinity,
+      rollupOptions: {
+        onwarn(warning, warn) {
+          if (warning.code === 'INVALID_ANNOTATION') {
+            return
+          }
+
+          warn(warning)
+        },
+      },
     },
     json: {
       stringify: true
