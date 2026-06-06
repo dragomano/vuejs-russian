@@ -104,7 +104,7 @@ function isUrlQuerySource(s: Source | false): s is 'url-query' {
   <Transition name="fly-in">
     <div class="preference-tooltip" v-if="show">
       <template v-if="source === 'default'">
-        <p>Стилем API по умолчанию является Composition API.</p>
+        <p>Composition API используется по умолчанию.</p>
         <p>
           Некоторые страницы содержат различное содержимое в зависимости от
           выбранного стиля API. Используйте этот переключатель для
