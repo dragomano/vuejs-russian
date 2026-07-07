@@ -65,6 +65,10 @@ const nav: ThemeConfig['nav'] = [
           {
             text: 'Vue School',
             link: 'https://vueschool.io/'
+          },
+          {
+            text: 'Бесплатный курс по Vue.js',
+            link: 'https://www.youtube.com/playlist?list=PLvTBThJr861yMBhpKafII3HZLAYujuNWw'
           }
         ]
       },
@@ -117,10 +121,6 @@ const nav: ThemeConfig['nav'] = [
       {
         text: 'Шаблоны проектирования и лучшие практики',
         link: 'https://vue-faq.org/ru/book/'
-      },
-      {
-        text: 'Бесплатный курс по Vue.js',
-        link: 'https://www.youtube.com/playlist?list=PLvTBThJr861yMBhpKafII3HZLAYujuNWw'
       }
     ]
   },
