@@ -12,6 +12,7 @@ description: Список всех локализаций документаци
 - [日本語 / Japanese](https://ja.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ja)]
 - [Українська / Ukrainian](https://ua.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-uk)]
 - [Français / French](https://fr.vuejs.org) [[источник](https://github.com/vuejs-translations/docs-fr)]
+- [Deutsch / German](https://de.vuejs.org) [[источник](https://github.com/vuejs-translations/docs-de)]
 - [한국어 / Korean](https://ko.vuejs.org) [[источник](https://github.com/vuejs-translations/docs-ko)]
 - [Português / Portuguese](https://pt.vuejs.org) [[источник](https://github.com/vuejs-translations/docs-pt)]
 - [বাংলা / Bengali](https://bn.vuejs.org) [[источник](https://github.com/vuejs-translations/docs-bn)]
