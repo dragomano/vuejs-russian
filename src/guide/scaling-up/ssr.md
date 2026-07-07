@@ -195,8 +195,8 @@ server.get('/', (req, res) => {
 Кроме того, чтобы загрузить файлы клиента в браузер, нам также необходимо:
 
 1. Отправьте клиентские файлы, добавив `server.use(express.static('.'))` в `server.js`.
-2. Загрузите запись клиента, добавив `<script type="module" src="/client.js"></script>` в оболочку HTML.
-3. Поддержка использования типа `import * from 'vue'` в браузере путём добавления [карты импорта](https://github.com/WICG/import-maps) в HTML-оболочку.
+2. Загрузите запись клиента, добавив `<script type="module" src="/client.js"></script>` в шаблон HTML.
+3. Поддержка использования типа `import * from 'vue'` в браузере путём добавления [карты импорта](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps) в шаблон HTML.
 
 [Попробуйте выполнить пример на StackBlitz](https://stackblitz.com/fork/vue-ssr-example?file=index.js). Кнопка стала интерактивной!
 
