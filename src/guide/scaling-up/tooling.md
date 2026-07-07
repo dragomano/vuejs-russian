@@ -186,4 +186,8 @@ $ bun create vue@latest
 - [Vue на Codepen](https://codepen.io/pen/editor/vue)
 - [Vue на WebComponents.dev](https://webcomponents.dev/create/cevue)
 
-<!-- TODO ## Backend Framework Integrations -->
+## Интеграция с серверными фреймворками {#backend-framework-integrations}
+
+Если вы используете Vue вместе с [Laravel](https://laravel.com/), фреймворк поставляется с официальным [плагином Vite](https://laravel.com/docs/vite), который из коробки обеспечивает сборку ресурсов и горячую замену модулей (HMR).
+
+Для любого другого серверного фреймворка обратитесь к руководству Vite по [интеграции с серверными фреймворками](https://vite.dev/guide/backend-integration.html), чтобы настроить её вручную.
