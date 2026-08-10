@@ -1,3 +1,5 @@
 User-agent: *
+Content-Signal: search=yes, ai-train=no, ai-input=no
+Disallow:
 
 Sitemap: https://vuejs.dragomano.ru/sitemap.xml
