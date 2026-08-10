@@ -265,3 +265,13 @@
   ```ts
   function isReadonly(value: unknown): boolean
   ```
+
+## isShallow() {#isshallow}
+
+Проверяет, является ли объект прокси, созданным с помощью [`shallowRef`](./reactivity-advanced#shallowref), [`shallowReactive()`](./reactivity-advanced#shallowreactive) или [`shallowReadonly()`](./reactivity-advanced#shallowreadonly).
+
+- **Тип**
+
+  ```ts
+  function isShallow(value: unknown): boolean
+  ```
