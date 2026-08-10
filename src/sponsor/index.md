@@ -48,7 +48,7 @@ Vue.js - это проект с открытым исходным кодом п�
 - **Платиновый (2000 USD в месяц)**:
   - Заметное размещение логотипа на первой странице сайта [vuejs.org](/).
   - Заметное размещение логотипа в боковой панели всех контентных страниц.
-  - Заметное размещение логотипа в README для [`vuejs/core`](https://github.com/vuejs/core) и [`vuejs/vue`](https://github.com/vuejs/core).
+  - Заметное размещение логотипа в README для [`vuejs/core`](https://github.com/vuejs/core) и [`vuejs/vue`](https://github.com/vuejs/vue).
 - **Золотой (500 USD в месяц)**:
   - Размещение большого логотипа на первой странице сайта [vuejs.org](/).
   - Размещение большого логотипа в README для `vuejs/core` и `vuejs/vue`.
