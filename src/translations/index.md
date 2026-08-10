@@ -27,12 +27,11 @@ description: Список всех локализаций документаци
 
 - [العربية / Arabic](https://ar.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-ar)]
 - [Español / Spanish](https://vue3-spanish-docs.netlify.app/) [[источник](https://github.com/icarusgk/vuejs-spanish-docs)]
-- [Deutsch / German](https://de.vuejs.org/) [[источник](https://github.com/vuejs-translations/docs-de)]
 
-## Начало нового перевода {#starting-a-new-translation}
+## Участие в переводе {#contributing-to-translations}
 
 Документация по Vue недавно подверглась серьёзной переработке, поэтому переводы на другие языки пока отсутствуют или находятся в процессе доработки.
 
 Мы приветствуем усилия сообщества по созданию дополнительных переводов. Работа над переводами ведётся в организации [vuejs-translations](https://github.com/vuejs-translations/) GitHub. Если вы хотите внести свой вклад, ознакомьтесь с [Руководством по переводу](https://github.com/vuejs-translations/guidelines/blob/main/README.md), чтобы начать работу.
 
-Помочь с улучшением текущей локализации можно в репозитории [vuejs-russian](https://github.com/dragomano/vuejs-russian).
+Помочь с улучшением текущей (неофициальной) локализации можно в репозитории [vuejs-russian](https://github.com/dragomano/vuejs-russian).
