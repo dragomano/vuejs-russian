@@ -581,7 +581,7 @@ export default {
 export default {
   created() {
     // каждый экземпляр теперь имеет собственную копию отсроченного обработчика
-    this.debouncedClick = _.debounce(this.click, 500)
+    this.debouncedClick = debounce(this.click, 500)
   },
   unmounted() {
     // также хорошая идея отменить таймер
