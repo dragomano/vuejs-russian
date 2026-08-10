@@ -1,15 +1,22 @@
 [
   {
     "name": "Nuxt UI",
-    "description": "[Nuxt UI](https://ui.nuxt.com/) — интуитивная open-source библиотека UI для приложений на Vue и Nuxt. Построенная на Tailwind CSS и Reka UI, она предлагает более 100 тщательно проработанных, доступных компонентов с гибкой системой дизайна на основе CSS.",
-    "seeMoreUrl": "https://ui.nuxt.com",
+    "description": "[Nuxt UI](https://ui.nuxt.com/) — это библиотека UI с открытым исходным кодом, включающая более 125 доступных компонентов на базе Tailwind CSS для Vue и Nuxt. Построенная на основе Reka UI и гибкой CSS-first дизайн-системы, она из коробки работает с Vite, Inertia и SSR.",
+    "seeMoreUrl": "https://ui.nuxt.com/",
     "products": [
       {
         "name": "Dashboard",
         "price": 0,
-        "description": "Профессиональный шаблон дашборда на Vue, демонстрирующий возможности Nuxt UI.",
-        "url": "https://vue-dashboard-template.nuxt.dev",
-        "image": "https://res.cloudinary.com/nuxt/image/upload/v1742036101/nuxt-ui/nuxt-ui-dashboard-social-card_kpeysq.png"
+        "description": "Шаблон панели управления Vue с многоколоночной компоновкой и графиками.",
+        "url": "https://dashboard-vue-template.nuxt.dev",
+        "image": "https://ui.nuxt.com/assets/templates/vue/dashboard-light.png"
+      },
+      {
+        "name": "Chat",
+        "price": 0,
+        "description": "Шаблон ИИ-чат-бота на Vue с потоковой передачей ответов, аутентификацией и историей чатов.",
+        "url": "https://chat-vue-template.nuxt.dev",
+        "image": "https://ui.nuxt.com/assets/templates/vue/chat-light.png"
       }
     ]
   },
