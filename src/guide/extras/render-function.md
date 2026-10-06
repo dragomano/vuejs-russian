@@ -245,7 +245,7 @@ const vnode = h('button', ['Hello'])
 
 ## JSX / TSX {#jsx-tsx}
 
-[JSX](https://facebook.github.io/jsx/) — это XML-подобное расширение для JavaScript, которое позволяет нам писать код, подобный этому:
+[JSX](https://react.dev/learn/writing-markup-with-jsx) — это XML-подобное расширение для JavaScript, которое позволяет нам писать код, подобный этому:
 
 ```jsx
 const vnode = <div>привет</div>
