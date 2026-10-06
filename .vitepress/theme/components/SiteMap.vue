@@ -5,18 +5,20 @@ import { useData } from 'vitepress'
 const data = useData()
 const nav = data.site.value.themeConfig.nav
 const ecosystem = nav.find((i: any) => i.activeMatch?.includes('ecosystem'))
+const ecosystemSubItems: any[] = ecosystem?.items ?? []
 const items = nav
   .filter((i: any) => i !== ecosystem && i.items)
-  .concat(ecosystem.items)
+  .concat(ecosystemSubItems)
+  .filter((i: any) => i && Array.isArray(i.items))
 </script>
 
 <template>
   <section id="sitemap">
     <div class="container">
-      <div class="sitemap-col" v-for="col in items">
+      <div class="sitemap-col" v-for="col in items" :key="col.text">
         <h4>{{ col.text }}</h4>
         <ul>
-          <li v-for="row in col.items">
+          <li v-for="row in col.items" :key="row.link ?? row.text">
             <VTLink :href="row.link">{{ row.text }}</VTLink>
           </li>
         </ul>

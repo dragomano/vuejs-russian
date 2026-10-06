@@ -1,0 +1,26 @@
+diff --git a/src/vitepress/components/VPNavBarLocaleItems.vue b/src/vitepress/components/VPNavBarLocaleItems.vue
+index acc34c99377261eccb6b5e6ebd9a280b52948f07..191abdf879225d5794050a6e79fe205eb4ef96af 100644
+--- a/src/vitepress/components/VPNavBarLocaleItems.vue
++++ b/src/vitepress/components/VPNavBarLocaleItems.vue
+@@ -1,11 +1,10 @@
+ <script setup lang="ts">
+ import { computed } from 'vue';
+-import { useRoute, useData } from 'vitepress'
++import { useRoute } from 'vitepress'
+ import { useConfig } from '../composables/config'
+ import { VTIconExternalLink } from '../../core';
+ import VTIconGitHub from '../../core/components/icons/VTIconGitHub.vue';
+ 
+-const data = useData()
+ const route = useRoute()
+ const { config } = useConfig()
+ const localeLinks = computed(() => {
+@@ -16,7 +15,7 @@ const localeLinks = computed(() => {
+     .map(({ text, link, repo }) => {
+       return {
+         text,
+-        link: new URL(pathname, link).toString() + data.hash.value,
++        link: new URL(pathname, link).toString(),
+         repo,
+       }
+     })

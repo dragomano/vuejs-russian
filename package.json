@@ -13,17 +13,17 @@
     "@vue/theme": "^2.4.0",
     "dynamics.js": "^1.1.5",
     "gsap": "^3.15.0",
-    "vitepress": "2.0.0-alpha.18",
-    "vue": "^3.5.41"
+    "vitepress": "2.0.0-alpha.20",
+    "vue": "^3.5.43"
   },
   "devDependencies": {
     "@types/body-scroll-lock": "^3.1.2",
-    "@types/markdown-it": "^14.1.2",
-    "@types/node": "^26.2.0",
-    "oxc-minify": "^0.143.0",
+    "@types/markdown-it": "^14.2.0",
+    "@types/node": "^26.6.4",
+    "oxc-minify": "^0.153.0",
     "typescript": "^7.0.2",
     "vitepress-plugin-group-icons": "^1.7.6",
-    "vue-tsc": "^3.3.9"
+    "vue-tsc": "^3.3.12"
   },
   "engines": {
     "node": ">=20"
